@@ -2,17 +2,17 @@
    0. Base / root variables
    ======================== */
 
-/* Root (desktop base) */
+/* Root, defining style-names for this document */
 :root{
   /* ---------- Typography ---------- */
   --font-sans: "Figtree", system-ui, sans-serif;
   --font-display: "new-kansas", "Figtree", sans-serif;
 
-  --fw-regular: 400;
+  --fw-regular: 400; /*  fw = font weight  */
   --fw-semi: 600;  /* semi-bold for headings */
   --fw-bold: 700;
 
-  /* ---------- Colours (British spelling) ---------- */
+  /* ---------- Colours ---------- */
   --colour-bg: #ffffff;                /* white background */
   --colour-brown-900: #2b1f1a;        /* very dark brown (acts like black) */
   --colour-brown-700: #4a352f;        /* primary brown */
@@ -21,17 +21,20 @@
   --colour-green-500: #1b8f5e;        /* lighter accent */
   --colour-muted: #8a7d78;           /* neutral / muted text */
 
-  /* Primary/secondary variables (you can swap later) */
+  /* Primary / Secondary variables */
   --colour-primary: var(--colour-brown-700);   /* main interactive colour (default) */
   --colour-secondary: var(--colour-green-700); /* accent */
 
   /* ---------- Spacing (modular scale, base 4px) ---------- */
+  --space-0: 0rem;       /* 0px */
   --space-1: 0.25rem;   /* 4px */
   --space-2: 0.5rem;    /* 8px */
   --space-3: 1rem;      /* 16px */
-  --space-4: 2rem;      /* 32px */
-  --space-5: 3rem;      /* 48px */
-  --space-6: 6rem;      /* 96px (your layer padding) */
+  --space-4: 1.5rem;    /* 24px */
+  --space-5: 2rem;      /* 32px */
+  --space-6: 3rem;      /* 48px */
+  --space-7: 6rem;      /* 96px */
+  --space-8: 10rem;     /* 160px */
 
   /* container widths */
   --max-content-width: 60rem; /* 960px */
