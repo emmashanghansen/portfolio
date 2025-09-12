@@ -62,7 +62,7 @@
 *::after { box-sizing: border-box; }
 
 html{
-  /* don't change root font-size; rem = 16px expected by your conversions */
+  /* don't change root font-size; rem = 16px */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: var(--colour-bg);
@@ -80,22 +80,18 @@ body{
   -webkit-text-size-adjust: 100%;
 }
 
-/* sensible defaults for images */
+/* defaults for images */
 img{ max-width: 100%; height: auto; display: block; border-radius: var(--radius-img); }
 
 /* anchor reset, accessible focus */
 a{ color: inherit; text-decoration: none; }
 a:focus { outline: none; box-shadow: var(--focus-ring); border-radius: 4px; }
 
+
 /* ========================
    2. Typography (clamp for responsiveness)
    ======================== */
 
-/* Body sizes (you asked for 20px default body and 24px big body)
-   - 1rem = 16px
-   - body (regular): target 20px = 1.25rem
-   - big body: target 24px = 1.5rem
-*/
 :root{
   --body-min: 1.0rem;   /* 16px minimum */
   --body-preferred: calc(1rem + 0.6vw);
@@ -109,7 +105,7 @@ p, .body {
   font-family: var(--font-sans);
   font-weight: var(--fw-regular);
   font-size: clamp(var(--body-min), var(--body-preferred), var(--body-max));
-  line-height: 1.5; /* normal spacing as requested */
+  line-height: 1.5; 
   margin: 0 0 var(--space-3) 0;
   color: var(--colour-brown-900);
 }
@@ -120,10 +116,12 @@ p, .body {
   line-height: 1.45;
 }
 
+
 /* image text (explicit) */
 .image-text { font-size: 1rem; }
 
-/* Headings — you only need up to H4. Use semi-bold for headings. */
+
+/* Headings */
 
 h1, .h1 {
   font-family: var(--font-display), var(--font-sans);
@@ -139,7 +137,7 @@ h2, .h2 {
   font-family: var(--font-display), var(--font-sans);
   font-weight: var(--fw-semi);
   margin: 0 0 var(--space-3) 0;
-  /* set H2 between H1 and H3: target ~40px (2.5rem) */
+  /* target 40px (2.5rem) */
   font-size: clamp(1.75rem, calc(1.4rem + 2.4vw), 2.5rem);
   line-height: 1.08;
 }
@@ -162,13 +160,12 @@ h4, .h4 {
   line-height: 1.15;
 }
 
-/* Strong / bold body text — use class or semantic <strong>.
-   Figtree provides 700 for bold; semi-bold for headings is 600. */
-strong,
-.fw-bold { font-weight: var(--fw-bold); }
+/* Strong */
+strong, .fw-bold { font-weight: var(--fw-bold); }
 
 /* If you want occasional bold body text but keep Figtree regular as default,
    use <strong> or class .fw-bold as above. */
+
 
 /* ========================
    3. Layout / containers
@@ -234,7 +231,7 @@ strong,
   box-shadow: 0 6px 18px rgba(27,143,94,0.08);
 }
 
-/* Link style with monochrome hover state (WCAG aware) */
+/* Link style with monochrome hover state */
 a.link {
   color: var(--colour-primary);
   border-bottom: 1px solid transparent;
@@ -250,6 +247,7 @@ a.link:focus {
    - Primary button on white uses dark brown with white text (contrast > 4.5:1).
    - Secondary button inverts on hover to ensure readable white-on-accent. */
 
+
 /* ========================
    5. Images & media
    ======================== */
@@ -263,6 +261,7 @@ a.link:focus {
 
 /* caption / image text */
 .caption { font-size: 0.875rem; color: var(--colour-muted); margin-top: var(--space-2); }
+
 
 /* ========================
    6. Utilities
@@ -289,6 +288,7 @@ a.link:focus {
   overflow: hidden; clip: rect(0,0,0,0);
   white-space: nowrap; border: 0;
 }
+
 
 /* ========================
    7. Responsive tweaks
