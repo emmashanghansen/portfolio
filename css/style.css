@@ -1,18 +1,309 @@
-/* Main styles */
+/* ========================
+   0. Base / root variables
+   ======================== */
 
-body {
-  font-family: Arial, sans-serif;
+/* Root (desktop base) */
+:root{
+  /* ---------- Typography ---------- */
+  --font-sans: "Figtree", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: "New Kansas", var(--font-sans);
+
+  --fw-regular: 400;
+  --fw-semi: 600;  /* semi-bold for headings */
+  --fw-bold: 700;
+
+  /* ---------- Colours (British spelling) ---------- */
+  --colour-bg: #ffffff;                /* white background */
+  --colour-brown-900: #2b1f1a;        /* very dark brown (acts like black) */
+  --colour-brown-700: #4a352f;        /* primary brown */
+  --colour-brown-500: #7a5c50;        /* lighter brown */
+  --colour-green-700: #006a44;        /* vibrant dark green (accent) */
+  --colour-green-500: #1b8f5e;        /* lighter accent */
+  --colour-muted: #8a7d78;           /* neutral / muted text */
+
+  /* Primary/secondary variables (you can swap later) */
+  --colour-primary: var(--colour-brown-700);   /* main interactive colour (default) */
+  --colour-secondary: var(--colour-green-700); /* accent */
+
+  /* ---------- Spacing (modular scale, base 4px) ---------- */
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 1rem;      /* 16px */
+  --space-4: 2rem;      /* 32px */
+  --space-5: 3rem;      /* 48px */
+  --space-6: 6rem;      /* 96px (your layer padding) */
+
+  /* container widths */
+  --max-content-width: 60rem; /* 960px */
+
+  /* radius */
+  --radius-btn: 0.75rem;  /* 12px rounded buttons */
+  --radius-img: 1rem;     /* 16px images */
+
+  /* accessibility helpers */
+  --focus-ring: 0 0 0 3px rgba(26, 139, 98, 0.18); /* subtle green focus ring */
+}
+
+/* Mobile-first breakpoints (em-based) */
+@media (min-width: 48rem){ /* 768px */
+  :root{
+    /* optionally adjust container padding for larger screens */
+  }
+}
+
+/* ========================
+   1. Global / reset
+   ======================== */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html{
+  /* don't change root font-size; rem = 16px expected by your conversions */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--colour-bg);
+  color: var(--colour-brown-900);
+  font-family: var(--font-sans);
+  font-size: 100%; /* 16px */
+  line-height: 1.5;
+}
+
+body{
   margin: 0;
-  padding: 0;
+  min-height: 100vh;
+  background: var(--colour-bg);
+  color: var(--colour-brown-900);
+  -webkit-text-size-adjust: 100%;
 }
 
-header {
-  background-color: #f8f8f8;
-  padding: 20px;
+/* sensible defaults for images */
+img{ max-width: 100%; height: auto; display: block; border-radius: var(--radius-img); }
+
+/* anchor reset, accessible focus */
+a{ color: inherit; text-decoration: none; }
+a:focus { outline: none; box-shadow: var(--focus-ring); border-radius: 4px; }
+
+/* ========================
+   2. Typography (clamp for responsiveness)
+   ======================== */
+
+/* Body sizes (you asked for 20px default body and 24px big body)
+   - 1rem = 16px
+   - body (regular): target 20px = 1.25rem
+   - big body: target 24px = 1.5rem
+*/
+:root{
+  --body-min: 1.0rem;   /* 16px minimum */
+  --body-preferred: calc(1rem + 0.6vw);
+  --body-max: 1.25rem;  /* 20px */
+  --big-body-min: 1.125rem;   /* 18px */
+  --big-body-max: 1.5rem;     /* 24px */
 }
 
-nav a {
-  margin-right: 15px;
+/* Base paragraph / body */
+p, .body {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-regular);
+  font-size: clamp(var(--body-min), var(--body-preferred), var(--body-max));
+  line-height: 1.5; /* normal spacing as requested */
+  margin: 0 0 var(--space-3) 0;
+  color: var(--colour-brown-900);
+}
+
+/* Big body text utility */
+.body--large {
+  font-size: clamp(var(--big-body-min), calc(1.125rem + 0.9vw), var(--big-body-max));
+  line-height: 1.45;
+}
+
+/* image text (explicit) */
+.image-text { font-size: 1rem; }
+
+/* Headings — you only need up to H4. Use semi-bold for headings. */
+
+h1, .h1 {
+  font-family: var(--font-display), var(--font-sans);
+  font-weight: var(--fw-semi);
+  margin: 0 0 var(--space-3) 0;
+  /* target 48px = 3rem */
+  font-size: clamp(2.25rem, calc(1.8rem + 3.2vw), 3rem); /* min:36px, pref grows with vw, max:48px */
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+h2, .h2 {
+  font-family: var(--font-display), var(--font-sans);
+  font-weight: var(--fw-semi);
+  margin: 0 0 var(--space-3) 0;
+  /* set H2 between H1 and H3: target ~40px (2.5rem) */
+  font-size: clamp(1.75rem, calc(1.4rem + 2.4vw), 2.5rem);
+  line-height: 1.08;
+}
+
+h3, .h3 {
+  font-family: var(--font-display), var(--font-sans);
+  font-weight: var(--fw-semi);
+  margin: 0 0 var(--space-3) 0;
+  /* target 32px = 2rem */
+  font-size: clamp(1.5rem, calc(1.2rem + 1.6vw), 2rem);
+  line-height: 1.1;
+}
+
+h4, .h4 {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-semi);
+  margin: 0 0 var(--space-2) 0;
+  /* target ~20px-22px */
+  font-size: clamp(1.125rem, calc(1rem + 0.6vw), 1.375rem);
+  line-height: 1.15;
+}
+
+/* Strong / bold body text — use class or semantic <strong>.
+   Figtree provides 700 for bold; semi-bold for headings is 600. */
+strong,
+.fw-bold { font-weight: var(--fw-bold); }
+
+/* If you want occasional bold body text but keep Figtree regular as default,
+   use <strong> or class .fw-bold as above. */
+
+/* ========================
+   3. Layout / containers
+   ======================== */
+
+/* Mobile-first: container has side padding, large fixed padding on wide screens */
+.container {
+  width: 100%;
+  max-width: var(--max-content-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(1rem, 6vw, var(--space-6)); /* min 16px, grows, max 96px */
+  padding-right: clamp(1rem, 6vw, var(--space-6));
+  box-sizing: border-box;
+}
+
+/* Section spacing helpers */
+.section { padding: calc(var(--space-4)) 0; }
+.section--tight { padding: var(--space-3) 0; }
+
+/* ========================
+   4. Buttons & links
+   ======================== */
+
+/* Common button tokens */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-btn);
+  font-weight: var(--fw-semi);
+  cursor: pointer;
+  transition: transform .12s ease, box-shadow .12s ease, background-color .12s ease;
   text-decoration: none;
-  color: #333;
+  border: 0;
+}
+
+/* Primary button — dark brown background, white text */
+.btn--primary {
+  background: var(--colour-primary);
+  color: #ffffff;
+  box-shadow: none;
+}
+.btn--primary:hover,
+.btn--primary:focus {
+  background: #3f2722; /* slightly darker brown for hover - ensure good contrast with white */
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(43,31,26,0.08);
+}
+.btn--primary:active { transform: translateY(0); }
+
+/* Secondary button — outline / muted, uses accent colour */
+.btn--secondary {
+  background: transparent;
+  color: var(--colour-secondary);
+  border: 2px solid var(--colour-secondary);
+}
+.btn--secondary:hover,
+.btn--secondary:focus {
+  background: var(--colour-secondary);
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(27,143,94,0.08);
+}
+
+/* Link style with monochrome hover state (WCAG aware) */
+a.link {
+  color: var(--colour-primary);
+  border-bottom: 1px solid transparent;
+}
+a.link:hover,
+a.link:focus {
+  color: var(--colour-brown-900);
+  border-bottom-color: var(--colour-brown-700);
+  text-decoration: none;
+}
+
+/* WCAG note:
+   - Primary button on white uses dark brown with white text (contrast > 4.5:1).
+   - Secondary button inverts on hover to ensure readable white-on-accent. */
+
+/* ========================
+   5. Images & media
+   ======================== */
+
+/* Already set global img border-radius. Example responsive figure */
+.figure {
+  overflow: hidden;
+  border-radius: var(--radius-img);
+}
+.figure img { display:block; width:100%; height:auto; }
+
+/* caption / image text */
+.caption { font-size: 0.875rem; color: var(--colour-muted); margin-top: var(--space-2); }
+
+/* ========================
+   6. Utilities
+   ======================== */
+
+/* Spacing utilities (examples) */
+.mt-1 { margin-top: var(--space-1); }
+.mt-2 { margin-top: var(--space-2); }
+.mt-3 { margin-top: var(--space-3); }
+.mb-3 { margin-bottom: var(--space-3); }
+.p-3  { padding: var(--space-3); }
+.text-center { text-align: center; }
+
+/* Font-weight utility */
+.fw-regular { font-weight: var(--fw-regular); }
+.fw-semi    { font-weight: var(--fw-semi); }
+.fw-bold    { font-weight: var(--fw-bold); }
+
+/* Small helper for visually-hidden content (for accessibility) */
+.sr-only {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0);
+  white-space: nowrap; border: 0;
+}
+
+/* ========================
+   7. Responsive tweaks
+   ======================== */
+
+/* At small screens reduce heavy paddings and scale down large headings */
+@media (max-width: 47.99rem) { /* <768px */
+  :root{
+    /* keep container padding reduced on narrow screens via clamp() already used */
+  }
+
+  .h1 { font-size: clamp(1.75rem, calc(1.6rem + 3.6vw), 2.75rem); } /* keep H1 readable on small screens */
+  .container { padding-left: 1rem; padding-right: 1rem; }
+}
+
+/* At very large screens you may wish to increase spacing */
+@media (min-width: 90rem) { /* >=1440px */
+  :root{
+    /* could increase max content width if desired */
+  }
 }
