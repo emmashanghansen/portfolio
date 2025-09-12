@@ -5,8 +5,8 @@
 /* Root (desktop base) */
 :root{
   /* ---------- Typography ---------- */
-  --font-sans: "Figtree", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-display: "New Kansas", var(--font-sans);
+  --font-sans: "Figtree", system-ui, sans-serif;
+  --font-display: "new-kansas", "Figtree", sans-serif;
 
   --fw-regular: 400;
   --fw-semi: 600;  /* semi-bold for headings */
