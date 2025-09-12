@@ -212,7 +212,7 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
 }
 .btn--primary:hover,
 .btn--primary:focus {
-  background: #3f2722; /* slightly darker brown for hover - ensure good contrast with white */
+  background: var(--colour-brown-900); /* slightly darker brown for hover - ensure good contrast with white */
   transform: translateY(-1px);
   box-shadow: 0 6px 18px rgba(43,31,26,0.08);
 }
