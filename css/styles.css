@@ -44,7 +44,7 @@
   --radius-img: 1rem;     /* 16px images */
 
   /* accessibility helpers */
-  --focus-ring: 0 0 0 3px rgba(26, 139, 98, 0.18); /* subtle green focus ring */
+  --focus-ring: 0 0 0 5px rgba(26, 139, 98, 0.3); /* subtle green focus ring */
 }
 
 /* Mobile-first breakpoints (em-based) */
