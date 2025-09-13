@@ -26,6 +26,9 @@
   /* Primary / Secondary variables */
    
   --colour-primary: var(--colour-brown-700);   /* main interactive colour (default) */
+  --colour-primary-subtle: var(--colour-brown-500); 
+  --colour-primary-subtlest: var(--colour-muted); 
+   
   --colour-secondary: var(--colour-green-500); /* accent */
 
   /* ---------- Spacing (modular scale, base 4px) ---------- */
@@ -216,34 +219,34 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
 }
 .btn--primary:hover,
 .btn--primary:focus {
-  background: var(--colour-brown-900); /* slightly darker brown for hover - ensure good contrast with white */
+  background: var(--colour-secondary); /* changing to green on hover */
   transform: translateY(-1px);
   box-shadow: 0 6px 18px rgba(43,31,26,0.08);
 }
 .btn--primary:active { transform: translateY(0); }
 
-/* Secondary button — outline / muted, uses accent colour */
+/* Secondary button — outline */
 .btn--secondary {
-  background: transparent;
-  color: var(--colour-secondary);
-  border: 2px solid var(--colour-secondary);
+  background: var(--colour-bg);
+  color: var(--colour-primary);
+  border: 3px solid var(--colour-primary);
 }
 .btn--secondary:hover,
 .btn--secondary:focus {
-  background: var(--colour-secondary);
-  color: #fff;
+  background: var(--colour-primary);
+  color: #ffffff;
   box-shadow: 0 6px 18px rgba(27,143,94,0.08);
 }
 
 /* Link style with monochrome hover state */
 a.link {
   color: var(--colour-primary);
-  border-bottom: 1px solid transparent;
+  border-bottom: 1px solid var(--colour-primary);
 }
 a.link:hover,
 a.link:focus {
-  color: var(--colour-brown-900);
-  border-bottom-color: var(--colour-brown-700);
+  color: var(--colour-primary);
+  border-bottom-color: var(--colour-primary-subtle);
   text-decoration: none;
 }
 
@@ -271,12 +274,16 @@ a.link:focus {
    6. Utilities
    ======================== */
 
-/* Spacing utilities (examples) */
+/* Spacing utilities */
 .mt-1 { margin-top: var(--space-1); }
 .mt-2 { margin-top: var(--space-2); }
 .mt-3 { margin-top: var(--space-3); }
+
 .mb-3 { margin-bottom: var(--space-3); }
+
 .p-3  { padding: var(--space-3); }
+
+/* Text Align */
 .text-center { text-align: center; }
 
 /* Font-weight utility */
