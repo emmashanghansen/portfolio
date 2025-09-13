@@ -40,8 +40,9 @@
    
   --colour-brown-700: #423024;        /* primary brown */
   --colour-brown-500: #7a5c50;        /* lighter brown */
-   
-  --colour-green-500: #00751f;        /* dark green (accent) */
+
+   --colour-green-600: #0a5318;       /* darker green */
+  --colour-green-500: #00751f;        /* green (accent) */
   --colour-green-300: #4eb659;        /* lighter accent */
    
   --colour-muted: #8a7d78;           /* neutral / muted text */
@@ -52,7 +53,7 @@
   --colour-primary-subtle: var(--colour-brown-500); 
   --colour-primary-subtlest: var(--colour-muted); 
    
-  --colour-secondary: var(--colour-green-500); /* accent */
+  --colour-secondary: var(--colour-green-600); /* accent */
 
    /* ---------- Other Sizes ---------- */
 
@@ -225,6 +226,7 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
 .section { padding: calc(var(--space-4)) 0; }
 .section--tight { padding: var(--space-3) 0; }
 
+
 /* ========================
    4. Buttons & links
    ======================== */
@@ -234,11 +236,14 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
+
+  font-size: var(--fs-xs);    /* Button Text Size - 16px, 18 might be more ideal */
+  font-weight: var(--fw-medium);
+   
   padding: 0.75rem 1.25rem;    /* Button Size */
   border: 3px solid var(--colour-primary);    /* Border included in size */
   border-radius: var(--radius-btn); 
-  font-size: var(--fs-xs);    /* Button Text Size - 16px, 18 might be more ideal */
-  font-weight: var(--fw-medium);
+   
   cursor: pointer;
   transition: transform .12s ease, box-shadow .12s ease, background-color .12s ease;
   text-decoration: none;
