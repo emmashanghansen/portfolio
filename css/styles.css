@@ -10,6 +10,7 @@
    --space-1: 0.25rem;   /* 4px */
    --space-2: 0.5rem;    /* 8px */
    --space-3: 1rem;      /* 16px */
+   --space-3a: 1.25rem;  /* 20 px */
    --space-4: 1.5rem;    /* 24px */
    --space-5: 2rem;      /* 32px */
    --space-6: 3rem;      /* 48px */
@@ -22,6 +23,7 @@
   --font-display: "new-kansas", "Figtree", sans-serif;
 
   --fw-regular: 400; /*  fw = font weight  */
+  --fw-medium: 500; 
   --fw-semi: 600;  /* semi-bold for headings */
   --fw-bold: 700;
 
@@ -232,11 +234,11 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  padding: var(--space-3) var(--space-4);    /* Button Size */
+  padding: 0.75rem 1.25rem;    /* Button Size */
   border: 3px solid var(--colour-primary);    /* Border included in size */
-  border-radius: var(--radius-btn);
-  font-size: 20px;    /* Button Text Size - 20px */
-  font-weight: var(--fw-regular);
+  border-radius: var(--radius-btn); 
+  font-size: var(--fs-xs);    /* Button Text Size - 16px, 18 might be more ideal */
+  font-weight: var(--fw-medium);
   cursor: pointer;
   transition: transform .12s ease, box-shadow .12s ease, background-color .12s ease;
   text-decoration: none;
