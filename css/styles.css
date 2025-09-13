@@ -235,8 +235,8 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
   padding: var(--space-3) var(--space-4);    /* Button Size */
   border: 3px solid var(--colour-primary);    /* Border included in size */
   border-radius: var(--radius-btn);
-  font-size: var(--fs-s);    /* Button Text Size - 20px */
-  font-weight: var(--fw-semi);
+  font-size: 20px;    /* Button Text Size - 20px */
+  font-weight: var(--fw-regular);
   cursor: pointer;
   transition: transform .12s ease, box-shadow .12s ease, background-color .12s ease;
   text-decoration: none;
