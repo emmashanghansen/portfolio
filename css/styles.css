@@ -247,7 +247,6 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
   cursor: pointer;
   transition: transform .12s ease, box-shadow .12s ease, background-color .12s ease;
   text-decoration: none;
-  border: 0;
 }
 
 /* Primary button — dark brown background, white text */
