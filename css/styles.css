@@ -95,8 +95,9 @@ html{
 }
 
 body{
-  margin: 0;
-  min-height: 100vh;
+   display: flex;
+   margin: 0;
+   min-height: 100vh;
   background: var(--colour-bg);
   color: var(--colour-primary);
   -webkit-text-size-adjust: 100%;
@@ -310,7 +311,7 @@ a.link:focus {
 
 
 /* ========================
-   6. Utilities (extended)
+   6. Utilities
    ======================== */
 
 /* --- Spacing (margin + padding) --- */
@@ -390,3 +391,51 @@ a.link:focus {
     /* could increase max content width if desired */
   }
 }
+
+/* ========================
+   8. Navbar
+   ======================== */
+
+
+/* Navbar */
+.navbar {
+  width: 220px;
+  background-color: #111;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  position: fixed;   /* Always visible on the left */
+  top: 0;
+  left: 0;
+  height: 100vh;
+}
+
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  margin: 10px 0;
+  display: block;
+  transition: color 0.2s;
+}
+
+.navbar a:hover {
+  color: #f0a500;
+}
+
+.logo {
+  width: 100%;
+  height: auto;
+  margin-bottom: 40px;
+}
+
+/* Main content shifted right */
+.main-content {
+  margin-left: 220px;
+  padding: 40px;
+}
+
+
+
+
