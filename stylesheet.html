@@ -20,7 +20,10 @@
   
 </head>
 <body>
+  <!-- Placeholder where navbar will be injected -->
+  <div id="navbar-placeholder"></div>
 
+  <!-- Main Content -->
   <div class="container">
     <!-- Typography -->
     <section class="section">
@@ -78,5 +81,15 @@
     </section>
   </div>
 
+
+  <!-- Script to load navbar.html -->
+  <script>
+    fetch("navbar.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("navbar-placeholder").innerHTML = data;
+      });
+  </script>
+  
 </body>
 </html>
