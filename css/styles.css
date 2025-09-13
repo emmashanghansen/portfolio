@@ -4,6 +4,19 @@
 
 /* Root, defining style-names for this document */
 :root{
+
+   /* ---------- Spacing (modular scale, base 4px) ---------- */
+   --space-0: 0rem;      /* 0px */
+   --space-1: 0.25rem;   /* 4px */
+   --space-2: 0.5rem;    /* 8px */
+   --space-3: 1rem;      /* 16px */
+   --space-4: 1.5rem;    /* 24px */
+   --space-5: 2rem;      /* 32px */
+   --space-6: 3rem;      /* 48px */
+   --space-7: 6rem;      /* 96px */
+   --space-8: 10rem;     /* 160px */
+
+   
   /* ---------- Typography ---------- */
   --font-sans: "Figtree", system-ui, sans-serif;
   --font-display: "new-kansas", "Figtree", sans-serif;
@@ -11,6 +24,14 @@
   --fw-regular: 400; /*  fw = font weight  */
   --fw-semi: 600;  /* semi-bold for headings */
   --fw-bold: 700;
+
+   /* Font Sizing (default paragraph 20px) */
+  --fs-xs: 1.0rem;    /* 16px min */
+  --fs-s: 1.25rem;    /* 20px */
+  --fs-m: 1.5rem;     /* 24px */
+  --fs-l: 2rem;       /* 32px */
+  --fs-xl: 3rem;      /* 48px */
+   
 
   /* ---------- Colours ---------- */
   --colour-bg: #ffffff;                /* white background */
@@ -31,16 +52,7 @@
    
   --colour-secondary: var(--colour-green-500); /* accent */
 
-  /* ---------- Spacing (modular scale, base 4px) ---------- */
-  --space-0: 0rem;      /* 0px */
-  --space-1: 0.25rem;   /* 4px */
-  --space-2: 0.5rem;    /* 8px */
-  --space-3: 1rem;      /* 16px */
-  --space-4: 1.5rem;    /* 24px */
-  --space-5: 2rem;      /* 32px */
-  --space-6: 3rem;      /* 48px */
-  --space-7: 6rem;      /* 96px */
-  --space-8: 10rem;     /* 160px */
+   /* ---------- Other Sizes ---------- */
 
   /* container widths */
   --max-content-width: 60rem; /* 960px */
@@ -52,6 +64,7 @@
   /* accessibility helpers */
   --focus-ring: 0 0 0 5px rgba(26, 139, 98, 0.3); /* subtle green focus ring */
 }
+
 
 /* Mobile-first breakpoints (em-based) */
 @media (min-width: 48rem){ /* 768px */
@@ -95,34 +108,29 @@ a:focus { outline: none; box-shadow: var(--focus-ring); border-radius: 4px; }
 
 
 /* ========================
-   2. Typography (clamp for responsiveness)
+   2. Typography
    ======================== */
 
 :root{
-  --body-min: 1.0rem;   /* 16px minimum */
-  --body-preferred: calc(1rem + 0.6vw);
-  --body-max: 1.25rem;  /* 20px */
-   
-  --big-body-min: 1.125rem;   /* 18px */
-  --big-body-max: 1.5rem;     /* 24px */
+   --body-default: calc(1rem + 0.6vw);
+   --big-body-default: calc(1.125rem + 0.9vw);
 }
 
 /* Base paragraph / body */
 p, .body {
   font-family: var(--font-sans);
   font-weight: var(--fw-regular);
-  font-size: clamp(var(--body-min), var(--body-preferred), var(--body-max));
+  font-size: clamp(var(--fs-xs), var(--body-default), var(--fs-s));
   line-height: 1.5; 
   margin: 0 0 var(--space-3) 0;
-  color: var(--colour-brown-900);
+  color: var(--colour-primary);
 }
 
 /* Big body text utility */
 .body--large {
-  font-size: clamp(var(--big-body-min), calc(1.125rem + 0.9vw), var(--big-body-max));
+  font-size: clamp(1.125rem, var(--big-body-default), var(--fs-m));    /* min 18px */
   line-height: 1.45;
 }
-
 
 /* image text (explicit) */
 .image-text { font-size: 1rem; }
@@ -167,11 +175,33 @@ h4, .h4 {
   line-height: 1.15;
 }
 
+
 /* Strong */
 strong, .fw-bold { font-weight: var(--fw-bold); }
 
-/* If you want occasional bold body text but keep Figtree regular as default,
+/* Occasional bold body text but keeping Figtree regular as default,
    use <strong> or class .fw-bold as above. */
+
+/* Font Size (for quick tweaks) */
+.text-xs  { font-size: var(--fs-xs); }
+.text-s   { font-size: var(--fs-s); }
+.text-m  { font-size: var(--fs-m); }
+.text-l  { font-size: var(--fs-l); }
+.text-xl  { font-size: var(--fs-xl); }
+}
+
+
+/* Font Weight */
+.fw-regular { font-weight: var(--fw-regular); }
+.fw-semi    { font-weight: var(--fw-semi); }
+.fw-bold    { font-weight: var(--fw-bold); }
+
+
+/* Color utilities */
+.text-primary { color: var(--clr-primary); }
+.text-muted   { color: var(--clr-muted); }
+.bg-light     { background-color: var(--clr-light); }
+.bg-dark      { background-color: var(--clr-dark); }
 
 
 /* ========================
@@ -271,27 +301,57 @@ a.link:focus {
 
 
 /* ========================
-   6. Utilities
+   6. Utilities (extended)
    ======================== */
 
-/* Spacing utilities */
+/* --- Spacing (margin + padding) --- */
+/* Top */
 .mt-1 { margin-top: var(--space-1); }
 .mt-2 { margin-top: var(--space-2); }
 .mt-3 { margin-top: var(--space-3); }
+.mt-4 { margin-top: var(--space-4); }
 
+/* Bottom */
+.mb-1 { margin-bottom: var(--space-1); }
+.mb-2 { margin-bottom: var(--space-2); }
 .mb-3 { margin-bottom: var(--space-3); }
+.mb-4 { margin-bottom: var(--space-4); }
 
+/* Left + Right */
+.ml-2 { margin-left: var(--space-2); }
+.mr-2 { margin-right: var(--space-2); }
+
+/* Padding */
+.p-1  { padding: var(--space-1); }
+.p-2  { padding: var(--space-2); }
 .p-3  { padding: var(--space-3); }
+.p-4  { padding: var(--space-4); }
 
-/* Text Align */
+.pt-2 { padding-top: var(--space-2); }
+.pb-2 { padding-bottom: var(--space-2); }
+
+/* --- Flexbox helpers --- */
+.flex         { display: flex; }
+.flex-col     { flex-direction: column; }
+.flex-row     { flex-direction: row; }
+.flex-center  { justify-content: center; align-items: center; }
+.justify-between { justify-content: space-between; }
+.items-center { align-items: center; }
+
+/* --- Width + Max-width --- */
+.w-100 { width: 100%; }
+.max-w-text { max-width: 65ch; } /* keeps text readable */
+
+/* --- Text Align --- */
+.text-left   { text-align: left; }
+.text-right  { text-align: right; }
 .text-center { text-align: center; }
 
-/* Font-weight utility */
-.fw-regular { font-weight: var(--fw-regular); }
-.fw-semi    { font-weight: var(--fw-semi); }
-.fw-bold    { font-weight: var(--fw-bold); }
+/* --- Border + Radius --- */
+.rounded   { border-radius: var(--radius-md); }
+.rounded-lg{ border-radius: var(--radius-lg); }
 
-/* Small helper for visually-hidden content (for accessibility) */
+/* --- Accessibility --- */
 .sr-only {
   position: absolute !important;
   width: 1px; height: 1px;
