@@ -19,6 +19,10 @@
   <title>Emma Shang Hansen Portfolio</title>
 </head>
 <body>
+  <!-- Placeholder where navbar will be injected -->
+  <div id="navbar-placeholder"></div>
+
+  <!-- Main content -->
   <header>
     <h1>Welcome to My Portfolio</h1>
     <nav>
@@ -28,12 +32,21 @@
       <a href="projects/project1.html">Projects</a>
     </nav>
   </header>
+  
   <main>
     <section>
       <h2>Featured Projects</h2>
       <p>Replace this section with a summary of your projects.</p>
     </section>
   </main>
-  <script src="js/main.js"></script>
+  
+  <!-- Script to load navbar.html -->
+  <script>
+    fetch("navbar.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("navbar-placeholder").innerHTML = data;
+      });
+  </script>
 </body>
 </html>
