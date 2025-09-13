@@ -58,7 +58,7 @@
   --max-content-width: 60rem; /* 960px */
 
   /* radius */
-  --radius-btn: 0.75rem;  /* 12px rounded buttons */
+  --radius-btn: 5rem;  /* rounded buttons */
   --radius-img: 1rem;     /* 16px images */
 
   /* accessibility helpers */
@@ -234,6 +234,7 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
   gap: var(--space-2);
   padding: 0.5rem 1rem;
   border-radius: var(--radius-btn);
+  font-size: var(--fs-m);
   font-weight: var(--fw-semi);
   cursor: pointer;
   transition: transform .12s ease, box-shadow .12s ease, background-color .12s ease;
