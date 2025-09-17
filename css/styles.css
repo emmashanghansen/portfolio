@@ -280,7 +280,7 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
     flex-direction: row;     
     justify-content: space-between;
     align-items: center;        /* vertical centering */
-    padding: var(--space-4);    /* horizontal padding */
+    padding: var(--space-6) var(--space-4) 0;    /* padding top, left-right, bottom */
     background: var(--colour-bg); 
     z-index: 1000;              /* on top of content */
   }
@@ -316,7 +316,7 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
     background: var(--colour-bg);
     flex-direction: column;
     justify-content: flex-start;
-    padding: var(--space-4);
+    padding: var(--space-6) var(--space-4) 0;    /* padding top, left-right, bottom */
     z-index: 9999;
   }
 
