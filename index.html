@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Reset browser styles -->
+  <link rel="stylesheet" href="css/reset.css">
+
+  <!-- Adobe Fonts (New Kansas) -->
+  <link rel="stylesheet" href="https://use.typekit.net/oie3qse.css">
+
+  <!-- Google Fonts (Figtree) -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700&display=swap">
+
+  <!-- Style CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+
+  <title>Emma Shang Hansen Portfolio</title>
+</head>
+<body>
+  <!-- Placeholder where navbar will be injected -->
+  <div id="navbar-placeholder"></div>
+
+  <!-- Main Content -->
+  <div class="container">
+    <!-- Home Screen Introduction -->
+    <h1>Emma Shang Hansen</h1>
+    <p>Creating building blocks for a slightly better future</p>
+
+    <!-- Projects Section -->
+    <section class="projects section">
+      <h2>Projects</h2>
+      
+      <!-- Projects Grid -->
+      <div class="projects-grid">
+        <!-- Project Card -->
+        <a href="case-study-1.html" class="project-card">
+          <div class="project-image">
+            <img src="images/project-1.jpg" alt="Untangling booking-confusion for Nikita Hair">
+          </div>
+          <div class="project-overlay">
+            <div class="overlay-content">
+              <div class="overlay-left">
+                <h3>Untangling booking-confusion</h3>
+                <h4 class="fw-regular">for Nikita Hair</h4>
+              </div>
+              <div class="overlay-right">
+                <span class="big-tag">2024</span>
+              </div>
+            </div>
+          </div>
+        </a>
+        <!-- Project Card End -->
+    
+        <!-- Duplicate for other projects -->
+        <a href="case-study-2.html" class="project-card">
+          <div class="project-image">
+            <img src="images/project-2.jpg" alt="Another case study">
+          </div>
+          <div class="project-overlay">
+            <div class="overlay-content">
+              <div class="overlay-left">
+                <h3>Another project</h3>
+                <h4 class="fw-regular">for Client</h4>
+              </div>
+              <div class="overlay-right">
+                <span class="big-tag">2024</span>
+              </div>
+            </div>
+          </div>
+        </a>
+        <!-- Project Card End -->
+        
+      </div>
+    </section>
+    <!-- Project Section End -->
+    
+  </div> <!-- Main Content End -->
+  
+  <!-- Script to load navbar.html -->
+  <script>
+    fetch("navbar.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("navbar-placeholder").innerHTML = data;
+      });
+  </script>
+</body>
+</html>
