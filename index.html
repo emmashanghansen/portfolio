@@ -85,20 +85,28 @@
     .then(response => response.text())
     .then(data => {
       document.getElementById("navbar-placeholder").innerHTML = data;
-
-      // Activate hamburger toggle
-      const hamburger = document.querySelector(".hamburger");
-      const mobileMenu = document.querySelector(".mobile-menu");
-      const closeBtn = document.querySelector(".mobile-menu .close");
-
-      hamburger.addEventListener("click", () => {
-        mobileMenu.classList.add("active");
+      
+      // Select elements
+      const hamburger = document.querySelector('.hamburger');
+      const mobileMenu = document.querySelector('.mobile-menu');
+      const closeBtn = mobileMenu.querySelector('.close');
+      
+      // Open menu on hamburger click
+      hamburger.addEventListener('click', () => {
+        mobileMenu.classList.add('active');
       });
-
-      closeBtn.addEventListener("click", () => {
-        mobileMenu.classList.remove("active");
+      
+      // Close menu on close button click
+      closeBtn.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
       });
-    });
+      
+      // Optional: close menu when clicking a link
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.remove('active');
+        });
+      });
 </script>
 
 </body>
