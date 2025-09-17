@@ -246,12 +246,6 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
   z-index: 1000;
 }
 
-/* Hide mobile-only elements on desktop */
-.hamburger,
-.mobile-menu {
-  display: none;
-}
-
 .navbar a {
   color: inherit;
   text-decoration: none;
@@ -271,8 +265,9 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
   margin-bottom: var(--space-5);
 }
 
-/* Tablet & Mobile */
+/* ----------------- Mobile & Tablet ----------------- */
 @media (max-width: 900px) {
+  /* Navbar becomes horizontal */
   .navbar {
     position: relative;
     width: 100%;
@@ -283,26 +278,28 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
     padding: var(--space-4);
   }
 
+  /* Main content full width */
   .main-container {
-    margin-left: 0; 
+    margin-left: 0;
     padding: var(--space-4);
   }
 
+  /* Hide sidebar items on mobile */
   .navbar-middle,
   .navbar-bottom {
-    display: none !important; /* hide sidebar links on mobile */
+    display: none;
   }
 
-  /* Hamburger menu */
+  /* Hamburger menu — always functional, CSS hides on desktop */
   .hamburger {
     display: block;
     cursor: pointer;
     font-size: 2rem;
   }
 
-  /* Fullscreen mobile menu (hidden by default) */
+  /* Mobile menu overlay */
   .mobile-menu {
-    display: none; 
+    display: none; /* hidden by default */
     position: fixed;
     top: 0;
     left: 0;
@@ -315,9 +312,8 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
     z-index: 9999;
   }
 
-  /* Show menu when active */
   .mobile-menu.active {
-    display: flex;
+    display: flex; /* shown when JS adds .active */
   }
 
   .mobile-menu .close {
@@ -337,6 +333,13 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
   }
 }
 
+/* ----------------- Desktop ----------------- */
+@media (min-width: 901px) {
+  .hamburger,
+  .mobile-menu {
+    display: none; /* hide mobile elements on desktop */
+  }
+}
 
 
 
