@@ -87,33 +87,33 @@ fetch("navbar.html")
   .then(data => {
     document.getElementById("navbar-placeholder").innerHTML = data;
 
-    // Select elements
-    const hamburger = document.querySelector('.hamburger');
-    const mobileMenu = document.querySelector('.mobile-menu');
-    const closeBtn = mobileMenu.querySelector('.close');
+    if (window.innerWidth < 900) {
+      const hamburger = document.querySelector('.hamburger');
+      const mobileMenu = document.querySelector('.mobile-menu');
+      const closeBtn = mobileMenu.querySelector('.close');
 
-    // MOBILE: Open menu on hamburger click
-    hamburger?.addEventListener('click', () => {
-      mobileMenu.classList.add('active');
-      hamburger.style.display = 'none'; // hide hamburger
-    });
-
-    // MOBILE: Close menu on close button click
-    closeBtn?.addEventListener('click', () => {
-      mobileMenu.classList.remove('active');
-      hamburger.style.display = 'block'; // show hamburger again
-    });
-
-    // MOBILE: Close menu when clicking a link
-    mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.remove('active');
-        hamburger.style.display = 'block'; // show hamburger again
+      // Open mobile menu
+      hamburger.addEventListener('click', () => {
+        mobileMenu.classList.add('active');
+        hamburger.style.display = 'none';
       });
-    });
+
+      // Close mobile menu
+      closeBtn.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        hamburger.style.display = 'block';
+      });
+
+      // Close menu on link click
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.remove('active');
+          hamburger.style.display = 'block';
+        });
+      });
+    }
   });
 </script>
-
 
 </body>
 </html>
