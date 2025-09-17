@@ -251,7 +251,7 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
 .navbar a {
   color: inherit;
   text-decoration: none;
-  margin: 10px 0;
+  margin: 10px 0; /* to align with hamburger vertically */
   display: block;
   transition: color 0.2s, font-weight 0.2s;
 }
@@ -271,15 +271,15 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
 @media (max-width: 900px) {
   /* Navbar becomes horizontal, fixed at top */
   .navbar {
-    position: fixed;            /* stick to top */
+    position: fixed;            /* stick to top, but also removes space it takes up */
     top: 0;
     left: 0;
     max-width: none;            /* reset max-width */
     width: 100%;                /* full width */
-    height: 60px;               /* fixed height for top bar */
+    height: 96px;               /* fixed height, same as margin-top main container */
     flex-direction: row;     
-    justify-content: space-between;
-    align-items: center;        /* vertical centering */
+    justify-content: space-between; 
+    align-items: flex-start;        /* top align */
     padding: var(--space-6) var(--space-4) 0;    /* padding top, left-right, bottom */
     background: var(--colour-bg); 
     z-index: 1000;              /* on top of content */
@@ -287,8 +287,8 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
 
   /* Push main content below navbar */
   .main-container {
-    margin-left: 0;
-    margin-top: 60px;       /* same as navbar height */
+    margin-left: 0;         /* reset to 0 */
+    margin-top: 96px;       /* same as navbar height */
     padding: var(--space-4);
   }
 
@@ -302,7 +302,7 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
   .hamburger {
     display: block;
     cursor: pointer;
-    font-size: 2rem;
+    font-size: var(--fs-m);    /* same as close */
   }
 
   /* Mobile menu overlay — hidden by default */
@@ -328,9 +328,9 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
   /* Close button in overlay */
   .mobile-menu .close {
     position: absolute;
-    top: var(--space-4);
+    top: var(--space-6);    /* same as navbar */
     right: var(--space-4);
-    font-size: 1.5rem;
+    font-size: var(--fs-m);    /* same as hamburger */
     cursor: pointer;
   }
 
