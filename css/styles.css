@@ -68,13 +68,6 @@
 }
 
 
-/* Mobile-first breakpoints (em-based) */
-@media (min-width: 48rem){ /* 768px */
-  :root{
-    /* optionally adjust container padding for larger screens */
-  }
-}
-
 /* ========================
    1. Global / reset
    ======================== */
@@ -194,12 +187,10 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
 .text-xl  { font-size: var(--fs-xl); }
 }
 
-
 /* Font Weight */
 .fw-regular { font-weight: var(--fw-regular); }
 .fw-semi    { font-weight: var(--fw-semi); }
 .fw-bold    { font-weight: var(--fw-bold); }
-
 
 /* Color utilities */
 .text-primary { color: var(--clr-primary); }
@@ -208,11 +199,17 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
 .bg-dark      { background-color: var(--clr-dark); }
 
 
+/* At small screens scale down headings */
+@media (max-width: 47.99rem) { /* <768px */
+  .h1 { font-size: clamp(1.75rem, calc(1.6rem + 3.6vw), 2.75rem); } /* keep H1 readable on small screens */
+}
+
+
 /* ========================
    3. Layout / containers
    ======================== */
 
-/* Main container */
+/* ----------- Main container ----------- */
 .main-container {
   width: 100%;
   max-width: var(--max-content-width);
@@ -226,6 +223,11 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
 /* Section spacing helpers */
 .section { padding: calc(var(--space-4)) 0; }
 .section--tight { padding: var(--space-3) 0; }
+
+/* At small screens reduce heavy paddings */
+@media (max-width: 47.99rem) { /* <768px */
+   .main-container { padding-left: 1rem; padding-right: 1rem; }
+}
 
 
 /* ----------- Navbar -----------*/ 
@@ -269,19 +271,18 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
 @media (max-width: 900px) {
   /* Navbar becomes horizontal, fixed at top */
   .navbar {
-    position: fixed;         /* stick to top */
+    position: fixed;            /* stick to top */
     top: 0;
     left: 0;
-    max-width: none;         /* reset max-width */
-    width: 100%;             /* full width */
-    height: 60px;            /* fixed height for top bar */
+    max-width: none;            /* reset max-width */
+    width: 100%;                /* full width */
+    height: 60px;               /* fixed height for top bar */
     flex-direction: row;     
-    align-items: center;     /* vertical centering */
     justify-content: space-between;
-    padding: 0 var(--space-4); /* horizontal padding */
+    align-items: center;        /* vertical centering */
+    padding: var(--space-4);    /* horizontal padding */
     background: var(--colour-bg); 
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* subtle shadow */
-    z-index: 1000;           /* on top of content */
+    z-index: 1000;              /* on top of content */
   }
 
   /* Push main content below navbar */
@@ -315,7 +316,7 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
     background: var(--colour-bg);
     flex-direction: column;
     justify-content: flex-start;
-    padding: var(--space-6);
+    padding: var(--space-4);
     z-index: 9999;
   }
 
@@ -351,8 +352,6 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
     display: none;
   }
 }
-
-
 
 
 /* ========================
@@ -498,29 +497,6 @@ a.link:focus {
   padding: 0; margin: -1px;
   overflow: hidden; clip: rect(0,0,0,0);
   white-space: nowrap; border: 0;
-}
-
-
-/* ========================
-   7. Responsive tweaks
-   ======================== */
-
-
-/* At small screens reduce heavy paddings and scale down large headings */
-@media (max-width: 47.99rem) { /* <768px */
-  :root{
-    /* keep container padding reduced on narrow screens via clamp() already used */
-  }
-
-  .h1 { font-size: clamp(1.75rem, calc(1.6rem + 3.6vw), 2.75rem); } /* keep H1 readable on small screens */
-  .main-container { padding-left: 1rem; padding-right: 1rem; }
-}
-
-/* At very large screens you may wish to increase spacing */
-@media (min-width: 90rem) { /* >=1440px */
-  :root{
-    /* could increase max content width if desired */
-  }
 }
 
 
