@@ -337,7 +337,7 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
   /* Mobile overlay links */
   .mobile-menu a {
     font-size: var(--fs-l);
-    font-weight: var(--fw-semi);
+    font-weight: var(--fw-medium);
     color: var(--colour-primary);
     margin-bottom: var(--space-4);    /* distance between each item */
     padding-bottom: var(--space-1);    /* distance from text to line */
