@@ -272,6 +272,7 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
     position: fixed;         /* stick to top */
     top: 0;
     left: 0;
+    max-width: none;         /* reset max-width */
     width: 100%;             /* full width */
     height: 60px;            /* fixed height for top bar */
     flex-direction: row;     
