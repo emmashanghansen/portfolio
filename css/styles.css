@@ -283,16 +283,14 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
     padding: var(--space-4);
   }
 
-  /* Main content full width */
   .main-container {
     margin-left: 0; 
     padding: var(--space-4);
   }
 
-  /* Hide sidebar items by default */
   .navbar-middle,
   .navbar-bottom {
-    display: none !important;
+    display: none !important; /* hide sidebar links on mobile */
   }
 
   /* Hamburger menu */
@@ -302,7 +300,7 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
     font-size: 2rem;
   }
 
-  /* Fullscreen mobile menu */
+  /* Fullscreen mobile menu (hidden by default) */
   .mobile-menu {
     display: none; 
     position: fixed;
@@ -317,6 +315,7 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
     z-index: 9999;
   }
 
+  /* Show menu when active */
   .mobile-menu.active {
     display: flex;
   }
@@ -337,6 +336,7 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
     padding-bottom: var(--space-2);
   }
 }
+
 
 
 
