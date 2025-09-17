@@ -80,11 +80,25 @@
   
   <!-- Script to load navbar.html -->
   <script>
-    fetch("navbar.html")
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("navbar-placeholder").innerHTML = data;
+  fetch("navbar.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("navbar-placeholder").innerHTML = data;
+
+      // Activate hamburger toggle
+      const hamburger = document.querySelector(".hamburger");
+      const mobileMenu = document.querySelector(".mobile-menu");
+      const closeBtn = document.querySelector(".close");
+
+      hamburger.addEventListener("click", () => {
+        mobileMenu.classList.add("active");
       });
-  </script>
+
+      closeBtn.addEventListener("click", () => {
+        mobileMenu.classList.remove("active");
+      });
+    });
+</script>
+
 </body>
 </html>
