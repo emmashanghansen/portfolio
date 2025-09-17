@@ -267,39 +267,45 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
 
 /* ----------------- Mobile & Tablet ----------------- */
 @media (max-width: 900px) {
-  /* Navbar becomes horizontal */
+  /* Navbar becomes horizontal, fixed at top */
   .navbar {
-    position: relative;
-    width: 100%;
-    height: auto;
-    flex-direction: row;
-    align-items: center;
+    position: fixed;         /* stick to top */
+    top: 0;
+    left: 0;
+    width: 100%;             /* full width */
+    height: 60px;            /* fixed height for top bar */
+    flex-direction: row;     
+    align-items: center;     /* vertical centering */
     justify-content: space-between;
-    padding: var(--space-4);
+    padding: 0 var(--space-4); /* horizontal padding */
+    background: var(--colour-bg); 
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* subtle shadow */
+    z-index: 1000;           /* on top of content */
   }
 
-  /* Main content full width */
+  /* Push main content below navbar */
   .main-container {
     margin-left: 0;
+    margin-top: 60px;       /* same as navbar height */
     padding: var(--space-4);
   }
 
-  /* Hide sidebar items on mobile */
+  /* Hide sidebar links on mobile */
   .navbar-middle,
   .navbar-bottom {
     display: none;
   }
 
-  /* Hamburger menu — always functional, CSS hides on desktop */
+  /* Hamburger menu — visible only on mobile */
   .hamburger {
     display: block;
     cursor: pointer;
     font-size: 2rem;
   }
 
-  /* Mobile menu overlay */
+  /* Mobile menu overlay — hidden by default */
   .mobile-menu {
-    display: none; /* hidden by default */
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -312,10 +318,12 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
     z-index: 9999;
   }
 
+  /* Show overlay when active */
   .mobile-menu.active {
-    display: flex; /* shown when JS adds .active */
+    display: flex;
   }
 
+  /* Close button in overlay */
   .mobile-menu .close {
     position: absolute;
     top: var(--space-4);
@@ -324,6 +332,7 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
     cursor: pointer;
   }
 
+  /* Mobile overlay links */
   .mobile-menu a {
     font-size: var(--fs-l);
     margin-bottom: var(--space-4);
@@ -335,11 +344,13 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
 
 /* ----------------- Desktop ----------------- */
 @media (min-width: 901px) {
+  /* Hide mobile-only elements on desktop */
   .hamburger,
   .mobile-menu {
-    display: none; /* hide mobile elements on desktop */
+    display: none;
   }
 }
+
 
 
 
