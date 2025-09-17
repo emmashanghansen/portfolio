@@ -213,20 +213,14 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
    ======================== */
 
 /* Mobile-first: container has side padding, large fixed padding on wide screens */
-.container {
+.main-container {
    width: 100%;
    max-width: var(--max-content-width);
-   margin-left: auto;
+   margin-left: min(320px, 100%); /* matches navbar max width */
    margin-right: auto;
    padding-left: clamp(1rem, 6vw, var(--space-6)); /* min 16px, grows, max 96px */
    padding-right: clamp(1rem, 6vw, var(--space-6));
    box-sizing: border-box;
-}
-
-/* Main content shifted right */
-.main-content {
-  margin-left: min(320px, 100%); /* matches navbar max width */
-  padding: 40px;
 }
 
 /* Section spacing helpers */
