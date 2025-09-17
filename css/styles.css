@@ -180,7 +180,6 @@ h4, .h4 {
   line-height: 1.15;
 }
 
-
 /* Strong */
 strong, .fw-bold { font-weight: var(--fw-bold); }
 
@@ -235,7 +234,7 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
 .section--tight { padding: var(--space-3) 0; }
 
 
-/* Navbar */ 
+/* ----------- Navbar -----------*/ 
 .navbar {
   width: 100%;
   max-width: 320px;         /* max width */
@@ -269,6 +268,82 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
   width: 100%;
   height: auto;
   margin-bottom: 40px;
+}
+
+/* Tablet & Mobile */
+@media (max-width: 900px) {
+  .navbar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-4, 32px);
+    background-color: transparent;
+  }
+
+  /* Main content full width */
+  .main-content {
+    margin-left: 0;
+    padding: 20px;
+  }
+
+  /* Hide sidebar items by default */
+  .navbar-middle,
+  .navbar-bottom {
+    display: none;
+  }
+
+  /* Hamburger menu */
+  .hamburger {
+    cursor: pointer;
+    font-size: 2rem;
+  }
+
+  /* Fullscreen menu (hidden by default) */
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #fff;
+    display: none;
+    flex-direction: column;
+    justify-content: flex-end; /* bottom-left */
+    padding: var(--space-4, 32px);
+    padding-bottom: var(--space-8, 160px);
+    z-index: 9999;
+  }
+
+  .mobile-menu.active {
+    display: flex;
+  }
+
+  .mobile-menu .close {
+    position: absolute;
+    top: var(--space-4, 32px);
+    right: var(--space-4, 32px);
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  .mobile-menu a {
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: var(--space-6a, 64px);
+    font-size: var(--fs-xl, 48px);
+    color: var(--colour-primary, #111);
+  }
+
+  .mobile-menu a span.number {
+    font-size: var(--fs-xs, 16px);
+    color: var(--colour-primary, #111);
+  }
 }
 
 
