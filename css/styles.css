@@ -212,15 +212,15 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
    3. Layout / containers
    ======================== */
 
-/* Mobile-first: container has side padding, large fixed padding on wide screens */
+/* Main container */
 .main-container {
-   width: 100%;
-   max-width: var(--max-content-width);
-   margin-left: min(320px, 100%); /* matches navbar max width */
-   margin-right: auto;
-   padding-left: clamp(1rem, 6vw, var(--space-6)); /* min 16px, grows, max 96px */
-   padding-right: clamp(1rem, 6vw, var(--space-6));
-   box-sizing: border-box;
+  width: 100%;
+  max-width: var(--max-content-width);
+  margin-left: 320px; /* matches fixed navbar width */
+  margin-right: auto;
+  padding-left: clamp(1rem, 6vw, var(--space-6));    /* min 16px, grows, max 96px */
+  padding-right: clamp(1rem, 6vw, var(--space-6));
+  box-sizing: border-box;
 }
 
 /* Section spacing helpers */
@@ -278,8 +278,8 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
   }
 
   /* Main content full width */
-  .main-content {
-    margin-left: 0;
+  .main-container {
+    margin-left: 0; 
     padding: 20px;
   }
 
@@ -297,6 +297,7 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
 
   /* Fullscreen menu (hidden by default) */
   .mobile-menu {
+     display: none; 
     position: fixed;
     top: 0;
     left: 0;
