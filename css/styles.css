@@ -503,26 +503,26 @@ a.link:focus {
   color: #fff;
 }
 
-.overlay-left h3 {
+.overlay-left h3 {    /* Resetting margins and colour */ 
   color: #fff;
   margin: 0;
 }
 
-.overlay-left h4 {
+.overlay-left h4 {    /* Resetting margins and colour */ 
   color: var(--colour-muted);
   margin: 0;
 }
 
-.overlay-right {
+.overlay-right {    
   display: flex;
   gap: var(--space-2);
 }
 
-.tag {
+.big-tag {
   background: rgba(255,255,255,0.15);
   padding: var(--space-2) var(--space-3);
   border-radius: var(--radius-btn);
-  font-size: var(--fs-xs);
+  font-size: var(--fs-m);
 }
 
 
