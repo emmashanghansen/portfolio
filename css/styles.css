@@ -499,7 +499,7 @@ a.link:focus {
   }
 
   .h1 { font-size: clamp(1.75rem, calc(1.6rem + 3.6vw), 2.75rem); } /* keep H1 readable on small screens */
-  .container { padding-left: 1rem; padding-right: 1rem; }
+  .main-container { padding-left: 1rem; padding-right: 1rem; }
 }
 
 /* At very large screens you may wish to increase spacing */
