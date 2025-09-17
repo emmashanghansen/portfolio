@@ -17,7 +17,6 @@
    --space-6a: 4rem;     /* 64px */ 
    --space-7: 6rem;      /* 96px */
    --space-8: 10rem;     /* 160px */
-
    
   /* ---------- Typography ---------- */
   --font-sans: "Figtree", system-ui, sans-serif;
@@ -35,7 +34,6 @@
   --fs-l: 2rem;       /* 32px */
   --fs-xl: 3rem;      /* 48px */
    
-
   /* ---------- Colours ---------- */
   --colour-bg: #ffffff;                /* white background */
    
@@ -80,6 +78,7 @@
 /* ========================
    1. Global / reset
    ======================== */
+
 *,
 *::before,
 *::after { box-sizing: border-box; }
@@ -115,6 +114,7 @@ a:focus { outline: none; box-shadow: var(--focus-ring); border-radius: 4px; }
 /* ========================
    2. Typography
    ======================== */
+
 
 :root{
    --body-default: calc(1rem + 0.6vw);
@@ -215,13 +215,19 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
 
 /* Mobile-first: container has side padding, large fixed padding on wide screens */
 .container {
-  width: 100%;
-  max-width: var(--max-content-width);
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: clamp(1rem, 6vw, var(--space-6)); /* min 16px, grows, max 96px */
-  padding-right: clamp(1rem, 6vw, var(--space-6));
-  box-sizing: border-box;
+   width: 100%;
+   max-width: var(--max-content-width);
+   margin-left: auto;
+   margin-right: auto;
+   padding-left: clamp(1rem, 6vw, var(--space-6)); /* min 16px, grows, max 96px */
+   padding-right: clamp(1rem, 6vw, var(--space-6));
+   box-sizing: border-box;
+}
+
+/* Main content shifted right */
+.main-content {
+  margin-left: min(320px, 100%); /* matches navbar max width */
+  padding: 40px;
 }
 
 /* Section spacing helpers */
@@ -229,9 +235,47 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
 .section--tight { padding: var(--space-3) 0; }
 
 
+/* Navbar */ 
+.navbar {
+  width: 100%;
+  max-width: 320px;         /* max width */
+  background-color: transparent; 
+  color: var(--colour-primary);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: var(--space-6a); /* padding inside */
+  position: fixed;    /* Always visible on the left */
+  top: 0;
+  left: 0;
+  height: 100vh;
+  font-size: var(--fs-s);   /* text size 20px */
+}
+
+.navbar a {
+  color: inherit;
+  text-decoration: none;
+  margin: 10px 0;
+  display: block;
+  transition: color 0.2s;
+}
+
+.navbar a:hover {    /* Text on hover */
+   color: var(--colour-primary); 
+   font-weight: --fw-bold; 
+}
+
+.logo {
+  width: 100%;
+  height: auto;
+  margin-bottom: 40px;
+}
+
+
 /* ========================
    4. Buttons & links
    ======================== */
+
 
 /* Common button tokens */
 .btn {
@@ -300,6 +344,7 @@ a.link:focus {
    5. Images & media
    ======================== */
 
+
 /* Already set global img border-radius. Example responsive figure */
 .figure {
   overflow: hidden;
@@ -314,6 +359,7 @@ a.link:focus {
 /* ========================
    6. Utilities
    ======================== */
+
 
 /* --- Spacing (margin + padding) --- */
 /* Top */
@@ -376,6 +422,7 @@ a.link:focus {
    7. Responsive tweaks
    ======================== */
 
+
 /* At small screens reduce heavy paddings and scale down large headings */
 @media (max-width: 47.99rem) { /* <768px */
   :root{
@@ -393,54 +440,11 @@ a.link:focus {
   }
 }
 
-/* ========================
-   8. Navbar
-   ======================== */
-
-
-/* Navbar */
-.navbar {
-  width: 220px;
-  background-color: #111;
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 20px;
-  position: fixed;   /* Always visible on the left */
-  top: 0;
-  left: 0;
-  height: 100vh;
-}
-
-.navbar a {
-  color: #fff;
-  text-decoration: none;
-  margin: 10px 0;
-  display: block;
-  transition: color 0.2s;
-}
-
-.navbar a:hover {
-  color: #f0a500;
-}
-
-.logo {
-  width: 100%;
-  height: auto;
-  margin-bottom: 40px;
-}
-
-/* Main content shifted right */
-.main-content {
-  margin-left: 220px;
-  padding: 40px;
-}
-
 
 /* ========================
    Project Cards
    ======================== */
+
 
 .projects-grid {
   display: grid;
