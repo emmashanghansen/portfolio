@@ -309,14 +309,14 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
   .mobile-menu {
     display: none;
     position: fixed;
-    top: 0;
+    top: 0;    /* stretches the overlay to cover */
     left: 0;
     width: 100%;
     height: 100vh;
     background: var(--colour-bg);
     flex-direction: column;
-    justify-content: flex-start;
-    padding: var(--space-6) var(--space-4) 0;    /* padding top, left-right, bottom */
+    justify-content: flex-end;    /* align bottom */ 
+    padding: var(--space-6) var(--space-4) var(--space-8);    /* padding top, left-right, bottom */
     z-index: 9999;
   }
 
@@ -337,10 +337,11 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
   /* Mobile overlay links */
   .mobile-menu a {
     font-size: var(--fs-l);
-    margin-bottom: var(--space-4);
+    font-weight: var(--fw-semi);
     color: var(--colour-primary);
+    margin-bottom: var(--space-4);    /* distance between each item */
+    padding-bottom: var(--space-1);    /* distance from text to line */
     border-bottom: 1px solid var(--colour-muted);
-    padding-bottom: var(--space-2);
   }
 }
 
