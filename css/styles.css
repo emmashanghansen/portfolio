@@ -298,13 +298,6 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
     display: none;
   }
 
-  /* Hamburger menu — visible only on mobile */
-  .hamburger {
-    display: block;
-    cursor: pointer;
-    font-size: var(--fs-m);    /* same as close */
-  }
-
   /* Mobile menu overlay — hidden by default */
   .mobile-menu {
     display: none;
@@ -325,19 +318,31 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
     display: flex;
   }
 
-  /* Close button in overlay */
+
+   .hamburger, 
+   .mobile-menu .close, 
+   .mobile-menu a {       /* same */
+      font-size: var(--fs-m);    
+      font-weight: var(--fw-medium);
+   }
+   
+   /* Hamburger menu — visible only on mobile */
+  .hamburger {
+    display: block;
+    cursor: pointer;
+  }
+   
+   /* Close button in overlay */
   .mobile-menu .close {
     position: absolute;
     top: var(--space-6);    /* same as navbar */
     right: var(--space-4);
-    font-size: var(--fs-m);    /* same as hamburger */
     cursor: pointer;
   }
 
   /* Mobile overlay links */
   .mobile-menu a {
-    font-size: var(--fs-l);
-    font-weight: var(--fw-medium);
+    font-size: var(--fs-l);    /* override */
     color: var(--colour-primary);
     margin-bottom: var(--space-4);    /* distance between each item */
     padding-bottom: var(--space-1);    /* distance from text to line */
