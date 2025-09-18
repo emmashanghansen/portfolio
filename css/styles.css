@@ -68,13 +68,6 @@
 }
 
 
-/* Mobile-first breakpoints (em-based) */
-@media (min-width: 48rem){ /* 768px */
-  :root{
-    /* optionally adjust container padding for larger screens */
-  }
-}
-
 /* ========================
    1. Global / reset
    ======================== */
@@ -194,12 +187,10 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
 .text-xl  { font-size: var(--fs-xl); }
 }
 
-
 /* Font Weight */
 .fw-regular { font-weight: var(--fw-regular); }
 .fw-semi    { font-weight: var(--fw-semi); }
 .fw-bold    { font-weight: var(--fw-bold); }
-
 
 /* Color utilities */
 .text-primary { color: var(--clr-primary); }
@@ -208,11 +199,17 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
 .bg-dark      { background-color: var(--clr-dark); }
 
 
+/* At small screens scale down headings */
+@media (max-width: 47.99rem) { /* <768px */
+  .h1 { font-size: clamp(1.75rem, calc(1.6rem + 3.6vw), 2.75rem); } /* keep H1 readable on small screens */
+}
+
+
 /* ========================
    3. Layout / containers
    ======================== */
 
-/* Main container */
+/* ----------- Main container ----------- */
 .main-container {
   width: 100%;
   max-width: var(--max-content-width);
@@ -226,6 +223,11 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
 /* Section spacing helpers */
 .section { padding: calc(var(--space-4)) 0; }
 .section--tight { padding: var(--space-3) 0; }
+
+/* At small screens reduce heavy paddings */
+@media (max-width: 47.99rem) { /* <768px */
+   .main-container { padding-left: 1rem; padding-right: 1rem; }
+}
 
 
 /* ----------- Navbar -----------*/ 
@@ -246,16 +248,10 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
   z-index: 1000;
 }
 
-/* Hide mobile-only elements on desktop */
-.hamburger,
-.mobile-menu {
-  display: none;
-}
-
 .navbar a {
   color: inherit;
   text-decoration: none;
-  margin: 10px 0;
+  margin: 10px 0; /* to align with hamburger vertically */
   display: block;
   transition: color 0.2s, font-weight 0.2s;
 }
@@ -266,78 +262,109 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
 }
 
 .logo {
-  width: 100%;
-  height: auto;
-  margin-bottom: var(--space-5);
+  width: 32px;   /* small icon size */
+  height: auto;  /* keep aspect ratio */
+  margin: 0;     /* remove big margins */
+   border-radius: 0;    /* overriding img border radius */
 }
 
-/* Tablet & Mobile */
+
+/* ----------------- Mobile & Tablet ----------------- */
 @media (max-width: 900px) {
+  /* Navbar becomes horizontal, fixed at top */
   .navbar {
-    position: relative;
-    width: 100%;
-    height: auto;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: var(--space-4);
+    position: fixed;            /* stick to top, but also removes space it takes up */
+    top: 0;
+    left: 0;
+    max-width: none;            /* reset max-width */
+    width: 100%;                /* full width */
+    height: 96px;               /* fixed height, same as margin-top main container */
+    flex-direction: row;     
+    justify-content: space-between; 
+    align-items: flex-start;        /* top align */
+    padding: var(--space-6) var(--space-4) 0;    /* padding top, left-right, bottom */
+    background: var(--colour-bg); 
+    z-index: 1000;              /* on top of content */
   }
 
+  /* Push main content below navbar */
   .main-container {
-    margin-left: 0; 
-    padding: var(--space-4);
+    margin-left: 0;         /* reset to 0 */
+    margin-top: 96px;       /* same as navbar height */
+    padding: var(--space-6) var(--space-4) 0;    /* padding top, left-right, bottom */
   }
 
+  /* Hide sidebar links on mobile */
   .navbar-middle,
   .navbar-bottom {
-    display: none !important; /* hide sidebar links on mobile */
+    display: none;
   }
 
-  /* Hamburger menu */
-  .hamburger {
-    display: block;
-    cursor: pointer;
-    font-size: 2rem;
-  }
-
-  /* Fullscreen mobile menu (hidden by default) */
+  /* Mobile menu overlay — hidden by default */
   .mobile-menu {
-    display: none; 
+    display: none;
     position: fixed;
-    top: 0;
+    top: 0;    /* stretches the overlay to cover */
     left: 0;
     width: 100%;
     height: 100vh;
     background: var(--colour-bg);
     flex-direction: column;
-    justify-content: flex-start;
-    padding: var(--space-6);
+    justify-content: flex-end;    /* align bottom */ 
+    padding: var(--space-6) var(--space-4) var(--space-8);    /* padding top, left-right, bottom */
     z-index: 9999;
   }
 
-  /* Show menu when active */
+  /* Show overlay when active */
   .mobile-menu.active {
     display: flex;
   }
 
+
+   .hamburger, 
+   .mobile-menu .close, 
+   .mobile-menu a {       /* same */
+      font-size: var(--fs-m);    
+      font-weight: var(--fw-medium);
+   }
+   
+   /* Hamburger menu — visible only on mobile */
+  .hamburger {
+    display: block;
+    cursor: pointer;
+  }
+   
+   /* Close button in overlay */
   .mobile-menu .close {
     position: absolute;
-    top: var(--space-4);
+    top: var(--space-6);    /* same as navbar */
     right: var(--space-4);
-    font-size: 1.5rem;
     cursor: pointer;
   }
 
+  /* Mobile overlay links */
   .mobile-menu a {
-    font-size: var(--fs-l);
-    margin-bottom: var(--space-4);
+    font-size: var(--fs-l);    /* override */
     color: var(--colour-primary);
+    margin-bottom: var(--space-4);    /* distance between each item */
+    padding-bottom: var(--space-1);    /* distance from text to line */
     border-bottom: 1px solid var(--colour-muted);
-    padding-bottom: var(--space-2);
   }
 }
 
+/* ----------------- Desktop ----------------- */
+@media (min-width: 901px) {
+  /* Hide mobile-only elements on desktop */
+  .hamburger,
+  .mobile-menu {
+    display: none;
+  }
 
+   /* Slightly larger logo */ 
+   .logo {
+    width: 48px;  /* a bit larger for sidebar */
+  }
+}
 
 
 /* ========================
@@ -483,29 +510,6 @@ a.link:focus {
   padding: 0; margin: -1px;
   overflow: hidden; clip: rect(0,0,0,0);
   white-space: nowrap; border: 0;
-}
-
-
-/* ========================
-   7. Responsive tweaks
-   ======================== */
-
-
-/* At small screens reduce heavy paddings and scale down large headings */
-@media (max-width: 47.99rem) { /* <768px */
-  :root{
-    /* keep container padding reduced on narrow screens via clamp() already used */
-  }
-
-  .h1 { font-size: clamp(1.75rem, calc(1.6rem + 3.6vw), 2.75rem); } /* keep H1 readable on small screens */
-  .main-container { padding-left: 1rem; padding-right: 1rem; }
-}
-
-/* At very large screens you may wish to increase spacing */
-@media (min-width: 90rem) { /* >=1440px */
-  :root{
-    /* could increase max content width if desired */
-  }
 }
 
 
