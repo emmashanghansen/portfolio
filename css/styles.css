@@ -265,6 +265,7 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
   width: 32px;   /* small icon size */
   height: auto;  /* keep aspect ratio */
   margin: 0;     /* remove big margins */
+   border-radius: 0;    /* overriding img border radius */
 }
 
 
