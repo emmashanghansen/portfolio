@@ -262,10 +262,11 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
 }
 
 .logo {
-  width: 100%;
-  height: auto;
-  margin-bottom: var(--space-5);
+  width: 32px;   /* small icon size */
+  height: auto;  /* keep aspect ratio */
+  margin: 0;     /* remove big margins */
 }
+
 
 /* ----------------- Mobile & Tablet ----------------- */
 @media (max-width: 900px) {
@@ -356,6 +357,11 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
   .hamburger,
   .mobile-menu {
     display: none;
+  }
+
+   /* Slightly larger logo */ 
+   .logo {
+    width: 48px;  /* a bit larger for sidebar */
   }
 }
 
