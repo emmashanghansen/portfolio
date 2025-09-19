@@ -515,6 +515,8 @@ a.link:focus {
 /* ========================
    Introduction Section
    ======================== */
+
+
 .introduction {
   padding-top: var(--space-6a);   /* 64px */
   padding-bottom: 280px;          /* extra breathing room */
@@ -527,11 +529,10 @@ a.link:focus {
 }
 
 .introduction p {
-  font-size: clamp(var(--fs-s), 1rem + 0.5vw, var(--fs-l));
+  font-size: clamp(var(--fs-m), 1.2rem + 0.5vw, var(--fs-l));
   margin-top: var(--space-4);
   margin-bottom: 0;
 }
-
 
 
 /* ========================
