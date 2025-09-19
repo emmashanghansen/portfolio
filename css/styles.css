@@ -519,7 +519,7 @@ a.link:focus {
 
 .introduction {
   padding-top: var(--space-6a);   /* 64px */
-  padding-bottom: 280px;          /* extra breathing room */
+  padding-bottom: clamp(4rem, 10vw + 2rem, 17.5rem);    /* extra breathing room */
 }
 
 .introduction h1 {
