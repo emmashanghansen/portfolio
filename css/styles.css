@@ -523,13 +523,13 @@ a.link:focus {
 }
 
 .introduction h1 {
-  font-size: clamp(80px, 4rem + 2vw, 96px); 
+   font-size: clamp(4rem, 8vw + 1.5rem, 6rem);
   line-height: 1.0;
   margin: 0;
 }
 
 .introduction p {
-  font-size: clamp(var(--fs-m), 1.2rem + 0.5vw, var(--fs-l));
+  font-size: clamp(var(--fs-m), 2vw + 1rem, var(--fs-l));
   margin-top: var(--space-4);
   margin-bottom: 0;
 }
