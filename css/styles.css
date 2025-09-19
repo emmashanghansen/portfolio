@@ -513,6 +513,28 @@ a.link:focus {
 
 
 /* ========================
+   Introduction Section
+   ======================== */
+.introduction {
+  padding-top: var(--space-6a);   /* 64px */
+  padding-bottom: 280px;          /* extra breathing room */
+}
+
+.introduction h1 {
+  font-size: clamp(80px, 4rem + 2vw, 96px); 
+  line-height: 1.0;
+  margin: 0;
+}
+
+.introduction p {
+  font-size: clamp(var(--fs-s), 1rem + 0.5vw, var(--fs-l));
+  margin-top: var(--space-4);
+  margin-bottom: 0;
+}
+
+
+
+/* ========================
    Project Cards
    ======================== */
 
