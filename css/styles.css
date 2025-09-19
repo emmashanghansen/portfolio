@@ -213,7 +213,7 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
 .main-container {
   width: 100%;
   max-width: var(--max-content-width);
-  margin-left: 320px; /* matches fixed navbar width */
+  margin-left: clamp(200px, 24vw, 320px); /* same as navbar width */
   margin-right: auto;
   padding-left: clamp(1rem, 6vw, var(--space-6));    /* min 16px, grows, max 96px */
   padding-right: clamp(1rem, 6vw, var(--space-6));
@@ -232,8 +232,7 @@ strong, .fw-bold { font-weight: var(--fw-bold); }
 
 /* ----------- Navbar -----------*/ 
 .navbar {
-  width: 100%;
-  max-width: 320px;
+  width: clamp(200px, 24vw, 320px); /* same as main-container margin-left width */
   background-color: transparent;
   color: var(--colour-primary);
   display: flex;
