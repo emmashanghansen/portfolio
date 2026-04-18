@@ -23,7 +23,6 @@
   
   /* --- Fonts --- */
   --font-sans:    "Figtree", system-ui, sans-serif;
-  --font-display: "new-kansas", "Figtree", sans-serif;
 
   /* Font sizes */
   --fs-s:   1rem;      /* 16px */
@@ -35,18 +34,23 @@
   /* Font weights */
   --fw-regular: 400;
   --fw-medium:  500;
+  --fw-semi:    600;
   --fw-bold:    700;
 
+  /* Font line height */
+  --lh-tight:  1.2;
+  --lh-loose:  1.5;
+
   
-  /* Spacing */
+  /* --- Spacing --- */
   /* --spacing-none: 0rem;       /* 0px */*/
-  --spacing-xxs: 0.25rem;     /* 4px */
-  --spacing-xs: 0.5rem;       /* 8px */
-  --spacing-s: 0.75rem;       /* 12px */
-  --spacing-m: 1rem;          /* 16px */
-  --spacing-l: 1.5rem;        /* 24px */
-  --spacing-xl: 2rem;         /* 32px */
-  --spacing-xxl: 3rem;        /* 48px */
+  --spacing-xxs:     0.25rem;    /* 4px */
+  --spacing-xs:      0.5rem;     /* 8px */
+  --spacing-s:       0.75rem;    /* 12px */
+  --spacing-m:       1rem;       /* 16px */
+  --spacing-l:       1.5rem;     /* 24px */
+  --spacing-xl:      2rem;       /* 32px */
+  --spacing-xxl:     3rem;       /* 48px */
   
   /* Big spacing */
   --spacing-s-64: 4rem;       /* 64px */
@@ -78,4 +82,62 @@
   /* Image container */
   --image-container-padding-vertical: var(--spacing-l);   /* 24px */
   
+}
+
+
+/* --- Typography --- */
+.text-display {
+  font-family: var(--font-sans);
+  font-size: 3rem;        /* 48px */
+  font-weight: var(--fw-semi);
+  line-height: var(--lh-tight);
+}
+
+.text-large-title {
+  font-family: var(--font-sans);
+  font-size: 2.25rem;     /* 36px */
+  font-weight: var(--fw-semi);
+  line-height: var(--lh-tight);
+}
+
+.text-large-body {
+  font-family: var(--font-sans);
+  font-size: 1.25rem;     /* 20px */
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-loose);
+}
+
+.text-title {
+  font-family: var(--font-sans);
+  font-size: 1.5rem;      /* 24px */
+  font-weight: var(--fw-semi);
+  line-height: var(--lh-tight);
+}
+
+.text-subtitle {
+  font-family: var(--font-sans);
+  font-size: 1.25rem;     /* 20px */
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-tight);
+}
+
+.text-subtitle-strong {
+  font-family: var(--font-sans);
+  font-size: 1.25rem;     /* 20px */
+  font-weight: var(--fw-semi);
+  line-height: var(--lh-tight);
+}
+
+.text-body-strong {
+  font-family: var(--font-sans);
+  font-size: 1rem;        /* 16px */
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-tight);
+}
+
+.text-body {
+  font-family: var(--font-sans);
+  font-size: 1rem;        /* 16px */
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-loose);
 }
