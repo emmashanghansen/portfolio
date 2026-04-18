@@ -127,7 +127,7 @@
   line-height: var(--lh-tight);
 }
 
-.text-body-strong {
+.text-body-strong, .tag, .button {
   font-family: var(--font-sans);
   font-size: 1rem;        /* 16px */
   font-weight: var(--fw-medium);
@@ -277,4 +277,12 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--spacing-xs) var(--spacing-m);
+  border-radius: var(--radius-circular);
+  background-color: var(--colour-background-1);
 }
