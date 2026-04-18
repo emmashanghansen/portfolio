@@ -84,7 +84,7 @@
   
 }
 
-
+/* --------------- */
 /* --- Typography --- */
 .text-display {
   font-family: var(--font-sans);
@@ -156,3 +156,63 @@
   padding-top: var(--page-section-padding-top);
   padding-bottom: var(--page-section-padding-bottom);
 }
+
+
+/* --------------- */
+/* --- Navbar --- */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-l) var(--page-padding);
+  background-color: var(--colour-background-2);
+}
+
+.navbar-logo img {
+  width: 2rem;
+  height: auto;
+}
+
+.navbar-links {
+  display: flex;
+  gap: var(--spacing-xl);
+}
+
+.navbar-links a {
+  font-size: var(--fs-s);
+  font-weight: var(--fw-medium);
+  color: var(--colour-foreground-1);
+}
+
+.navbar-links a:hover {
+  color: var(--colour-foreground-2);
+}
+
+/* Hide mobile elements on desktop */
+.navbar-hamburger,
+.navbar-mobile {
+  display: none;
+}
+
+
+/* --- Mobile navbar --- */
+@media (max-width: 48rem) {
+
+  .navbar-links {
+    display: none;
+  }
+
+  .navbar-hamburger {
+    display: block;
+    background: none;
+    border: none;
+    font-size: var(--fs-l);
+    cursor: pointer;
+    color: var(--colour-foreground-1);
+  }
+
+  .navbar-mobile {
+    display: none;
+    position: fixed;
+    inset: 0;
+    backgr
