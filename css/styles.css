@@ -104,7 +104,6 @@
   font-family: var(--font-sans);
   font-size: 1.25rem;     /* 20px */
   font-weight: var(--fw-medium);
-  line-height: var(--lh-loose);
 }
 
 .text-title {
@@ -139,5 +138,21 @@
   font-family: var(--font-sans);
   font-size: 1rem;        /* 16px */
   font-weight: var(--fw-regular);
-  line-height: var(--lh-loose);
+}
+
+/* --- Layout --- */
+.page-container {
+  width: 100%;
+  max-width: var(--page-max-width-home);
+  margin: 0 auto;
+  padding: 0 var(--page-padding);
+}
+
+.page-container--narrow {
+  max-width: var(--page-max-width-project);
+}
+
+.page-section {
+  padding-top: var(--page-section-padding-top);
+  padding-bottom: var(--page-section-padding-bottom);
 }
