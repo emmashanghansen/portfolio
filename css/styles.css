@@ -216,3 +216,19 @@
     position: fixed;
     inset: 0;
     backgr
+
+
+/* --------------- */
+/* --- Main Hero --- */
+.hero {
+  padding-top: var(--page-section-padding-top);
+  padding-bottom: var(--page-section-padding-bottom);
+}
+
+.hero h1 {
+  margin-bottom: var(--spacing-s);
+}
+
+.hero p {
+  margin-bottom: var(--spacing-xl);
+}
