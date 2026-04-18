@@ -1,40 +1,81 @@
 :root {
 
-  /* Colours */
+  /* --- Colours --- */
+  /* Base tokens */
+  --colour-white: #FFFFFF;
+  --colour-beige: #F9F8F6;
+  --colour-brand: #000000;
+  --colour-black: #000000;
+  --colour-dark-grey: #808080;
+  --colour-light-grey: #E7E7E7;
+  
+  /* Semantic tokens */
+  /* Background for page and containers. Foreground for text and icons. Primary = 1, Secondary = 2, Tertiary = 3. */
+  --colour-background-brand: var(--colour-brand);
+  --colour-background-1: var(--colour-white);
+  --colour-background-2: var(--colour-beige);
+  --colour-foreground-on-brand: var(--colour-white);
+  --colour-foreground-1: var(--colour-black);
+  --colour-foreground-2: var(--colour-dark-grey);
+  --colour-stroke-1: var(--colour-dark-grey);
+  --colour-stroke-2: var(--colour-light-grey);
 
-
-  /* Typography */
-  --font-sans: "Figtree", system-ui, sans-serif;
+  
+  /* --- Fonts --- */
+  --font-sans:    "Figtree", system-ui, sans-serif;
   --font-display: "new-kansas", "Figtree", sans-serif;
 
+  /* Font sizes */
   --fs-s:   1rem;      /* 16px */
   --fs-m:   1.25rem;   /* 20px */
   --fs-l:   1.5rem;    /* 24px */
   --fs-xl:  2.25rem;   /* 36px */
   --fs-xxl: 3rem;      /* 48px */
 
+  /* Font weights */
+  --fw-regular: 400;
+  --fw-medium:  500;
+  --fw-bold:    700;
+
+  
   /* Spacing */
-  --space-xxs: 0.25rem;  /* 4px */
-  --space-xs:  0.5rem;   /* 8px */
-  --space-s:   0.75rem;  /* 12px */
-  --space-m:   1rem;     /* 16px */
-  --space-l:   1.5rem;   /* 24px */
-  --space-xl:  2rem;     /* 32px */
-  --space-xxl: 3rem;     /* 48px */
+  /* --spacing-none: 0rem;       /* 0px */*/
+  --spacing-xxs: 0.25rem;     /* 4px */
+  --spacing-xs: 0.5rem;       /* 8px */
+  --spacing-s: 0.75rem;       /* 12px */
+  --spacing-m: 1rem;          /* 16px */
+  --spacing-l: 1.5rem;        /* 24px */
+  --spacing-xl: 2rem;         /* 32px */
+  --spacing-xxl: 3rem;        /* 48px */
+  
+  /* Big spacing */
+  --spacing-s-64: 4rem;       /* 64px */
+  --spacing-m-96: 6rem;       /* 96px */
+  --spacing-l-144: 9rem;      /* 144px */
+  
+  /* Corner radius */
+  --radius-none: 0px;
+  --radius-small: 4px;
+  --radius-medium: 8px;
+  --radius-circular: 9999px;
 
-  /* Big spacing — section rhythm */
-  --section-gap:    6rem;   /* 96px — padding top between sections */
-  --section-bottom: 9rem;   /* 144px — padding bottom */
-  --subsection-bottom: 4rem; /* 64px */
-
-  /* Layout */
-  --max-width-home:    50rem;   /* 800px — homepage content */
-  --max-width-project: 40rem;   /* 640px — case study body text */
-  --page-padding:      2rem;    /* minimum side padding on small screens */
-
-  /* Border radius */
-  --radius-s: 0.25rem;   /* 4px */
-  --radius-m: 0.5rem;    /* 8px */
-  --radius-full: 9999px; /* pill shape */
-
+  /* Page */
+  --page-padding: 2rem;                      /* 32px */
+  --page-column-gap: var(--spacing-l);       /* 24px */
+  --page-max-width-home: 50rem;              /* 800px */
+  --page-max-width-project: 40rem;           /* 640px */
+  
+  /* Page section */
+  /* --page-section-padding-top-none: var(--spacing-none);  /* 0px */*/
+  --page-section-padding-top: var(--spacing-m-96);       /* 96px */
+  --page-section-padding-bottom: var(--spacing-l-144);   /* 144px */
+  
+  /* Text section */
+  /*--text-section-padding-top: var(--spacing-none);       /* 0px */*/
+  --text-section-padding-bottom: var(--spacing-s-64);    /* 64px */
+  --text-section-gap: var(--spacing-s);                  /* 12px */
+  
+  /* Image container */
+  --image-container-padding-vertical: var(--spacing-l);   /* 24px */
+  
 }
