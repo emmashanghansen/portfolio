@@ -12,39 +12,124 @@
 <body>
 
   <header class="navbar">
-  <a href="index.html" class="navbar-logo">
-    <img src="images/global/logo.webp" alt="Emma Shang Hansen">
-  </a>
-  <nav class="navbar-links">
-    <a href="index.html">Home</a>
-    <a href="projects.html">Projects</a>
-  </nav>
-    
-  <button class="navbar-hamburger" aria-label="Open menu">☰</button>
-  <div class="navbar-mobile" aria-hidden="true">
-    <button class="navbar-close" aria-label="Close menu">Close ×</button>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="projects.html">Projects</a>
+    <a href="index.html" class="navbar-logo">
+      <img src="images/global/logo-brown-no_bg-41230c.webp" alt="Emma Shang Hansen">
+    </a>
+    <nav class="navbar-links">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="#projects">Projects</a>
     </nav>
-  </div>
+    <span class="navbar-indicator" aria-hidden="true"></span>
   </header>
 
   <main>
+  <div class="main-content">
 
-    <section class="hero container">
-    </section>
+    <section id="home-hero">
+      <div class="page-container">
 
-    <section class="projects page-section">
-      <div class="container">
+        <div class="hero-heading">
+          <h1 class="text-display">Welcome, I'm <strong>Emma!</strong><br><span class="typing-text">I am a UX designer</span></h1>
+          <p class="text-large-body">Eagerly creating building blocks<br>for a slightly better future</p>
+        </div>
+
+        <a href="projects/project1.html" class="button button-secondary">
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" /></svg>
+          <span>Nikita case study</span>
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0" /><path d="M13 18l6 -6" /><path d="M13 6l6 6" /></svg>
+        </a>
       </div>
     </section>
 
+    <section id="projects">
+      <div class="page-container">
+
+        <div class="projects-heading">
+          <h2 class="text-title">Explore my work</h2>
+          <p class="text-subtitle">Projects crafted with care & love</p>
+        </div>
+
+        <div class="projects-grid">
+
+          <a href="projects/project1.html" class="project-card">
+            <div class="project-card-image">
+              <img src="images/projects/nikita.jpg" alt="Improving appointment booking flow" onerror="this.onerror=null;this.src='images/projects/placeholder.svg'">
+            </div>
+            <div class="project-card-info">
+              <div class="project-card-info-top">
+                <h3 class="text-subtitle-strong">Improving appointment booking flow</h3>
+                <p class="text-body">Led redesign of Nikita Hair's online appointment booking. It launched on their website in 2024.</p>
+              </div>
+              <div class="project-card-info-bottom">
+                <span class="button button-secondary"><img src="images/icons/tabler_eye.svg" class="icon" alt=""><span>View case study</span><span>→</span></span>
+              </div>
+            </div>
+          </a>
+
+          <a href="projects/project2.html" class="project-card">
+            <div class="project-card-image">
+              <img src="images/projects/project2.jpg" alt="Enhancing mobile checkout experience" onerror="this.onerror=null;this.src='images/projects/placeholder.svg'">
+            </div>
+            <div class="project-card-info">
+              <div class="project-card-info-top">
+                <h3 class="text-subtitle-strong">Enhancing mobile checkout experience</h3>
+                <p class="text-body">Optimised the payment process for a smoother checkout on mobile devices, increased conversion rates by 25%.</p>
+              </div>
+              <div class="project-card-info-bottom">
+                <span class="button button-secondary">Explore the project details →</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="projects/project3.html" class="project-card">
+            <div class="project-card-image">
+              <img src="images/projects/project3.jpg" alt="Streamlining onboarding for new users" onerror="this.onerror=null;this.src='images/projects/placeholder.svg'">
+            </div>
+            <div class="project-card-info">
+              <div class="project-card-info-top">
+                <h3 class="text-subtitle-strong">Streamlining onboarding for new users</h3>
+                <p class="text-body">Developed an intuitive onboarding flow that reduced user drop-off rates by 40% within the first week.</p>
+              </div>
+              <div class="project-card-info-bottom">
+                <span class="button button-secondary">See the full case study →</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="projects/project4.html" class="project-card">
+            <div class="project-card-image">
+              <img src="images/projects/project4.jpg" alt="Revamping dashboard analytics" onerror="this.onerror=null;this.src='images/projects/placeholder.svg'">
+            </div>
+            <div class="project-card-info">
+              <div class="project-card-info-top">
+                <h3 class="text-subtitle-strong">Revamping dashboard analytics</h3>
+                <p class="text-body">Created a customisable analytics dashboard that improved data accessibility for business users.</p>
+              </div>
+              <div class="project-card-info-bottom">
+                <span class="button button-secondary">Read how we did it →</span>
+              </div>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+  </div>
   </main>
 
   <footer class="footer">
-    <div class="container">
+
+    <div class="footer-text-container">
+      <p class="text-body">Created with <img src="images/icons/tabler_heart.svg" class="icon" alt="love"> <strong>Emma Shang Hansen</strong></p>
+      <div class="footer-links-container">
+        <a href="https://linkedin.com" class="button button-tertiary" target="_blank" rel="noopener">LinkedIn <img src="images/icons/tabler_arrow-up-right.svg" class="icon" alt=""></a>
+        <a href="mailto:emmashanghansen@gmail.com" class="button button-tertiary">Email <img src="images/icons/tabler_arrow-up-right.svg" class="icon" alt=""></a>
+      </div>
     </div>
+
+    <button class="button button-primary" onclick="window.scrollTo({top:0,behavior:'smooth'})">Back to top ↑</button>
+  
   </footer>
 
   <script src="js/main.js"></script>
