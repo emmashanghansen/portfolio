@@ -472,6 +472,10 @@ section {
   gap: var(--spacing-m);
 }
 
+#footer-cycling-icon {
+  padding-bottom: 3px;
+}
+
 @media (max-width: 48rem) {
   .footer {
     flex-direction: column;
