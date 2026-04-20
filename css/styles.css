@@ -36,7 +36,7 @@
   --fs-m:   1.25rem;   /* 20px */
   --fs-l:   1.5rem;    /* 24px */
   --fs-xl:  2.25rem;   /* 36px */
-  --fs-xxl: 3rem;      /* 48px */
+  --fs-xxl: 3.5rem;      /* 56px */
 
   /* Font weights */
   --fw-light:   300;
@@ -108,14 +108,18 @@
 /* --- Typography --- */
 .text-display {
   font-family: var(--font-sans);
-  font-size: 3rem;        /* 48px */
+  font-size: var(--fs-xxl);
   font-weight: var(--fw-semi);
   line-height: var(--lh-tight);
+}
+.text-display strong,
+.text-display .text-display-strong {
+  font-weight: var(--fw-bold);
 }
 
 .text-large-title {
   font-family: var(--font-sans);
-  font-size: 2.25rem;     /* 36px */
+  font-size: var(--fs-xl);
   font-weight: var(--fw-semi);
   line-height: var(--lh-tight);
   margin-bottom: var(--spacing-xs);
@@ -123,41 +127,41 @@
 
 .text-large-body {
   font-family: var(--font-sans);
-  font-size: 1.25rem;     /* 20px */
+  font-size: var(--fs-m);
   font-weight: var(--fw-medium);
 }
 
 .text-title {
   font-family: var(--font-sans);
-  font-size: 1.5rem;      /* 24px */
+  font-size: var(--fs-l);
   font-weight: var(--fw-semi);
   line-height: var(--lh-tight);
 }
 
 .text-subtitle {
   font-family: var(--font-sans);
-  font-size: 1.25rem;     /* 20px */
+  font-size: var(--fs-m);
   font-weight: var(--fw-regular);
   line-height: var(--lh-tight);
 }
 
 .text-subtitle-strong {
   font-family: var(--font-sans);
-  font-size: 1.25rem;     /* 20px */
+  font-size: var(--fs-m);
   font-weight: var(--fw-semi);
   line-height: var(--lh-tight);
 }
 
 .text-body-strong, .tag, .button {
   font-family: var(--font-sans);
-  font-size: 1rem;        /* 16px */
+  font-size: var(--fs-s);
   font-weight: var(--fw-medium);
   line-height: var(--lh-tight);
 }
 
 .text-body {
   font-family: var(--font-sans);
-  font-size: 1rem;        /* 16px */
+  font-size: var(--fs-s);
   font-weight: var(--fw-regular);
 }
 
@@ -351,7 +355,9 @@ section {
 .hero-heading {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-s);
+  gap: var(--spacing-m);
+  padding-top: var(--spacing-big-s);
+  padding-bottom: var(--spacing-big-m);
 }
 
 /* Typing cursor */

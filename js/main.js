@@ -77,32 +77,47 @@ if (footerIcon) {
 }
 
 // Typing animation
+// Each phrase is an array of segments: {text, cls}
+// cls is optional — add any CSS class to style that segment
 const typingEl = document.querySelector('.typing-text');
 if (typingEl) {
   const phrases = [
-    typingEl.textContent.trim(),
-    "I'm nerdy and curious",
-    "I worship creativity",
-    "I'm an adventurer",
-    "I'm a tech optimist",
-    "I'm inspired by biology",
-    // "I crave art",
+    [{text: "I'm a "}, {text: "UX designer", cls: "text-display-strong"}],
+    [{text: "I'm nerdy and curious"}],
+    [{text: "I worship creativity"}],
+    [{text: "I'm an adventurer"}],
+    [{text: "I'm a tech optimist"}],
+    [{text: "I'm inspired by biology"}],
   ];
-  typingEl.textContent = '';
 
-  let idx = 0;
+  const plain = p => p.map(s => s.text).join('');
+
+  const render = (phrase, count) => {
+    let left = count, html = '';
+    for (const {text, cls} of phrase) {
+      if (!left) break;
+      const chunk = text.slice(0, left);
+      left -= chunk.length;
+      html += cls ? `<span class="${cls}">${chunk}</span>` : chunk;
+    }
+    typingEl.innerHTML = html;
+  };
+
+  typingEl.innerHTML = '';
+  let idx = 0, charCount = 0;
 
   const run = () => {
-    const current = typingEl.textContent;
+    const prevPhrase = phrases[(idx + phrases.length - 1) % phrases.length];
     const next = phrases[idx];
+    const nextPlain = plain(next);
+    const curPlain = plain(prevPhrase).slice(0, charCount);
 
-    // find shared prefix length
     let shared = 0;
-    while (shared < current.length && shared < next.length && current[shared] === next[shared]) shared++;
+    while (shared < curPlain.length && shared < nextPlain.length && curPlain[shared] === nextPlain[shared]) shared++;
 
     const erase = () => {
-      if (typingEl.textContent.length > shared) {
-        typingEl.textContent = typingEl.textContent.slice(0, -1);
+      if (charCount > shared) {
+        render(prevPhrase, --charCount);
         setTimeout(erase, 40);
       } else {
         type();
@@ -110,13 +125,12 @@ if (typingEl) {
     };
 
     const type = () => {
-      const len = typingEl.textContent.length;
-      if (len < next.length) {
-        typingEl.textContent = next.slice(0, len + 1);
+      if (charCount < nextPlain.length) {
+        render(next, ++charCount);
         setTimeout(type, 80);
       } else {
         idx = (idx + 1) % phrases.length;
-        setTimeout(run, 1600);
+        setTimeout(run, 3000);
       }
     };
 
