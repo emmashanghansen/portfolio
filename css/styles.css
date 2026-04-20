@@ -39,6 +39,7 @@
   --fs-xxl: 3rem;      /* 48px */
 
   /* Font weights */
+  --fw-light:   300;
   --fw-regular: 400;
   --fw-medium:  500;
   --fw-semi:    600;
@@ -356,13 +357,9 @@ section {
 /* Typing cursor */
 .typing-text::after {
   content: '|';
-  animation: cursor-blink 0.7s step-end infinite;
+  font-weight: var(--fw-light);
 }
 
-@keyframes cursor-blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
 
 /* --- Home page Projects --- */
 /* --- Home page Projects heading --- */

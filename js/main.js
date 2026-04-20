@@ -79,16 +79,49 @@ if (footerIcon) {
 // Typing animation
 const typingEl = document.querySelector('.typing-text');
 if (typingEl) {
-  const fullText = typingEl.textContent;
+  const phrases = [
+    typingEl.textContent.trim(),
+    "I'm nerdy and curious",
+    "I worship creativity",
+    "I'm an adventurer",
+    "I'm a tech optimist",
+    "I'm inspired by biology",
+    // "I crave art",
+  ];
   typingEl.textContent = '';
 
-  let i = 0;
-  const type = () => {
-    if (i < fullText.length) {
-      typingEl.textContent = fullText.slice(0, i + 1);
-      i++;
-      setTimeout(type, 80);
-    }
+  let idx = 0;
+
+  const run = () => {
+    const current = typingEl.textContent;
+    const next = phrases[idx];
+
+    // find shared prefix length
+    let shared = 0;
+    while (shared < current.length && shared < next.length && current[shared] === next[shared]) shared++;
+
+    const erase = () => {
+      if (typingEl.textContent.length > shared) {
+        typingEl.textContent = typingEl.textContent.slice(0, -1);
+        setTimeout(erase, 40);
+      } else {
+        type();
+      }
+    };
+
+    const type = () => {
+      const len = typingEl.textContent.length;
+      if (len < next.length) {
+        typingEl.textContent = next.slice(0, len + 1);
+        setTimeout(type, 80);
+      } else {
+        idx = (idx + 1) % phrases.length;
+        setTimeout(run, 1600);
+      }
+    };
+
+    erase();
   };
-  setTimeout(type, 400);
+
+  setTimeout(run, 400);
 }
