@@ -84,10 +84,12 @@ if (typingEl) {
   const phrases = [
     [{text: "I'm a "}, {text: "UX designer", cls: "text-display-strong"}],
     [{text: "I'm nerdy and curious"}],
-    [{text: "I worship creativity"}],
-    [{text: "I'm an adventurer"}],
+    [{text: "I love creativity"}],
+    // [{text: "I worship creativity"}],
+    [{text: "I love art, food and fashion"}],
     [{text: "I'm a tech optimist"}],
     [{text: "I'm inspired by biology"}],
+    [{text: "I'm an adventurer"}],
   ];
 
   const plain = p => p.map(s => s.text).join('');

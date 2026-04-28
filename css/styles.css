@@ -117,6 +117,12 @@
   font-weight: var(--fw-bold);
 }
 
+@media (max-width: 48rem) {
+  .text-display {
+    font-size: var(--fs-xl);
+  }
+}
+
 .text-large-title {
   font-family: var(--font-sans);
   font-size: var(--fs-xl);
@@ -290,6 +296,9 @@
   border-color: var(--colour-stroke-1);
   box-shadow: var(--shadow-01);
 }
+.button-secondary:active {
+  background: var(--colour-background-3);
+}
 
 .button-tertiary {
   background: transparent;
@@ -403,6 +412,9 @@ section {
 .project-card:hover {
   box-shadow: var(--shadow-02);
 }
+.project-card:hover .project-card-image img {
+  transform: scale(1.1);
+}
 
 .project-card-image {
   padding: var(--spacing-xs);
@@ -416,6 +428,7 @@ section {
   height: 100%;
   object-fit: cover;
   border-radius: var(--radius-small);
+  transition: transform 300ms ease;
 }
 
 .project-card-info {
