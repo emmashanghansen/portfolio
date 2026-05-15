@@ -66,11 +66,16 @@ if (sectionIds.length) {
 }
 
 // Hide navbar on scroll down, show on scroll up
+// Always on project pages; on homepage only on mobile (≤768px)
 let lastScrollY = window.scrollY;
 let suppressHide = false;
 let suppressTimeout;
 
+const isHomepage = sectionIds.length > 0;
+
 window.addEventListener('scroll', () => {
+  const isMobile = window.innerWidth <= 768;
+  if (isHomepage && !isMobile) return;
   const currentScrollY = window.scrollY;
   if (!suppressHide) {
     if (currentScrollY > lastScrollY && currentScrollY > navbar.offsetHeight) {
