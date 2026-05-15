@@ -13,7 +13,7 @@ function positionIndicator(el, animate) {
   if (!animate) requestAnimationFrame(() => requestAnimationFrame(() => { indicator.style.transition = ''; }));
 }
 
-const activeLink = document.querySelector('.navbar-links a[aria-current="page"]');
+let activeLink = document.querySelector('.navbar-links a[aria-current="page"]') || navLinks[0];
 positionIndicator(activeLink, false);
 
 navLinks.forEach(link => {
@@ -22,6 +22,7 @@ navLinks.forEach(link => {
 
   link.addEventListener('click', e => {
     const href = link.getAttribute('href');
+    activeLink = link;
     positionIndicator(link, true);
     suppressHide = true;
     navbar.classList.remove('navbar--hidden');
@@ -38,6 +39,31 @@ navLinks.forEach(link => {
     }
   });
 });
+
+// Scroll-based active section detection
+const homeLink = document.querySelector('.navbar-links a[aria-current="page"]') || navLinks[0];
+const sectionLinkMap = {};
+navLinks.forEach(a => {
+  const href = a.getAttribute('href');
+  if (href && href.startsWith('#')) {
+    const section = document.getElementById(href.slice(1));
+    if (section) sectionLinkMap[href.slice(1)] = a;
+  }
+});
+const sectionIds = Object.keys(sectionLinkMap);
+if (sectionIds.length) {
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        activeLink = sectionLinkMap[entry.target.id];
+      } else {
+        activeLink = homeLink;
+      }
+      positionIndicator(activeLink, true);
+    });
+  }, { threshold: 0.3 });
+  sectionIds.forEach(id => sectionObserver.observe(document.getElementById(id)));
+}
 
 // Hide navbar on scroll down, show on scroll up
 let lastScrollY = window.scrollY;
@@ -82,14 +108,14 @@ if (footerIcon) {
 const typingEl = document.querySelector('.typing-text');
 if (typingEl) {
   const phrases = [
-    [{text: "I'm a "}, {text: "UX designer", cls: "text-display-strong"}],
-    [{text: "I'm nerdy and curious"}],
+    [{text: "I am a "}, {text: "UX designer", cls: "text-display-strong"}],
+    [{text: "I am nerdy and curious"}],
     [{text: "I love creativity"}],
     // [{text: "I worship creativity"}],
     [{text: "I love art, food and fashion"}],
-    [{text: "I'm a tech optimist"}],
-    [{text: "I'm inspired by biology"}],
-    [{text: "I'm an adventurer"}],
+    [{text: "I am a tech optimist"}],
+    [{text: "I am inspired by biology"}],
+    [{text: "I am an adventurer"}],
   ];
 
   const plain = p => p.map(s => s.text).join('');
