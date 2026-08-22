@@ -6,8 +6,8 @@
   --colour-beige: #F9F8F6;
   --colour-beige-darker: #F3EFED;
   --colour-brand: #000000;
-  --colour-black: #000000;
-  --colour-grey-dark: #808080;
+  --colour-black: #423F3C;
+  --colour-grey-dark: #767676;
   --colour-grey-light: #E7E7E7;
 
   /* Shadow */
@@ -111,10 +111,12 @@
   font-size: var(--fs-xxl);
   font-weight: var(--fw-medium);
   line-height: var(--lh-tight);
+  color: var(--colour-foreground-2);
 }
 .text-display strong,
 .text-display .text-display-strong {
   font-weight: var(--fw-bold);
+  color: var(--colour-foreground-1);
 }
 
 @media (max-width: 48rem) {
@@ -401,7 +403,7 @@ section {
 @media (max-width: 48rem) {
   .projects-grid {
     grid-template-columns: 1fr;
-    gap: var(--spacing-s);
+    row-gap: var(--spacing-xl);
   }
 }
 
