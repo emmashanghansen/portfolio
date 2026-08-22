@@ -1,7 +1,7 @@
 // Sliding navbar indicator
 const navbar = document.querySelector('.navbar');
-const navLinks = document.querySelectorAll('.navbar-links a');
-const indicator = document.querySelector('.navbar-indicator');
+const navLinks = document.querySelectorAll('.navbar__links a');
+const indicator = document.querySelector('.navbar__indicator');
 
 function positionIndicator(el, animate) {
   if (!indicator || !el) return;
@@ -13,7 +13,7 @@ function positionIndicator(el, animate) {
   if (!animate) requestAnimationFrame(() => requestAnimationFrame(() => { indicator.style.transition = ''; }));
 }
 
-let activeLink = document.querySelector('.navbar-links a[aria-current="page"]') || navLinks[0];
+let activeLink = document.querySelector('.navbar__links a[aria-current="page"]') || navLinks[0];
 positionIndicator(activeLink, false);
 
 navLinks.forEach(link => {
@@ -41,7 +41,7 @@ navLinks.forEach(link => {
 });
 
 // Scroll-based active section detection
-const homeLink = document.querySelector('.navbar-links a[aria-current="page"]') || navLinks[0];
+const homeLink = document.querySelector('.navbar__links a[aria-current="page"]') || navLinks[0];
 const sectionLinkMap = {};
 navLinks.forEach(a => {
   const href = a.getAttribute('href');
