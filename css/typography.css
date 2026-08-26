@@ -73,6 +73,11 @@
   text-decoration: underline;
 }
 
+.text-underline-hover:hover,
+.text-underline-hover:focus-visible {
+  text-decoration: underline;
+}
+
 .text-strong {
   font-weight: var(--fw-bold);
 }
