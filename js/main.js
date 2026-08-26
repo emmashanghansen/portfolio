@@ -90,20 +90,21 @@ window.addEventListener('scroll', () => {
 // Footer icon cycling
 const footerIcon = document.getElementById('footer-cycling-icon');
 if (footerIcon) {
+  const footerIconUse = footerIcon.querySelector('use');
   const footerIcons = [
-    'tabler_heart.svg','tabler_sun.svg','tabler_star.svg','tabler_palette.svg',
-    'tabler_apple.svg','tabler_music.svg','tabler_seedling.svg','tabler_plant.svg', 'tabler_heart.svg',
-    'tabler_bubble.svg','tabler_yin-yang.svg','tabler_brush.svg','tabler_robot.svg',
-    'tabler_cloud.svg', 'tabler_seedling.svg','tabler_shirt.svg','tabler_sun.svg','tabler_crown.svg','tabler_bulb.svg',
-    'tabler_mood-smile-beam.svg', 'tabler_heart.svg','tabler_eyeglass.svg','tabler_moon.svg',
-    'tabler_mood-smile.svg','tabler_canary.svg','tabler_ghost-3.svg','tabler_slice.svg',
-    'tabler_chef-hat.svg','tabler_school.svg', 'tabler_palette.svg','tabler_user-heart.svg','tabler_atom.svg',
-    'tabler_toilet-paper.svg','tabler_moon-stars.svg', 'tabler_heart.svg'
+    'heart','sun','star','palette',
+    'apple','music','seedling','plant', 'heart',
+    'bubble','yin-yang','brush','robot',
+    'cloud', 'seedling','shirt','sun','crown','bulb',
+    'mood-smile-beam', 'heart','eyeglass','moon',
+    'mood-smile','canary','ghost-3','slice',
+    'chef-hat','school', 'palette','user-heart','atom',
+    'toilet-paper','moon-stars', 'heart'
   ];
   let footerIconIndex = 0;
   setInterval(() => {
     footerIconIndex = (footerIconIndex + 1) % footerIcons.length;
-    footerIcon.src = `images/icons/footer-icons/${footerIcons[footerIconIndex]}`;
+    footerIconUse.setAttribute('href', `images/icons/sprite.svg#icon-${footerIcons[footerIconIndex]}`);
   }, 300);
 }
 

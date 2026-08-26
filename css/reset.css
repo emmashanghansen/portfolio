@@ -19,7 +19,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
   color: var(--colour-foreground-1);
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   font-size: var(--fs-m);
   line-height: var(--lh-loose);
 }

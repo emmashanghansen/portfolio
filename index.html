@@ -3,17 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Emma Shang Hansen — UX designer portfolio featuring case studies in service design, healthcare, and product design.">
+  <meta property="og:title" content="Emma Shang Hansen — UX Designer">
+  <meta property="og:description" content="UX designer portfolio featuring case studies in service design, healthcare, and product design.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="https://use.typekit.net/oie3qse.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Figtree:ital,wght@0,300..900;1,300..900&display=swap">
   <link rel="stylesheet" href="css/styles.css">
   <title>Emma Shang Hansen — UX Designer</title>
 </head>
 <body>
 
+  <!-- TODO: missing site assets
+       - favicon: 32×32 px (browser tab icon) — link via <link rel="icon" href="...">
+       - apple-touch-icon: 180×180 px — link via <link rel="apple-touch-icon" href="...">
+       - og:image (social share preview): 1200×630 px — add <meta property="og:image" content="..."> once available
+       Also missing: real photos for the 4 project cards (nikita/nga/pocus/medicine-distribution),
+       currently 404-ing to images/projects/placeholder.svg via onerror. -->
+
+  <a href="#main" class="skip-link">Skip to main content</a>
+
   <header class="navbar">
     <a href="index.html" class="navbar__logo">
-      <img src="images/global/logo-brown-no_bg-41230c.webp" alt="Emma Shang Hansen">
+      <img src="images/global/logo-brown-no_bg-41230c.webp" alt="Emma Shang Hansen" width="140" height="200">
     </a>
     <nav class="navbar__links">
       <a href="index.html" aria-current="page">Home</a>
@@ -22,7 +35,7 @@
     <span class="navbar__indicator" aria-hidden="true"></span>
   </header>
 
-  <main>
+  <main id="main" tabindex="-1">
   <div class="main-content">
 
     <section id="home-hero">
@@ -33,12 +46,7 @@
           <p class="text-subtitle">Creating building blocks for <br>a slightly better future</p>
         </div>
 
-        <!-- <a href="projects/nikita.html" class="button button--secondary">
-          <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" /></svg>
-          <span>Nikita case study</span>
-          <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0" /><path d="M13 18l6 -6" /><path d="M13 6l6 6" /></svg>
-        </a>
-      </div> -->
+      </div>
     </section>
 
     <section id="projects">
@@ -49,69 +57,69 @@
           <p class="text-subtitle">Projects crafted with care & love</p>
         </div>
 
-        <div class="projects-grid">
+        <ul class="projects-grid">
 
-          <a href="projects/nikita.html" class="project-card">
-            <div class="project-card__image">
-              <img src="images/projects/nikita.jpg" alt="Improving appointment booking flow" onerror="this.onerror=null;this.src='images/projects/placeholder.svg'">
-            </div>
-            <div class="project-card__info">
-              <div class="project-card__body">
-                <h3 class="text-subtitle-strong">Improving appointment booking flow</h3>
-                <p class="text-body">Led redesign of Nikita Hair's online appointment booking. It launched on their website in 2024.</p>
+          <li class="projects-grid__item">
+            <a href="projects/nikita.html" class="project-card">
+              <div class="project-card__image"></div>
+              <div class="project-card__info">
+                <div class="project-card__body">
+                  <h3 class="text-subtitle-strong">Improving appointment booking flow</h3>
+                  <p class="text-body">Led redesign of Nikita Hair's online appointment booking. It launched on their website in 2024.</p>
+                </div>
+                <div class="project-card__footer">
+                  <span class="button button--secondary"><svg class="icon"><use href="images/icons/sprite.svg#icon-eye"/></svg><span>View case study</span><span>→</span></span>
+                </div>
               </div>
-              <div class="project-card__footer">
-                <span class="button button--secondary"><img src="images/icons/tabler_eye.svg" class="icon" alt=""><span>View case study</span><span>→</span></span>
-              </div>
-            </div>
-          </a>
+            </a>
+          </li>
 
-          <a href="projects/nga.html" class="project-card">
-            <div class="project-card__image">
-              <img src="images/projects/nga.jpg" alt="Redesigning the Norwegian Game Awards website" onerror="this.onerror=null;this.src='images/projects/placeholder.svg'">
-            </div>
-            <div class="project-card__info">
-              <div class="project-card__body">
-                <h3 class="text-subtitle-strong">Redesigning the Norwegian Game Awards website</h3>
-                <p class="text-body">Redesigning the website for Norway's biggest student game development award show — so that visitors could actually tell what it was.</p>
+          <li class="projects-grid__item">
+            <a href="projects/nga.html" class="project-card">
+              <div class="project-card__image"></div>
+              <div class="project-card__info">
+                <div class="project-card__body">
+                  <h3 class="text-subtitle-strong">Redesigning the Norwegian Game Awards website</h3>
+                  <p class="text-body">Redesigning the website for Norway's biggest student game development award show — so that visitors could actually tell what it was.</p>
+                </div>
+                <div class="project-card__footer">
+                  <span class="button button--secondary"><svg class="icon"><use href="images/icons/sprite.svg#icon-eye"/></svg><span>See the full case study</span><span>→</span></span>
+                </div>
               </div>
-              <div class="project-card__footer">
-                <span class="button button--secondary">See the full case study →</span>
-              </div>
-            </div>
-          </a>
+            </a>
+          </li>
 
-          <a href="projects/pocus.html" class="project-card">
-            <div class="project-card__image">
-              <img src="images/projects/pocus.jpg" alt="Helping rural doctors learn ultrasound with AI guidance" onerror="this.onerror=null;this.src='images/projects/placeholder.svg'">
-            </div>
-            <div class="project-card__info">
-              <div class="project-card__body">
-                <h3 class="text-subtitle-strong">Guiding rural doctors through ultrasound with AI</h3>
-                <p class="text-body">Designed the interface for an AI that guides GPs through aortic aneurysm ultrasound exams in real time, for SINTEF Digital.</p>
+          <li class="projects-grid__item">
+            <a href="projects/pocus.html" class="project-card">
+              <div class="project-card__image"></div>
+              <div class="project-card__info">
+                <div class="project-card__body">
+                  <h3 class="text-subtitle-strong">Guiding rural doctors through ultrasound with AI</h3>
+                  <p class="text-body">Designed the interface for an AI that guides GPs through aortic aneurysm ultrasound exams in real time, for SINTEF Digital.</p>
+                </div>
+                <div class="project-card__footer">
+                  <span class="button button--secondary"><svg class="icon"><use href="images/icons/sprite.svg#icon-eye"/></svg><span>Explore the project details</span><span>→</span></span>
+                </div>
               </div>
-              <div class="project-card__footer">
-                <span class="button button--secondary">Explore the project details →</span>
-              </div>
-            </div>
-          </a>
+            </a>
+          </li>
 
-          <a href="projects/medicine-distribution.html" class="project-card">
-            <div class="project-card__image">
-              <img src="images/projects/medicine-distribution.jpg" alt="Making medication handoffs safer at a nursing home" onerror="this.onerror=null;this.src='images/projects/placeholder.svg'">
-            </div>
-            <div class="project-card__info">
-              <div class="project-card__body">
-                <h3 class="text-subtitle-strong">Making medication handoffs safer at a nursing home</h3>
-                <p class="text-body">Service design project with the National Centre for E-health Research — redesigning a nursing home's medication routine, not its software.</p>
+          <li class="projects-grid__item">
+            <a href="projects/medicine-distribution.html" class="project-card">
+              <div class="project-card__image"></div>
+              <div class="project-card__info">
+                <div class="project-card__body">
+                  <h3 class="text-subtitle-strong">Making medication handoffs safer at a nursing home</h3>
+                  <p class="text-body">Service design project with the National Centre for E-health Research — redesigning a nursing home's medication routine, not its software.</p>
+                </div>
+                <div class="project-card__footer">
+                  <span class="button button--secondary"><svg class="icon"><use href="images/icons/sprite.svg#icon-eye"/></svg><span>Read how we did it</span><span>→</span></span>
+                </div>
               </div>
-              <div class="project-card__footer">
-                <span class="button button--secondary">Read how we did it →</span>
-              </div>
-            </div>
-          </a>
+            </a>
+          </li>
 
-        </div>
+        </ul>
       </div>
     </section>
 
@@ -121,10 +129,10 @@
   <footer class="footer">
 
     <div class="footer__text">
-      <p class="text-body">Created with <img id="footer-cycling-icon" src="images/icons/footer-icons/tabler_heart.svg" class="icon" alt="love"> <strong>Emma Shang Hansen</strong></p>
+      <p class="text-body" aria-label="Created with love">Created with <svg id="footer-cycling-icon" class="icon" aria-hidden="true"><use href="images/icons/sprite.svg#icon-heart"/></svg> <strong>Emma Shang Hansen</strong></p>
       <div class="footer__links">
-        <a href="https://linkedin.com" class="button button--tertiary" target="_blank" rel="noopener">LinkedIn <img src="images/icons/tabler_arrow-up-right.svg" class="icon" alt=""></a>
-        <a href="mailto:emmashanghansen@gmail.com" class="button button--tertiary">Email <img src="images/icons/tabler_arrow-up-right.svg" class="icon" alt=""></a>
+        <a href="https://linkedin.com" class="button button--tertiary" target="_blank" rel="noopener">LinkedIn <svg class="icon"><use href="images/icons/sprite.svg#icon-arrow-up-right"/></svg></a>
+        <a href="mailto:emmashanghansen@gmail.com" class="button button--tertiary">Email <svg class="icon"><use href="images/icons/sprite.svg#icon-arrow-up-right"/></svg></a>
       </div>
     </div>
 
