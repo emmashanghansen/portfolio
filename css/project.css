@@ -1,0 +1,100 @@
+/* --------------- */
+/* --- Project page --- */
+
+.project-hero .page-container-narrow {
+  display: flex;
+  flex-direction: column;
+  max-width: var(--page-max-width-project-header);
+  gap: var(--spacing-xxl);
+}
+
+.project-hero__intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.project-hero__details {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: var(--spacing-xl);
+}
+@media (max-width: 48rem) {
+  .project-hero__details {
+    grid-template-columns: 1fr;
+  }
+}
+
+.project-hero__detail {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xxs);
+}
+
+.project-hero__image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  padding-bottom: var(--image-padding-vertical-l);
+}
+
+.project-hero__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  box-shadow: var(--shadow-01);
+  border-radius: var(--radius-medium);
+}
+
+.project-section {
+  padding-bottom: var(--project-section-padding-bottom);
+}
+
+.project-section .page-container-narrow {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Default gap: applies to every item except the first */
+.project-section .page-container-narrow > * + * {
+  margin-top: var(--project-section-gap);
+}
+
+/* Images get a bigger gap before them... */
+.project-section .page-container-narrow > .project-section__image {
+  margin-top: var(--project-section-gap-image);
+}
+
+/* ...but a smaller one when stacked back-to-back */
+.project-section .page-container-narrow > .project-section__image + .project-section__image {
+  margin-top: var(--image-padding-vertical-s);
+}
+
+.project-section__image {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-s);
+}
+
+.project-section__image img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  box-shadow: var(--shadow-01);
+  border-radius: var(--radius-medium);
+}
+
+.project-section__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  padding-left: var(--spacing-l);
+  list-style: disc;
+}
+
+.project-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-xl) var(--page-padding);
+  border-top: var(--stroke-width-s) solid var(--colour-stroke-3);
+}
