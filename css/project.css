@@ -1,5 +1,4 @@
-/* --------------- */
-/* --- Project page --- */
+/* --- Project hero --- */
 
 .project-hero .page-container-narrow {
   display: flex;
@@ -44,6 +43,8 @@
   box-shadow: var(--shadow-01);
   border-radius: var(--radius-medium);
 }
+
+/* --- Project sections --- */
 
 .project-section {
   padding-bottom: var(--project-section-padding-bottom);

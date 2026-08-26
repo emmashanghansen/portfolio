@@ -5,7 +5,7 @@
   font-size: var(--fs-xxl);
   font-weight: var(--fw-medium);
   line-height: var(--lh-tight);
-  color: var(--colour-foreground-2);
+  color: var(--colour-foreground-1);
 }
 .text-display strong,
 .text-display .text-display-strong {
