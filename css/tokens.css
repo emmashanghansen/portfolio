@@ -1,5 +1,6 @@
 :root {
 
+  /* --------------- */
   /* --- Colours --- */
   /* Base tokens */
   --colour-white: #FFFFFF;
@@ -36,6 +37,7 @@
 
   --colour-image-placeholder: var(--colour-background-3);
 
+  /* --------------- */
   /* --- Fonts --- */
   --font-header:  "Bricolage Grotesque", system-ui, sans-serif;
   --font-body:    "Figtree", system-ui, sans-serif;
@@ -60,7 +62,7 @@
   --lh-tight:  1.2;
   --lh-loose:  1.5;
 
-
+  /* --------------- */
   /* --- Spacing --- */
   /* --spacing-none: 0rem;        0px  */
   --spacing-xxs:     0.25rem;    /* 4px */
@@ -71,21 +73,10 @@
   --spacing-xl:      2rem;       /* 32px */
   --spacing-xxl:     3rem;       /* 48px */
 
-  /* Big spacing */
+  /* Big */
   --spacing-big-s: 4rem;       /* 64px */
   --spacing-big-m: 6rem;       /* 96px */
   --spacing-big-l: 9rem;      /* 144px */
-
-  /* Corner radius */
-  --radius-none: 0px;
-  --radius-small: 4px; /* for buttons and images in cards */
-  --radius-medium: 8px; /* for cards and unframed images */
-  --radius-large: 32px; /* for large elements */
-  --radius-circular: 9999px;
-
-  /* Stroke width */
-  --stroke-width-s: 1.2px;
-  --stroke-width-m: 2px;
 
   /* Page */
   --page-padding: 2rem;                      /* 32px */
@@ -114,5 +105,18 @@
   --shadow-01: 0 1px 2px 0 var(--colour-shadow-key), 0 0 2px 0 var(--colour-shadow-ambient);
   --shadow-02: 0 2px 4px 0 var(--colour-shadow-key), 0 0 2px 0 var(--colour-shadow-ambient);
   --shadow-03: 0 4px 8px 0 var(--colour-shadow-key), 0 0 2px 0 var(--colour-shadow-ambient);
+
+  /* --------------- */
+  /* --- Border --- */
+  /* Border radius */
+  --radius-none: 0px;
+  --radius-small: 4px; /* for buttons and images in cards */
+  --radius-medium: 8px; /* for cards and unframed images */
+  --radius-large: 32px; /* for large elements */
+  --radius-circular: 9999px;
+
+  /* Stroke width */
+  --stroke-width-s: 1.2px;
+  --stroke-width-m: 2px;
 
 }
