@@ -1,3 +1,25 @@
+// Custom cursor
+const cursor = document.querySelector('.custom-cursor');
+if (cursor && matchMedia('(pointer: fine)').matches) {
+  window.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+    cursor.classList.add('custom-cursor--visible');
+  });
+
+  document.addEventListener('mouseover', e => {
+    if (e.target.closest('a, button')) cursor.classList.add('custom-cursor--hover');
+  });
+  document.addEventListener('mouseout', e => {
+    if (e.target.closest('a, button')) cursor.classList.remove('custom-cursor--hover');
+  });
+
+  window.addEventListener('mousedown', () => cursor.classList.add('custom-cursor--press'));
+  window.addEventListener('mouseup', () => cursor.classList.remove('custom-cursor--press'));
+
+  document.addEventListener('mouseleave', () => cursor.classList.remove('custom-cursor--visible'));
+}
+
 const navbar = document.querySelector('.navbar');
 const navLinks = document.querySelectorAll('.navbar__links a');
 

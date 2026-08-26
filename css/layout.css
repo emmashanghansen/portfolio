@@ -2,6 +2,7 @@
 /* --- Layout --- */
 html {
   background: var(--colour-background-2);
+  cursor: none;
 }
 
 main {
