@@ -1,8 +1,5 @@
-/* --------------- */
-/* --- Home page Section types --- */
-/* --- Home page Hero --- */
+/* --- Hero --- */
 #home-hero {
-  min-height: 75vh;
   padding-bottom: 0;
 }
 
@@ -10,26 +7,16 @@
   display: flex;
   flex-direction: column;
   gap: var(--spacing-m);
-  padding-top: var(--spacing-big-s);
-  padding-bottom: var(--spacing-big-m);
-}
-
-/* Typing cursor */
-.typing-text::after {
-  content: '|';
-  font-weight: var(--fw-light);
 }
 
 
-/* --- Home page Projects --- */
-/* --- Home page Projects heading --- */
+/* --- Projects --- */
 .projects-heading {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-xxs);
 }
 
-/* --- Home page Projects grid --- */
 .projects-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -42,7 +29,7 @@
   }
 }
 
-/* --- Home page Project card --- */
+/* --- Projects card --- */
 .project-card {
   display: flex;
   flex-direction: column;
@@ -111,7 +98,7 @@
 
 
 /* --------------- */
-/* --- Home page Footer --- */
+/* --- Footer --- */
 .footer {
   display: flex;
   align-items: center;
