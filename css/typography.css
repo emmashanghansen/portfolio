@@ -1,15 +1,9 @@
-/* --------------- */
 /* --- Typography --- */
 .text-display {
   font-family: var(--font-header);
   font-size: var(--fs-xxl);
   font-weight: var(--fw-medium);
   line-height: var(--lh-tight);
-  color: var(--colour-foreground-1);
-}
-.text-display strong,
-.text-display .text-display-strong {
-  font-weight: var(--fw-bold);
   color: var(--colour-foreground-1);
 }
 
@@ -67,6 +61,18 @@
   font-weight: var(--fw-regular);
 }
 
-.subtle-text {
+
+/* --- Modifiers --- */
+/* Must stay after the type classes to successfully override them */
+
+.text-subtle {
   color: var(--colour-foreground-2);
+}
+
+.text-underline {
+  text-decoration: underline;
+}
+
+.text-strong {
+  font-weight: var(--fw-bold);
 }
