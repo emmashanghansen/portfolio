@@ -1,4 +1,3 @@
-/* --------------- */
 /* --- Icon --- */
 .icon {
   display: inline-block;
@@ -8,7 +7,6 @@
   flex-shrink: 0;
 }
 
-/* --------------- */
 /* --- Button --- */
 .button {
   display: inline-flex;
@@ -49,7 +47,6 @@
   color: var(--colour-foreground-1);
 }
 
-/* --------------- */
 /* --- Navbar --- */
 .navbar {
   display: flex;
@@ -78,18 +75,4 @@
 .navbar__links {
   display: flex;
   gap: var(--spacing-m);
-}
-
-/* Sliding active indicator */
-.navbar__indicator {
-  position: absolute;
-  bottom: 0;
-  height: var(--stroke-width-m);
-  background-color: var(--colour-stroke-1);
-  border-radius: var(--radius-circular);
-  transition: left 220ms ease, width 220ms ease;
-  pointer-events: none;
-}
-@media (max-width: 48rem) {
-  .navbar__indicator { display: none; }
 }

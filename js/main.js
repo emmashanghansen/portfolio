@@ -1,29 +1,9 @@
-// Sliding navbar indicator
 const navbar = document.querySelector('.navbar');
 const navLinks = document.querySelectorAll('.navbar__links a');
-const indicator = document.querySelector('.navbar__indicator');
-
-function positionIndicator(el, animate) {
-  if (!indicator || !el) return;
-  const navRect = navbar.getBoundingClientRect();
-  const linkRect = el.getBoundingClientRect();
-  if (!animate) indicator.style.transition = 'none';
-  indicator.style.left = (linkRect.left - navRect.left) + 'px';
-  indicator.style.width = linkRect.width + 'px';
-  if (!animate) requestAnimationFrame(() => requestAnimationFrame(() => { indicator.style.transition = ''; }));
-}
-
-let activeLink = document.querySelector('.navbar__links a[aria-current="page"]') || navLinks[0];
-positionIndicator(activeLink, false);
 
 navLinks.forEach(link => {
-  link.addEventListener('mouseenter', () => positionIndicator(link, true));
-  link.addEventListener('mouseleave', () => positionIndicator(activeLink, true));
-
   link.addEventListener('click', e => {
     const href = link.getAttribute('href');
-    activeLink = link;
-    positionIndicator(link, true);
     suppressHide = true;
     navbar.classList.remove('navbar--hidden');
     clearTimeout(suppressTimeout);
@@ -40,8 +20,7 @@ navLinks.forEach(link => {
   });
 });
 
-// Scroll-based active section detection
-const homeLink = document.querySelector('.navbar__links a[aria-current="page"]') || navLinks[0];
+// Detect homepage (has in-page section links) — feeds isHomepage below
 const sectionLinkMap = {};
 navLinks.forEach(a => {
   const href = a.getAttribute('href');
@@ -51,19 +30,6 @@ navLinks.forEach(a => {
   }
 });
 const sectionIds = Object.keys(sectionLinkMap);
-if (sectionIds.length) {
-  const sectionObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        activeLink = sectionLinkMap[entry.target.id];
-      } else {
-        activeLink = homeLink;
-      }
-      positionIndicator(activeLink, true);
-    });
-  }, { threshold: 0.3 });
-  sectionIds.forEach(id => sectionObserver.observe(document.getElementById(id)));
-}
 
 // Hide navbar on scroll down, show on scroll up
 // Always on project pages; on homepage only on mobile (≤768px)
