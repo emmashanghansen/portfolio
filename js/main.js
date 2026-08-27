@@ -1,17 +1,116 @@
 // Custom cursor
 const cursor = document.querySelector('.custom-cursor');
 if (cursor && matchMedia('(pointer: fine)').matches) {
-  window.addEventListener('mousemove', e => {
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
+  const DEPART_MS = 100; // shrink + fade out in place
+  const ARRIVE_MS = 260; // grow + fade back in at the destination
+
+  // Resolve --spacing-l (the docked slot's size, see .button::before) to px
+  // so the flight target lines up with it regardless of root font size.
+  const probe = document.createElement('div');
+  probe.style.cssText = 'position:absolute; visibility:hidden; height:0; width:var(--spacing-l);';
+  document.body.appendChild(probe);
+  const dockDotRadius = parseFloat(getComputedStyle(probe).width) / 2;
+  probe.remove();
+
+  // Pick up where the cursor left off on the previous page, instead of
+  // sitting invisible (native pointer showing through) until the mouse
+  // next moves.
+  const storedX = sessionStorage.getItem('cursorX');
+  const storedY = sessionStorage.getItem('cursorY');
+  let mouseX = storedX !== null ? parseFloat(storedX) : 0;
+  let mouseY = storedY !== null ? parseFloat(storedY) : 0;
+  let dockedButton = null;
+  let phaseTimer;
+  let arriveCleanupTimer;
+
+  if (storedX !== null) {
+    cursor.style.left = mouseX + 'px';
+    cursor.style.top = mouseY + 'px';
     cursor.classList.add('custom-cursor--visible');
+  }
+
+  window.addEventListener('mousemove', e => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    sessionStorage.setItem('cursorX', mouseX);
+    sessionStorage.setItem('cursorY', mouseY);
+    cursor.classList.add('custom-cursor--visible');
+    if (!dockedButton) {
+      cursor.style.left = mouseX + 'px';
+      cursor.style.top = mouseY + 'px';
+    }
   });
 
+  // Depart: shrink + fade out right where the cursor currently is —
+  // the first beat of the dock/undock illusion (see components.css).
+  function beginDepart() {
+    clearTimeout(arriveCleanupTimer);
+    cursor.classList.remove('custom-cursor--arrive');
+    cursor.classList.add('custom-cursor--depart');
+  }
+
+  // Arrive: grow + fade back in wherever the cursor has just been placed.
+  function beginArrive() {
+    cursor.classList.remove('custom-cursor--depart');
+    cursor.classList.add('custom-cursor--arrive');
+    clearTimeout(arriveCleanupTimer);
+    arriveCleanupTimer = setTimeout(() => cursor.classList.remove('custom-cursor--arrive'), ARRIVE_MS);
+  }
+
+  function dock(button) {
+    if (dockedButton === button) return;
+    dockedButton = button;
+    clearTimeout(phaseTimer);
+    cursor.classList.toggle('custom-cursor--on-primary', button.classList.contains('button--primary'));
+    beginDepart();
+
+    phaseTimer = setTimeout(() => {
+      // Measure the button's *settled* post-hover layout, not its current
+      // mid-transition one — some layouts (e.g. the navbar's space-between
+      // row) shift siblings as the docking slot opens up, so reading the
+      // rect right now would target a spot that's already stale by the
+      // time that shift finishes. Forcing the slot to its final width for
+      // one synchronous measurement (no repaint happens in between) gives
+      // the true landing spot instead.
+      document.documentElement.classList.add('measuring-dock-target');
+      const rect = button.getBoundingClientRect();
+      const paddingLeft = parseFloat(getComputedStyle(button).paddingLeft);
+      document.documentElement.classList.remove('measuring-dock-target');
+
+      // Cursor is fully hidden at this point (mid-depart), so the jump
+      // to the target is imperceptible.
+      cursor.style.left = (rect.left + paddingLeft + dockDotRadius) + 'px';
+      cursor.style.top = (rect.top + rect.height / 2) + 'px';
+      cursor.classList.add('custom-cursor--docked');
+      beginArrive();
+    }, DEPART_MS);
+  }
+
+  function undock() {
+    dockedButton = null;
+    clearTimeout(phaseTimer);
+    cursor.classList.remove('custom-cursor--docked', 'custom-cursor--on-primary');
+    beginDepart();
+
+    phaseTimer = setTimeout(() => {
+      cursor.style.left = mouseX + 'px';
+      cursor.style.top = mouseY + 'px';
+      beginArrive();
+    }, DEPART_MS);
+  }
+
   document.addEventListener('mouseover', e => {
-    if (e.target.closest('a, button')) cursor.classList.add('custom-cursor--hover');
+    const button = e.target.closest('.button');
+    if (button) dock(button);
+    else if (e.target.closest('a, button')) cursor.classList.add('custom-cursor--hover');
   });
   document.addEventListener('mouseout', e => {
-    if (e.target.closest('a, button')) cursor.classList.remove('custom-cursor--hover');
+    const button = e.target.closest('.button');
+    if (button) {
+      if (!button.contains(e.relatedTarget)) undock();
+    } else if (e.target.closest('a, button')) {
+      cursor.classList.remove('custom-cursor--hover');
+    }
   });
 
   window.addEventListener('mousedown', () => cursor.classList.add('custom-cursor--press'));
