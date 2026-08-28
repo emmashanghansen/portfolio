@@ -1,0 +1,197 @@
+/* --- Icon --- */
+.icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+}
+
+/* --- Button --- */
+.button {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+
+  padding: var(--spacing-xs) var(--spacing-s); /* horizontal: 8px, vertical: 12px */
+  gap: var(--spacing-xxs); /* gap: 4px */
+  border-radius: var(--radius-small);
+  background: none;
+  border: none;
+} .button:hover {
+  transform: scale(1.008);
+  transition: transform 200ms ease;
+  text-decoration: underline;
+} .button:active {
+  transform: scale(0.992);
+  transition: transform 100ms ease;
+  text-decoration: none;
+}
+
+/* --- Button variants --- */
+.button--primary {
+  background: var(--colour-foreground-2);
+  color: var(--colour-foreground-inverted);
+} .button--primary:hover {
+  /* background: var(--colour-foreground-1); */
+  background: var(--colour-background-brand);
+}
+
+.button--secondary {
+  color: var(--colour-foreground-2);
+  border: var(--stroke-width-s) solid var(--colour-stroke-2);
+} .button--secondary:hover {
+  /* color: var(--colour-foreground-1);
+  border-color: var(--colour-stroke-1); */
+  color: var(--colour-background-brand);
+  border-color: var(--colour-background-brand);
+} .button--secondary:active {
+  background: var(--colour-background-brand);
+  color: var(--colour-foreground-inverted);
+  border-color: none;
+}
+
+.button--tertiary {
+  color: var(--colour-foreground-2);
+} .button--tertiary:hover {
+  background: color-mix(in srgb, var(--colour-background-3) 45%, transparent);
+  /* color: var(--colour-foreground-1); */
+  color: var(--colour-background-brand);
+} .button--tertiary:active {
+  background: none;
+  text-decoration: underline;
+}
+
+.button--disabled {
+  color: var(--colour-foreground-2);
+  border: var(--stroke-width-s) solid var(--colour-stroke-3);
+  opacity: 0.6;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* --- Custom button cursor --- */
+/* Docking slot: collapsed to zero width, with a negative margin that cancels the button's own gap so it takes up no space at rest. Unfilled —
+   it just opens up room for the cursor dot to land in (see .custom-cursor--docked), so the slot itself never has to grow a visible blob from nothing. Timed to
+   finish opening right as the dot fades back in (see --depart/--arrive below), with a little overshoot so the room feels like it springs open rather than just stopping. */
+.button::before {
+  content: '';
+  width: 0;
+  height: var(--spacing-l); /* 24px */
+  flex-shrink: 0;
+  margin-right: calc(-1 * var(--spacing-xxs));
+  transition: width 360ms cubic-bezier(0.34, 1.56, 0.64, 1), margin-right 360ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.button:hover::before {
+  width: var(--spacing-l); /* 24px */
+  margin-right: 0;
+}
+/* Momentarily forces the docking slot to its final width with no
+   transition, so JS can measure the settled layout (see dock() in main.js) */
+.measuring-dock-target .button::before {
+  transition: none !important;
+}
+
+/* --- Navbar --- */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: var(--spacing-l) var(--page-padding) var(--spacing-s);
+  background: var(--colour-background-2);
+  border-bottom: var(--stroke-width-m) solid var(--colour-stroke-3);
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  transition: transform 0.15s ease;
+}
+
+.navbar--hidden {
+  transform: translateY(-100%);
+}
+
+.navbar__logo:hover {
+  /* add underline? */
+}
+
+.navbar__links {
+  display: flex;
+  gap: var(--spacing-m);
+}
+
+/* --- Custom cursor --- */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-circular);
+  background-color: var(--colour-background-brand);
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 150ms ease, opacity 150ms ease;
+}
+
+.custom-cursor--visible {
+  opacity: 1;
+}
+
+.custom-cursor--hover {
+  transform: translate(-50%, -50%) scale(1.3);
+  opacity: 40%;
+}
+
+/* After --hover so a press always wins the scale, even while hovering */
+.custom-cursor--press {
+  transform: translate(-50%, -50%) scale(0.75);
+}
+
+/* After --press: while docked, size matches the button's slot (--spacing-l, 24px) */
+.custom-cursor--docked {
+  transform: translate(-50%, -50%) scale(0.75);
+}
+
+/* Docked in a primary button (always), or pressing a secondary button
+   (only while active): match the dot to the button's own text colour
+   instead of the default brand colour, since both buttons turn their
+   background brand-red at that point, which would clash with a
+   brand-red dot sitting on top of it. */
+.custom-cursor--on-primary,
+.custom-cursor--on-secondary-press {
+  background-color: var(--colour-foreground-inverted);
+}
+
+/* Docking into (or out of) a button's slot is staged as two short beats
+   instead of one continuous flight across the screen — a long flight at a
+   fixed duration has to move faster to cover more ground, which is what
+   reads as a rush on a wide button entered from its far edge. Splitting it
+   avoids that entirely: however far there is to go, only the vanish and
+   the reappearance are ever seen.
+     1. Depart: shrink + fade out right where the cursor currently is.
+     2. (hidden) jump straight to the destination — invisible, so the
+        actual distance never has to be animated.
+     3. Arrive: grow + fade back in at the destination, with a little
+        overshoot for some landing weight. */
+.custom-cursor--depart {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.4);
+  transition: transform 100ms cubic-bezier(0.4, 0, 1, 1), opacity 100ms cubic-bezier(0.4, 0, 1, 1);
+}
+
+.custom-cursor--arrive {
+  transition: transform 260ms cubic-bezier(0.34, 1.56, 0.64, 1), opacity 180ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .custom-cursor,
+  .button::before {
+    transition: none;
+  }
+}

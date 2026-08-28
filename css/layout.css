@@ -1,0 +1,83 @@
+/* --------------- */
+/* --- Layout --- */
+html {
+  background: var(--colour-background-2);
+  cursor: none;
+}
+
+main {
+  flex: 1;
+  background: var(--colour-background-1);
+}
+
+.main-content {
+  position: relative;
+  z-index: 1;
+
+  padding-top: var(--spacing-big-s);
+  padding-bottom: var(--spacing-xl);
+  border-radius: 0 0 var(--radius-large) var(--radius-large);
+
+  background: var(--colour-background-2);
+  box-shadow: var(--shadow-02);
+}
+ 
+section {
+  display: flex;
+  flex-direction: column;
+  padding-top: var(--section-padding-top);
+  padding-bottom: var(--section-padding-bottom);
+  margin: 0;
+}
+
+.page-container {
+  width: 100%;
+  max-width: var(--page-max-width-home);
+  margin: 0 auto;
+  padding: 0 var(--page-padding);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.page-container-narrow {
+  width: 100%;
+  max-width: var(--page-max-width-project);
+  margin: 0 auto;
+  padding: 0 var(--page-padding);
+}
+
+/* --------------- */
+/* --- Elevation --- */
+.elevation-01 {
+  box-shadow: var(--shadow-01);
+}
+.elevation-02 {
+  box-shadow: var(--shadow-02);
+}
+.elevation-03 {
+  box-shadow: var(--shadow-03);
+}
+
+/* --------------- */
+/* --- Accessibility --- */
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--colour-background-brand);
+  outline-offset: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  top: var(--spacing-s);
+  left: var(--spacing-s);
+  z-index: 200;
+  padding: var(--spacing-xs) var(--spacing-s);
+  border-radius: var(--radius-small);
+  background: var(--colour-foreground-1);
+  color: var(--colour-foreground-inverted);
+  transform: translateY(-150%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}

@@ -1,0 +1,122 @@
+:root {
+
+  /* --------------- */
+  /* --- Colours --- */
+  /* Base tokens */
+  --colour-white: #FFFFFF;
+  --colour-beige: #F9F8F6;
+  --colour-grey-50: #F9FAFB; /*FCFCFB*/
+  --colour-grey-100: #E6E8EB;
+  --colour-grey-500: #6B7384;
+  --colour-grey-800: #383F53;
+  --colour-orange-50: #FDFCFB;
+  --colour-orange-100: #ECE9E6;
+  --colour-orange-500: #80736C;
+  --colour-orange-800: #4C3C34;
+  --colour-red-500: #F5235B;
+  --colour-transparent: transparent;
+
+  /* Shadow */
+  --colour-shadow-key: rgba(0, 0, 0, 14%);
+  --colour-shadow-ambient: rgba(0, 0, 0, 12%);
+
+  /* Semantic tokens */
+  /* Background for page and containers. Foreground for text and icons. Primary = 1, Secondary = 2, Tertiary = 3. */
+  --colour-background-1: var(--colour-white);
+  --colour-background-2: var(--colour-grey-50);
+  --colour-background-3: var(--colour-grey-100);
+  --colour-background-brand: var(--colour-red-500);
+
+  --colour-foreground-1: var(--colour-grey-800);
+  --colour-foreground-2: var(--colour-grey-500);
+  --colour-foreground-inverted: var(--colour-white);
+
+  --colour-stroke-1: var(--colour-grey-800);
+  --colour-stroke-2: var(--colour-grey-500);
+  --colour-stroke-3: var(--colour-grey-100);
+
+  --colour-image-placeholder: var(--colour-background-3);
+
+  /* --------------- */
+  /* --- Fonts --- */
+  --font-header:  "Bricolage Grotesque", system-ui, sans-serif;
+  --font-body:    "Figtree", system-ui, sans-serif;
+
+  /* Font sizes */
+  --fs-xxs: 0.5625rem; /* 9px */
+  --fs-xs:  0.6875rem; /* 11px */
+  --fs-s:   1rem;      /* 16px */
+  --fs-m:   1.25rem;   /* 20px */
+  --fs-l:   1.5rem;    /* 24px */
+  --fs-xl:  2.25rem;   /* 36px */
+  --fs-xxl: 3rem;      /* 48px */
+
+  /* Font weights */
+  --fw-light:   300;
+  --fw-regular: 400;
+  --fw-medium:  500;
+  --fw-semi:    600;
+  --fw-bold:    700;
+
+  /* Font line height */
+  --lh-tight:  1.2;
+  --lh-loose:  1.5;
+
+  /* --------------- */
+  /* --- Spacing --- */
+  /* --spacing-none: 0rem;        0px  */
+  --spacing-xxs:     0.25rem;    /* 4px */
+  --spacing-xs:      0.5rem;     /* 8px */
+  --spacing-s:       0.75rem;    /* 12px */
+  --spacing-m:       1rem;       /* 16px */
+  --spacing-l:       1.5rem;     /* 24px */
+  --spacing-xl:      2rem;       /* 32px */
+  --spacing-xxl:     3rem;       /* 48px */
+
+  /* Big */
+  --spacing-big-s: 4rem;       /* 64px */
+  --spacing-big-m: 6rem;       /* 96px */
+  --spacing-big-l: 9rem;      /* 144px */
+
+  /* Page */
+  --page-padding: 2rem;                      /* 32px */
+  --page-column-gap: var(--spacing-l);       /* 24px */
+  --page-max-width-home: 66rem;              /* 1056px */
+  --page-max-width-project-header: 48rem;    /* 768px */
+  --page-max-width-project: 40rem;           /* 640px */
+
+  /* Page section */
+  /* --section-padding-top-none: var(--spacing-none);  /* 0px */
+  --section-padding-top: var(--spacing-big-m);       /* 96px */
+  --section-padding-bottom: var(--spacing-big-l);   /* 144px */
+
+  /* Project section */
+  --project-section-padding-bottom: var(--spacing-big-s);   /* 64px — space below every section */
+  --project-section-gap: var(--spacing-s);                  /* 12px — default gap between items (header, text) */
+  --project-section-gap-image: var(--spacing-big-s);        /* 64px — gap before an image */
+
+  /* Image container */
+  --image-padding-vertical-s: var(--spacing-l);   /* 24px */
+  --image-padding-vertical-m: var(--spacing-big-m);   /* 96px */
+  --image-padding-vertical-l: var(--spacing-big-l);   /* 144px */
+
+  /* --------------- */
+  /* Shadows */
+  --shadow-01: 0 1px 2px 0 var(--colour-shadow-key), 0 0 2px 0 var(--colour-shadow-ambient);
+  --shadow-02: 0 2px 4px 0 var(--colour-shadow-key), 0 0 2px 0 var(--colour-shadow-ambient);
+  --shadow-03: 0 4px 8px 0 var(--colour-shadow-key), 0 0 2px 0 var(--colour-shadow-ambient);
+
+  /* --------------- */
+  /* --- Border --- */
+  /* Border radius */
+  --radius-none: 0px;
+  --radius-small: 4px; /* for buttons and images in cards */
+  --radius-medium: 8px; /* for cards and unframed images */
+  --radius-large: 32px; /* for large elements */
+  --radius-circular: 9999px;
+
+  /* Stroke width */
+  --stroke-width-s: 1.2px;
+  --stroke-width-m: 2px;
+
+}

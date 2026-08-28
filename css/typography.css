@@ -1,0 +1,80 @@
+/* --- Typography --- */
+.text-display {
+  font-family: var(--font-header);
+  font-size: var(--fs-xxl);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-tight);
+  color: var(--colour-foreground-1);
+}
+
+@media (max-width: 48rem) {
+  .text-display {
+    font-size: var(--fs-xl);
+  }
+}
+
+.text-large-title {
+  font-family: var(--font-header);
+  font-size: var(--fs-xl); /* 36px */
+  font-weight: var(--fw-semi);
+  line-height: var(--lh-tight);
+  margin-bottom: var(--spacing-xs);
+}
+
+.text-large-body {
+  font-family: var(--font-body);
+  font-size: var(--fs-m); /* 20px */
+  font-weight: var(--fw-regular);
+}
+
+.text-title {
+  font-family: var(--font-header);
+  font-size: var(--fs-l); /* 24px */
+  font-weight: var(--fw-semi);
+  line-height: var(--lh-tight);
+}
+
+.text-subtitle { /* used overline, as tag or section title */
+  font-family: var(--font-header);
+  font-size: var(--fs-m); /* 20px */
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-tight);
+}
+
+.text-body-strong, .tag, .button {
+  font-family: var(--font-body);
+  font-size: var(--fs-s); /* 16px */
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-tight);
+}
+
+.text-body {
+  font-family: var(--font-body);
+  font-size: var(--fs-s); /* 16px */
+  font-weight: var(--fw-regular);
+}
+
+
+/* --- Modifiers --- */
+/* Must stay after the type classes to successfully override them */
+
+.text-subtle {
+  color: var(--colour-foreground-2);
+}
+
+.text-underline {
+  text-decoration: underline;
+}
+
+.text-underline-hover:hover,
+.text-underline-hover:focus-visible {
+  text-decoration: underline;
+}
+
+.text-strong {
+  font-weight: var(--fw-semi);
+}
+
+.text-stronger {
+  font-weight: var(--fw-bold);
+}
