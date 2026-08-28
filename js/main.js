@@ -20,6 +20,7 @@ if (cursor && matchMedia('(pointer: fine)').matches) {
   let mouseX = storedX !== null ? parseFloat(storedX) : 0;
   let mouseY = storedY !== null ? parseFloat(storedY) : 0;
   let dockedButton = null;
+  let undocking = false;
   let phaseTimer;
   let arriveCleanupTimer;
 
@@ -35,7 +36,7 @@ if (cursor && matchMedia('(pointer: fine)').matches) {
     sessionStorage.setItem('cursorX', mouseX);
     sessionStorage.setItem('cursorY', mouseY);
     cursor.classList.add('custom-cursor--visible');
-    if (!dockedButton) {
+    if (!dockedButton && !undocking) {
       cursor.style.left = mouseX + 'px';
       cursor.style.top = mouseY + 'px';
     }
@@ -88,11 +89,13 @@ if (cursor && matchMedia('(pointer: fine)').matches) {
 
   function undock() {
     dockedButton = null;
+    undocking = true;
     clearTimeout(phaseTimer);
-    cursor.classList.remove('custom-cursor--docked', 'custom-cursor--on-primary');
+    cursor.classList.remove('custom-cursor--docked', 'custom-cursor--on-primary', 'custom-cursor--on-secondary-press');
     beginDepart();
 
     phaseTimer = setTimeout(() => {
+      undocking = false;
       cursor.style.left = mouseX + 'px';
       cursor.style.top = mouseY + 'px';
       beginArrive();
@@ -113,8 +116,15 @@ if (cursor && matchMedia('(pointer: fine)').matches) {
     }
   });
 
-  window.addEventListener('mousedown', () => cursor.classList.add('custom-cursor--press'));
-  window.addEventListener('mouseup', () => cursor.classList.remove('custom-cursor--press'));
+  window.addEventListener('mousedown', () => {
+    cursor.classList.add('custom-cursor--press');
+    if (dockedButton && dockedButton.classList.contains('button--secondary')) {
+      cursor.classList.add('custom-cursor--on-secondary-press');
+    }
+  });
+  window.addEventListener('mouseup', () => {
+    cursor.classList.remove('custom-cursor--press', 'custom-cursor--on-secondary-press');
+  });
 
   document.addEventListener('mouseleave', () => cursor.classList.remove('custom-cursor--visible'));
 }

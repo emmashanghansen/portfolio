@@ -21,7 +21,7 @@ main {
   background: var(--colour-background-2);
   box-shadow: var(--shadow-02);
 }
-
+ 
 section {
   display: flex;
   flex-direction: column;

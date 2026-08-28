@@ -18,14 +18,21 @@
 }
 
 .projects-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--spacing-s);
+  column-count: 2;
+  column-gap: var(--spacing-s);
 }
+
+.projects-grid__item {
+  break-inside: avoid;
+  margin-bottom: var(--spacing-s);
+}
+
 @media (max-width: 48rem) {
   .projects-grid {
-    grid-template-columns: 1fr;
-    row-gap: var(--spacing-xl);
+    column-count: 1;
+  }
+  .projects-grid__item {
+    margin-bottom: var(--spacing-xl);
   }
 }
 

@@ -24,7 +24,7 @@ All spacing, colour, typography, and radius values are CSS custom properties in 
 ## Typography
 
 Use semantic class names, never style raw elements directly:
-`.text-display`, `.text-large-title`, `.text-title`, `.text-subtitle`, `.text-subtitle-strong`, `.text-large-body`, `.text-body-strong`, `.text-body`
+`.text-display`, `.text-large-title`, `.text-title`, `.text-subtitle`, `.text-large-body`, `.text-body-strong`, `.text-body`, plus the `.text-strong` modifier
 
 ## Layout
 

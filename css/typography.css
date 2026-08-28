@@ -24,7 +24,7 @@
 .text-large-body {
   font-family: var(--font-body);
   font-size: var(--fs-m); /* 20px */
-  font-weight: var(--fw-medium);
+  font-weight: var(--fw-regular);
 }
 
 .text-title {
@@ -34,17 +34,10 @@
   line-height: var(--lh-tight);
 }
 
-.text-subtitle {
-  font-family: var(--font-body);
+.text-subtitle { /* used overline, as tag or section title */
+  font-family: var(--font-header);
   font-size: var(--fs-m); /* 20px */
   font-weight: var(--fw-regular);
-  line-height: var(--lh-tight);
-}
-
-.text-subtitle-strong {
-  font-family: var(--font-body);
-  font-size: var(--fs-m); /* 20px */
-  font-weight: var(--fw-semi);
   line-height: var(--lh-tight);
 }
 
@@ -79,5 +72,9 @@
 }
 
 .text-strong {
+  font-weight: var(--fw-semi);
+}
+
+.text-stronger {
   font-weight: var(--fw-bold);
 }

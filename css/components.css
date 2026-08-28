@@ -25,37 +25,10 @@
 } .button:active {
   transform: scale(0.992);
   transition: transform 100ms ease;
-  
   text-decoration: none;
 }
 
-/* Docking slot: collapsed to zero width, with a negative margin that
-   cancels the button's own gap so it takes up no space at rest. Unfilled —
-   it just opens up room for the cursor dot to land in (see .custom-cursor--docked),
-   so the slot itself never has to grow a visible blob from nothing. Timed to
-   finish opening right as the dot fades back in (see --depart/--arrive
-   below), with a little overshoot so the room feels like it springs open
-   rather than just stopping. */
-.button::before {
-  content: '';
-  width: 0;
-  height: var(--spacing-l); /* 24px */
-  flex-shrink: 0;
-  margin-right: calc(-1 * var(--spacing-xxs));
-  transition: width 360ms cubic-bezier(0.34, 1.56, 0.64, 1), margin-right 360ms cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.button:hover::before {
-  width: var(--spacing-l); /* 24px */
-  margin-right: 0;
-}
-
-/* Momentarily forces the docking slot to its final width with no
-   transition, so JS can measure the settled layout (see dock() in main.js) */
-.measuring-dock-target .button::before {
-  transition: none !important;
-}
-
+/* --- Button variants --- */
 .button--primary {
   background: var(--colour-foreground-2);
   color: var(--colour-foreground-inverted);
@@ -72,6 +45,10 @@
   border-color: var(--colour-stroke-1); */
   color: var(--colour-background-brand);
   border-color: var(--colour-background-brand);
+} .button--secondary:active {
+  background: var(--colour-background-brand);
+  color: var(--colour-foreground-inverted);
+  border-color: none;
 }
 
 .button--tertiary {
@@ -80,6 +57,39 @@
   background: color-mix(in srgb, var(--colour-background-3) 45%, transparent);
   /* color: var(--colour-foreground-1); */
   color: var(--colour-background-brand);
+} .button--tertiary:active {
+  background: none;
+  text-decoration: underline;
+}
+
+.button--disabled {
+  color: var(--colour-foreground-2);
+  border: var(--stroke-width-s) solid var(--colour-stroke-3);
+  opacity: 0.6;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* --- Custom button cursor --- */
+/* Docking slot: collapsed to zero width, with a negative margin that cancels the button's own gap so it takes up no space at rest. Unfilled —
+   it just opens up room for the cursor dot to land in (see .custom-cursor--docked), so the slot itself never has to grow a visible blob from nothing. Timed to
+   finish opening right as the dot fades back in (see --depart/--arrive below), with a little overshoot so the room feels like it springs open rather than just stopping. */
+.button::before {
+  content: '';
+  width: 0;
+  height: var(--spacing-l); /* 24px */
+  flex-shrink: 0;
+  margin-right: calc(-1 * var(--spacing-xxs));
+  transition: width 360ms cubic-bezier(0.34, 1.56, 0.64, 1), margin-right 360ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.button:hover::before {
+  width: var(--spacing-l); /* 24px */
+  margin-right: 0;
+}
+/* Momentarily forces the docking slot to its final width with no
+   transition, so JS can measure the settled layout (see dock() in main.js) */
+.measuring-dock-target .button::before {
+  transition: none !important;
 }
 
 /* --- Navbar --- */
@@ -89,7 +99,7 @@
   justify-content: space-between;
 
   padding: var(--spacing-l) var(--page-padding) var(--spacing-s);
-  background-color: color-mix(in srgb, var(--colour-background-1) 90%, var(--colour-background-2));
+  background: var(--colour-background-2);
   border-bottom: var(--stroke-width-m) solid var(--colour-stroke-3);
 
   position: fixed;
@@ -148,10 +158,13 @@
   transform: translate(-50%, -50%) scale(0.75);
 }
 
-/* Docked in a primary button: match the dot to the button's own text
-   colour instead of the default brand colour, since the brand-red dot
-   would otherwise clash with the primary button's hover background. */
-.custom-cursor--on-primary {
+/* Docked in a primary button (always), or pressing a secondary button
+   (only while active): match the dot to the button's own text colour
+   instead of the default brand colour, since both buttons turn their
+   background brand-red at that point, which would clash with a
+   brand-red dot sitting on top of it. */
+.custom-cursor--on-primary,
+.custom-cursor--on-secondary-press {
   background-color: var(--colour-foreground-inverted);
 }
 
