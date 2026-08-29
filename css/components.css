@@ -61,7 +61,6 @@
   text-decoration: underline;
 }
 
-
 .button--disabled {
   color: var(--colour-foreground-2);
   border: var(--stroke-width-s) solid var(--colour-stroke-3);
@@ -70,17 +69,7 @@
   pointer-events: none;
 }
 
-
-/* Every :hover here is written :hover:not(:active).
-   Why: a pressed button matches :hover AND :active at the same time, and both
-   selectors have equal specificity — so whichever is written LAST in the file
-   wins. With the hovers grouped down here, plain :hover would silently beat
-   every :active above and no button would ever show its press state.
-   :not(:active) sidesteps the tie entirely: hover styling simply stops
-   applying the moment the button is pressed, whatever the source order.
-   (The classic fix is to always write :hover before :active — the "LoVe HAte"
-   ordering — but that would break the grouping this file is organised around.) */
-@media (hover: hover) { /* Hover effects should only apply where it makes sense */
+@media (hover: hover) { /* Hover effects should only apply where it makes sense. :hover:not(:active) bc of cascade */
   .button:hover:not(:active) {
     transform: scale(1.008);
     transition: transform 200ms ease;

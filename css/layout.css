@@ -1,21 +1,15 @@
-/* --------------- */
 /* --- Layout --- */
 html {
   background: var(--colour-background-2);
-  /* Keeps in-page anchors (#projects) from landing underneath the fixed navbar */
-  scroll-padding-top: calc(var(--navbar-height) + var(--spacing-m));
+  scroll-padding-top: calc(var(--navbar-height) + var(--spacing-m));   /* Keeps in-page anchors (#projects) from landing underneath the fixed navbar */
 }
 
-/* Mouse only — the custom cursor replaces the native one. See main.js */
-@media (hover: hover) {
-  html {
-    cursor: none;
-  }
+@media (hover: hover) { /* Mouse only — the custom cursor replaces the native one. See main.js */
+  html {cursor: none;}
 }
 
-/* Nothing may push the page sideways on a narrow screen */
 body {
-  overflow-x: hidden;
+  overflow-x: hidden; /* Nothing may push the page sideways on a narrow screen */
 }
 
 main {
@@ -49,8 +43,6 @@ section {
   padding-top: var(--section-padding-top);
   padding-bottom: var(--section-padding-bottom);
   margin: 0 auto;
-  /* Flex children default to min-width:auto, which lets wide content (long
-     words, tables) blow out the layout instead of shrinking. */
   min-width: 0;
 }
 
@@ -64,7 +56,6 @@ section {
   min-width: 0;
 }
 
-/* --------------- */
 /* --- Elevation --- */
 .elevation-01 {
   box-shadow: var(--shadow-01);
@@ -76,7 +67,6 @@ section {
   box-shadow: var(--shadow-03);
 }
 
-/* --------------- */
 /* --- Accessibility --- */
 a:focus-visible, button:focus-visible {
   outline: 2px solid var(--colour-background-brand);

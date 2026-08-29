@@ -94,7 +94,7 @@
   --page-max-width-medium: 48rem;            /* 768px */
   --page-max-width-small: 40rem;             /* 640px */
 
-  /* Page section — inherit the fluid range of the big scale they point at */
+  /* Section — inherit the fluid range of the big scale they point at */
   --section-padding-top: var(--spacing-big-m);      /* 56px → 96px */
   --section-padding-bottom: var(--spacing-big-l);   /* 80px → 144px */
 
@@ -166,5 +166,6 @@
    identical query, so JS and CSS always agree about what kind of device
    they're on.
 
-   Rule of thumb when adding styles: anything that only makes sense with a
-   mouse — :hover, :active, cursor — goes inside (hover: hover). */
+   Rule of thumb when adding styles: :hover and cursor go inside
+   (hover: hover). :active does NOT — a tap fires it too, and it ends when the
+   finger lifts, so it's the one bit of press feedback touch should keep. */
