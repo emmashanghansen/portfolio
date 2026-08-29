@@ -3,6 +3,7 @@
 .project-hero {
   max-width: var(--page-max-width-large);
   align-items: center;
+  padding-bottom: var(--spacing-big-m); /* 56px → 96px — space below the hero */
   gap: var(--spacing-xxl);
 } 
 
@@ -17,6 +18,7 @@
 .project-hero__image {
   aspect-ratio: 16 / 9;
   width: 100%;
+  padding-bottom: var(--spacing-l);
 }
 .project-hero__image img {
   width: 100%;
@@ -31,20 +33,17 @@
    auto-fit keeps it correct whether a page has three details or four. */
 .project-hero__details-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--spacing-l);
   /* .project-hero centres its children, which would otherwise shrink this grid
      to its content and leave the stacked mobile details floating mid-page */
   width: 100%;
 }
 
-@media (min-width: 30rem) {
-  .project-hero__details-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
 @media (min-width: 64rem) {
+  .project-hero__image {
+    padding-bottom: var(--spacing-none);
+  }
   /* auto-fit collapses the tracks nothing lands in, so three details spread
      across three equal columns and four across four — no per-page tuning. */
   .project-hero__details-grid {
@@ -59,31 +58,39 @@
   min-width: 0;
 }
 
-/* --- Project sections --- */
+/* --- Project body --- */
 
+.project-body {
+  gap: var(--spacing-big-s);   /* 48px → 64px — between body sections */
+}
+
+/* Spacing between children is done with margins below, not `gap`. The two
+   would add up, and images deliberately need a different gap from text —
+   which `gap` alone can't express. */
 .project-section {
-  padding-bottom: var(--project-section-padding-bottom);
   max-width: var(--page-max-width-medium);
+  padding: var(--spacing-none);            /* 0px — default padding for project sections */
 }
 
 /* Default gap: applies to every item except the first */
 .project-section > * + * {
-  margin-top: var(--project-section-gap);
+  margin-top: var(--spacing-s);            /* 12px — default gap between items */
 }
 
 /* Images get a bigger gap before them... */
 .project-section > .project-section__image {
-  margin-top: var(--project-section-gap-image);
+  margin-top: var(--spacing-big-s);        /* 48px → 64px — bigger gap before an image */
 }
 
 /* ...but a smaller one when stacked back-to-back */
 .project-section > .project-section__image + .project-section__image {
-  margin-top: var(--image-padding-vertical-s);
+  margin-top: var(--spacing-l);            /* 24px — images stacked back-to-back */
 }
 
 .project-section__image {
   display: flex;
   flex-direction: column;
+  padding: var(--) 0; /* 24px — default vertical padding for images */
   gap: var(--spacing-s);
 }
 

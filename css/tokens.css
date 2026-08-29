@@ -71,7 +71,7 @@
   /* Micro-spacing (xxs–l) is fixed — a 4px gap is a 4px gap on any screen.
      Everything from xl up is fluid, because that's the spacing that reads as
      generous on desktop and as dead space on a phone. */
-  /* --spacing-none: 0rem;        0px  */
+  --spacing-none:    0rem;       /* 0px */
   --spacing-xxs:     0.25rem;    /* 4px */
   --spacing-xs:      0.5rem;     /* 8px */
   --spacing-s:       0.75rem;    /* 12px */
@@ -81,7 +81,7 @@
   --spacing-xxl:     clamp(2rem,   1.545rem + 1.94vw, 3rem);  /* 32px → 48px */
 
   /* Big — section-level rhythm, compresses hardest on mobile */
-  --spacing-big-s: clamp(2.5rem, 1.818rem + 2.91vw, 4rem);   /* 40px →  64px */
+  --spacing-big-s: clamp(3rem, 1.818rem + 2.91vw, 4rem);     /* 48px → 64px */
   --spacing-big-m: clamp(3.5rem, 2.364rem + 4.85vw, 6rem);   /* 56px →  96px */
   --spacing-big-l: clamp(5rem,   3.182rem + 7.76vw, 9rem);   /* 80px → 144px */
 
@@ -93,20 +93,6 @@
   --page-max-width-large: 66rem;             /* 1056px */
   --page-max-width-medium: 48rem;            /* 768px */
   --page-max-width-small: 40rem;             /* 640px */
-
-  /* Section — inherit the fluid range of the big scale they point at */
-  --section-padding-top: var(--spacing-big-m);      /* 56px → 96px */
-  --section-padding-bottom: var(--spacing-big-l);   /* 80px → 144px */
-
-  /* Project section */
-  --project-section-padding-bottom: var(--spacing-big-s);   /* 40px → 64px — space below every section */
-  --project-section-gap: var(--spacing-s);                  /* 12px — default gap between items (header, text) */
-  --project-section-gap-image: var(--spacing-big-s);        /* 40px → 64px — gap before an image */
-
-  /* Image container */
-  --image-padding-vertical-s: var(--spacing-l);       /* 24px */
-  --image-padding-vertical-m: var(--spacing-big-m);   /* 56px → 96px */
-  --image-padding-vertical-l: var(--spacing-big-l);   /* 80px → 144px */
 
   /* --------------- */
   /* Shadows */

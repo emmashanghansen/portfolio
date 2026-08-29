@@ -23,8 +23,6 @@ main {
   display: flex;
   flex-direction: column;
 
-  /* The navbar is fixed, so its height has to be cleared before content starts.
-     Sections add their own --section-padding-top on top of this. */
   padding-top: var(--navbar-height);
   padding-bottom: var(--spacing-xl);
   padding-left: var(--page-padding);
@@ -40,8 +38,8 @@ section {
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding-top: var(--section-padding-top);
-  padding-bottom: var(--section-padding-bottom);
+  padding-top: var(--spacing-big-m);      /* 56px → 96px — section rhythm */
+  padding-bottom: var(--spacing-big-l);   /* 80px → 144px — section rhythm */
   margin: 0 auto;
   min-width: 0;
 }
