@@ -61,7 +61,7 @@
 /* --- Project body --- */
 
 .project-body {
-  gap: var(--spacing-big-s);   /* 48px → 64px — between body sections */
+  gap: var(--spacing-big-m);   /* 56px → 96px — space between body sections */
 }
 .project-section {
   max-width: var(--page-max-width-medium);
