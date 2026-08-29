@@ -1,6 +1,7 @@
 // Custom cursor
 const cursor = document.querySelector('.custom-cursor');
-if (cursor && matchMedia('(pointer: fine)').matches) {
+// Same test the CSS uses (see tokens.css): only devices with a mouse.
+if (cursor && matchMedia('(hover: hover)').matches) {
   const DEPART_MS = 100; // shrink + fade out in place
   const ARRIVE_MS = 260; // grow + fade back in at the destination
 

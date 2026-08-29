@@ -35,9 +35,9 @@
   }
 }
 
-/* Touch devices get a guaranteed 44px tap area (WCAG 2.5.8) without the
-   button visually growing — the padding stays put, the hit area doesn't. */
-@media (pointer: coarse) {
+/* Touch only: a guaranteed 44px tap area (WCAG 2.5.8). The padding is
+   unchanged, so the button doesn't look bigger — it's just easier to hit. */
+@media (hover: none) {
   .button {
     min-height: var(--touch-target-min);
   }
@@ -96,9 +96,9 @@
 /* Docking slot: collapsed to zero width, with a negative margin that cancels the button's own gap so it takes up no space at rest. Unfilled —
    it just opens up room for the cursor dot to land in (see .custom-cursor--docked), so the slot itself never has to grow a visible blob from nothing. Timed to
    finish opening right as the dot fades back in (see --depart/--arrive below), with a little overshoot so the room feels like it springs open rather than just stopping. */
-/* Only ever relevant where the custom cursor runs — on touch this pseudo-element
-   would sit in every button reserving space for a dot that never arrives. */
-@media (pointer: fine) {
+/* Mouse only — on touch this would sit in every button reserving space for a
+   cursor dot that never arrives. */
+@media (hover: hover) {
   .button::before {
     content: '';
     width: 0;
@@ -277,9 +277,9 @@
 }
 
 /* --- Custom cursor --- */
-/* main.js never activates it without a fine pointer; this keeps the element
-   itself out of the way on touch rather than relying on opacity alone. */
-@media not (pointer: fine) {
+/* Touch only: main.js never activates the cursor there, so take the element
+   out of the page rather than leaving an invisible one lying around. */
+@media (hover: none) {
   .custom-cursor {
     display: none;
   }

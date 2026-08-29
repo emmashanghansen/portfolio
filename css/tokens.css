@@ -146,3 +146,25 @@
    Most sizing now scales fluidly via the clamp() tokens above, so reach for a
    breakpoint only when the layout itself has to change (a grid regaining
    columns, a stacked row becoming horizontal). */
+
+/* --------------- */
+/* --- Mouse vs touch ---
+   Alongside the width breakpoints there is exactly one device query in this
+   codebase, in two states:
+
+     @media (hover: hover)  — the device has a mouse or trackpad
+     @media (hover: none)   — the device is touch-only (phone, tablet)
+
+   It exists because of one browser behaviour: on a touchscreen, tapping an
+   element applies :hover and LEAVES IT APPLIED until you tap something else.
+   Every :hover rule here changes colour or scale, so without this a tapped
+   button stays brand-red long after you've moved on. Wrapping hover styling
+   in (hover: hover) means phones simply never run it.
+
+   The same split covers the custom cursor (nothing to replace on a phone) and
+   the 44px minimum tap targets (only fingers need them). main.js tests the
+   identical query, so JS and CSS always agree about what kind of device
+   they're on.
+
+   Rule of thumb when adding styles: anything that only makes sense with a
+   mouse — :hover, :active, cursor — goes inside (hover: hover). */

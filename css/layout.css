@@ -6,8 +6,8 @@ html {
   scroll-padding-top: calc(var(--navbar-height) + var(--spacing-m));
 }
 
-/* Custom cursor replaces the native one on fine pointers only — see main.js */
-@media (pointer: fine) {
+/* Mouse only — the custom cursor replaces the native one. See main.js */
+@media (hover: hover) {
   html {
     cursor: none;
   }

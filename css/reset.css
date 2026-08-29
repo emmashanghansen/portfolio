@@ -30,9 +30,9 @@ img {
   height: auto;
 }
 
-/* The custom cursor only runs on fine pointers (see main.js), so the native
-   cursor must stay put on touch and hybrid devices. */
-@media (pointer: fine) {
+/* Mouse only — a phone has no cursor to replace. See tokens.css for what
+   (hover: hover) means. */
+@media (hover: hover) {
   a, button {
     cursor: none;
   }
