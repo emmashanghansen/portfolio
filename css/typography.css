@@ -1,30 +1,24 @@
 /* --- Typography --- */
+/* Sizes come from the fluid --fs-* tokens, so each class scales itself
+   between its mobile and desktop size. No font-size breakpoints needed. */
+
 .text-display {
   font-family: var(--font-header);
-  font-size: var(--fs-xxl);
+  font-size: var(--fs-xxl); /* 32px → 48px */
   font-weight: var(--fw-medium);
   line-height: var(--lh-tight);
   color: var(--colour-foreground-1);
-}
-
-@media (max-width: 48rem) {
-  .text-display {
-    font-size: var(--fs-xl);
-  }
+  /* Long words (URLs, compound headings) must never push the page sideways */
+  overflow-wrap: break-word;
 }
 
 .text-large-title {
   font-family: var(--font-header);
-  font-size: var(--fs-xl); /* 36px */
+  font-size: var(--fs-xl); /* 24px → 36px */
   font-weight: var(--fw-semi);
   line-height: var(--lh-tight);
   margin-bottom: var(--spacing-xs);
-}
-
-@media (max-width: 48rem) {
-  .text-large-title {
-    font-size: var(--fs-l);
-  }
+  overflow-wrap: break-word;
 }
 
 .text-large-body {
@@ -83,4 +77,16 @@
 
 .text-stronger {
   font-weight: var(--fw-bold);
+}
+
+/* A line break that only takes effect once there's room for the composition it
+   was written for. On a phone the text just wraps wherever it needs to, instead
+   of breaking at a point chosen for a 1000px-wide screen. */
+.br-wide {
+  display: none;
+}
+@media (min-width: 48rem) {
+  .br-wide {
+    display: inline;
+  }
 }

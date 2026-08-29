@@ -2,7 +2,20 @@
 /* --- Layout --- */
 html {
   background: var(--colour-background-2);
-  cursor: none;
+  /* Keeps in-page anchors (#projects) from landing underneath the fixed navbar */
+  scroll-padding-top: calc(var(--navbar-height) + var(--spacing-m));
+}
+
+/* Custom cursor replaces the native one on fine pointers only — see main.js */
+@media (pointer: fine) {
+  html {
+    cursor: none;
+  }
+}
+
+/* Nothing may push the page sideways on a narrow screen */
+body {
+  overflow-x: hidden;
 }
 
 main {
@@ -13,25 +26,32 @@ main {
 .main-content {
   position: relative;
   z-index: 1;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
 
-  padding-top: var(--spacing-big-s);
+  /* The navbar is fixed, so its height has to be cleared before content starts.
+     Sections add their own --section-padding-top on top of this. */
+  padding-top: var(--navbar-height);
   padding-bottom: var(--spacing-xl);
   padding-left: var(--page-padding);
   padding-right: var(--page-padding);
-  
+
   border-radius: 0 0 var(--radius-large) var(--radius-large);
 
   background: var(--colour-background-2);
   box-shadow: var(--shadow-02);
 }
- 
+
 section {
   display: flex;
   flex-direction: column;
+  width: 100%;
   padding-top: var(--section-padding-top);
   padding-bottom: var(--section-padding-bottom);
   margin: 0 auto;
+  /* Flex children default to min-width:auto, which lets wide content (long
+     words, tables) blow out the layout instead of shrinking. */
+  min-width: 0;
 }
 
 .page-container {
@@ -41,6 +61,7 @@ section {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-xl);
+  min-width: 0;
 }
 
 /* --------------- */

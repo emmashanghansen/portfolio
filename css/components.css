@@ -18,48 +18,70 @@
   border-radius: var(--radius-small);
   background: none;
   border: none;
-} .button:hover {
-  transform: scale(1.008);
-  transition: transform 200ms ease;
-  text-decoration: underline;
-} .button:active {
-  transform: scale(0.992);
-  transition: transform 100ms ease;
-  text-decoration: none;
+}
+
+/* Hover/press feedback is a pointer affordance — on touch it just leaves the
+   button stuck in its hovered state after a tap. */
+@media (hover: hover) {
+  .button:hover {
+    transform: scale(1.008);
+    transition: transform 200ms ease;
+    text-decoration: underline;
+  }
+  .button:active {
+    transform: scale(0.992);
+    transition: transform 100ms ease;
+    text-decoration: none;
+  }
+}
+
+/* Touch devices get a guaranteed 44px tap area (WCAG 2.5.8) without the
+   button visually growing — the padding stays put, the hit area doesn't. */
+@media (pointer: coarse) {
+  .button {
+    min-height: var(--touch-target-min);
+  }
 }
 
 /* --- Button variants --- */
 .button--primary {
   background: var(--colour-foreground-2);
   color: var(--colour-foreground-inverted);
-} .button--primary:hover {
-  /* background: var(--colour-foreground-1); */
-  background: var(--colour-background-brand);
 }
 
 .button--secondary {
   color: var(--colour-foreground-2);
   border: var(--stroke-width-s) solid var(--colour-stroke-2);
-} .button--secondary:hover {
-  /* color: var(--colour-foreground-1);
-  border-color: var(--colour-stroke-1); */
-  color: var(--colour-background-brand);
-  border-color: var(--colour-background-brand);
-} .button--secondary:active {
-  background: var(--colour-background-brand);
-  color: var(--colour-foreground-inverted);
-  border-color: none;
 }
 
 .button--tertiary {
   color: var(--colour-foreground-2);
-} .button--tertiary:hover {
-  background: color-mix(in srgb, var(--colour-background-3) 45%, transparent);
-  /* color: var(--colour-foreground-1); */
-  color: var(--colour-background-brand);
-} .button--tertiary:active {
-  background: none;
-  text-decoration: underline;
+}
+
+/* Colour-change hovers, kept off touch for the same reason as the transforms
+   above: a tapped button would otherwise stay brand-red until you tap elsewhere. */
+@media (hover: hover) {
+  .button--primary:hover {
+    background: var(--colour-background-brand);
+  }
+
+  .button--secondary:hover {
+    color: var(--colour-background-brand);
+    border-color: var(--colour-background-brand);
+  }
+  .button--secondary:active {
+    background: var(--colour-background-brand);
+    color: var(--colour-foreground-inverted);
+  }
+
+  .button--tertiary:hover {
+    background: color-mix(in srgb, var(--colour-background-3) 45%, transparent);
+    color: var(--colour-background-brand);
+  }
+  .button--tertiary:active {
+    background: none;
+    text-decoration: underline;
+  }
 }
 
 .button--disabled {
@@ -74,17 +96,21 @@
 /* Docking slot: collapsed to zero width, with a negative margin that cancels the button's own gap so it takes up no space at rest. Unfilled —
    it just opens up room for the cursor dot to land in (see .custom-cursor--docked), so the slot itself never has to grow a visible blob from nothing. Timed to
    finish opening right as the dot fades back in (see --depart/--arrive below), with a little overshoot so the room feels like it springs open rather than just stopping. */
-.button::before {
-  content: '';
-  width: 0;
-  height: var(--spacing-l); /* 24px */
-  flex-shrink: 0;
-  margin-right: calc(-1 * var(--spacing-xxs));
-  transition: width 360ms cubic-bezier(0.34, 1.56, 0.64, 1), margin-right 360ms cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-.button:hover::before {
-  width: var(--spacing-l); /* 24px */
-  margin-right: 0;
+/* Only ever relevant where the custom cursor runs — on touch this pseudo-element
+   would sit in every button reserving space for a dot that never arrives. */
+@media (pointer: fine) {
+  .button::before {
+    content: '';
+    width: 0;
+    height: var(--spacing-l); /* 24px */
+    flex-shrink: 0;
+    margin-right: calc(-1 * var(--spacing-xxs));
+    transition: width 360ms cubic-bezier(0.34, 1.56, 0.64, 1), margin-right 360ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .button:hover::before {
+    width: var(--spacing-l); /* 24px */
+    margin-right: 0;
+  }
 }
 /* Momentarily forces the docking slot to its final width with no
    transition, so JS can measure the settled layout (see dock() in main.js) */
@@ -97,8 +123,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: var(--spacing-m);
+  min-height: var(--navbar-height);
 
-  padding: var(--spacing-l) var(--page-padding) var(--spacing-s);
+  padding: var(--spacing-xs) var(--page-padding);
   background: var(--colour-background-2);
   border-bottom: var(--stroke-width-m) solid var(--colour-stroke-3);
 
@@ -112,21 +140,151 @@
 .navbar--hidden {
   transform: translateY(-100%);
 }
+.navbar__logo {
+  /* The logo is the longest thing in the bar; let it shrink before it wraps */
+  min-width: 0;
+}
 .navbar__logo:hover {
   text-decoration: underline;
 }
+
+/* --- Navbar: mobile (base) ---
+   Below 48rem the links live in a panel that drops out of the bar. It's laid
+   out but clipped and inert until .navbar__links--open is set, so the panel can
+   animate rather than pop, and so nothing inside it is tabbable while closed. */
 .navbar__links {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+
   display: flex;
-  gap: var(--spacing-m);
+  flex-direction: column;
+  gap: var(--spacing-xxs);
+  padding: var(--spacing-s) var(--page-padding) var(--spacing-l);
+
+  background: var(--colour-background-2);
+  border-bottom: var(--stroke-width-m) solid var(--colour-stroke-3);
+
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-0.5rem);
+  transition: opacity 180ms ease, transform 180ms ease, visibility 180ms;
 }
 
-@media (max-width: 48rem) {
-  .navbar__links {
+.navbar__links--open {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stacked links read as list rows, not as inline chips */
+.navbar__links .button {
+  width: 100%;
+  justify-content: flex-start;
+  min-height: var(--touch-target-min);
+}
+
+/* --- Navbar: hamburger toggle --- */
+.navbar__toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  width: var(--touch-target-min);
+  height: var(--touch-target-min);
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-small);
+  background: none;
+  color: var(--colour-foreground-2);
+}
+
+/* Three bars, drawn from the button's own box so there's no extra markup.
+   Open state crosses the outer two and drops the middle one. */
+.navbar__toggle-bar,
+.navbar__toggle-bar::before,
+.navbar__toggle-bar::after {
+  display: block;
+  width: 1.25rem;
+  height: var(--stroke-width-m);
+  border-radius: var(--radius-circular);
+  background: currentColor;
+  transition: transform 200ms ease, opacity 200ms ease;
+}
+.navbar__toggle-bar {
+  position: relative;
+}
+.navbar__toggle-bar::before,
+.navbar__toggle-bar::after {
+  content: '';
+  position: absolute;
+  left: 0;
+}
+.navbar__toggle-bar::before { top: -0.4rem; }
+.navbar__toggle-bar::after  { top:  0.4rem; }
+
+.navbar__toggle[aria-expanded="true"] .navbar__toggle-bar {
+  background: transparent;
+}
+.navbar__toggle[aria-expanded="true"] .navbar__toggle-bar::before {
+  transform: translateY(0.4rem) rotate(45deg);
+}
+.navbar__toggle[aria-expanded="true"] .navbar__toggle-bar::after {
+  transform: translateY(-0.4rem) rotate(-45deg);
+}
+
+/* --- Navbar: tablet and up ---
+   Enough room for the links to sit in the bar, so the panel and its toggle
+   both stop being a thing. */
+@media (min-width: 48rem) {
+  .navbar {
+    padding: var(--spacing-l) var(--page-padding) var(--spacing-s);
+  }
+
+  .navbar__toggle {
     display: none;
+  }
+
+  .navbar__links {
+    position: static;
+    flex-direction: row;
+    gap: var(--spacing-m);
+    padding: 0;
+    background: none;
+    border-bottom: none;
+
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+  }
+
+  .navbar__links .button {
+    width: auto;
+    justify-content: center;
+    min-height: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar__links,
+  .navbar__toggle-bar,
+  .navbar__toggle-bar::before,
+  .navbar__toggle-bar::after {
+    transition: none;
   }
 }
 
 /* --- Custom cursor --- */
+/* main.js never activates it without a fine pointer; this keeps the element
+   itself out of the way on touch rather than relying on opacity alone. */
+@media not (pointer: fine) {
+  .custom-cursor {
+    display: none;
+  }
+}
+
 .custom-cursor {
   position: fixed;
   top: 0;

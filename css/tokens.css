@@ -42,14 +42,18 @@
   --font-header:  "Bricolage Grotesque", system-ui, sans-serif;
   --font-body:    "Figtree", system-ui, sans-serif;
 
-  /* Font sizes */
+  /* Font sizes
+     Fluid: each size interpolates between its mobile and desktop value across
+     a 375px–1200px viewport, so type scales smoothly instead of jumping at a
+     breakpoint. Read each clamp as: clamp(mobile, <don't hand-edit>, desktop).
+     The small end (xxs–s) is fixed — body copy must never drop below 16px. */
   --fs-xxs: 0.5625rem; /* 9px */
   --fs-xs:  0.6875rem; /* 11px */
   --fs-s:   1rem;      /* 16px */
-  --fs-m:   1.25rem;   /* 20px */
-  --fs-l:   1.5rem;    /* 24px */
-  --fs-xl:  2.25rem;   /* 36px */
-  --fs-xxl: 3rem;      /* 48px */
+  --fs-m:   clamp(1.125rem, 1.068rem + 0.24vw, 1.25rem);  /* 18px → 20px */
+  --fs-l:   clamp(1.25rem,  1.136rem + 0.48vw, 1.5rem);   /* 20px → 24px */
+  --fs-xl:  clamp(1.5rem,   1.159rem + 1.45vw, 2.25rem);  /* 24px → 36px */
+  --fs-xxl: clamp(2rem,     1.545rem + 1.94vw, 3rem);     /* 32px → 48px */
 
   /* Font weights */
   --fw-light:   300;
@@ -64,41 +68,45 @@
 
   /* --------------- */
   /* --- Spacing --- */
+  /* Micro-spacing (xxs–l) is fixed — a 4px gap is a 4px gap on any screen.
+     Everything from xl up is fluid, because that's the spacing that reads as
+     generous on desktop and as dead space on a phone. */
   /* --spacing-none: 0rem;        0px  */
   --spacing-xxs:     0.25rem;    /* 4px */
   --spacing-xs:      0.5rem;     /* 8px */
   --spacing-s:       0.75rem;    /* 12px */
   --spacing-m:       1rem;       /* 16px */
   --spacing-l:       1.5rem;     /* 24px */
-  --spacing-xl:      2rem;       /* 32px */
-  --spacing-xxl:     3rem;       /* 48px */
+  --spacing-xl:      clamp(1.5rem, 1.273rem + 0.97vw, 2rem);  /* 24px → 32px */
+  --spacing-xxl:     clamp(2rem,   1.545rem + 1.94vw, 3rem);  /* 32px → 48px */
 
-  /* Big */
-  --spacing-big-s: 4rem;       /* 64px */
-  --spacing-big-m: 6rem;       /* 96px */
-  --spacing-big-l: 9rem;      /* 144px */
+  /* Big — section-level rhythm, compresses hardest on mobile */
+  --spacing-big-s: clamp(2.5rem, 1.818rem + 2.91vw, 4rem);   /* 40px →  64px */
+  --spacing-big-m: clamp(3.5rem, 2.364rem + 4.85vw, 6rem);   /* 56px →  96px */
+  --spacing-big-l: clamp(5rem,   3.182rem + 7.76vw, 9rem);   /* 80px → 144px */
 
   /* Page */
-  --page-padding: 2rem;                  /* 32px, the global horizontal padding for page edges */
+  --page-padding: clamp(1rem, 0.545rem + 1.94vw, 2rem);  /* 16px → 32px, horizontal page edges */
+  --navbar-height: 4rem;   /* 64px — fixed, so layout below it can clear it predictably */
 
   /* Page max width */
   --page-max-width-large: 66rem;             /* 1056px */
   --page-max-width-medium: 48rem;            /* 768px */
   --page-max-width-small: 40rem;             /* 640px */
 
-  /* Page section */
-  --section-padding-top: var(--spacing-big-m);       /* 96px */
-  --section-padding-bottom: var(--spacing-big-l);   /* 144px */
+  /* Page section — inherit the fluid range of the big scale they point at */
+  --section-padding-top: var(--spacing-big-m);      /* 56px → 96px */
+  --section-padding-bottom: var(--spacing-big-l);   /* 80px → 144px */
 
   /* Project section */
-  --project-section-padding-bottom: var(--spacing-big-s);   /* 64px — space below every section */
+  --project-section-padding-bottom: var(--spacing-big-s);   /* 40px → 64px — space below every section */
   --project-section-gap: var(--spacing-s);                  /* 12px — default gap between items (header, text) */
-  --project-section-gap-image: var(--spacing-big-s);        /* 64px — gap before an image */
+  --project-section-gap-image: var(--spacing-big-s);        /* 40px → 64px — gap before an image */
 
   /* Image container */
-  --image-padding-vertical-s: var(--spacing-l);   /* 24px */
-  --image-padding-vertical-m: var(--spacing-big-m);   /* 96px */
-  --image-padding-vertical-l: var(--spacing-big-l);   /* 144px */
+  --image-padding-vertical-s: var(--spacing-l);       /* 24px */
+  --image-padding-vertical-m: var(--spacing-big-m);   /* 56px → 96px */
+  --image-padding-vertical-l: var(--spacing-big-l);   /* 80px → 144px */
 
   /* --------------- */
   /* Shadows */
@@ -119,19 +127,22 @@
   --stroke-width-s: 1.2px;
   --stroke-width-m: 2px;
 
+  /* --------------- */
+  /* --- Touch --- */
+  --touch-target-min: 2.75rem;   /* 44px — minimum tappable size (WCAG 2.5.8) */
+
 }
 
-@media (max-width: 48rem) {
-  :root {
-    --page-padding: var(--spacing-l);              /* 20px on mobile */
+/* --------------- */
+/* --- Breakpoints ---
+   The CSS is mobile-first: base rules are the phone layout, and `min-width`
+   queries add complexity as space opens up. Custom properties can't be used
+   inside a media query condition, so these two values are written literally
+   everywhere. Keep them in sync if you ever change them.
 
-    /* Spacing — xxs-m stay put, l and up compress more the bigger they are */
-    --spacing-l:     1.25rem;    /* 20px, was 24px */
-    --spacing-xl:    1.5rem;     /* 24px, was 32px */
-    --spacing-xxl:   2rem;       /* 32px, was 48px */
+     48rem  (768px)  — tablet and up
+     64rem  (1024px) — desktop and up
 
-    --spacing-big-s: 2.5rem;     /* 40px, was 64px */
-    --spacing-big-m: 3.5rem;     /* 56px, was 96px */
-    --spacing-big-l: 5rem;       /* 80px, was 144px */
-  }
-}
+   Most sizing now scales fluidly via the clamp() tokens above, so reach for a
+   breakpoint only when the layout itself has to change (a grid regaining
+   columns, a stacked row becoming horizontal). */

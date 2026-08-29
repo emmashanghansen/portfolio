@@ -32,7 +32,10 @@
 
   <header class="navbar">
     <a href="index.html" class="navbar__logo text-subtitle text-strong">Emma Shang Hansen</a>
-    <nav class="navbar__links">
+    <button class="navbar__toggle" type="button" aria-expanded="false" aria-controls="navbar-links" aria-label="Open menu">
+      <span class="navbar__toggle-bar" aria-hidden="true"></span>
+    </button>
+    <nav id="navbar-links" class="navbar__links" aria-label="Main">
       <a href="index.html" class="button button--tertiary">Home</a>
       <a href="#projects" class="button button--tertiary">Projects</a>
       <a href="mailto:emmashanghansen@gmail.com" class="button button--primary">Copy email</a>
@@ -44,8 +47,8 @@
 
     <section id="home-hero" class="page-container">
         <div class="hero-heading">
-          <h1 class="text-display text-strong">Emma is a <span class="text-display text-underline">UX designer</span><br>and <span class="text-display text-underline">tech enthusiast</span></h1>
-          <p class="text-subtitle text-subtle">Currently designing maritime navigation displays<br>and internal tools at <a href="https://www.jotron.com/" target="_blank" rel="noopener" class="text-underline-hover">Jotron AS</a>.</p>
+          <h1 class="text-display text-strong">Emma is a <span class="text-display text-underline">UX designer</span><br class="br-wide"> and <span class="text-display text-underline">tech enthusiast</span></h1>
+          <p class="text-subtitle text-subtle">Currently designing maritime navigation displays<br class="br-wide"> and internal tools at <a href="https://www.jotron.com/" target="_blank" rel="noopener" class="text-underline-hover">Jotron AS</a>.</p>
         </div>
     </section>
 

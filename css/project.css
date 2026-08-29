@@ -26,21 +26,37 @@
   border-radius: var(--radius-medium);
 }
 
+/* Details stack on a phone, pair up on a tablet, and only spread into a full
+   row once there's width for four columns of prose without them going ragged.
+   auto-fit keeps it correct whether a page has three details or four. */
 .project-hero__details-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1.2fr 1fr;
+  grid-template-columns: 1fr;
   gap: var(--spacing-l);
+  /* .project-hero centres its children, which would otherwise shrink this grid
+     to its content and leave the stacked mobile details floating mid-page */
+  width: 100%;
 }
+
+@media (min-width: 30rem) {
+  .project-hero__details-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 64rem) {
+  /* auto-fit collapses the tracks nothing lands in, so three details spread
+     across three equal columns and four across four — no per-page tuning. */
+  .project-hero__details-grid {
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  }
+}
+
 .project-hero__detail {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-xxs);
-}
-
-@media (max-width: 48rem) {
-  .project-hero__details-grid {
-    grid-template-columns: 1fr 1fr;
-  }
+  min-width: 0;
 }
 
 /* --- Project sections --- */

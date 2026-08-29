@@ -17,22 +17,24 @@
   gap: var(--spacing-xxs);
 }
 
+/* Single column on phones; the masonry-ish second column arrives with the room
+   to hold it. column-count handles the uneven card heights on its own. */
 .projects-grid {
-  column-count: 2;
+  column-count: 1;
   column-gap: var(--spacing-s);
 }
 
 .projects-grid__item {
   break-inside: avoid;
-  margin-bottom: var(--spacing-s);
+  margin-bottom: var(--spacing-m);
 }
 
-@media (max-width: 48rem) {
+@media (min-width: 48rem) {
   .projects-grid {
-    column-count: 1;
+    column-count: 2;
   }
   .projects-grid__item {
-    margin-bottom: var(--spacing-xl);
+    margin-bottom: var(--spacing-s);
   }
 }
 
@@ -50,11 +52,13 @@
   /* border: var(--stroke-width-m) solid var(--colour-stroke-3); */ /* Commented out while shadow is implemented */
   overflow: hidden;
 }
-.project-card:hover {
-  box-shadow: var(--shadow-02);
-}
-.project-card:hover .project-card__image img {
-  transform: scale(1.1);
+@media (hover: hover) {
+  .project-card:hover {
+    box-shadow: var(--shadow-02);
+  }
+  .project-card:hover .project-card__image img {
+    transform: scale(1.1);
+  }
 }
 
 .project-card__image {
@@ -104,53 +108,59 @@
 
 
 /* --------------- */
-/* --- Footer --- */
+/* --- Footer ---
+   Stacked on phones. Deliberately not sticky there: a three-row column pinned
+   to the bottom of a short viewport costs more screen than it earns. */
 .footer {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--spacing-xxl) var(--spacing-xl);
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--spacing-xl);
+  padding: var(--spacing-xxl) var(--page-padding);
   background-color: var(--colour-background-1);
-  position: sticky;
-  bottom: 0;
-  z-index: 0;
 }
 
 .footer__text {
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--spacing-l);
 }
 
 .footer__links {
   display: flex;
-  padding-left: var(--spacing-xl);
-  gap: var(--spacing-m);
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--spacing-xxs);
 }
 
 #footer-cycling-icon {
   padding-bottom: 3px;
 }
 
-@media (max-width: 48rem) {
+@media (min-width: 48rem) {
   .footer {
-    flex-direction: column;
-    align-items: flex-end;
-    gap: var(--spacing-xl);
-    height: auto;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-m);
     padding: var(--spacing-xxl) var(--spacing-xl);
+
+    position: sticky;
+    bottom: 0;
+    z-index: 0;
   }
 
   .footer__text {
-    flex-direction: column;
-    align-items: flex-end;
-    gap: var(--spacing-big-m);
+    flex-direction: row;
+    align-items: center;
+    gap: 0;
   }
 
   .footer__links {
-    flex-direction: column;
-    align-items: flex-end;
+    flex-direction: row;
+    align-items: center;
     gap: var(--spacing-m);
-    padding-left: 0;
+    padding-left: var(--spacing-xl);
   }
 }

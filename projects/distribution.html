@@ -24,7 +24,10 @@
 
   <header class="navbar">
     <a href="../index.html" class="navbar__logo text-subtitle text-strong">Emma Shang Hansen</a>
-    <nav class="navbar__links">
+    <button class="navbar__toggle" type="button" aria-expanded="false" aria-controls="navbar-links" aria-label="Open menu">
+      <span class="navbar__toggle-bar" aria-hidden="true"></span>
+    </button>
+    <nav id="navbar-links" class="navbar__links" aria-label="Main">
       <a href="../index.html" class="button button--tertiary">Home</a>
       <a href="../index.html#projects" class="button button--tertiary">Projects</a>
       <a href="mailto:emmashanghansen@gmail.com" class="button button--primary">Copy email</a>

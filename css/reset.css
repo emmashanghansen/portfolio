@@ -17,6 +17,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  min-height: 100dvh; /* accounts for mobile browser chrome; vh above is the fallback */
   color: var(--colour-foreground-1);
   font-family: var(--font-body);
   font-size: var(--fs-m);
@@ -29,8 +30,12 @@ img {
   height: auto;
 }
 
-a, button {
-  cursor: none;
+/* The custom cursor only runs on fine pointers (see main.js), so the native
+   cursor must stay put on touch and hybrid devices. */
+@media (pointer: fine) {
+  a, button {
+    cursor: none;
+  }
 }
 
 a {

@@ -132,6 +132,54 @@ if (cursor && matchMedia('(pointer: fine)').matches) {
 const navbar = document.querySelector('.navbar');
 const navLinks = document.querySelectorAll('.navbar__links a');
 
+// Single source of truth for the layout breakpoint, matching the 48rem used
+// throughout the CSS. Above it the links live in the bar and the menu concept
+// doesn't exist at all.
+const wideQuery = matchMedia('(min-width: 48rem)');
+
+// --- Mobile menu ---
+const navToggle = document.querySelector('.navbar__toggle');
+const navPanel = document.querySelector('.navbar__links');
+
+if (navToggle && navPanel) {
+  const setMenu = open => {
+    navPanel.classList.toggle('navbar__links--open', open);
+    navToggle.setAttribute('aria-expanded', String(open));
+    navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  };
+
+  const closeMenu = () => setMenu(false);
+
+  navToggle.addEventListener('click', () => {
+    setMenu(navToggle.getAttribute('aria-expanded') !== 'true');
+  });
+
+  // Following a link should never leave the panel hanging open behind the
+  // new scroll position (or the new page, on a same-document anchor).
+  navPanel.addEventListener('click', e => {
+    if (e.target.closest('a')) closeMenu();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Escape') return;
+    if (navToggle.getAttribute('aria-expanded') !== 'true') return;
+    closeMenu();
+    navToggle.focus();
+  });
+
+  // A tap anywhere outside the bar dismisses it, the way a menu is expected to
+  document.addEventListener('click', e => {
+    if (navToggle.getAttribute('aria-expanded') !== 'true') return;
+    if (!e.target.closest('.navbar')) closeMenu();
+  });
+
+  // Resizing past the breakpoint hands the links back to the bar; leaving
+  // aria-expanded="true" behind would misreport a panel that no longer exists.
+  wideQuery.addEventListener('change', e => {
+    if (e.matches) closeMenu();
+  });
+}
+
 navLinks.forEach(link => {
   link.addEventListener('click', e => {
     const href = link.getAttribute('href');
@@ -171,8 +219,9 @@ let suppressTimeout;
 const isHomepage = sectionIds.length > 0;
 
 window.addEventListener('scroll', () => {
-  const isMobile = window.innerWidth <= 768;
-  if (isHomepage && !isMobile) return;
+  if (isHomepage && wideQuery.matches) return;
+  // Hiding the bar while its menu is open would take the open menu with it
+  if (navToggle && navToggle.getAttribute('aria-expanded') === 'true') return;
   const currentScrollY = window.scrollY;
   if (!suppressHide) {
     if (currentScrollY > lastScrollY && currentScrollY > navbar.offsetHeight) {
