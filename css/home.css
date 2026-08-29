@@ -61,7 +61,6 @@
   padding: var(--spacing-xs); /* 8px */
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  background-color: var(--colour-background-2);
 }
 
 .project-card__image img {
