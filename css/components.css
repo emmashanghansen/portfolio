@@ -216,18 +216,14 @@
 .navbar--hidden {
   transform: translateY(-100%);
 }
-.navbar__logo {
-  /* The logo is the longest thing in the bar; let it shrink before it wraps */
+.navbar__logo {   /* The logo is the longest thing in the bar; let it shrink before it wraps */
   min-width: 0;
 }
 .navbar__logo:hover {
   text-decoration: underline;
 }
 
-/* --- Navbar: mobile (base) ---
-   Below 48rem the links live in a panel that drops out of the bar. It's laid
-   out but clipped and inert until .navbar__links--open is set, so the panel can
-   animate rather than pop, and so nothing inside it is tabbable while closed. */
+/* --- Navbar: mobile (base) --- */
 .navbar__links {
   position: absolute;
   top: 100%;

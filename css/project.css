@@ -71,20 +71,20 @@
 .project-section > * + * {                 /* Default gap: applies to every item except the first */
   margin-top: var(--spacing-s);            /* 12px — default gap between items */
 }
-.project-section > .project-section__images {/* Images get a bigger gap before them... */
+.project-section > .project-section__image {/* Images get a bigger gap before them... */
   margin-top: var(--spacing-big-s);         /* 48px → 64px — bigger gap before an image */
 }
-.project-section > .project-section__images + .project-section__images { /* ...but a smaller one when stacked back-to-back */
+.project-section > .project-section__image + .project-section__image { /* ...but a smaller one when stacked back-to-back */
   margin-top: var(--spacing-l);            /* 24px — images stacked back-to-back */
 }
 
-.project-section__images {
+.project-section__image {
   display: flex;
   flex-direction: column;
-  
+  gap: var(--spacing-s);  
 }
 
-.project-section__images img {
+.project-section__image img {
   width: 100%;
   aspect-ratio: 3 / 2;
   object-fit: cover;
@@ -92,12 +92,12 @@
   border-radius: var(--radius-medium);
 }
 
-.project-section__list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-xs);
-  padding-left: var(--spacing-l);
+.project-section__list { /* padding-left and list-style put back what reset.css strips from every ul */
+  padding-left: var(--spacing-l);          /* 24px — room for the bullets */
   list-style: disc;
+}
+.project-section__list > * + * {           /* every item except the first */
+  margin-top: var(--spacing-xs);           /* 8px — gap between list items */
 }
 
 .project-footer {
