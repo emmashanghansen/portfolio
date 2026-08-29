@@ -21,6 +21,12 @@
   margin-bottom: var(--spacing-xs);
 }
 
+@media (max-width: 48rem) {
+  .text-large-title {
+    font-size: var(--fs-l);
+  }
+}
+
 .text-large-body {
   font-family: var(--font-body);
   font-size: var(--fs-m); /* 20px */

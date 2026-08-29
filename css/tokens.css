@@ -79,14 +79,14 @@
   --spacing-big-l: 9rem;      /* 144px */
 
   /* Page */
-  --page-padding: 2rem;                      /* 32px */
-  --page-column-gap: var(--spacing-l);       /* 24px */
-  --page-max-width-home: 66rem;              /* 1056px */
-  --page-max-width-project-header: 48rem;    /* 768px */
-  --page-max-width-project: 40rem;           /* 640px */
+  --page-padding: 2rem;                  /* 32px, the global horizontal padding for page edges */
+
+  /* Page max width */
+  --page-max-width-large: 66rem;             /* 1056px */
+  --page-max-width-medium: 48rem;            /* 768px */
+  --page-max-width-small: 40rem;             /* 640px */
 
   /* Page section */
-  /* --section-padding-top-none: var(--spacing-none);  /* 0px */
   --section-padding-top: var(--spacing-big-m);       /* 96px */
   --section-padding-bottom: var(--spacing-big-l);   /* 144px */
 
@@ -119,4 +119,19 @@
   --stroke-width-s: 1.2px;
   --stroke-width-m: 2px;
 
+}
+
+@media (max-width: 48rem) {
+  :root {
+    --page-padding: var(--spacing-l);              /* 20px on mobile */
+
+    /* Spacing — xxs-m stay put, l and up compress more the bigger they are */
+    --spacing-l:     1.25rem;    /* 20px, was 24px */
+    --spacing-xl:    1.5rem;     /* 24px, was 32px */
+    --spacing-xxl:   2rem;       /* 32px, was 48px */
+
+    --spacing-big-s: 2.5rem;     /* 40px, was 64px */
+    --spacing-big-m: 3.5rem;     /* 56px, was 96px */
+    --spacing-big-l: 5rem;       /* 80px, was 144px */
+  }
 }
