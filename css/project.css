@@ -84,10 +84,12 @@
   gap: var(--spacing-s);  
 }
 
+/* Natural aspect ratio, deliberately. A forced ratio plus object-fit: cover
+   crops whatever doesn't match it, which for UI screenshots means cutting off
+   the interface. These range from 1.33:1 to 3.75:1, so each keeps its own. */
 .project-section__image img {
   width: 100%;
-  aspect-ratio: 3 / 2;
-  object-fit: cover;
+  height: auto;
   box-shadow: var(--shadow-01);
   border-radius: var(--radius-medium);
 }
