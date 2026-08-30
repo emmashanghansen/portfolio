@@ -33,3 +33,23 @@ Use `.page-container` on homepage sections and `.page-container-narrow` inside p
 ## Images
 
 Stored under `images/{homepage,projects,about,global}/`. Use `.webp` format.
+
+## Video
+
+Stored under `videos/projects/<project>/`, mirroring the image folders, and named to match
+the still each one replaces. Encode with:
+
+```
+ffmpeg -i in.mp4 -vf "scale=1536:-2:flags=lanczos" -c:v libx264 -profile:v high \
+  -preset slow -crf 27 -pix_fmt yuv420p -g 60 -an -movflags +faststart out.mp4
+```
+
+1536px is 2x the 768px content column; `-an` because these are silent; `+faststart` so
+playback can begin on the first bytes. H.264 only — it is the one codec every device
+decodes in hardware, which matters more than file size when several loops share a page.
+
+Markup uses the `.project-video` component (see `project.css`): the still sits in normal flow
+and sizes the box, the video is layered over it, and `main.js` fetches it only near the
+viewport and plays it only while on screen. The still is the fallback, so every video
+needs one. Only the wrapper and `.project-video__controls` are named — the image, the video and
+the buttons are reached through the wrapper, so keep the markup to that shape.

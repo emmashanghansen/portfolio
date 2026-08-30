@@ -41,7 +41,7 @@
   line-height: var(--lh-tight);
 }
 
-.text-body-strong, .tag, .button {
+.tag, .button {
   font-family: var(--font-body);
   font-size: var(--fs-s); /* 16px */
   font-weight: var(--fw-medium);
@@ -78,11 +78,14 @@
   text-decoration: underline;
 }
 
+
 .text-strong {
+  font-weight: var(--fw-medium);
+}
+.text-stronger {
   font-weight: var(--fw-semi);
 }
-
-.text-stronger {
+.text-strongest {
   font-weight: var(--fw-bold);
 }
 

@@ -320,3 +320,99 @@ document.querySelectorAll('[data-copy-email]').forEach(button => {
     }, COPIED_MS);
   });
 });
+
+// --- Project videos ---
+// Case-study clips layered over the still they replace. Deferred twice so three
+// looping videos don't sink the page: fetched only when the block is close to
+// the viewport, played only while it's on screen.
+const videoBlocks = document.querySelectorAll('.project-video');
+
+// Data Saver means don't spend the megabytes at all: nothing below runs, so
+// --ready is never added and the still simply stays.
+if (videoBlocks.length && !navigator.connection?.saveData) {
+  const FETCH_MARGIN = '150% 0px'; // runway to buffer in before it's on screen
+  const PLAY_RATIO = 0.15;         // a sliver showing is enough to start
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // The sprite sits at a different depth on the homepage than under /projects/,
+  // so swap the fragment and keep whichever path the markup already used.
+  const setIcon = (use, name) =>
+    use.setAttribute('href', use.getAttribute('href').replace(/#icon-.+$/, `#icon-${name}`));
+
+  videoBlocks.forEach(block => {
+    const video = block.querySelector('video');
+    const toggle = block.querySelector('[data-video-toggle]');
+    const toggleIcon = toggle.querySelector('use');
+    const replay = block.querySelector('[data-video-replay]');
+
+    // Only the buttons set this, so scrolling past never restarts a video the
+    // reader stopped. Reduced motion starts stopped.
+    let pausedByReader = reduceMotion;
+
+    const play = () => video.play()?.catch(() => {}); // autoplay can still be refused
+
+    const syncToggle = () => {
+      setIcon(toggleIcon, video.paused ? 'player-play' : 'player-pause');
+      toggle.setAttribute('aria-label', video.paused ? toggle.dataset.labelPlay : toggle.dataset.labelPause);
+    };
+    video.addEventListener('play', syncToggle);
+    video.addEventListener('pause', syncToggle);
+
+    // One decoded frame is the only thing that reveals the video and its
+    // controls, so a 404 or a codec the browser won't touch leaves just the still.
+    // Arriving on screen and becoming playable race each other, so whichever
+    // lands second is the one that starts it.
+    let onScreen = false;
+    video.addEventListener('loadeddata', () => {
+      block.classList.add('project-video--ready');
+      if (onScreen && !pausedByReader) play();
+    }, { once: true });
+
+    toggle.addEventListener('click', () => {
+      pausedByReader = !video.paused;
+      if (pausedByReader) video.pause();
+      else play();
+    });
+
+    replay.addEventListener('click', () => {
+      video.currentTime = 0;
+      pausedByReader = false;
+      play();
+    });
+
+    new IntersectionObserver(([entry], observer) => {
+      if (!entry.isIntersecting) return;
+      observer.disconnect(); // a file only needs fetching once
+      video.preload = 'auto'; // preload="none" in the markup held it back until here
+      video.src = video.dataset.src;
+    }, { rootMargin: FETCH_MARGIN }).observe(block);
+
+    new IntersectionObserver(([entry]) => {
+      onScreen = entry.isIntersecting;
+      if (!onScreen) video.pause();
+      else if (!pausedByReader) play();
+    }, { threshold: PLAY_RATIO }).observe(block);
+  });
+
+  // Touch has no hover for the controls to ride on, so a tap on the video
+  // reveals them — and only that one, so moving to the next takes them away.
+  if (matchMedia('(hover: none)').matches) {
+    const hideAll = except => videoBlocks.forEach(block => {
+      if (block !== except) block.classList.remove('project-video--controls-visible');
+    });
+
+    videoBlocks.forEach(block => {
+      block.addEventListener('click', e => {
+        if (e.target.closest('.project-video__controls')) return; // pressing a button isn't a request to dismiss it
+        const showing = block.classList.contains('project-video--controls-visible');
+        hideAll(block);
+        block.classList.toggle('project-video--controls-visible', !showing);
+      });
+    });
+
+    // A tap anywhere else dismisses them, the same as the mobile menu does.
+    document.addEventListener('click', e => {
+      if (!e.target.closest('.project-video')) hideAll();
+    });
+  }
+}

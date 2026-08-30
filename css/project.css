@@ -102,6 +102,75 @@
   margin-top: var(--spacing-xs);           /* 8px — gap between list items */
 }
 
+/* --- Project video --- */
+/* Only the still is in flow, so it sizes the box and stays put as the fallback.
+   JS adds --ready once a frame decodes; nothing is revealed before that. */
+
+.project-video {
+  position: relative;
+}
+
+.project-video video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;                    /* the stills are 1.775:1 and the videos 16:9 */
+  border-radius: var(--radius-medium);  /* matches the still underneath */
+  opacity: 0;
+  transition: opacity 400ms ease;
+}
+.project-video--ready video {
+  opacity: 1;
+}
+
+/* --- Project video: controls --- */
+/* Two states, not one: with no video to drive, the buttons are gone entirely;
+   with a video, they are invisible but still reachable by Tab. */
+.project-video__controls {
+  display: none;
+  position: absolute;
+  top: var(--spacing-xs);
+  right: var(--spacing-xs);
+  gap: var(--spacing-xs);
+}
+.project-video--ready .project-video__controls {
+  display: flex;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 160ms ease;
+}
+
+.project-video--ready:is(:focus-within, .project-video--controls-visible) .project-video__controls {
+  opacity: 1;
+  pointer-events: auto;
+}
+@media (hover: hover) {
+  .project-video--ready:hover .project-video__controls {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+.project-video__controls .button {
+  /* Even padding round a 24px icon, matching .scroll-top: 40px square, 44px on touch. */
+  padding: var(--spacing-xs);
+  box-shadow: var(--shadow-02);
+}
+
+/* Nothing autoplays under reduced motion, so the play button can't be waiting
+   behind a hover. */
+@media (prefers-reduced-motion: reduce) {
+  .project-video--ready .project-video__controls {
+    opacity: 1;
+    pointer-events: auto;
+    transition: none;
+  }
+  .project-video video {
+    transition: none;
+  }
+}
+
 /* --- Project footer --- */
 .project-footer {
   display: flex;

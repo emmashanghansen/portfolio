@@ -6,6 +6,15 @@
   <meta name="description" content="Designing an AI-guided ultrasound interface with SINTEF Digital, so rural doctors with no ultrasound training could safely screen for aortic aneurysms.">
   <meta property="og:title" content="Helping rural doctors learn ultrasound with AI guidance — Emma Shang Hansen">
   <meta property="og:description" content="Designing an AI-guided ultrasound interface with SINTEF Digital, so rural doctors with no ultrasound training could safely screen for aortic aneurysms.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://emmashanghansen.github.io/portfolio/projects/pocus.html">
+  <meta property="og:image" content="https://emmashanghansen.github.io/portfolio/images/global/social-preview.png">
+  <meta property="og:image:width" content="2400">
+  <meta property="og:image:height" content="1260">
+  <meta property="og:image:alt" content="The Emma Shang Hansen portfolio homepage, headlined “Emma is a UX designer and tech enthusiast”.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="../css/reset.css">
@@ -15,7 +24,7 @@
   <link rel="stylesheet" href="../css/layout.css">
   <link rel="stylesheet" href="../css/components.css">
   <link rel="stylesheet" href="../css/project.css">
-  <title>Helping rural doctors learn ultrasound with AI guidance — Emma Shang Hansen</title>
+  <title>Helping doctors perform ultrasound examinations with AI guidance — Emma Shang Hansen</title>
 </head>
 <body>
   <div class="custom-cursor" aria-hidden="true"></div>
@@ -23,7 +32,7 @@
   <a href="#main" class="skip-link">Skip to main content</a>
 
   <header class="navbar">
-    <a href="../index.html" class="navbar__logo text-subtitle text-strong">Emma Shang Hansen</a>
+    <a href="../index.html" class="navbar__logo text-subtitle text-stronger">Emma Shang Hansen</a>
     <button class="navbar__toggle" type="button" aria-expanded="false" aria-controls="navbar-links" aria-label="Open menu">
       <span class="navbar__toggle-bar" aria-hidden="true"></span>
     </button>
@@ -44,8 +53,8 @@
 
     <section class="project-hero"> 
       <div class="project-hero__title">
-        <p class="text-subtitle text-subtle">Case study</p>
-        <h1 class="text-large-title">Helping rural doctors learn ultrasound with AI guidance</h1>
+        <p class="text-subtitle text-subtle">UX design</p>
+        <h1 class="text-large-title">Helping doctors perform ultrasound examinations with AI guidance</h1>
       </div>
       <div class="project-hero__image">
         <img src="../images/projects/pocus/hero.webp" width="2130" height="1200" alt="AI POCUS AAA, in collaboration with SINTEF and NTNU, over a photo of a researcher guiding an ultrasound exam on a laptop">
@@ -137,30 +146,63 @@
 
     <!-- Step 1 -->
     <section class="project-section">
-      <h4 class="text-subtitle text-strong">Step 1: Finding aorta</h4>
+      <h4 class="text-subtitle text-stronger">Step 1: Finding aorta</h4>
       <p class="text-body">Tilt the probe. Aorta will be highlighted by AI when it enters the image.</p>
       <div class="project-section__image">
-        <img src="../images/projects/pocus/07-step-1-find-aorta.webp" width="2400" height="1352" alt="Step 1 of the interface: the AI searches while prompting the user to rock the probe slowly" loading="lazy">
+        <div class="project-video">
+          <img src="../images/projects/pocus/07-step-1-find-aorta.webp" width="2400" height="1352" alt="Step 1 of the interface: the AI searches while prompting the user to rock the probe slowly" loading="lazy">
+          <video data-src="../videos/projects/pocus/07-step-1-find-aorta.mp4" preload="none" muted loop playsinline></video>
+          <div class="project-video__controls">
+            <button type="button" class="button button--primary button--no-dock" data-video-toggle data-label-play="Play the step 1 video" data-label-pause="Pause the step 1 video" aria-label="Play the step 1 video">
+              <svg class="icon" aria-hidden="true"><use href="../images/icons/sprite.svg#icon-player-play"/></svg>
+            </button>
+            <button type="button" class="button button--primary button--no-dock" data-video-replay aria-label="Replay the step 1 video">
+              <svg class="icon" aria-hidden="true"><use href="../images/icons/sprite.svg#icon-rotate"/></svg>
+            </button>
+          </div>
+        </div>
         <p class="text-caption text-subtle">The AI searches while the illustration demonstrates the motion — "vugg sakte", rock slowly. Yellow brackets mark where to look.</p>
       </div>
     </section>
 
     <!-- Step 2 -->
     <section class="project-section">
-      <h4 class="text-subtitle text-strong">Step 2: Scanning</h4>
+      <h4 class="text-subtitle text-stronger">Step 2: Scanning</h4>
       <p class="text-body">Follow the aorta down, while the AI continuously measures the diameter.</p>
       <div class="project-section__image">
-        <img src="../images/projects/pocus/08-step-2-scan-aorta.webp" width="2400" height="1352" alt="Step 2: the AI tracks the aorta and prompts the user to slide the probe to centre it" loading="lazy">
+        <div class="project-video">
+          <img src="../images/projects/pocus/08-step-2-scan-aorta.webp" width="2400" height="1352" alt="Step 2: the AI tracks the aorta and prompts the user to slide the probe to centre it" loading="lazy">
+          <video data-src="../videos/projects/pocus/08-step-2-scan-aorta.mp4" preload="none" muted loop playsinline></video>
+          <div class="project-video__controls">
+            <button type="button" class="button button--primary button--no-dock" data-video-toggle data-label-play="Play the step 2 video" data-label-pause="Pause the step 2 video" aria-label="Play the step 2 video">
+              <svg class="icon" aria-hidden="true"><use href="../images/icons/sprite.svg#icon-player-play"/></svg>
+            </button>
+            <button type="button" class="button button--primary button--no-dock" data-video-replay aria-label="Replay the step 2 video">
+              <svg class="icon" aria-hidden="true"><use href="../images/icons/sprite.svg#icon-rotate"/></svg>
+            </button>
+          </div>
+        </div>
         <p class="text-caption text-subtle">The AI has found the aorta, highlighted red near the edge of the image, and asks the user to slide the probe toward the indicator to centre it.</p>
       </div>
     </section>
 
     <!-- Step 3 -->
     <section class="project-section">
-      <h4 class="text-subtitle text-strong">Step 3: Measuring</h4>
+      <h4 class="text-subtitle text-stronger">Step 3: Measuring</h4>
       <p class="text-body">Upon freezing the image, AI automatically measures the diameter. Procedure complete.</p>
       <div class="project-section__image">
-        <img src="../images/projects/pocus/09-step-3-measure.webp" width="2400" height="1352" alt="Step 3: the diameter reads 27 mm, above the 26 mm threshold, and the interface prompts the user to freeze" loading="lazy">
+        <div class="project-video">
+          <img src="../images/projects/pocus/09-step-3-measure.webp" width="2400" height="1352" alt="Step 3: the diameter reads 27 mm, above the 26 mm threshold, and the interface prompts the user to freeze" loading="lazy">
+          <video data-src="../videos/projects/pocus/09-step-3-measure.mp4" preload="none" muted loop playsinline></video>
+          <div class="project-video__controls">
+            <button type="button" class="button button--primary button--no-dock" data-video-toggle data-label-play="Play the step 3 video" data-label-pause="Pause the step 3 video" aria-label="Play the step 3 video">
+              <svg class="icon" aria-hidden="true"><use href="../images/icons/sprite.svg#icon-player-play"/></svg>
+            </button>
+            <button type="button" class="button button--primary button--no-dock" data-video-replay aria-label="Replay the step 3 video">
+              <svg class="icon" aria-hidden="true"><use href="../images/icons/sprite.svg#icon-rotate"/></svg>
+            </button>
+          </div>
+        </div>
         <p class="text-caption text-subtle">The diameter reads 27 mm, above the 26 mm threshold, so the interface prompts a freeze to take the measurement.</p>
       </div>
       <div class="project-section__image">
@@ -206,10 +248,10 @@
 
     <div class="project-footer">
       <div class="project-footer__text">
-        <p class="text-subtitle">Nikita Hair</p>
-        <p class="text-caption text-subtle">Led the redesign of their online booking flow</p>
+        <p class="text-subtitle">Safer medication administration</p>
+        <p class="text-caption text-subtle">Research synthesis, concept refinement and testing</p>
       </div>
-      <a href="nikita.html" class="button button--primary"><span>Next project</span><svg class="icon"><use href="../images/icons/sprite.svg#icon-arrow-right"/></svg></a>
+      <a href="medication.html" class="button button--primary"><span>Next project</span><svg class="icon"><use href="../images/icons/sprite.svg#icon-arrow-right"/></svg></a>
     </div>
 
   </div>

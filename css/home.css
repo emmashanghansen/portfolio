@@ -24,25 +24,21 @@
   column-gap: var(--spacing-s);
 }
 
-.projects-grid__item {
-  break-inside: avoid;
-  margin-bottom: var(--spacing-m);
-}
-
 @media (min-width: 48rem) {
   .projects-grid {
     column-count: 2;
   }
-  .projects-grid__item {
-    margin-bottom: var(--spacing-s);
-  }
 }
 
 /* --- Projects card --- */
+/* The card is the <li> itself, so it carries its own column behaviour: never
+   split across a column break, and space itself from the card below. */
 .project-card {
+  break-inside: avoid;
+  margin-bottom: var(--spacing-m);
+
   display: flex;
   flex-direction: column;
-  height: 100%;
 
   background-color: var(--colour-background-1);
   box-shadow: var(--shadow-01);
@@ -58,6 +54,12 @@
   }
   .project-card:hover .project-card__image img {
     transform: scale(1.1);
+  }
+}
+
+@media (min-width: 48rem) {
+  .project-card {
+    margin-bottom: var(--spacing-s);
   }
 }
 
