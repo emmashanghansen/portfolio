@@ -103,13 +103,18 @@ if (cursor && matchMedia('(hover: hover)').matches) {
     }, DEPART_MS);
   }
 
+  // .button--no-dock is deliberately excluded (see components.css): those
+  // buttons fall through to the branch below and get the plain hover scale,
+  // the same as any other link, instead of swallowing the dot.
+  const DOCKABLE = '.button:not(.button--no-dock)';
+
   document.addEventListener('mouseover', e => {
-    const button = e.target.closest('.button');
+    const button = e.target.closest(DOCKABLE);
     if (button) dock(button);
     else if (e.target.closest('a, button')) cursor.classList.add('custom-cursor--hover');
   });
   document.addEventListener('mouseout', e => {
-    const button = e.target.closest('.button');
+    const button = e.target.closest(DOCKABLE);
     if (button) {
       if (!button.contains(e.relatedTarget)) undock();
     } else if (e.target.closest('a, button')) {
@@ -244,7 +249,7 @@ if (footerIcon) {
     'bubble','yin-yang','brush','robot',
     'cloud', 'seedling','shirt','sun','crown','bulb',
     'mood-smile-beam', 'heart','eyeglass','moon',
-    'mood-smile','canary','ghost-3','slice',
+    'mood-smile','canary','ghost-3',
     'chef-hat','school', 'palette','user-heart','atom',
     'toilet-paper','moon-stars', 'heart'
   ];
@@ -254,3 +259,64 @@ if (footerIcon) {
     footerIconUse.setAttribute('href', `images/icons/sprite.svg#icon-${footerIcons[footerIconIndex]}`);
   }, 300);
 }
+
+// --- Copy email ---
+// The address goes to the clipboard rather than handing off to a mail client:
+// most people read mail in a browser tab, so a mailto: tends to open some
+// unconfigured desktop app and dead-end there. mailto: stays as the last
+// resort, for when the browser gives us no way to write to the clipboard.
+const COPIED_MS = 1600; // long enough to register, short enough not to linger
+
+async function copyToClipboard(text) {
+  if (navigator.clipboard) {
+    try {
+      await navigator.clipboard.writeText(text);
+      return true;
+    } catch {
+      // Permission denied, or an insecure context — try the legacy route.
+    }
+  }
+
+  // Deprecated, but still the only path on a plain http:// or file:// page.
+  const field = document.createElement('textarea');
+  field.value = text;
+  field.readOnly = true;
+  field.style.cssText = 'position:fixed; top:0; left:0; opacity:0;';
+  document.body.appendChild(field);
+  field.select();
+  field.setSelectionRange(0, text.length); // iOS ignores select() on its own
+  let copied = false;
+  try {
+    copied = document.execCommand('copy');
+  } catch {
+    copied = false;
+  }
+  field.remove();
+  return copied;
+}
+
+document.querySelectorAll('[data-copy-email]').forEach(button => {
+  const [restingLabel, copiedLabel] = button.querySelectorAll('.button__labels > *');
+  let resetTimer;
+
+  button.addEventListener('click', async () => {
+    const email = button.dataset.copyEmail;
+    if (!await copyToClipboard(email)) {
+      window.location.href = `mailto:${email}`;
+      return;
+    }
+
+    button.classList.add('button--changed');
+    // Keep the accessible name to whichever label is actually showing — the
+    // button is a live region, so the swap is what announces the copy.
+    restingLabel.setAttribute('aria-hidden', 'true');
+    copiedLabel.removeAttribute('aria-hidden');
+
+    clearTimeout(resetTimer);
+    resetTimer = setTimeout(() => {
+      button.classList.remove('button--changed');
+      restingLabel.removeAttribute('aria-hidden');
+      copiedLabel.setAttribute('aria-hidden', 'true');
+    }, COPIED_MS);
+  });
+});

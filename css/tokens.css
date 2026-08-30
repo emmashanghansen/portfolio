@@ -48,7 +48,7 @@
      breakpoint. Read each clamp as: clamp(mobile, <don't hand-edit>, desktop).
      The small end (xxs–s) is fixed — body copy must never drop below 16px. */
   --fs-xxs: 0.5625rem; /* 9px */
-  --fs-xs:  0.6875rem; /* 11px */
+  --fs-xs:  0.875rem;   /* 14px */
   --fs-s:   1rem;      /* 16px */
   --fs-m:   clamp(1.125rem, 1.068rem + 0.24vw, 1.25rem);  /* 18px → 20px */
   --fs-l:   clamp(1.25rem,  1.136rem + 0.48vw, 1.5rem);   /* 20px → 24px */

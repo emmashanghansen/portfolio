@@ -38,7 +38,12 @@
     <nav id="navbar-links" class="navbar__links" aria-label="Main">
       <a href="index.html" class="button button--tertiary">Home</a>
       <a href="#projects" class="button button--tertiary">Projects</a>
-      <a href="mailto:emmashanghansen@gmail.com" class="button button--primary">Copy email</a>
+      <button type="button" class="button button--primary" data-copy-email="emmashanghansen@gmail.com" aria-live="polite">
+        <span class="button__labels">
+          <span>Copy email</span>
+          <span aria-hidden="true">Email copied</span>
+        </span>
+      </button>
     </nav>
   </header>
 
@@ -71,7 +76,7 @@
                   <p class="text-body">Worked with SINTEF Digital to design an AI tool which guides doctors through life-saving ultrasound exams.</p>
                 </div>
                 <div class="project-card__footer">
-                  <span class="button button--disabled">Coming soon</span>
+                  <a href="projects/pocus.html" class="button button--secondary"><span>Explore the project details</span><svg class="icon"><use href="images/icons/sprite.svg#icon-arrow-right"/></svg></a>
                 </div>
               </div>
             </div>
@@ -122,6 +127,22 @@
             </div>
           </li>
 
+          <li class="projects-grid__item">
+            <div class="project-card">
+              <!-- TODO: needs images/homepage/card-rat.webp — using the shared placeholder until then -->
+              <div class="project-card__image"><img src="images/projects/placeholder.svg" alt="" width="960" height="520"></div>
+              <div class="project-card__info">
+                <div class="project-card__body">
+                  <h3 class="text-subtitle text-strong">Designing an award-winning story game</h3>
+                  <p class="text-body">Storytelling, dialogue, level design and music for Rat with a Postman Hat, which won Best Narrative at Norwegian Game Awards 2024.</p>
+                </div>
+                <div class="project-card__footer">
+                  <a href="projects/rat.html" class="button button--secondary"><span>Explore the project details</span><svg class="icon"><use href="images/icons/sprite.svg#icon-arrow-right"/></svg></a>
+                </div>
+              </div>
+            </div>
+          </li>
+
         </ul>
       </div>
     </section>
@@ -134,8 +155,14 @@
     <div class="footer__text">
       <p class="text-body" aria-label="Created with love">Created with <svg id="footer-cycling-icon" class="icon" aria-hidden="true"><use href="images/icons/sprite.svg#icon-heart"/></svg> <strong>Emma Shang Hansen</strong></p>
       <div class="footer__links">
-        <a href="https://linkedin.com" class="button button--tertiary" target="_blank" rel="noopener">LinkedIn <svg class="icon"><use href="images/icons/sprite.svg#icon-arrow-up-right"/></svg></a>
-        <a href="mailto:emmashanghansen@gmail.com" class="button button--tertiary">Email <svg class="icon"><use href="images/icons/sprite.svg#icon-arrow-up-right"/></svg></a>
+        <a href="https://www.linkedin.com/in/emmashanghansen/" class="button button--tertiary" target="_blank" rel="noopener">LinkedIn <svg class="icon"><use href="images/icons/sprite.svg#icon-arrow-up-right"/></svg></a>
+        <button type="button" class="button button--tertiary" data-copy-email="emmashanghansen@gmail.com" aria-live="polite">
+          <span class="button__labels">
+            <span>Copy email</span>
+            <span aria-hidden="true">Email copied</span>
+          </span>
+          <svg class="icon"><use href="images/icons/sprite.svg#icon-copy"/></svg>
+        </button>
       </div>
     </div>
 

@@ -30,7 +30,12 @@
     <nav id="navbar-links" class="navbar__links" aria-label="Main">
       <a href="../index.html" class="button button--tertiary">Home</a>
       <a href="../index.html#projects" class="button button--tertiary">Projects</a>
-      <a href="mailto:emmashanghansen@gmail.com" class="button button--primary">Copy email</a>
+      <button type="button" class="button button--primary" data-copy-email="emmashanghansen@gmail.com" aria-live="polite">
+        <span class="button__labels">
+          <span>Copy email</span>
+          <span aria-hidden="true">Email copied</span>
+        </span>
+      </button>
     </nav>
   </header>
 
@@ -77,7 +82,7 @@
       <p class="project-section__text text-body">For learning the tool, the approach was direct: make something. We produced a new Figma sketch every meeting, which turned iteration into practice.</p>
       <div class="project-section__image">
         <img src="../images/projects/placeholder.svg" alt="" width="1200" height="800" loading="lazy">
-        <p class="text-body text-subtle">Early working sketches or a photo from a team alignment session</p>
+        <p class="text-caption text-subtle">Early working sketches or a photo from a team alignment session</p>
       </div>
     </section>
 
@@ -99,7 +104,7 @@
 
       <div class="project-section__image">
         <img src="../images/projects/placeholder.svg" alt="" width="1200" height="800" loading="lazy">
-        <p class="text-body text-subtle">Wireframes or brief notes showing these decisions being worked through</p>
+        <p class="text-caption text-subtle">Wireframes or brief notes showing these decisions being worked through</p>
       </div>
     </section>
 
@@ -110,11 +115,11 @@
       <p class="project-section__text text-body">Outside of formal project scope, I also gave the previous winners page a cleanup it badly needed.</p>
       <div class="project-section__image">
         <img src="../images/projects/placeholder.svg" alt="" width="1200" height="800" loading="lazy">
-        <p class="text-body text-subtle">Before / after — homepage</p>
+        <p class="text-caption text-subtle">Before / after — homepage</p>
       </div>
       <div class="project-section__image">
         <img src="../images/projects/placeholder.svg" alt="" width="1200" height="800" loading="lazy">
-        <p class="text-body text-subtle">Before / after — information page or winners page</p>
+        <p class="text-caption text-subtle">Before / after — information page or winners page</p>
       </div>
     </section>
 
@@ -133,7 +138,20 @@
       <p class="project-section__text text-body">Include post-delivery cleanup in the project scope from the start. After handoff, other projects took over and bugs I'd noticed never got fixed.</p>
     </section>
 
-    <div class="project-footer"></div>
+    <div class="scroll-top-slot">
+      <button type="button" class="button button--primary button--no-dock scroll-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <svg class="icon" aria-hidden="true"><use href="../images/icons/sprite.svg#icon-arrow-up"/></svg>
+      </button>
+    </div>
+
+    <div class="project-footer">
+      <a href="nikita.html" class="button button--secondary project-footer__previous"><svg class="icon"><use href="../images/icons/sprite.svg#icon-arrow-left"/></svg><span>Previous project</span></a>
+      <div class="project-footer__text">
+        <p class="text-subtitle">Safer medicine distribution</p>
+        <p class="text-caption text-subtle">Research synthesis, concept refinement and testing</p>
+      </div>
+      <a href="distribution.html" class="button button--primary"><span>Next project</span><svg class="icon"><use href="../images/icons/sprite.svg#icon-arrow-right"/></svg></a>
+    </div>
 
   </div>
   </main>

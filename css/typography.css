@@ -54,6 +54,13 @@
   font-weight: var(--fw-regular);
 }
 
+.text-caption {
+  font-family: var(--font-body);
+  font-size: var(--fs-xs); /* 14px */
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-loose);
+}
+
 
 /* --- Modifiers --- */
 /* Must stay after the type classes to successfully override them */

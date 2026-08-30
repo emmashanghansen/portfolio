@@ -30,7 +30,12 @@
     <nav id="navbar-links" class="navbar__links" aria-label="Main">
       <a href="../index.html" class="button button--tertiary">Home</a>
       <a href="../index.html#projects" class="button button--tertiary">Projects</a>
-      <a href="mailto:emmashanghansen@gmail.com" class="button button--primary">Copy email</a>
+      <button type="button" class="button button--primary" data-copy-email="emmashanghansen@gmail.com" aria-live="polite">
+        <span class="button__labels">
+          <span>Copy email</span>
+          <span aria-hidden="true">Email copied</span>
+        </span>
+      </button>
     </nav>
   </header>
 
@@ -103,17 +108,30 @@
       <p class="project-section__text text-body">The final concept was a set of requirements applicable for most departments: a shared routine with someone responsible for keeping it consistent, digital sign-off for safer record-keeping, a PC near the medicine cart for easy lookups, among other requirements aimed at reducing uncertainty and manual counting.</p>
       <div class="project-section__image">
         <img src="../images/projects/placeholder.svg" alt="" width="1200" height="800" loading="lazy">
-        <p class="text-body text-subtle">Proposed routine</p>
+        <p class="text-caption text-subtle">Proposed routine</p>
       </div>
       <div class="project-section__image">
         <img src="../images/projects/placeholder.svg" alt="" width="1200" height="800" loading="lazy">
-        <p class="text-body text-subtle">Improved user journey</p>
+        <p class="text-caption text-subtle">Improved user journey</p>
       </div>
       <p class="project-section__text text-body">The nurse we had shadowed reviewed the concept during validation and gave feedback on feasibility. We didn't reach management or secure formal sign-off, so whether anything was implemented remains unknown. Our goal had been to design something grounded and feasible with no new infrastructure or budget required.</p>
       <p class="project-section__text text-body">According to our supervisor, outside actors tend to focus on large projects and new technology. But developing better working routines is a small, important area that usually falls to busy nurses to improve themselves. This project reminds me that small changes can have substantial impact too.</p>
     </section>
 
-    <div class="project-footer"></div>
+    <div class="scroll-top-slot">
+      <button type="button" class="button button--primary button--no-dock scroll-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <svg class="icon" aria-hidden="true"><use href="../images/icons/sprite.svg#icon-arrow-up"/></svg>
+      </button>
+    </div>
+
+    <div class="project-footer">
+      <a href="nga.html" class="button button--secondary project-footer__previous"><svg class="icon"><use href="../images/icons/sprite.svg#icon-arrow-left"/></svg><span>Previous project</span></a>
+      <div class="project-footer__text">
+        <p class="text-subtitle">Rat with a Postman Hat</p>
+        <p class="text-caption text-subtle">Storytelling, dialogue, level design and music</p>
+      </div>
+      <a href="rat.html" class="button button--primary"><span>Next project</span><svg class="icon"><use href="../images/icons/sprite.svg#icon-arrow-right"/></svg></a>
+    </div>
 
   </div>
   </main>

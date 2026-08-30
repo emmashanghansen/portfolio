@@ -102,10 +102,29 @@
   margin-top: var(--spacing-xs);           /* 8px — gap between list items */
 }
 
+/* --- Project footer --- */
 .project-footer {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: var(--spacing-xl) var(--page-padding);
+  justify-content: flex-end;
+  gap: var(--spacing-m);
+  width: 100%;
+  padding: var(--spacing-xxl) var(--spacing-none);
   border-top: var(--stroke-width-s) solid var(--colour-stroke-3);
+}
+.project-footer__previous {
+  margin-right: auto;
+}
+.project-footer__text {
+  display: none;
+}
+
+@media (min-width: 48rem) {
+  .project-footer__text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-none);
+    text-align: right;
+    min-width: 0;
+  }
 }

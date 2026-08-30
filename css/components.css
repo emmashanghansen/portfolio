@@ -2,9 +2,11 @@
      1. Icon
      2. Button
      3. Button variants
-     4. Cursor docking slot        (the gap a button opens for the cursor)
-     5. Custom cursor              (the dot itself + its dock/undock flight)
-     6. Navbar                     (bar, mobile panel, hamburger toggle)
+     4. Button: changeable label   (the two stacked labels a copy button trades)
+     5. Cursor docking slot        (the gap a button opens for the cursor)
+     6. Custom cursor              (the dot itself + its dock/undock flight)
+     7. Scroll to top              (the sticky icon button on case studies)
+     8. Navbar                     (bar, mobile panel, hamburger toggle)
 
    Device queries: (hover: hover) = mouse, (hover: none) = touch.
    See tokens.css for why. */
@@ -13,8 +15,11 @@
 .icon {
   display: inline-block;
   vertical-align: middle;
-  width: 1.25rem;
-  height: 1.25rem;
+  /* 24px, the same as the docking slot's --spacing-l. Keeping the two equal is
+     what makes every button 40px tall, docking or not — nothing sets button
+     height directly, it comes from the tallest child. */
+  width: 1.5rem;
+  height: 1.5rem;
   flex-shrink: 0;
 }
 
@@ -23,6 +28,7 @@
   display: inline-flex;
   width: fit-content;
   align-items: center;
+  justify-content: center;   /* Centres a lone icon if a min-* pads the box out */
 
   padding: var(--spacing-xs) var(--spacing-s); /* horizontal: 8px, vertical: 12px */
   gap: var(--spacing-xxs); /* gap: 4px */
@@ -89,7 +95,32 @@
 }
 
 @media (hover: none) { /* Touch only: minimum tappable size (WCAG 2.5.8) */
-  .button {min-height: var(--touch-target-min);}
+  .button {
+    min-height: var(--touch-target-min);
+    min-width: var(--touch-target-min);   /* A button with no label needs the floor in both axes */
+  }
+}
+
+/* --- Button: changeable label --- */
+/* For a button whose label changes on click (the copy-email ones). Takes
+   exactly two children, resting label first, and stacks them in one grid cell
+   so the button always measures the longer of the two. Letting it resize
+   mid-swap would drag the rest of the navbar row sideways (the bar is
+   space-between) and strand the docked cursor dot at a spot that had moved. */
+.button__labels {
+  display: grid;
+  justify-items: center; /* matches .button's own centring; the mobile navbar overrides both together */
+}
+.button__labels > * {
+  grid-area: 1 / 1;
+  transition: opacity 120ms ease;
+}
+.button__labels > :last-child,
+.button--changed .button__labels > :first-child {
+  opacity: 0;
+}
+.button--changed .button__labels > :last-child {
+  opacity: 1;
 }
 
 /* --- Cursor docking slot --- */
@@ -110,6 +141,14 @@
 
 .measuring-dock-target .button::before { /* Momentarily forces the docking slot to its final width with no transition, so JS can measure the settled layout (see dock() in main.js) */
   transition: none !important;
+}
+
+/* Opts a button out of docking altogether: no slot to open here, and main.js
+   skips it too (see its mouseover/mouseout handlers), so the dot keeps its
+   ordinary hover behaviour instead of flying in. Must stay after the rule
+   above — same specificity, so source order is what settles it. */
+.button--no-dock::before {
+  content: none;
 }
 
 
@@ -194,6 +233,28 @@
   }
 }
 
+/* --- Scroll to top --- */
+.scroll-top-slot {
+  position: sticky;
+  bottom: var(--page-padding);
+  z-index: 90;
+
+  display: flex;
+  justify-content: flex-end;
+  height: 0;
+  align-items: flex-end;
+
+  margin-top: calc(-1 * var(--page-padding));
+  margin-bottom: calc(var(--page-padding) - var(--spacing-big-m));
+}
+
+.scroll-top {
+  /* Even padding round a 24px icon: square at 40px, and 44px square on touch
+     once the tap-target floor applies to both axes. */
+  padding: var(--spacing-xs);
+  box-shadow: var(--shadow-02);
+}
+
 /* --- Navbar --- */
 .navbar {
   display: flex;
@@ -255,6 +316,9 @@
   width: 100%;
   justify-content: flex-start;
   min-height: var(--touch-target-min);
+}
+.navbar__links .button__labels {
+  justify-items: start;
 }
 
 /* --- Navbar: hamburger toggle --- */
@@ -336,6 +400,10 @@
     width: auto;
     justify-content: center;
     min-height: 0;
+  }
+
+  .navbar__links .button__labels {
+    justify-items: center;
   }
 }
 

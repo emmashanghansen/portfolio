@@ -30,7 +30,12 @@
     <nav id="navbar-links" class="navbar__links" aria-label="Main">
       <a href="../index.html" class="button button--tertiary">Home</a>
       <a href="../index.html#projects" class="button button--tertiary">Projects</a>
-      <a href="mailto:emmashanghansen@gmail.com" class="button button--primary">Copy email</a>
+      <button type="button" class="button button--primary" data-copy-email="emmashanghansen@gmail.com" aria-live="polite">
+        <span class="button__labels">
+          <span>Copy email</span>
+          <span aria-hidden="true">Email copied</span>
+        </span>
+      </button>
     </nav>
   </header>
 
@@ -76,7 +81,20 @@
     <section class="project-section">
     </section>
 
-    <div class="project-footer"></div>
+    <div class="scroll-top-slot">
+      <button type="button" class="button button--primary button--no-dock scroll-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <svg class="icon" aria-hidden="true"><use href="../images/icons/sprite.svg#icon-arrow-up"/></svg>
+      </button>
+    </div>
+
+    <div class="project-footer">
+      <a href="pocus.html" class="button button--secondary project-footer__previous"><svg class="icon"><use href="../images/icons/sprite.svg#icon-arrow-left"/></svg><span>Previous project</span></a>
+      <div class="project-footer__text">
+        <p class="text-subtitle">Norwegian Game Awards</p>
+        <p class="text-caption text-subtle">Project lead, design and Webflow build</p>
+      </div>
+      <a href="nga.html" class="button button--primary"><span>Next project</span><svg class="icon"><use href="../images/icons/sprite.svg#icon-arrow-right"/></svg></a>
+    </div>
 
   </div>
   </main>
