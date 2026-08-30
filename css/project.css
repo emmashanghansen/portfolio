@@ -72,10 +72,10 @@
   margin-top: var(--spacing-s);            /* 12px — default gap between items */
 }
 .project-section > .project-section__image {/* Images get a bigger gap before them... */
-  margin-top: var(--spacing-big-s);         /* 48px → 64px — bigger gap before an image */
+  margin-top: var(--spacing-l);            /* 24px — gap before an image */
 }
 .project-section > .project-section__image + .project-section__image { /* ...but a smaller one when stacked back-to-back */
-  margin-top: var(--spacing-l);            /* 24px — images stacked back-to-back */
+  margin-top: var(--spacing-s);            /* 12px — images stacked back-to-back */
 }
 
 .project-section__image {
