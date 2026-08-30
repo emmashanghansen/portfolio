@@ -3,6 +3,9 @@
 - [ ] **Image lightbox on project pages** — clicking an image opens it almost
       full-screen, with a close button in the upper right corner.
 
+Bug: project footers need more margin on top, because content collides with the scroll-up button. 
+Bug: The footer doesn't "reveal" like it used to, on mobile. Now it's just static. Make it reveal, like on desktop. 
+
 Add hover/click interactions to the portfolio header.
 Make logo change to color-brand on hover. 
 Add UI and functionality for hover/click tooltips for certain words in projects. 

@@ -179,6 +179,7 @@
   gap: var(--spacing-m);
   width: 100%;
   padding: var(--spacing-xxl) var(--spacing-none);
+  margin-top: var(--spacing-big-s);   /* room for the sticky scroll-top button to land */
   border-top: var(--stroke-width-s) solid var(--colour-stroke-3);
 }
 .project-footer__previous {
