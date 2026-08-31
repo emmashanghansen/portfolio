@@ -241,10 +241,9 @@
 
   display: flex;
   justify-content: flex-end;
-  height: 0;
-  align-items: flex-end;
 
-  margin-top: calc(-1 * var(--page-padding));
+  /* The slot is as tall as the button, so the button reserves its own space
+     instead of overflowing upward into the text above it. */
   margin-bottom: calc(var(--page-padding) - var(--spacing-big-m));
 }
 
