@@ -10,6 +10,7 @@
   color: var(--colour-foreground-1);
   /* Long words (URLs, compound headings) must never push the page sideways */
   overflow-wrap: break-word;
+  text-wrap: balance;
 }
 
 .text-large-title {
@@ -19,12 +20,14 @@
   line-height: var(--lh-tight);
   margin-bottom: var(--spacing-xs);
   overflow-wrap: break-word;
+  text-wrap: balance;
 }
 
 .text-large-body {
   font-family: var(--font-body);
   font-size: var(--fs-m); /* 20px */
   font-weight: var(--fw-regular);
+  text-wrap: pretty;
 }
 
 .text-title {
@@ -32,6 +35,7 @@
   font-size: var(--fs-l); /* 24px */
   font-weight: var(--fw-semi);
   line-height: var(--lh-tight);
+  text-wrap: balance;
 }
 
 .text-subtitle { /* used overline, as tag or section title */
@@ -39,9 +43,10 @@
   font-size: var(--fs-m); /* 20px */
   font-weight: var(--fw-regular);
   line-height: var(--lh-tight);
+  text-wrap: balance;
 }
 
-.tag, .button {
+.button, .tag {
   font-family: var(--font-body);
   font-size: var(--fs-s); /* 16px */
   font-weight: var(--fw-medium);
@@ -52,6 +57,7 @@
   font-family: var(--font-body);
   font-size: var(--fs-s); /* 16px */
   font-weight: var(--fw-regular);
+  text-wrap: pretty;
 }
 
 .text-caption {
@@ -59,6 +65,7 @@
   font-size: var(--fs-xs); /* 14px */
   font-weight: var(--fw-regular);
   line-height: var(--lh-loose);
+  text-wrap: pretty;
 }
 
 
@@ -73,9 +80,16 @@
   text-decoration: underline;
 }
 
-.text-underline-hover:hover,
-.text-underline-hover:focus-visible {
+/* Inline prose links. The underline is the only thing marking these as links, so it
+   stays put and hover thickens it rather than introducing it. */
+.text-link {
   text-decoration: underline;
+  text-decoration-thickness: from-font;
+  text-underline-offset: 0.15em;
+}
+.text-link:hover,
+.text-link:focus-visible {
+  text-decoration-thickness: var(--stroke-width-m);
 }
 
 
@@ -89,14 +103,16 @@
   font-weight: var(--fw-bold);
 }
 
-/* A line break that only takes effect once there's room for the composition it
-   was written for. On a phone the text just wraps wherever it needs to, instead
-   of breaking at a point chosen for a 1000px-wide screen. */
-.br-wide {
-  display: none;
-}
-@media (min-width: 48rem) {
-  .br-wide {
-    display: inline;
-  }
+/* Available to assistive tech, invisible on screen. Not display:none — that would
+   take it out of the accessibility tree along with the layout. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }

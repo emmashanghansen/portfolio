@@ -10,7 +10,12 @@
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 body {
@@ -33,7 +38,8 @@ img {
 /* Mouse only — a phone has no cursor to replace. See tokens.css for what
    (hover: hover) means. */
 @media (hover: hover) {
-  a, button {
+  .has-custom-cursor a,
+  .has-custom-cursor button {
     cursor: none;
   }
 }

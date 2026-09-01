@@ -4,15 +4,11 @@
   /* --- Colours --- */
   /* Base tokens */
   --colour-white: #FFFFFF;
-  --colour-beige: #F9F8F6;
-  --colour-grey-50: #F9FAFB; /*FCFCFB*/
-  --colour-grey-100: #E6E8EB;
-  --colour-grey-500: #6B7384;
-  --colour-grey-800: #383F53;
-  --colour-orange-50: #FDFCFB;
-  --colour-orange-100: #ECE9E6;
-  --colour-orange-500: #80736C;
-  --colour-orange-800: #4C3C34;
+  --colour-grey-50: #FBFCFD;
+  --colour-grey-60: #F5F7FA;
+  --colour-grey-100: #E4E8EE;
+  --colour-grey-500: #68738A;
+  --colour-grey-800: #343A54;
   --colour-red-500: #F5235B;
   --colour-transparent: transparent;
 
@@ -21,11 +17,12 @@
   --colour-shadow-ambient: rgba(0, 0, 0, 12%);
 
   /* Semantic tokens */
+  --colour-brand: var(--colour-red-500);  /* Accent: fills, text, strokes and focus rings */
+
   /* Background for page and containers. Foreground for text and icons. Primary = 1, Secondary = 2, Tertiary = 3. */
   --colour-background-1: var(--colour-white);
   --colour-background-2: var(--colour-grey-50);
   --colour-background-3: var(--colour-grey-100);
-  --colour-background-brand: var(--colour-red-500);
 
   --colour-foreground-1: var(--colour-grey-800);
   --colour-foreground-2: var(--colour-grey-500);

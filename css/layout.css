@@ -4,8 +4,11 @@ html {
   scroll-padding-top: calc(var(--navbar-height) + var(--spacing-m));   /* Keeps in-page anchors (#projects) from landing underneath the fixed navbar */
 }
 
-@media (hover: hover) { /* Mouse only — the custom cursor replaces the native one. See main.js */
-  html {cursor: none;}
+/* Only ever hide the native pointer once main.js has a replacement on screen —
+   the class is the handshake. Without it the CSS could hide the cursor on a page
+   where the script never ran, leaving no pointer at all. */
+@media (hover: hover) {
+  html.has-custom-cursor { cursor: none; }
 }
 
 body {
@@ -67,7 +70,7 @@ section {
 
 /* --- Accessibility --- */
 a:focus-visible, button:focus-visible {
-  outline: 2px solid var(--colour-background-brand);
+  outline: 2px solid var(--colour-brand);
   outline-offset: 2px;
 }
 

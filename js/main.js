@@ -1,7 +1,12 @@
 // Custom cursor
 const cursor = document.querySelector('.custom-cursor');
-// Same test the CSS uses (see tokens.css): only devices with a mouse.
-if (cursor && matchMedia('(hover: hover)').matches) {
+// Same test the CSS uses (see tokens.css): only devices with a mouse. Read as a
+// live query rather than once at load — a tablet gaining a mouse, or DevTools
+// device emulation being switched off, flips this mid-session.
+const hoverQuery = matchMedia('(hover: hover)');
+let cursorReady = false;
+
+function initCustomCursor() {
   const DEPART_MS = 100; // shrink + fade out in place
   const ARRIVE_MS = 260; // grow + fade back in at the destination
 
@@ -135,6 +140,26 @@ if (cursor && matchMedia('(hover: hover)').matches) {
   document.addEventListener('mouseleave', () => cursor.classList.remove('custom-cursor--visible'));
 }
 
+// The class is what licenses the CSS to hide the native pointer, so it goes on
+// only once there is a dot to replace it with, and comes off the moment there
+// isn't. Nothing here can leave the page with no pointer at all.
+function syncCustomCursor() {
+  if (!cursor) return;
+  if (hoverQuery.matches) {
+    if (!cursorReady) {
+      cursorReady = true;
+      initCustomCursor();
+    }
+    document.documentElement.classList.add('has-custom-cursor');
+  } else {
+    document.documentElement.classList.remove('has-custom-cursor');
+    cursor.classList.remove('custom-cursor--visible');
+  }
+}
+
+hoverQuery.addEventListener('change', syncCustomCursor);
+syncCustomCursor();
+
 const navbar = document.querySelector('.navbar');
 const navLinks = document.querySelectorAll('.navbar__links a');
 
@@ -188,6 +213,8 @@ if (navToggle && navPanel) {
 
 navLinks.forEach(link => {
   link.addEventListener('click', e => {
+    // Cmd/Ctrl/Shift-click and middle-click belong to the browser, not to us
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
     const href = link.getAttribute('href');
     suppressHide = true;
     navbar.classList.remove('navbar--hidden');
@@ -200,7 +227,7 @@ navLinks.forEach(link => {
       setTimeout(() => { window.location.href = href; }, 240);
     } else if (!href.startsWith('#')) {
       e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      scrollToTop();
     }
   });
 });
@@ -228,6 +255,14 @@ window.addEventListener('scroll', () => {
   if (isHomepage && wideQuery.matches) return;
   // Hiding the bar while its menu is open would take the open menu with it
   if (navToggle && navToggle.getAttribute('aria-expanded') === 'true') return;
+  // Same for a focus ring inside it: sliding the bar away would carry a focused
+  // link off screen while it still holds focus (WCAG 2.2 — 2.4.11). Reveal rather
+  // than merely skip, so a bar already hidden when focus arrives comes back.
+  if (navbar.contains(document.activeElement)) {
+    navbar.classList.remove('navbar--hidden');
+    lastScrollY = window.scrollY;
+    return;
+  }
   const currentScrollY = window.scrollY;
   if (!suppressHide) {
     if (currentScrollY > lastScrollY && currentScrollY > navbar.offsetHeight) {
@@ -238,6 +273,11 @@ window.addEventListener('scroll', () => {
   }
   lastScrollY = currentScrollY;
 }, { passive: true });
+
+// Tabbing into the bar has to bring it back even with no scroll in between
+if (navbar) {
+  navbar.addEventListener('focusin', () => navbar.classList.remove('navbar--hidden'));
+}
 
 // Footer icon cycling
 const footerIcon = document.getElementById('footer-cycling-icon');
@@ -253,12 +293,52 @@ if (footerIcon) {
     'chef-hat','school', 'palette','user-heart','atom',
     'toilet-paper','moon-stars', 'heart'
   ];
+  // Hovering holds the icon still so you can look at it, and a tap does the same on
+  // touch, where there is no hover to hold. Reduce Motion stops it running at all.
+  const footerIconLine = footerIcon.closest('p') || footerIcon;
   let footerIconIndex = 0;
-  setInterval(() => {
-    footerIconIndex = (footerIconIndex + 1) % footerIcons.length;
-    footerIconUse.setAttribute('href', `images/icons/sprite.svg#icon-${footerIcons[footerIconIndex]}`);
-  }, 300);
+  let footerIconTimer = null;
+  let footerIconHeld = false;
+
+  const cycleFooterIcon = () => {
+    if (footerIconTimer || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    footerIconTimer = setInterval(() => {
+      footerIconIndex = (footerIconIndex + 1) % footerIcons.length;
+      footerIconUse.setAttribute('href', `images/icons/sprite.svg#icon-${footerIcons[footerIconIndex]}`);
+    }, 300);
+  };
+  const holdFooterIcon = () => {
+    clearInterval(footerIconTimer);
+    footerIconTimer = null;
+  };
+
+  footerIconLine.addEventListener('mouseenter', holdFooterIcon);
+  footerIconLine.addEventListener('mouseleave', () => {
+    if (!footerIconHeld) cycleFooterIcon();
+  });
+  footerIconLine.addEventListener('click', () => {
+    footerIconHeld = !footerIconHeld;
+    if (footerIconHeld) holdFooterIcon();
+    else cycleFooterIcon();
+  });
+
+  cycleFooterIcon();
 }
+
+// --- Back to top ---
+// Focus follows the scroll, so the next Tab continues from the top of the page
+// instead of the footer the button sits in.
+function scrollToTop() {
+  const behavior = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+  window.scrollTo({ top: 0, behavior });
+}
+
+document.querySelectorAll('[data-scroll-top]').forEach(button => {
+  button.addEventListener('click', () => {
+    scrollToTop();
+    document.getElementById('main')?.focus({ preventScroll: true });
+  });
+});
 
 // --- Copy email ---
 // The address goes to the clipboard rather than handing off to a mail client:
@@ -278,6 +358,7 @@ async function copyToClipboard(text) {
   }
 
   // Deprecated, but still the only path on a plain http:// or file:// page.
+  const previousFocus = document.activeElement;
   const field = document.createElement('textarea');
   field.value = text;
   field.readOnly = true;
@@ -292,8 +373,11 @@ async function copyToClipboard(text) {
     copied = false;
   }
   field.remove();
+  previousFocus?.focus({ preventScroll: true });
   return copied;
 }
+
+const copyStatus = document.querySelector('[data-copy-status]');
 
 document.querySelectorAll('[data-copy-email]').forEach(button => {
   const [restingLabel, copiedLabel] = button.querySelectorAll('.button__labels > *');
@@ -307,16 +391,20 @@ document.querySelectorAll('[data-copy-email]').forEach(button => {
     }
 
     button.classList.add('button--changed');
-    // Keep the accessible name to whichever label is actually showing — the
-    // button is a live region, so the swap is what announces the copy.
+    // Keep the accessible name to whichever label is actually showing.
     restingLabel.setAttribute('aria-hidden', 'true');
     copiedLabel.removeAttribute('aria-hidden');
+    // The announcement goes through a dedicated status node: a live region on the
+    // button itself has to announce a name change on the focused element, which
+    // screen readers handle inconsistently.
+    if (copyStatus) copyStatus.textContent = 'Email copied';
 
     clearTimeout(resetTimer);
     resetTimer = setTimeout(() => {
       button.classList.remove('button--changed');
       restingLabel.removeAttribute('aria-hidden');
       copiedLabel.setAttribute('aria-hidden', 'true');
+      if (copyStatus) copyStatus.textContent = '';
     }, COPIED_MS);
   });
 });
@@ -342,8 +430,11 @@ if (videoBlocks.length && !navigator.connection?.saveData) {
   videoBlocks.forEach(block => {
     const video = block.querySelector('video');
     const toggle = block.querySelector('[data-video-toggle]');
-    const toggleIcon = toggle.querySelector('use');
     const replay = block.querySelector('[data-video-replay]');
+    const toggleIcon = toggle?.querySelector('use');
+    // A half-authored block skips itself rather than throwing and taking the
+    // remaining videos on the page down with it.
+    if (!video || !toggle || !replay || !toggleIcon) return;
 
     // Only the buttons set this, so scrolling past never restarts a video the
     // reader stopped. Reduced motion starts stopped.
@@ -365,6 +456,13 @@ if (videoBlocks.length && !navigator.connection?.saveData) {
     let onScreen = false;
     video.addEventListener('loadeddata', () => {
       block.classList.add('project-video--ready');
+      // The video now covers the still, so hand the still's description over to it —
+      // otherwise AT sees a described image and an unnamed video for the same content.
+      const still = block.querySelector('img');
+      if (still) {
+        video.setAttribute('aria-label', still.getAttribute('alt') || '');
+        still.setAttribute('aria-hidden', 'true');
+      }
       if (onScreen && !pausedByReader) play();
     }, { once: true });
 

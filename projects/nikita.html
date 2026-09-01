@@ -37,7 +37,6 @@
       <span class="navbar__toggle-bar" aria-hidden="true"></span>
     </button>
     <nav id="navbar-links" class="navbar__links" aria-label="Main">
-      <a href="../index.html" class="button button--tertiary">Home</a>
       <a href="../index.html#projects" class="button button--tertiary">Projects</a>
       <button type="button" class="button button--primary" data-copy-email="emmashanghansen@gmail.com" aria-live="polite">
         <span class="button__labels">
@@ -59,7 +58,7 @@
       <div class="project-hero__image">
         <img src="../images/projects/placeholder.svg" alt="" width="1600" height="900">
       </div>
-      <ul class="project-hero__details-grid">
+      <ul class="project-hero__details-grid" role="list">
         <li class="project-hero__detail">
           <p class="text-body text-subtle">Client</p>
           <p class="text-body">Nikita Hair</p>
@@ -91,13 +90,13 @@
     </section>
 
     <div class="scroll-top-slot">
-      <button type="button" class="button button--primary button--no-dock scroll-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+      <button type="button" class="button button--primary button--no-dock scroll-top" aria-label="Back to top" data-scroll-top>
         <svg class="icon" aria-hidden="true"><use href="../images/icons/sprite.svg#icon-arrow-up"/></svg>
       </button>
     </div>
 
     <div class="project-footer">
-      <a href="nga.html" class="button button--secondary project-footer__previous"><svg class="icon"><use href="../images/icons/sprite.svg#icon-arrow-left"/></svg><span>Previous project</span></a>
+      <a href="nga.html" class="button button--secondary project-footer__previous" aria-label="Previous project: Norwegian Game Awards"><svg class="icon" aria-hidden="true"><use href="../images/icons/sprite.svg#icon-arrow-left"/></svg><span>Previous project</span></a>
     </div>
 
   </div>

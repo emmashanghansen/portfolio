@@ -37,7 +37,6 @@
       <span class="navbar__toggle-bar" aria-hidden="true"></span>
     </button>
     <nav id="navbar-links" class="navbar__links" aria-label="Main">
-      <a href="../index.html" class="button button--tertiary">Home</a>
       <a href="../index.html#projects" class="button button--tertiary">Projects</a>
       <button type="button" class="button button--primary" data-copy-email="emmashanghansen@gmail.com" aria-live="polite">
         <span class="button__labels">
@@ -59,7 +58,7 @@
       <div class="project-hero__image">
         <img src="../images/projects/pocus/hero.webp" width="2130" height="1200" alt="AI POCUS AAA, in collaboration with SINTEF and NTNU, over a photo of a researcher guiding an ultrasound exam on a laptop">
       </div>
-      <ul class="project-hero__details-grid">
+      <ul class="project-hero__details-grid" role="list">
         <li class="project-hero__detail">
           <p class="text-body text-subtle">Client</p>
           <p class="text-body">SINTEF Digital</p>
@@ -93,7 +92,7 @@
       <h2 class="text-subtitle text-subtle">Approach</h2>
       <h3 class="text-title">Two prototypes: Live testing and ideating</h3>
       <p class="text-body">Doctors wanted a fully automated tool to use in their practice, but approving the AI for clinical use was beyond Sintef's scope. To bridge this gap, I created two prototypes:</p>
-      <ul class="project-section__list">
+      <ul class="project-section__list" role="list">
         <li class="text-body">A testable MVP the dev team could realistically build and use in SINTEF's trials.</li>
         <li class="text-body">A video prototype, exploring the ideal scenario with features doctors actually needed.</li>
       </ul>
@@ -110,7 +109,7 @@
       <h3 class="text-title">Lack of confidence and trust</h3>
       <p class="text-body">I came in with no ultrasound knowledge, like the target users. I observed experts, practised on colleagues, and briefly wondered where the challenge was. Until I talked with GPs. For them, a misdiagnosis can have severe consequences, and some feel that they can't afford to experiment. One doctor stated that mental barriers was the main reason they were hesitant. Beyond simply teaching the procedure, I realised the purpose of the tool should be help them feel confident in their decisions.</p>
       <div class="project-section__image">
-        <img src="../images/projects/pocus/02-doctor-quotes.webp" width="1200" height="560" alt="" loading="lazy">
+        <img src="../images/projects/pocus/02-doctor-quotes.webp" width="1200" height="560" alt="Three quotes from doctors: &quot;We're scared to misdiagnose the patient.&quot; &quot;That looks very difficult…&quot; &quot;No one likes drinking coffee the first time.&quot;" loading="lazy">
         <p class="text-caption text-subtle">Quotes from doctors during interviews and workshops.</p>
       </div>
     </section>
@@ -236,12 +235,12 @@
     <!-- Links -->
     <section class="project-section">
       <h2 class="text-subtitle text-subtle">Links</h2>
-      <a href="https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=818bf0c8-7017-4c21-8151-b2eb0160a542" class="button button--secondary" target="_blank" rel="noopener"><span>Watch full video</span><svg class="icon"><use href="../images/icons/sprite.svg#icon-arrow-up-right"/></svg></a>
-      <a href="https://nva.sikt.no/registration/0199c37893d6-d5f80aeb-721f-48d6-8fc2-d94e4ed6e0fd" class="button button--secondary" target="_blank" rel="noopener"><span>Read master's thesis</span><svg class="icon"><use href="../images/icons/sprite.svg#icon-arrow-up-right"/></svg></a>
+      <a href="https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=818bf0c8-7017-4c21-8151-b2eb0160a542" class="button button--secondary" target="_blank" rel="noopener"><span>Watch full video</span><svg class="icon" aria-hidden="true"><use href="../images/icons/sprite.svg#icon-arrow-up-right"/></svg></a>
+      <a href="https://nva.sikt.no/registration/0199c37893d6-d5f80aeb-721f-48d6-8fc2-d94e4ed6e0fd" class="button button--secondary" target="_blank" rel="noopener"><span>Read master's thesis</span><svg class="icon" aria-hidden="true"><use href="../images/icons/sprite.svg#icon-arrow-up-right"/></svg></a>
     </section>
 
     <div class="scroll-top-slot">
-      <button type="button" class="button button--primary button--no-dock scroll-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+      <button type="button" class="button button--primary button--no-dock scroll-top" aria-label="Back to top" data-scroll-top>
         <svg class="icon" aria-hidden="true"><use href="../images/icons/sprite.svg#icon-arrow-up"/></svg>
       </button>
     </div>
@@ -251,7 +250,7 @@
         <p class="text-subtitle">Safer medication administration</p>
         <p class="text-caption text-subtle">Research synthesis, concept refinement and testing</p>
       </div>
-      <a href="medication.html" class="button button--primary"><span>Next project</span><svg class="icon"><use href="../images/icons/sprite.svg#icon-arrow-right"/></svg></a>
+      <a href="medication.html" class="button button--primary" aria-label="Next project: Safer medication administration"><span>Next project</span><svg class="icon" aria-hidden="true"><use href="../images/icons/sprite.svg#icon-arrow-right"/></svg></a>
     </div>
 
   </div>

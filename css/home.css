@@ -4,9 +4,12 @@
 }
 
 .hero-heading {
-  display: flex;
-  flex-direction: column;
   gap: var(--spacing-m);
+}
+@media (min-width: 48rem) {
+  .hero-heading > * {
+    width: 60%;
+  }
 }
 
 
@@ -31,8 +34,6 @@
 }
 
 /* --- Projects card --- */
-/* The card is the <li> itself, so it carries its own column behaviour: never
-   split across a column break, and space itself from the card below. */
 .project-card {
   break-inside: avoid;
   margin-bottom: var(--spacing-m);
@@ -45,16 +46,25 @@
   transition: box-shadow 200ms ease;
 
   border-radius: var(--radius-medium);
-  /* border: var(--stroke-width-m) solid var(--colour-stroke-3); */ /* Commented out while shadow is implemented */
   overflow: hidden;
 }
 @media (hover: hover) {
-  .project-card:hover {
+  .project-card:has(.project-card__link:hover) {
     box-shadow: var(--shadow-02);
   }
-  .project-card:hover .project-card__image img {
-    transform: scale(1.1);
+  .project-card:has(.project-card__link:hover) .project-card__image img {
+    transform: scale(1.05);
   }
+  .project-card:has(.project-card__link:hover) .button--secondary {
+    color: var(--colour-brand);
+    border-color: var(--colour-brand);
+  }
+}
+
+.project-card:has(.project-card__link:active) .button--secondary {
+  background: var(--colour-brand);
+  color: var(--colour-foreground-inverted);
+  transform: scale(0.992);
 }
 
 @media (min-width: 48rem) {
@@ -63,8 +73,19 @@
   }
 }
 
+/* A second way into the case study, over the image only — the text below stays
+   selectable. Hidden from assistive tech, so the button remains the one link. */
+.project-card__link {
+  position: absolute;
+  inset: 0;
+}
+
+/* A border, not padding: overflow then clips the hover zoom at the frame's
+   inner edge. The radius is frame + image radius, so that edge matches the image. */
 .project-card__image {
-  padding: var(--spacing-xs); /* 8px */
+  position: relative;
+  border: var(--spacing-xs) solid var(--colour-background-1);
+  border-radius: calc(var(--spacing-xs) + var(--radius-small));
   aspect-ratio: 16 / 9;
   overflow: hidden;
 }
@@ -75,6 +96,16 @@
   object-fit: cover;
   border-radius: var(--radius-small);
   transition: transform 300ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card,
+  .project-card__image img {
+    transition: none;
+  }
+  .project-card:has(.project-card__link:hover) .project-card__image img {
+    transform: none;
+  }
 }
 
 .project-card__info {

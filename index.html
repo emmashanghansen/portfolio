@@ -37,9 +37,8 @@
       <span class="navbar__toggle-bar" aria-hidden="true"></span>
     </button>
     <nav id="navbar-links" class="navbar__links" aria-label="Main">
-      <a href="index.html" class="button button--tertiary">Home</a>
       <a href="#projects" class="button button--tertiary">Projects</a>
-      <button type="button" class="button button--primary" data-copy-email="emmashanghansen@gmail.com" aria-live="polite">
+      <button type="button" class="button button--primary" data-copy-email="emmashanghansen@gmail.com">
         <span class="button__labels">
           <span>Copy email</span>
           <span aria-hidden="true">Email copied</span>
@@ -51,39 +50,37 @@
   <main id="main" tabindex="-1">
   <div class="main-content">
 
-    <section id="home-hero" class="page-container">
-        <div class="hero-heading">
-          <h1 class="text-display text-stronger">Emma is a <span class="text-display text-underline">UX designer</span><br class="br-wide"> and <span class="text-display text-underline">tech enthusiast</span></h1>
-          <p class="text-subtitle text-subtle">Currently designing maritime navigation displays<br class="br-wide"> and internal tools at <a href="https://www.jotron.com/" target="_blank" rel="noopener" class="text-underline-hover">Jotron AS</a>.</p>
-        </div>
+    <section id="home-hero" class="page-container hero-heading">
+      <h1 class="text-display text-stronger">Emma is a <span class="text-display text-underline">UX designer</span> and <span class="text-display text-underline">tech enthusiast</span></h1>
+      <p class="text-subtitle text-subtle">Currently designing maritime navigation displays and internal tools at <a href="https://www.jotron.com/" target="_blank" rel="noopener" class="text-link">Jotron</a>.</p>
     </section>
 
-    <section id="projects">
+    <section id="projects" aria-labelledby="projects-heading">
       <div class="page-container">
 
-        <ul class="projects-grid">
+        <ul class="projects-grid" role="list">
 
           <li class="project-card">
-            <div class="project-card__image"><img src="images/homepage/card-pocus.webp" alt="AI POCUS AAA, in collaboration with SINTEF and NTNU, over a photo of a researcher guiding an ultrasound exam on a laptop" width="960" height="520"></div>
+            <div class="project-card__image"><img src="images/homepage/card-pocus.webp" alt="AI POCUS AAA, in collaboration with SINTEF and NTNU, over a photo of a researcher guiding an ultrasound exam on a laptop" width="960" height="520"><a class="project-card__link" href="projects/pocus.html" aria-hidden="true" tabindex="-1"></a></div>
             <div class="project-card__info">
               <div class="project-card__body">
                 <h3 class="text-subtitle text-stronger">Helping doctors perform ultrasound examinations with AI guidance</h3>
                 <p class="text-body">Worked with SINTEF to design an AI tool which guides doctors through ultrasound examinations. The tool is being used in their 2026 clinical trials.</p>
               </div>
               <div class="project-card__footer">
-                <a href="projects/pocus.html" class="button button--secondary"><span>Read the case study</span><svg class="icon"><use href="images/icons/sprite.svg#icon-arrow-right"/></svg></a>
+                <a href="projects/pocus.html" class="button button--secondary"><span>Read the case study</span><svg class="icon" aria-hidden="true"><use href="images/icons/sprite.svg#icon-arrow-right"/></svg></a>
               </div>
             </div>
           </li>
           <li class="project-card">
-            <div class="project-card__image"><img src="images/homepage/card-medication-administration.webp" alt="A LEGO prototype of a medicine cart labelled &quot;PC&quot; and &quot;MEDISIN TRALLE&quot;, with a nurse minifigure standing beside it" width="960" height="520"></div>
+            <div class="project-card__image"><img src="images/homepage/card-medication-administration.webp" alt="A LEGO prototype of a medicine cart labelled &quot;PC&quot; and &quot;MEDISIN TRALLE&quot;, with a nurse minifigure standing beside it" width="960" height="520"><a class="project-card__link" href="projects/medication.html" aria-hidden="true" tabindex="-1"></a></div>
             <div class="project-card__info">
               <div class="project-card__body">
                 <h3 class="text-subtitle text-stronger">Safer medication administration for nurses</h3>
                 <p class="text-body">Service design project redesigning a nursing home's medication routine, focusing on value and feasibility.</p>
               </div>
               <div class="project-card__footer">
-                <a href="projects/medication.html" class="button button--secondary"><span>Explore the project details</span><svg class="icon"><use href="images/icons/sprite.svg#icon-arrow-right"/></svg></a>
+                <a href="projects/medication.html" class="button button--secondary"><span>Explore the project details</span><svg class="icon" aria-hidden="true"><use href="images/icons/sprite.svg#icon-arrow-right"/></svg></a>
               </div>
             </div>
           </li>
@@ -95,19 +92,19 @@
                 <p class="text-body">Working closely with developers to design and build tools for handling large data sets and manage documents. Scheduled to go live in September 2026.</p>
               </div>
               <div class="project-card__footer">
-                <span class="button button--disabled">Coming soon</span>
+                <button type="button" class="button button--disabled" disabled>Coming soon</button>
               </div>
             </div>
           </li>
           <li class="project-card">
-            <div class="project-card__image"><img src="images/homepage/card-rat.webp" alt="The game&#39;s title card: &quot;Rat with a Postman Hat&quot; in orange lettering under a blue postman cap, above a wooden sign reading &quot;Best Narrative&quot;, on a dark teal brick wall" width="960" height="520"></div>
+            <div class="project-card__image"><img src="images/homepage/card-rat.webp" alt="The game&#39;s title card: &quot;Rat with a Postman Hat&quot; in orange lettering under a blue postman cap, above a wooden sign reading &quot;Best Narrative&quot;, on a dark teal brick wall" width="960" height="520"><a class="project-card__link" href="projects/rat.html" aria-hidden="true" tabindex="-1"></a></div>
             <div class="project-card__info">
               <div class="project-card__body">
                 <h3 class="text-subtitle text-stronger">Designing an award-winning story game</h3>
                 <p class="text-body">I was in charge of storytelling, level design and more, for a game that won Best Narrative at Norwegian Game Awards 2024.</p>
               </div>
               <div class="project-card__footer">
-                <a href="projects/rat.html" class="button button--secondary"><span>See my tools for creativity</span><svg class="icon"><use href="images/icons/sprite.svg#icon-arrow-right"/></svg></a>
+                <a href="projects/rat.html" class="button button--secondary"><span>See my tools for creativity</span><svg class="icon" aria-hidden="true"><use href="images/icons/sprite.svg#icon-arrow-right"/></svg></a>
               </div>
             </div>
           </li>
@@ -120,22 +117,23 @@
   </main>
 
   <footer class="footer">
+    <span class="visually-hidden" role="status" data-copy-status></span>
 
     <div class="footer__text">
-      <p class="text-body" aria-label="Created with love">Created with <svg id="footer-cycling-icon" class="icon" aria-hidden="true"><use href="images/icons/sprite.svg#icon-heart"/></svg> <strong>Emma Shang Hansen</strong></p>
+      <p class="text-body">Created with <span class="visually-hidden">love</span> <svg id="footer-cycling-icon" class="icon" aria-hidden="true"><use href="images/icons/sprite.svg#icon-heart"/></svg> <strong>Emma Shang Hansen</strong></p>
       <div class="footer__links">
-        <a href="https://www.linkedin.com/in/emmashanghansen/" class="button button--tertiary" target="_blank" rel="noopener">LinkedIn <svg class="icon"><use href="images/icons/sprite.svg#icon-arrow-up-right"/></svg></a>
-        <button type="button" class="button button--tertiary" data-copy-email="emmashanghansen@gmail.com" aria-live="polite">
+        <a href="https://www.linkedin.com/in/emmashanghansen/" class="button button--tertiary" target="_blank" rel="noopener">LinkedIn <svg class="icon" aria-hidden="true"><use href="images/icons/sprite.svg#icon-arrow-up-right"/></svg></a>
+        <button type="button" class="button button--tertiary" data-copy-email="emmashanghansen@gmail.com">
           <span class="button__labels">
             <span>Copy email</span>
             <span aria-hidden="true">Email copied</span>
           </span>
-          <svg class="icon"><use href="images/icons/sprite.svg#icon-copy"/></svg>
+          <svg class="icon" aria-hidden="true"><use href="images/icons/sprite.svg#icon-copy"/></svg>
         </button>
       </div>
     </div>
 
-    <button class="button button--primary" onclick="window.scrollTo({top:0,behavior:'smooth'})">Back to top <svg class="icon"><use href="images/icons/sprite.svg#icon-arrow-up"/></svg></button>
+    <button type="button" class="button button--primary" data-scroll-top>Back to top <svg class="icon" aria-hidden="true"><use href="images/icons/sprite.svg#icon-arrow-up"/></svg></button>
   
   </footer>
 

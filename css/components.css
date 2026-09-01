@@ -47,7 +47,7 @@
   color: var(--colour-foreground-inverted);
 } 
 .button--primary:active {
-  background: var(--colour-background-brand);
+  background: var(--colour-brand);
 }
 
 .button--secondary {
@@ -55,7 +55,7 @@
   border: var(--stroke-width-s) solid var(--colour-stroke-2);
 }
 .button--secondary:active {
-  background: var(--colour-background-brand);
+  background: var(--colour-brand);
   color: var(--colour-foreground-inverted);
 }
 
@@ -82,15 +82,15 @@
     text-decoration: underline;
   }
   .button--primary:hover:not(:active) {
-    background: var(--colour-background-brand);
+    background: var(--colour-brand);
   }
   .button--secondary:hover:not(:active) {
-    color: var(--colour-background-brand);
-    border-color: var(--colour-background-brand);
+    color: var(--colour-brand);
+    border-color: var(--colour-brand);
   }
   .button--tertiary:hover:not(:active) {
     background: color-mix(in srgb, var(--colour-background-3) 45%, transparent);
-    color: var(--colour-background-brand);
+    color: var(--colour-brand);
   }
 }
 
@@ -168,7 +168,7 @@
   width: 24px;
   height: 24px;
   border-radius: var(--radius-circular);
-  background-color: var(--colour-background-brand);
+  background-color: var(--colour-brand);
   pointer-events: none;
   z-index: 9999;
   opacity: 0;
@@ -228,7 +228,14 @@
 
 @media (prefers-reduced-motion: reduce) {
   .custom-cursor,
-  .button::before {
+  .button::before,
+  .navbar {
+    transition: none;
+  }
+  /* The press and hover scales are the motion, not just its timing */
+  .button:active,
+  .button:hover:not(:active) {
+    transform: none;
     transition: none;
   }
 }
@@ -280,6 +287,7 @@
   min-width: 0;
 }
 .navbar__logo:hover {
+  color: var(--colour-brand);
   text-decoration: underline;
 }
 
