@@ -81,12 +81,19 @@ function initCustomCursor() {
       // the true landing spot instead.
       document.documentElement.classList.add('measuring-dock-target');
       const rect = button.getBoundingClientRect();
-      const paddingLeft = parseFloat(getComputedStyle(button).paddingLeft);
+      const style = getComputedStyle(button);
       document.documentElement.classList.remove('measuring-dock-target');
+
+      // The slot is the button's first child, so the dot normally lands inside
+      // the leading edge — opposite the trailing icon. A button whose icon
+      // leads moves its slot to the end, so measure from that edge instead.
+      const dockX = button.classList.contains('button--dock-end')
+        ? rect.right - parseFloat(style.paddingRight) - dockDotRadius
+        : rect.left + parseFloat(style.paddingLeft) + dockDotRadius;
 
       // Cursor is fully hidden at this point (mid-depart), so the jump
       // to the target is imperceptible.
-      cursor.style.left = (rect.left + paddingLeft + dockDotRadius) + 'px';
+      cursor.style.left = dockX + 'px';
       cursor.style.top = (rect.top + rect.height / 2) + 'px';
       cursor.classList.add('custom-cursor--docked');
       beginArrive();

@@ -151,6 +151,21 @@
   content: none;
 }
 
+/* For a button whose icon leads: sends the slot to the far end so the dot and
+   the icon sit on opposite sides, the way they do on a trailing-icon button.
+   dock() in main.js reads the same class to pick which edge to land on. */
+@media (hover: hover) {
+  .button--dock-end::before {
+    order: 1;
+    margin-right: 0;
+    margin-left: calc(-1 * var(--spacing-xxs));
+    transition: width 360ms cubic-bezier(0.34, 1.56, 0.64, 1), margin-left 360ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .button--dock-end:hover::before {
+    margin-left: 0;
+  }
+}
+
 
 /* --- Custom cursor --- */
 /* Touch only: main.js never activates the cursor there, so take the element
