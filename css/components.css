@@ -344,6 +344,17 @@
   justify-items: start;
 }
 
+/* The language switch is not one of the site's own destinations — it swaps which
+   version of the page you are already on. Hugging its label and sitting off to
+   the side says that before the label has to, and keeps the stacked rows above
+   reading as one group. Specificity beats the width:100% rule above; it is reset
+   in the tablet block, where the panel becomes a row and flex-end would drop the
+   link to the bottom of it. */
+.navbar__links a[hreflang] {
+  width: fit-content;
+  align-self: flex-end;
+}
+
 /* --- Navbar: hamburger toggle --- */
 .navbar__toggle {
   display: inline-flex;
@@ -427,6 +438,12 @@
 
   .navbar__links .button__labels {
     justify-items: center;
+  }
+
+  /* The bar is already a right-aligned row that hugs each item, so the mobile
+     panel's alignment would only push the link to the bottom of it. */
+  .navbar__links a[hreflang] {
+    align-self: auto;
   }
 }
 
