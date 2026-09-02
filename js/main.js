@@ -423,6 +423,33 @@ document.querySelectorAll('[data-copy-email]').forEach(button => {
   });
 });
 
+// --- Language banner ---
+// Only the after-the-click half lives here: the banner is hidden before first
+// paint by an inline <head> script on each Norwegian page, because by the time
+// this file runs the page has already been laid out.
+const LANGUAGE_BANNER_KEY = 'language-banner-dismissed';
+
+function rememberLanguageChoice() {
+  try {
+    localStorage.setItem(LANGUAGE_BANNER_KEY, '1');
+  } catch {
+    // Private mode, or site data blocked. The offer simply comes back next visit,
+    // which is a smaller failure than a banner that cannot be got rid of.
+  }
+}
+
+document.querySelector('[data-language-banner-dismiss]')?.addEventListener('click', () => {
+  rememberLanguageChoice();
+  document.documentElement.classList.add('language-banner-off');
+});
+
+// Reaching for the switch at all settles the question, whichever way it is
+// pointed — so stop offering after that, and never nag someone whose browser
+// says one language while they read the other.
+document.querySelectorAll('a[hreflang]').forEach(link => {
+  link.addEventListener('click', rememberLanguageChoice);
+});
+
 // --- Project videos ---
 // Case-study clips layered over the still they replace. Deferred twice so three
 // looping videos don't sink the page: fetched only when the block is close to

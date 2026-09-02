@@ -3,6 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    // Hide the English banner before the first paint for anyone who reads
+    // Norwegian or has already dismissed it, so it never flashes and never
+    // shifts the page. Deliberately not a redirect: browser language is often
+    // just the OS language, and being bounced somewhere you did not ask for is
+    // worse than being offered a link.
+    (function () {
+      try {
+        var langs = navigator.languages || [navigator.language || ''];
+        var readsNorwegian = langs.some(function (l) { return /^(nb|nn|no)(-|$)/i.test(l); });
+        var dismissed = false;
+        try { dismissed = !!localStorage.getItem('language-banner-dismissed'); } catch (e) {}
+        if (readsNorwegian || dismissed) {
+          document.documentElement.classList.add('language-banner-off');
+        }
+      } catch (e) {}
+    })();
+  </script>
   <meta name="description" content="Et tjenestedesignprosjekt med Nasjonalt senter for e-helseforskning, som redesignet legemiddelrutinen på et sykehjem — ikke programvaren — for å gi sykepleierne mer tid til pasientene.">
   <meta property="og:title" content="Mer tid til pasientene for sykepleierne — Emma Shang Hansen">
   <meta property="og:description" content="Et tjenestedesignprosjekt med Nasjonalt senter for e-helseforskning, som redesignet legemiddelrutinen på et sykehjem — ikke programvaren — for å gi sykepleierne mer tid til pasientene.">
@@ -29,8 +47,7 @@
   <link rel="stylesheet" href="../css/layout.css">
   <link rel="stylesheet" href="../css/components.css">
   <link rel="stylesheet" href="../css/project.css">
-  <title>Mer tid til pasientene for sykepleierne — Emma Shang Hansen</title>
-</head>
+  <title>Mer tid til pasientene for sykepleierne — Emma Shang Hansen</title></head>
 <body>
   <div class="custom-cursor" aria-hidden="true"></div>
 
@@ -55,6 +72,14 @@
 
   <main id="main" tabindex="-1">
   <div class="main-content project-body">
+
+    <div class="language-banner" lang="en">
+      <p class="text-body">This case study is also available in English.</p>
+      <div class="language-banner__actions">
+        <a href="../en/projects/medication.html" class="button button--secondary" hreflang="en"><span>Read in English</span><svg class="icon" aria-hidden="true"><use href="../images/icons/sprite.svg#icon-arrow-right"/></svg></a>
+        <button type="button" class="button button--tertiary" data-language-banner-dismiss>Not now</button>
+      </div>
+    </div>
 
     <section class="project-hero">
       <div class="project-hero__title">

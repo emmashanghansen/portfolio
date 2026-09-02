@@ -7,6 +7,7 @@
      6. Custom cursor              (the dot itself + its dock/undock flight)
      7. Scroll to top              (the sticky icon button on case studies)
      8. Navbar                     (bar, mobile panel, hamburger toggle)
+     9. Language banner            (the English offer on the Norwegian pages)
 
    Device queries: (hover: hover) = mouse, (hover: none) = touch.
    See tokens.css for why. */
@@ -435,5 +436,49 @@
   .navbar__toggle-bar::before,
   .navbar__toggle-bar::after {
     transition: none;
+  }
+}
+
+/* --- Language banner ---
+   Offered, never enforced: the site does not redirect on browser language.
+   Only on the Norwegian pages, and only for a visitor whose browser lists no
+   Norwegian at all — English is where everyone else already lands by choice.
+
+   It ships visible in the markup and an inline <head> script hides it before
+   the first paint (see any root page). That way round it neither flashes at a
+   Norwegian reader nor shifts the page down under someone who is already
+   reading. With JS off it simply stays: a link to the English version is a
+   reasonable thing to show anyone. */
+.language-banner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-s);
+  margin-top: var(--spacing-m);
+  padding: var(--spacing-m);
+
+  border-radius: var(--radius-medium);
+  background: var(--colour-background-1);
+  box-shadow: var(--shadow-01);
+}
+
+.language-banner__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+/* The class lands on <html> rather than the banner itself, because the script
+   that sets it runs in <head>, before the banner exists to be hidden. */
+.language-banner-off .language-banner {
+  display: none;
+}
+
+@media (min-width: 48rem) {
+  .language-banner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-m);
   }
 }

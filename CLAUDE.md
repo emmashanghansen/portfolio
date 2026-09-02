@@ -20,6 +20,10 @@ The two trees must stay structurally identical: same classes, same ids, same ord
 same `data-` attributes, same file names. That is what keeps a diff of a page and its
 twin showing only prose. **Any content change on one side must be mirrored on the other.**
 
+The one deliberate exception is the language banner, which exists only on the Norwegian
+pages — see below. Expect a diff of a root page against its English twin to show the
+banner and its `<head>` script, and nothing else structural.
+
 Only these differ between a page and its twin: `<html lang>`, `<title>`, the `meta`
 description, the `og:` tags, `rel="canonical"`, visible text, `alt` text, `aria-label`s,
 the language link, and the number of `../` in asset paths (`en/projects/` sits two levels
@@ -36,6 +40,27 @@ that language (`Norsk` / `English`), and carries `lang` + `hreflang` so a screen
 pronounces the label correctly (WCAG 3.1.2).
 
 Spelling: **`epost`**, never `e-post`.
+
+### Language banner
+
+The site never redirects on browser language. Instead each Norwegian page carries a
+`.language-banner` offering the English version, shown only to a visitor whose browser
+lists no Norwegian at all. There is no banner on the English pages: English is the
+fallback, and anyone reading it got there by choosing to.
+
+It ships **visible** in the markup, and an inline `<script>` in `<head>` hides it before
+first paint by putting `.language-banner-off` on `<html>`. That direction round means a
+Norwegian reader never sees it flash, and an English reader never has the page shift out
+from under them. With JS off, it stays: a link to the English version is harmless.
+
+That script must stay **above the stylesheet links**. A script placed after a
+`<link rel="stylesheet">` waits for that sheet before running, and the Google Fonts
+sheet is the slowest thing on the page — putting it lower reintroduces the flash it
+exists to prevent, and stalls HTML parsing while it waits.
+
+Dismissal is remembered in `localStorage` under `language-banner-dismissed`. Clicking
+any `a[hreflang]` sets it too: reaching for the switch settles the question either way,
+so someone whose browser says one language while they read the other is not nagged.
 
 Strings that live in `main.js` are read from the markup rather than hardcoded, so they
 translate with the page: menu labels via `data-label-open`/`data-label-close`, the
