@@ -43,6 +43,11 @@ Spelling: **`epost`**, never `e-post`.
 
 ### Language banner
 
+**Currently switched off** by a single `display: none` rule at the end of the language
+banner section in `components.css`. Delete that rule to bring it back; everything below
+still describes how it behaves when it is on. The "English" link in the navbar is
+unaffected and stays visible, so there is still a way across for a visitor who needs one.
+
 The site never redirects on browser language. Instead each Norwegian page carries a
 `.language-banner` offering the English version, shown only to a visitor whose browser
 lists no Norwegian at all. There is no banner on the English pages: English is the

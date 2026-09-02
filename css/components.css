@@ -482,3 +482,16 @@
     gap: var(--spacing-m);
   }
 }
+
+/* Off for now. These pages are read mostly by Norwegian employers, and a banner
+   interrupts them to answer a question they never asked. The tertiary "English"
+   link in the navbar still covers the visitor who does need it, without getting
+   in anyone's way.
+
+   Delete this one rule to switch it back on: the markup, the <head> script and
+   the JS in main.js are all still in place. Must stay last in this section —
+   same specificity as the .language-banner rule above, so source order is what
+   settles it. */
+.language-banner {
+  display: none;
+}
