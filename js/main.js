@@ -180,10 +180,12 @@ const navToggle = document.querySelector('.navbar__toggle');
 const navPanel = document.querySelector('.navbar__links');
 
 if (navToggle && navPanel) {
+  // Labels come from the markup so each language ships its own, the same way the
+  // video controls carry data-label-play / data-label-pause.
   const setMenu = open => {
     navPanel.classList.toggle('navbar__links--open', open);
     navToggle.setAttribute('aria-expanded', String(open));
-    navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    navToggle.setAttribute('aria-label', open ? navToggle.dataset.labelClose : navToggle.dataset.labelOpen);
   };
 
   const closeMenu = () => setMenu(false);
@@ -303,6 +305,10 @@ if (footerIcon) {
   // Hovering holds the icon still so you can look at it, and a tap does the same on
   // touch, where there is no hover to hold. Reduce Motion stops it running at all.
   const footerIconLine = footerIcon.closest('p') || footerIcon;
+  // Keep whichever path the markup used and swap only the fragment — the sprite
+  // sits at a different depth per language tree (/index.html vs /en/index.html),
+  // and hardcoding the path here would break the icon on all but one of them.
+  const spritePath = footerIconUse.getAttribute('href').replace(/#icon-.+$/, '');
   let footerIconIndex = 0;
   let footerIconTimer = null;
   let footerIconHeld = false;
@@ -311,7 +317,7 @@ if (footerIcon) {
     if (footerIconTimer || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     footerIconTimer = setInterval(() => {
       footerIconIndex = (footerIconIndex + 1) % footerIcons.length;
-      footerIconUse.setAttribute('href', `images/icons/sprite.svg#icon-${footerIcons[footerIconIndex]}`);
+      footerIconUse.setAttribute('href', `${spritePath}#icon-${footerIcons[footerIconIndex]}`);
     }, 300);
   };
   const holdFooterIcon = () => {
@@ -403,8 +409,9 @@ document.querySelectorAll('[data-copy-email]').forEach(button => {
     copiedLabel.removeAttribute('aria-hidden');
     // The announcement goes through a dedicated status node: a live region on the
     // button itself has to announce a name change on the focused element, which
-    // screen readers handle inconsistently.
-    if (copyStatus) copyStatus.textContent = 'Email copied';
+    // screen readers handle inconsistently. Reading the label out of the button
+    // keeps the announcement in the page's own language.
+    if (copyStatus) copyStatus.textContent = copiedLabel.textContent;
 
     clearTimeout(resetTimer);
     resetTimer = setTimeout(() => {
