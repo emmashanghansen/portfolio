@@ -4,12 +4,47 @@ Emma Shang Hansen's UX design portfolio — static HTML/CSS/JS, no build step, f
 
 ## Files
 
-- `index.html` — homepage with hero and project grid sections (currently skeletal)
-- `projects/project1.html`, `project2.html` — individual case study pages (currently empty)
-- `stylesheet.html` — living style guide / component reference
+- `index.html` — homepage with hero and project grid sections
+- `projects/*.html` — individual case study pages
+- `en/` — the English site, mirroring the two above (see Languages)
 - `js/main.js` — for js
 - `css/reset.css` — browser reset
-- `css/styles.css` — all styles: design tokens → typography classes → layout → components
+- `css/tokens.css`, `typography.css`, `layout.css`, `components.css`, `home.css`, `project.css`
+
+## Languages
+
+Norwegian is the default and lives at the root. English mirrors it under `en/`,
+file for file. `css/`, `js/`, `images/` and `videos/` are shared — never duplicated.
+
+The two trees must stay structurally identical: same classes, same ids, same order,
+same `data-` attributes, same file names. That is what keeps a diff of a page and its
+twin showing only prose. **Any content change on one side must be mirrored on the other.**
+
+Only these differ between a page and its twin: `<html lang>`, `<title>`, the `meta`
+description, the `og:` tags, `rel="canonical"`, visible text, `alt` text, `aria-label`s,
+the language link, and the number of `../` in asset paths (`en/projects/` sits two levels
+deep, so it uses `../../`).
+
+Each page carries `rel="canonical"` plus three `hreflang` alternates (`no`, `en`,
+`x-default` → Norwegian). Google ignores hreflang whose targets are not canonical, so
+the canonical and the `hreflang` for the page's own language must be the same URL.
+
+The language switch is a plain `<a>`, last in `.navbar__links` — last so the mobile
+panel stacks it below Copy email without a flex `order` that would put tab order out of
+step with what you see. It is labelled with the language it switches **to**, written in
+that language (`Norsk` / `English`), and carries `lang` + `hreflang` so a screen reader
+pronounces the label correctly (WCAG 3.1.2).
+
+Spelling: **`epost`**, never `e-post`.
+
+Strings that live in `main.js` are read from the markup rather than hardcoded, so they
+translate with the page: menu labels via `data-label-open`/`data-label-close`, the
+copy-email announcement from the button's own second label. Paths in JS keep whatever
+the markup used and swap only the `#icon-` fragment — hardcoding a relative sprite path
+breaks it at a different tree depth.
+
+`en/projects/nga.html` and `nikita.html` are English-only for now: unfinished and unlinked,
+so they carry no language link and no `hreflang`.
 
 ## Design tokens
 

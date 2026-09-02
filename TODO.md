@@ -44,6 +44,23 @@ Add UI and functionality for hover/click tooltips for certain words in projects.
 - [ ] **og:image URLs are absolute** — every page hardcodes
       `https://emmashanghansen.github.io/portfolio/`. Putting a custom domain on the site
       means rewriting `og:url` and `og:image` everywhere, or link previews break.
+      `rel="canonical"` and the three `hreflang` alternates are now on that list too —
+      five absolute URLs per page instead of two.
+
+- [ ] **Norwegian social preview** — `images/global/social-preview.png` has the English
+      headline baked in, and it is now the default preview for the Norwegian root. A
+      Norwegian render, wired up as `og:image` on the four root pages.
+
+- [ ] **Norwegian nga + nikita** — both are English-only under `en/projects/`. They get
+      root counterparts once the English copy is finished, at which point they also need
+      a language link and `hreflang` alternates.
+
+- [ ] **`#projects` has a dangling `aria-labelledby`** — `index.html` (both languages)
+      points at `projects-heading`, but no element carries that id; `home.css` still
+      styles an unused `.projects-heading`. Either restore the `<h2>` or drop the
+      attribute — as it stands the section has no accessible name. Predates the
+      bilingual work; mirrored into the Norwegian page deliberately, to keep the trees
+      identical.
 
 ## Done
 
