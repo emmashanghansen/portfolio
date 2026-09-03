@@ -220,45 +220,25 @@ if (navToggle && navPanel) {
   });
 }
 
-navLinks.forEach(link => {
-  link.addEventListener('click', e => {
-    // Cmd/Ctrl/Shift-click and middle-click belong to the browser, not to us
-    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
-    const href = link.getAttribute('href');
-    suppressHide = true;
-    navbar.classList.remove('navbar--hidden');
-    clearTimeout(suppressTimeout);
-    suppressTimeout = setTimeout(() => { suppressHide = false; }, 1000);
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    const isSamePage = href.startsWith('#') || href === currentPage;
-    if (!isSamePage) {
-      e.preventDefault();
-      setTimeout(() => { window.location.href = href; }, 240);
-    } else if (!href.startsWith('#')) {
-      e.preventDefault();
-      scrollToTop();
-    }
-  });
-});
-
-// Detect homepage (has in-page section links) — feeds isHomepage below
-const sectionLinkMap = {};
-navLinks.forEach(a => {
-  const href = a.getAttribute('href');
-  if (href && href.startsWith('#')) {
-    const section = document.getElementById(href.slice(1));
-    if (section) sectionLinkMap[href.slice(1)] = a;
-  }
-});
-const sectionIds = Object.keys(sectionLinkMap);
-
 // Hide navbar on scroll down, show on scroll up
 // Always on project pages; on homepage only on mobile (≤768px)
 let lastScrollY = window.scrollY;
 let suppressHide = false;
 let suppressTimeout;
 
-const isHomepage = sectionIds.length > 0;
+// The homepage is the one whose nav links point at sections of the page itself.
+const isHomepage = [...navLinks].some(a => a.getAttribute('href').startsWith('#'));
+
+// Following a nav link holds the bar in place for a moment, so the smooth scroll
+// it triggers doesn't immediately hide the bar you just used.
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    suppressHide = true;
+    navbar.classList.remove('navbar--hidden');
+    clearTimeout(suppressTimeout);
+    suppressTimeout = setTimeout(() => { suppressHide = false; }, 1000);
+  });
+});
 
 window.addEventListener('scroll', () => {
   if (isHomepage && wideQuery.matches) return;
@@ -338,21 +318,6 @@ if (footerIcon) {
   cycleFooterIcon();
 }
 
-// --- Back to top ---
-// Focus follows the scroll, so the next Tab continues from the top of the page
-// instead of the footer the button sits in.
-function scrollToTop() {
-  const behavior = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
-  window.scrollTo({ top: 0, behavior });
-}
-
-document.querySelectorAll('[data-scroll-top]').forEach(button => {
-  button.addEventListener('click', () => {
-    scrollToTop();
-    document.getElementById('main')?.focus({ preventScroll: true });
-  });
-});
-
 // --- Copy email ---
 // The address goes to the clipboard rather than handing off to a mail client:
 // most people read mail in a browser tab, so a mailto: tends to open some
@@ -361,33 +326,12 @@ document.querySelectorAll('[data-scroll-top]').forEach(button => {
 const COPIED_MS = 1600; // long enough to register, short enough not to linger
 
 async function copyToClipboard(text) {
-  if (navigator.clipboard) {
-    try {
-      await navigator.clipboard.writeText(text);
-      return true;
-    } catch {
-      // Permission denied, or an insecure context — try the legacy route.
-    }
-  }
-
-  // Deprecated, but still the only path on a plain http:// or file:// page.
-  const previousFocus = document.activeElement;
-  const field = document.createElement('textarea');
-  field.value = text;
-  field.readOnly = true;
-  field.style.cssText = 'position:fixed; top:0; left:0; opacity:0;';
-  document.body.appendChild(field);
-  field.select();
-  field.setSelectionRange(0, text.length); // iOS ignores select() on its own
-  let copied = false;
   try {
-    copied = document.execCommand('copy');
+    await navigator.clipboard.writeText(text);
+    return true;
   } catch {
-    copied = false;
+    return false; // no clipboard, or permission refused — the caller falls back to mailto:
   }
-  field.remove();
-  previousFocus?.focus({ preventScroll: true });
-  return copied;
 }
 
 const copyStatus = document.querySelector('[data-copy-status]');

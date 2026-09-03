@@ -36,6 +36,8 @@
 
   <a href="#main" class="skip-link">Skip to main content</a>
 
+  <span class="visually-hidden" role="status" data-copy-status></span>
+
   <header class="navbar">
     <a href="../index.html" class="navbar__logo text-subtitle text-stronger">Emma Shang Hansen</a>
     <button class="navbar__toggle" type="button" aria-expanded="false" aria-controls="navbar-links" aria-label="Open menu" data-label-open="Open menu" data-label-close="Close menu">
@@ -43,7 +45,7 @@
     </button>
     <nav id="navbar-links" class="navbar__links" aria-label="Main">
       <a href="../index.html#projects" class="button button--tertiary">Projects</a>
-      <button type="button" class="button button--primary" data-copy-email="emmashanghansen@gmail.com" aria-live="polite">
+      <button type="button" class="button button--primary" data-copy-email="emmashanghansen@gmail.com">
         <span class="button__labels">
           <span>Copy email</span>
           <span aria-hidden="true">Email copied</span>
@@ -64,24 +66,24 @@
       <div class="project-hero__image">
         <img src="../../images/projects/medication/hero.webp" width="2240" height="1260" alt="A LEGO model of a nursing home room: lime-green walls, a tile labelled &quot;PC&quot;, a medicine cart labelled &quot;MEDISIN TRALLE&quot;, and a nurse minifigure standing beside it">
       </div>
-      <ul class="project-hero__details-grid" role="list">
-        <li class="project-hero__detail">
-          <p class="text-body text-subtle">Role</p>
-          <p class="text-body">Service designer</p>
-        </li>
-        <li class="project-hero__detail">
-          <p class="text-body text-subtle">Team</p>
-          <p class="text-body">5 designers</p>
-        </li>
-        <li class="project-hero__detail">
-          <p class="text-body text-subtle">My contribution</p>
-          <p class="text-body">Research<br>Concept design<br>User testing</p>
-        </li>
-        <li class="project-hero__detail">
-          <p class="text-body text-subtle">Timeline</p>
-          <p class="text-body">Semester project</p>
-        </li>
-      </ul>
+      <dl class="project-hero__details-grid">
+        <div class="project-hero__detail">
+          <dt class="text-body text-subtle">Role</dt>
+          <dd class="text-body">Service designer</dd>
+        </div>
+        <div class="project-hero__detail">
+          <dt class="text-body text-subtle">Team</dt>
+          <dd class="text-body">5 designers</dd>
+        </div>
+        <div class="project-hero__detail">
+          <dt class="text-body text-subtle">My contribution</dt>
+          <dd class="text-body">Research<br>Concept design<br>User testing</dd>
+        </div>
+        <div class="project-hero__detail">
+          <dt class="text-body text-subtle">Timeline</dt>
+          <dd class="text-body">Semester project</dd>
+        </div>
+      </dl>
     </section>
 
     <!-- Background -->
@@ -106,10 +108,10 @@
     <section class="project-section">
       <h3 class="text-title">A morning shift at a nursing home</h3>
       <p class="text-body">One team member had a contact at a local nursing home, which gave her access to shadow a real shift. She expected to observe frustrations with software. Instead she saw handwritten notes, post-it reminders, manual counting. The single PC was in the office, so checking the journal meant leaving the medicine cart. Everyone had their own way of doing it. The workflow was the bottleneck.</p>
-      <div class="project-section__image">
+      <figure class="project-section__image">
         <img src="../../images/projects/medication/body-medication.webp" width="2400" height="1552" alt="A user journey map for nursing home staff, in Norwegian, laid out in three swimlanes with red markers on the pain points" loading="lazy">
         <!-- TODO: caption -->
-      </div>
+      </figure>
     </section>
 
     <!-- Ideation -->
@@ -124,54 +126,54 @@
       </ul>
       <p class="text-body">Rather than creating another overambitious student app, we asked:</p>
       <p class="text-body">What would make the existing routine less error-prone and easier to hand off between staff? One shared routine, with digital tools placed where the work actually happens.</p>
-      <div class="project-section__image">
+      <figure class="project-section__image">
         <img src="../../images/projects/medication/body-medication-1.webp" width="2400" height="2008" alt="An impact and effort matrix of the idea bank, in Norwegian, with sticky notes and sketches arranged in a staircase from low to high impact" loading="lazy">
         <!-- TODO: caption -->
-      </div>
+      </figure>
     </section>
 
     <!-- Testing the workflow -->
     <section class="project-section">
       <h3 class="text-title">Testing the workflow</h3>
       <p class="text-body">After an early feedback session with nurses, using a Lego model of the department, we had fellow students simulate the workflow, distributing fruit instead of medicine to remove any familiarity barrier. With paper notes and the old routine, participants improvised their own methods, forgot to sign off medication, and rushed between rooms.</p>
-      <div class="project-section__image">
+      <figure class="project-section__image">
         <img src="../../images/projects/medication/body-medication-2.webp" width="2400" height="1630" alt="A LEGO model of the department: green baseplate rooms with a medicine cart labelled &quot;MEDISIN TRALLE&quot;, a tile labelled &quot;PC&quot;, and a nurse minifigure" loading="lazy">
         <!-- TODO: caption -->
-      </div>
+      </figure>
       <p class="text-body">With simple digital tools and a shared routine, everyone followed the same structure. Nobody forgot to sign off, and there was noticeably less interruption and stress.</p>
       <p class="text-body">Several participants even paused to ask patient Kari how she was doing. In the first round, nobody did.</p>
-      <div class="project-section__image">
+      <figure class="project-section__image">
         <img src="../../images/projects/medication/body-medication-3.webp" width="2400" height="1156" alt="Two photographs from the workflow simulation: a participant handing over a paper note, and two participants working through the routine with patient name cards laid out on the table" loading="lazy">
         <!-- TODO: caption -->
-      </div>
+      </figure>
     </section>
 
     <!-- What we landed on -->
     <section class="project-section">
       <h3 class="text-title">What we landed on</h3>
       <p class="text-body">The final concept was a set of requirements applicable for most departments: a shared routine with someone responsible for keeping it consistent, digital sign-off for safer record-keeping, a PC near the medicine cart for easy lookups, among other requirements aimed at reducing uncertainty and manual counting.</p>
-      <div class="project-section__image">
+      <figure class="project-section__image">
         <img src="../../images/projects/medication/body-medication-4.webp" width="2400" height="1414" alt="A five-panel storyboard of the proposed routine, from accessing patient records at the medication cart through to confirming the given medications digitally" loading="lazy">
-        <p class="text-caption text-subtle">Redesigned medication administration routine</p>
-      </div>
+        <figcaption class="text-caption text-subtle">Redesigned medication administration routine</figcaption>
+      </figure>
       <p class="text-body">The nurse we had shadowed reviewed the concept during validation and gave feedback on feasibility. We didn't reach management or secure formal sign-off, so whether anything was implemented remains unknown. Our goal had been to design something grounded and feasible with no new infrastructure or budget required.</p>
       <p class="text-body">According to our supervisor, outside actors tend to focus on large projects and new technology. But developing better working routines is a small, important area that usually falls to busy nurses to improve themselves. This project reminds me that small changes can have substantial impact too.</p>
     </section>
 
     <div class="scroll-top-slot">
-      <button type="button" class="button button--primary button--no-dock scroll-top" aria-label="Back to top" data-scroll-top>
+      <a href="#main" class="button button--primary button--no-dock scroll-top" aria-label="Back to top">
         <svg class="icon" aria-hidden="true"><use href="../../images/icons/sprite.svg#icon-arrow-up"/></svg>
-      </button>
+      </a>
     </div>
 
-    <div class="project-footer">
+    <nav class="project-footer" aria-label="Case studies">
       <a href="pocus.html" class="button button--secondary project-footer__previous" aria-label="Previous project: Helping doctors perform ultrasound examinations with AI guidance"><svg class="icon" aria-hidden="true"><use href="../../images/icons/sprite.svg#icon-arrow-left"/></svg><span>Previous project</span></a>
       <div class="project-footer__text">
         <p class="text-subtitle">Rat with a Postman Hat</p>
         <p class="text-caption text-subtle">Storytelling, dialogue, level design and music</p>
       </div>
       <a href="rat.html" class="button button--primary" aria-label="Next project: Rat with a Postman Hat"><span>Next project</span><svg class="icon" aria-hidden="true"><use href="../../images/icons/sprite.svg#icon-arrow-right"/></svg></a>
-    </div>
+    </nav>
 
   </div>
   </main>

@@ -53,6 +53,8 @@
 
   <a href="#main" class="skip-link">Hopp til hovedinnhold</a>
 
+  <span class="visually-hidden" role="status" data-copy-status></span>
+
   <header class="navbar">
     <a href="../index.html" class="navbar__logo text-subtitle text-stronger">Emma Shang Hansen</a>
     <button class="navbar__toggle" type="button" aria-expanded="false" aria-controls="navbar-links" aria-label="Åpne meny" data-label-open="Åpne meny" data-label-close="Lukk meny">
@@ -60,7 +62,7 @@
     </button>
     <nav id="navbar-links" class="navbar__links" aria-label="Hoved">
       <a href="../index.html#projects" class="button button--tertiary">Prosjekter</a>
-      <button type="button" class="button button--primary" data-copy-email="emmashanghansen@gmail.com" aria-live="polite">
+      <button type="button" class="button button--primary" data-copy-email="emmashanghansen@gmail.com">
         <span class="button__labels">
           <span>Kopier epost</span>
           <span aria-hidden="true">Epost kopiert</span>
@@ -89,24 +91,24 @@
       <div class="project-hero__image">
         <img src="../images/projects/rat/hero.webp" width="2130" height="1200" alt="Spillets tittelkort: &quot;Rat with a Postman Hat&quot; i oransje bokstaver under en blå postmannslue, over et treskilt der det står &quot;Best Narrative&quot;, på en mørk turkis murvegg">
       </div>
-      <ul class="project-hero__details-grid" role="list">
-        <li class="project-hero__detail">
-          <p class="text-body text-subtle">Rolle</p>
-          <p class="text-body">Forteller<br>Musiker<br>Potet</p>
-        </li>
-        <li class="project-hero__detail">
-          <p class="text-body text-subtle">Team</p>
-          <p class="text-body">2 designere<br>1 utvikler</p>
-        </li>
-        <li class="project-hero__detail">
-          <p class="text-body text-subtle">Mitt bidrag</p>
-          <p class="text-body">Dialog, Worldbuilding, Leveldesign, Soundtrack, Spill-UI</p>
-        </li>
-        <li class="project-hero__detail">
-          <p class="text-body text-subtle">Pris</p>
-          <p class="text-body">Best Narrative – Norwegian Game Awards 2024</p>
-        </li>
-      </ul>
+      <dl class="project-hero__details-grid">
+        <div class="project-hero__detail">
+          <dt class="text-body text-subtle">Rolle</dt>
+          <dd class="text-body">Forteller<br>Musiker<br>Potet</dd>
+        </div>
+        <div class="project-hero__detail">
+          <dt class="text-body text-subtle">Team</dt>
+          <dd class="text-body">2 designere<br>1 utvikler</dd>
+        </div>
+        <div class="project-hero__detail">
+          <dt class="text-body text-subtle">Mitt bidrag</dt>
+          <dd class="text-body">Dialog, Worldbuilding, Leveldesign, Soundtrack, Spill-UI</dd>
+        </div>
+        <div class="project-hero__detail">
+          <dt class="text-body text-subtle">Pris</dt>
+          <dd class="text-body">Best Narrative – Norwegian Game Awards 2024</dd>
+        </div>
+      </dl>
     </section>
 
     <!-- Introduction -->
@@ -155,14 +157,14 @@
     </section>
 
     <div class="scroll-top-slot">
-      <button type="button" class="button button--primary button--no-dock scroll-top" aria-label="Til toppen" data-scroll-top>
+      <a href="#main" class="button button--primary button--no-dock scroll-top" aria-label="Til toppen">
         <svg class="icon" aria-hidden="true"><use href="../images/icons/sprite.svg#icon-arrow-up"/></svg>
-      </button>
+      </a>
     </div>
 
-    <div class="project-footer">
+    <nav class="project-footer" aria-label="Prosjekter">
       <a href="medication.html" class="button button--secondary project-footer__previous" aria-label="Forrige prosjekt: Tryggere legemiddelhåndtering"><svg class="icon" aria-hidden="true"><use href="../images/icons/sprite.svg#icon-arrow-left"/></svg><span>Forrige prosjekt</span></a>
-    </div>
+    </nav>
 
   </div>
   </main>

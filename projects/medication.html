@@ -53,6 +53,8 @@
 
   <a href="#main" class="skip-link">Hopp til hovedinnhold</a>
 
+  <span class="visually-hidden" role="status" data-copy-status></span>
+
   <header class="navbar">
     <a href="../index.html" class="navbar__logo text-subtitle text-stronger">Emma Shang Hansen</a>
     <button class="navbar__toggle" type="button" aria-expanded="false" aria-controls="navbar-links" aria-label="Åpne meny" data-label-open="Åpne meny" data-label-close="Lukk meny">
@@ -60,7 +62,7 @@
     </button>
     <nav id="navbar-links" class="navbar__links" aria-label="Hoved">
       <a href="../index.html#projects" class="button button--tertiary">Prosjekter</a>
-      <button type="button" class="button button--primary" data-copy-email="emmashanghansen@gmail.com" aria-live="polite">
+      <button type="button" class="button button--primary" data-copy-email="emmashanghansen@gmail.com">
         <span class="button__labels">
           <span>Kopier epost</span>
           <span aria-hidden="true">Epost kopiert</span>
@@ -89,24 +91,24 @@
       <div class="project-hero__image">
         <img src="../images/projects/medication/hero.webp" width="2240" height="1260" alt="En Lego-modell av et sykehjemsrom: limegrønne vegger, en brikke merket &quot;PC&quot;, en medisintralle merket &quot;MEDISIN TRALLE&quot;, og en sykepleierfigur ved siden av">
       </div>
-      <ul class="project-hero__details-grid" role="list">
-        <li class="project-hero__detail">
-          <p class="text-body text-subtle">Rolle</p>
-          <p class="text-body">Tjenestedesigner</p>
-        </li>
-        <li class="project-hero__detail">
-          <p class="text-body text-subtle">Team</p>
-          <p class="text-body">5 designere</p>
-        </li>
-        <li class="project-hero__detail">
-          <p class="text-body text-subtle">Mitt bidrag</p>
-          <p class="text-body">Research<br>Konseptdesign<br>Brukertesting</p>
-        </li>
-        <li class="project-hero__detail">
-          <p class="text-body text-subtle">Tidsramme</p>
-          <p class="text-body">Ett semester</p>
-        </li>
-      </ul>
+      <dl class="project-hero__details-grid">
+        <div class="project-hero__detail">
+          <dt class="text-body text-subtle">Rolle</dt>
+          <dd class="text-body">Tjenestedesigner</dd>
+        </div>
+        <div class="project-hero__detail">
+          <dt class="text-body text-subtle">Team</dt>
+          <dd class="text-body">5 designere</dd>
+        </div>
+        <div class="project-hero__detail">
+          <dt class="text-body text-subtle">Mitt bidrag</dt>
+          <dd class="text-body">Research<br>Konseptdesign<br>Brukertesting</dd>
+        </div>
+        <div class="project-hero__detail">
+          <dt class="text-body text-subtle">Tidsramme</dt>
+          <dd class="text-body">Ett semester</dd>
+        </div>
+      </dl>
     </section>
 
     <!-- Background -->
@@ -131,10 +133,10 @@
     <section class="project-section">
       <h3 class="text-title">En morgenvakt på et sykehjem</h3>
       <p class="text-body">Én på teamet hadde en kontakt på et lokalt sykehjem, og fikk dermed være med på en ekte vakt. Hun forventet å se frustrasjon over programvare. I stedet så hun håndskrevne lapper, post-it-påminnelser og manuell telling. Den ene PC-en sto på kontoret, så å sjekke journalen betydde å forlate medisintrallen. Alle hadde sin egen måte å gjøre det på. Workflowen var flaskehalsen.</p>
-      <div class="project-section__image">
+      <figure class="project-section__image">
         <img src="../images/projects/medication/body-medication.webp" width="2400" height="1552" alt="En brukerreise for de ansatte på sykehjemmet, lagt ut i tre baner med røde markører på pain points" loading="lazy">
         <!-- TODO: caption -->
-      </div>
+      </figure>
     </section>
 
     <!-- Ideation -->
@@ -149,54 +151,54 @@
       </ul>
       <p class="text-body">I stedet for å lage enda en overambisiøs studentapp, spurte vi:</p>
       <p class="text-body">Hva ville gjort den eksisterende rutinen mindre utsatt for feil og lettere å overlevere mellom ansatte? Én felles rutine, med digitale verktøy plassert der arbeidet faktisk foregår.</p>
-      <div class="project-section__image">
+      <figure class="project-section__image">
         <img src="../images/projects/medication/body-medication-1.webp" width="2400" height="2008" alt="En impact/effort-matrise over idébanken, med lapper og skisser lagt i en trapp fra lav til høy impact" loading="lazy">
         <!-- TODO: caption -->
-      </div>
+      </figure>
     </section>
 
     <!-- Testing the workflow -->
     <section class="project-section">
       <h3 class="text-title">Å teste workflowen</h3>
       <p class="text-body">Etter en tidlig feedback-runde med sykepleiere, der vi brukte en Lego-modell av avdelingen, lot vi medstudenter simulere workflowen. De delte ut frukt i stedet for medisiner, slik at manglende kjennskap til medisiner ikke skulle stå i veien. Med papirlapper og den gamle rutinen improviserte deltakerne egne metoder, glemte å signere for medisiner og stresset mellom rommene.</p>
-      <div class="project-section__image">
+      <figure class="project-section__image">
         <img src="../images/projects/medication/body-medication-2.webp" width="2400" height="1630" alt="En Lego-modell av avdelingen: rom på grønne byggeplater, med en medisintralle merket &quot;MEDISIN TRALLE&quot;, en brikke merket &quot;PC&quot; og en sykepleierfigur" loading="lazy">
         <!-- TODO: caption -->
-      </div>
+      </figure>
       <p class="text-body">Med enkle digitale verktøy og en felles rutine fulgte alle den samme strukturen. Ingen glemte å signere, og det ble merkbart færre avbrudd og mindre stress.</p>
       <p class="text-body">Flere deltakere stoppet til og med opp for å spørre pasienten Kari hvordan hun hadde det. I den første runden gjorde ingen det.</p>
-      <div class="project-section__image">
+      <figure class="project-section__image">
         <img src="../images/projects/medication/body-medication-3.webp" width="2400" height="1156" alt="To bilder fra simuleringen: en deltaker som gir fra seg en papirlapp, og to deltakere som går gjennom rutinen med navnekort for pasientene liggende på bordet" loading="lazy">
         <!-- TODO: caption -->
-      </div>
+      </figure>
     </section>
 
     <!-- What we landed on -->
     <section class="project-section">
       <h3 class="text-title">Det vi landet på</h3>
       <p class="text-body">Det endelige konseptet var et sett med krav som passer for de fleste avdelinger: en felles rutine med én ansvarlig for å holde den konsekvent, digital signering for tryggere dokumentasjon, og en PC nær medisintrallen for enkle oppslag, i tillegg til andre krav som skulle redusere usikkerhet og manuell telling.</p>
-      <div class="project-section__image">
+      <figure class="project-section__image">
         <img src="../images/projects/medication/body-medication-4.webp" width="2400" height="1414" alt="Et storyboard i fem ruter over den foreslåtte rutinen, fra oppslag i pasientjournalen ved medisintrallen til digital bekreftelse av utdelte medisiner" loading="lazy">
-        <p class="text-caption text-subtle">Redesignet rutine for legemiddelhåndtering</p>
-      </div>
+        <figcaption class="text-caption text-subtle">Redesignet rutine for legemiddelhåndtering</figcaption>
+      </figure>
       <p class="text-body">Sykepleieren vi hadde fulgt, gikk gjennom konseptet i valideringen og ga feedback på hvor gjennomførbart det var. Vi nådde aldri frem til ledelsen og fikk ingen formell godkjenning, så vi vet ikke om noe ble tatt i bruk. Målet vårt var å designe noe jordnært og gjennomførbart, som ikke krevde ny infrastruktur eller nytt budsjett.</p>
       <p class="text-body">Ifølge veilederen vår har eksterne aktører en tendens til å konsentrere seg om store prosjekter og ny teknologi. Men å utvikle bedre arbeidsrutiner er et lite, men viktig område, som oftest blir overlatt til travle sykepleiere å forbedre selv. Prosjektet minner meg om at små endringer også kan ha stor impact.</p>
     </section>
 
     <div class="scroll-top-slot">
-      <button type="button" class="button button--primary button--no-dock scroll-top" aria-label="Til toppen" data-scroll-top>
+      <a href="#main" class="button button--primary button--no-dock scroll-top" aria-label="Til toppen">
         <svg class="icon" aria-hidden="true"><use href="../images/icons/sprite.svg#icon-arrow-up"/></svg>
-      </button>
+      </a>
     </div>
 
-    <div class="project-footer">
+    <nav class="project-footer" aria-label="Prosjekter">
       <a href="pocus.html" class="button button--secondary project-footer__previous" aria-label="Forrige prosjekt: Hjelper leger å gjennomføre ultralydundersøkelser med KI-veiledning"><svg class="icon" aria-hidden="true"><use href="../images/icons/sprite.svg#icon-arrow-left"/></svg><span>Forrige prosjekt</span></a>
       <div class="project-footer__text">
         <p class="text-subtitle">Rat with a Postman Hat</p>
         <p class="text-caption text-subtle">Storytelling, dialog, leveldesign og musikk</p>
       </div>
       <a href="rat.html" class="button button--primary" aria-label="Neste prosjekt: Rat with a Postman Hat"><span>Neste prosjekt</span><svg class="icon" aria-hidden="true"><use href="../images/icons/sprite.svg#icon-arrow-right"/></svg></a>
-    </div>
+    </nav>
 
   </div>
   </main>

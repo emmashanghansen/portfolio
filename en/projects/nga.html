@@ -33,6 +33,8 @@
 
   <a href="#main" class="skip-link">Skip to main content</a>
 
+  <span class="visually-hidden" role="status" data-copy-status></span>
+
   <header class="navbar">
     <a href="../index.html" class="navbar__logo text-subtitle text-stronger">Emma Shang Hansen</a>
     <button class="navbar__toggle" type="button" aria-expanded="false" aria-controls="navbar-links" aria-label="Open menu" data-label-open="Open menu" data-label-close="Close menu">
@@ -40,7 +42,7 @@
     </button>
     <nav id="navbar-links" class="navbar__links" aria-label="Main">
       <a href="../index.html#projects" class="button button--tertiary">Projects</a>
-      <button type="button" class="button button--primary" data-copy-email="emmashanghansen@gmail.com" aria-live="polite">
+      <button type="button" class="button button--primary" data-copy-email="emmashanghansen@gmail.com">
         <span class="button__labels">
           <span>Copy email</span>
           <span aria-hidden="true">Email copied</span>
@@ -60,20 +62,20 @@
       <div class="project-hero__image">
         <img src="../../images/projects/placeholder.svg" alt="" width="1600" height="900">
       </div>
-      <ul class="project-hero__details-grid" role="list">
-        <li class="project-hero__detail">
-          <p class="text-body text-subtle">Organisation</p>
-          <p class="text-body">Designhjelpen</p>
-        </li>
-        <li class="project-hero__detail">
-          <p class="text-body text-subtle">My role</p>
-          <p class="text-body">Project lead, design, Webflow</p>
-        </li>
-        <li class="project-hero__detail">
-          <p class="text-body text-subtle">Team</p>
-          <p class="text-body">4 people</p>
-        </li>
-      </ul>
+      <dl class="project-hero__details-grid">
+        <div class="project-hero__detail">
+          <dt class="text-body text-subtle">Organisation</dt>
+          <dd class="text-body">Designhjelpen</dd>
+        </div>
+        <div class="project-hero__detail">
+          <dt class="text-body text-subtle">My role</dt>
+          <dd class="text-body">Project lead, design, Webflow</dd>
+        </div>
+        <div class="project-hero__detail">
+          <dt class="text-body text-subtle">Team</dt>
+          <dd class="text-body">4 people</dd>
+        </div>
+      </dl>
     </section>
 
     <!-- The problem -->
@@ -90,10 +92,10 @@
       <h2 class="text-subtitle text-subtle">Process</h2>
       <p class="text-body">This was an open problem with few hard constraints, which meant the whole team could contribute meaningfully from the start. Rather than moving straight to solutions, we each stated our unbiased personal read on the problem first. The goal was to surface where our assumptions aligned and where they diverged, then reach a shared understanding before defining the brief.</p>
       <p class="text-body">For learning the tool, the approach was direct: make something. We produced a new Figma sketch every meeting, which turned iteration into practice.</p>
-      <div class="project-section__image">
+      <figure class="project-section__image">
         <img src="../../images/projects/placeholder.svg" alt="" width="1200" height="800" loading="lazy">
-        <p class="text-caption text-subtle">Early working sketches or a photo from a team alignment session</p>
-      </div>
+        <figcaption class="text-caption text-subtle">Early working sketches or a photo from a team alignment session</figcaption>
+      </figure>
     </section>
 
     <!-- Shaping the brief -->
@@ -112,10 +114,10 @@
       <h3 class="text-subtitle text-stronger">The game-levels roadmap</h3>
       <p class="text-body">At one point I considered a roadmap that looked like game levels — on theme, memorable, and genuinely fun. I decided against it. NGA needed to be able to maintain the site independently. Building something that required specialist knowledge to update every year would mean it'd be outdated within months of handoff. I'd rather build something that outlasts the project than something that impresses during delivery.</p>
 
-      <div class="project-section__image">
+      <figure class="project-section__image">
         <img src="../../images/projects/placeholder.svg" alt="" width="1200" height="800" loading="lazy">
-        <p class="text-caption text-subtle">Wireframes or brief notes showing these decisions being worked through</p>
-      </div>
+        <figcaption class="text-caption text-subtle">Wireframes or brief notes showing these decisions being worked through</figcaption>
+      </figure>
     </section>
 
     <!-- Solution -->
@@ -123,14 +125,14 @@
       <h2 class="text-subtitle text-subtle">Solution</h2>
       <p class="text-body">The visual identity moved from uninspiring grey and muddy green to punchy green on dark blue. Critical information — deadlines, how to participate — is visible in the hero section, with a clear call to action to register. Navigation is clearer, information is easier to find, and the hierarchy on each page does the work that long paragraphs used to bury.</p>
       <p class="text-body">Outside of formal project scope, I also gave the previous winners page a cleanup it badly needed.</p>
-      <div class="project-section__image">
+      <figure class="project-section__image">
         <img src="../../images/projects/placeholder.svg" alt="" width="1200" height="800" loading="lazy">
-        <p class="text-caption text-subtle">Before / after — homepage</p>
-      </div>
-      <div class="project-section__image">
+        <figcaption class="text-caption text-subtle">Before / after — homepage</figcaption>
+      </figure>
+      <figure class="project-section__image">
         <img src="../../images/projects/placeholder.svg" alt="" width="1200" height="800" loading="lazy">
-        <p class="text-caption text-subtle">Before / after — information page or winners page</p>
-      </div>
+        <figcaption class="text-caption text-subtle">Before / after — information page or winners page</figcaption>
+      </figure>
     </section>
 
     <!-- Outcome -->
@@ -149,19 +151,19 @@
     </section>
 
     <div class="scroll-top-slot">
-      <button type="button" class="button button--primary button--no-dock scroll-top" aria-label="Back to top" data-scroll-top>
+      <a href="#main" class="button button--primary button--no-dock scroll-top" aria-label="Back to top">
         <svg class="icon" aria-hidden="true"><use href="../../images/icons/sprite.svg#icon-arrow-up"/></svg>
-      </button>
+      </a>
     </div>
 
-    <div class="project-footer">
+    <nav class="project-footer" aria-label="Case studies">
       <a href="rat.html" class="button button--secondary project-footer__previous" aria-label="Previous project: Rat with a Postman Hat"><svg class="icon" aria-hidden="true"><use href="../../images/icons/sprite.svg#icon-arrow-left"/></svg><span>Previous project</span></a>
       <div class="project-footer__text">
         <p class="text-subtitle">Nikita Hair</p>
         <p class="text-caption text-subtle">Led the redesign of their online booking flow</p>
       </div>
       <a href="nikita.html" class="button button--primary" aria-label="Next project: Nikita Hair"><span>Next project</span><svg class="icon" aria-hidden="true"><use href="../../images/icons/sprite.svg#icon-arrow-right"/></svg></a>
-    </div>
+    </nav>
 
   </div>
   </main>
