@@ -67,8 +67,9 @@ Add UI and functionality for hover/click tooltips for certain words in projects.
 - [x] **WCAG 2.2 AA pass** — audit plus remediation across all six pages. Full findings,
   accepted deviations and verification steps in
   `~/.claude/plans/audit-this-website-based-starry-island.md`.
-- [x] **Projects heading** — restored as an `<h2>`, which also gave `#projects` an
-  accessible name via `aria-labelledby`.
+- [x] **Projects heading** — the homepage has no visible heading over the grid. The cards
+  are `<h2>` (so there is no h1→h3 jump) and `#projects` names itself with `aria-label`.
+  The earlier `aria-labelledby="projects-heading"` pointed at an id that did not exist.
 - [x] **Doctor quotes alt text** — the three quotes are now transcribed into the `alt`.
 
 - [x] **Site assets** — all three now exist and are linked on every page:

@@ -309,13 +309,13 @@ Not code quality, but found while reading and worth acting on before anything el
 - `images/global/logo-brown-no_bg-41230c.webp` is unreferenced.
 - `.DS_Store` files are committed at the repo root and in `images/`. Add a `.gitignore`.
 - Empty placeholder directories: `images/about/`, `images/global/`, `images/projects/project1/`.
-- **`CLAUDE.md` is badly out of date and now actively misleading.** It documents
-  `stylesheet.html`, `css/styles.css`, `projects/project1.html` and `projects/project2.html`
-  — none of which exist. It lists token names (`--colour-background-{1,2}`,
-  `--spacing-{s-64,m-96,l-144}`, `--page-max-width-home`) that do not match `tokens.css`.
-  And it describes a single-language site, with no mention of the `/en/` split, the language
-  banner, or which tree is canonical. Fix this early: it is the file that tells an assistant
-  how to work on this repo.
+- ~~**`CLAUDE.md` is out of date.**~~ **Fixed in this branch.** Its Files and Languages
+  sections were accurate and thorough about the `/en/` split. Everything below them was
+  not: it pointed at `css/styles.css`, and listed `--page-max-width-home`,
+  `--spacing-{s-64,m-96,l-144}`, `.text-body-strong`, `.page-container-narrow` and a
+  `.section` class, none of which exist. Those are corrected, and a new **Elements**
+  section documents the markup patterns this branch introduced so the next contributor
+  does not reach for a div.
 
 ---
 
