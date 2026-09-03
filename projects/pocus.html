@@ -31,6 +31,8 @@
 
   <a href="#main" class="skip-link">Skip to main content</a>
 
+  <span class="visually-hidden" role="status" data-copy-status></span>
+
   <header class="navbar">
     <a href="../index.html" class="navbar__logo text-subtitle text-stronger">Emma Shang Hansen</a>
     <button class="navbar__toggle" type="button" aria-expanded="false" aria-controls="navbar-links" aria-label="Open menu">
@@ -38,7 +40,7 @@
     </button>
     <nav id="navbar-links" class="navbar__links" aria-label="Main">
       <a href="../index.html#projects" class="button button--tertiary">Projects</a>
-      <button type="button" class="button button--primary" data-copy-email="emmashanghansen@gmail.com" aria-live="polite">
+      <button type="button" class="button button--primary" data-copy-email="emmashanghansen@gmail.com">
         <span class="button__labels">
           <span>Copy email</span>
           <span aria-hidden="true">Email copied</span>
@@ -97,10 +99,10 @@
         <li class="text-body">A video prototype, exploring the ideal scenario with features doctors actually needed.</li>
       </ul>
       <p class="text-body">This decision kept the team focused, and gave us richer feedback than any single prototype would have.</p>
-      <div class="project-section__image">
+      <figure class="project-section__image">
         <img src="../images/projects/pocus/01-prototypes-ideal-vs-mvp.webp" width="2400" height="1800" alt="The ideal prototype above, showing the full guidance interface, and the simplified MVP below, used for live AI testing" loading="lazy">
-        <p class="text-caption text-subtle">Top: Ideal prototype, showing complete UI with additional features. Bottom: MVP used for testing the AI live.</p>
-      </div>
+        <figcaption class="text-caption text-subtle">Top: Ideal prototype, showing complete UI with additional features. Bottom: MVP used for testing the AI live.</figcaption>
+      </figure>
     </section>
 
     <!-- Challenge -->
@@ -108,10 +110,10 @@
       <h2 class="text-subtitle text-subtle">Challenge</h2>
       <h3 class="text-title">Lack of confidence and trust</h3>
       <p class="text-body">I came in with no ultrasound knowledge, like the target users. I observed experts, practised on colleagues, and briefly wondered where the challenge was. Until I talked with GPs. For them, a misdiagnosis can have severe consequences, and some feel that they can't afford to experiment. One doctor stated that mental barriers was the main reason they were hesitant. Beyond simply teaching the procedure, I realised the purpose of the tool should be help them feel confident in their decisions.</p>
-      <div class="project-section__image">
+      <figure class="project-section__image">
         <img src="../images/projects/pocus/02-doctor-quotes.webp" width="1200" height="560" alt="Three quotes from doctors: &quot;We're scared to misdiagnose the patient.&quot; &quot;That looks very difficult…&quot; &quot;No one likes drinking coffee the first time.&quot;" loading="lazy">
-        <p class="text-caption text-subtle">Quotes from doctors during interviews and workshops.</p>
-      </div>
+        <figcaption class="text-caption text-subtle">Quotes from doctors during interviews and workshops.</figcaption>
+      </figure>
     </section>
 
     <!-- Testing early -->
@@ -119,35 +121,35 @@
       <h2 class="text-subtitle text-subtle">Testing early</h2>
       <h3 class="text-title">Start building before the AI is ready</h3>
       <p class="text-body">An AI still in training is unpredictable. Early on, we didn't know its exact capabilities, or how it would behave. Instead of waiting, I simulated its behaviour through role-plays, storyboards and early prototypes. Gathered insight was fed back into the AI's development. After seeing it failing to identify smaller, healthier aortas, we prioritised training it on more varied patient data.</p>
-      <div class="project-section__image">
+      <figure class="project-section__image">
         <img src="../images/projects/pocus/03-user-test-setup.webp" width="2400" height="1592" alt="A test session: the doctor scans a volunteer while the prototype runs on a laptop beside them and mirrors onto a wall screen" loading="lazy">
-        <p class="text-caption text-subtle">Picture from one of the early user tests. The user (1). On the user's left side, laptop with prototype, accompanied by a developer (3) simulating the AI. On the user's right side, the "patient" (4).</p>
-      </div>
+        <figcaption class="text-caption text-subtle">Picture from one of the early user tests. The user (1). On the user's left side, laptop with prototype, accompanied by a developer (3) simulating the AI. On the user's right side, the "patient" (4).</figcaption>
+      </figure>
     </section>
 
     <!-- Final result -->
     <section class="project-section">
       <h2 class="text-subtitle text-subtle">Final result</h2>
       <h3 class="text-title">An AI-guided workflow for AAA examinations</h3>
-      <div class="project-section__image">
+      <figure class="project-section__image">
         <img src="../images/projects/pocus/04-laptop-and-probe.webp" width="2400" height="1600" alt="The guidance interface running on a laptop, beside the handheld ultrasound probe it works with" loading="lazy">
-        <p class="text-caption text-subtle">The MVP running on a laptop, beside the handheld probe it pairs with. The interface is in Norwegian — the prompt here reads "keep the aorta centred, scan downward".</p>
-      </div>
-      <div class="project-section__image">
+        <figcaption class="text-caption text-subtle">The MVP running on a laptop, beside the handheld probe it pairs with. The interface is in Norwegian — the prompt here reads "keep the aorta centred, scan downward".</figcaption>
+      </figure>
+      <figure class="project-section__image">
         <img src="../images/projects/pocus/05-centred-and-measurement.webp" width="2400" height="1178" alt="Two interface states: a confirmation that the aorta is centred, and the automatic diameter measurement reading 27 mm" loading="lazy">
-        <p class="text-caption text-subtle">Left: confirmation that the aorta is centred, held for two seconds before the phase advances. Right: the automatic measurement, which the user can approve, edit by hand, or recalculate.</p>
-      </div>
-      <div class="project-section__image">
+        <figcaption class="text-caption text-subtle">Left: confirmation that the aorta is centred, held for two seconds before the phase advances. Right: the automatic measurement, which the user can approve, edit by hand, or recalculate.</figcaption>
+      </figure>
+      <figure class="project-section__image">
         <img src="../images/projects/pocus/06-interface-icons.webp" width="2400" height="640" alt="Four interface icons: probe, freeze, AI and confirm" loading="lazy">
-        <p class="text-caption text-subtle">Colour carries state throughout: yellow for the probe, blue for anything the AI is doing or a frozen image, green for a completed step.</p>
-      </div>
+        <figcaption class="text-caption text-subtle">Colour carries state throughout: yellow for the probe, blue for anything the AI is doing or a frozen image, green for a completed step.</figcaption>
+      </figure>
     </section>
 
     <!-- Step 1 -->
     <section class="project-section">
       <h4 class="text-subtitle text-stronger">Step 1: Finding aorta</h4>
       <p class="text-body">Tilt the probe. Aorta will be highlighted by AI when it enters the image.</p>
-      <div class="project-section__image">
+      <figure class="project-section__image">
         <div class="project-video">
           <img src="../images/projects/pocus/07-step-1-find-aorta.webp" width="2400" height="1352" alt="Step 1 of the interface: the AI searches while prompting the user to rock the probe slowly" loading="lazy">
           <video data-src="../videos/projects/pocus/07-step-1-find-aorta.mp4" preload="none" muted loop playsinline></video>
@@ -160,15 +162,15 @@
             </button>
           </div>
         </div>
-        <p class="text-caption text-subtle">The AI searches while the illustration demonstrates the motion — "vugg sakte", rock slowly. Yellow brackets mark where to look.</p>
-      </div>
+        <figcaption class="text-caption text-subtle">The AI searches while the illustration demonstrates the motion — "vugg sakte", rock slowly. Yellow brackets mark where to look.</figcaption>
+      </figure>
     </section>
 
     <!-- Step 2 -->
     <section class="project-section">
       <h4 class="text-subtitle text-stronger">Step 2: Scanning</h4>
       <p class="text-body">Follow the aorta down, while the AI continuously measures the diameter.</p>
-      <div class="project-section__image">
+      <figure class="project-section__image">
         <div class="project-video">
           <img src="../images/projects/pocus/08-step-2-scan-aorta.webp" width="2400" height="1352" alt="Step 2: the AI tracks the aorta and prompts the user to slide the probe to centre it" loading="lazy">
           <video data-src="../videos/projects/pocus/08-step-2-scan-aorta.mp4" preload="none" muted loop playsinline></video>
@@ -181,15 +183,15 @@
             </button>
           </div>
         </div>
-        <p class="text-caption text-subtle">The AI has found the aorta, highlighted red near the edge of the image, and asks the user to slide the probe toward the indicator to centre it.</p>
-      </div>
+        <figcaption class="text-caption text-subtle">The AI has found the aorta, highlighted red near the edge of the image, and asks the user to slide the probe toward the indicator to centre it.</figcaption>
+      </figure>
     </section>
 
     <!-- Step 3 -->
     <section class="project-section">
       <h4 class="text-subtitle text-stronger">Step 3: Measuring</h4>
       <p class="text-body">Upon freezing the image, AI automatically measures the diameter. Procedure complete.</p>
-      <div class="project-section__image">
+      <figure class="project-section__image">
         <div class="project-video">
           <img src="../images/projects/pocus/09-step-3-measure.webp" width="2400" height="1352" alt="Step 3: the diameter reads 27 mm, above the 26 mm threshold, and the interface prompts the user to freeze" loading="lazy">
           <video data-src="../videos/projects/pocus/09-step-3-measure.mp4" preload="none" muted loop playsinline></video>
@@ -202,12 +204,12 @@
             </button>
           </div>
         </div>
-        <p class="text-caption text-subtle">The diameter reads 27 mm, above the 26 mm threshold, so the interface prompts a freeze to take the measurement.</p>
-      </div>
-      <div class="project-section__image">
+        <figcaption class="text-caption text-subtle">The diameter reads 27 mm, above the 26 mm threshold, so the interface prompts a freeze to take the measurement.</figcaption>
+      </figure>
+      <figure class="project-section__image">
         <img src="../images/projects/pocus/10-goal-reframe.webp" width="2400" height="1782" alt="The measurement UI before and after reframing: the first version shows the AI's full reasoning, the second shows only whether to freeze" loading="lazy">
-        <p class="text-caption text-subtle">Reframing the goal from "help the user relocate the largest diameter" to "help the user know when to freeze". The first version showed everything the AI was considering; testers called it "too much going on".</p>
-      </div>
+        <figcaption class="text-caption text-subtle">Reframing the goal from "help the user relocate the largest diameter" to "help the user know when to freeze". The first version showed everything the AI was considering; testers called it "too much going on".</figcaption>
+      </figure>
     </section>
 
     <!-- Final testing -->
@@ -216,10 +218,10 @@
       <h3 class="text-title">Live prototype testing with 12 doctors</h3>
       <p class="text-body">The team and I travelled rural Norway, visiting 8 different doctor's offices. I interviewed and tested with 12 end users, and 3 other stakeholders.</p>
       <p class="text-body">Feedback indicated that more steps should be automated, instead of asking for user input. All users managed to complete the procedure with guidance, and repetition improved users' confidence drastically. Compared to when they tried on their own, several felt unsure if it was successful. Many expressed enthusiasm for the guidance, saying "Really easy with AI".</p>
-      <div class="project-section__image">
+      <figure class="project-section__image">
         <img src="../images/projects/pocus/11-testing-locations.webp" width="2400" height="1416" alt="A map of the region visited, marking Kristiansund four times, Aure twice, Rindal once and Surnadal once, beside photographs from the test sessions" loading="lazy">
-        <p class="text-caption text-subtle">The eight offices visited, and sessions in progress. Faces blurred for privacy.</p>
-      </div>
+        <figcaption class="text-caption text-subtle">The eight offices visited, and sessions in progress. Faces blurred for privacy.</figcaption>
+      </figure>
     </section>
 
     <!-- Reflecting -->
@@ -245,13 +247,13 @@
       </button>
     </div>
 
-    <div class="project-footer">
+    <nav class="project-footer" aria-label="Case studies">
       <div class="project-footer__text">
         <p class="text-subtitle">Safer medication administration</p>
         <p class="text-caption text-subtle">Research synthesis, concept refinement and testing</p>
       </div>
       <a href="medication.html" class="button button--primary" aria-label="Next project: Safer medication administration"><span>Next project</span><svg class="icon" aria-hidden="true"><use href="../images/icons/sprite.svg#icon-arrow-right"/></svg></a>
-    </div>
+    </nav>
 
   </div>
   </main>
