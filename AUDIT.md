@@ -1,10 +1,10 @@
 # Frontend audit
 
 Full read of all six HTML pages, seven CSS files and `js/main.js` (~2,800 lines).
-Stage 1 is already committed. Everything below it is proposed, not done.
+Stages 1 and 1b are committed. Everything below them is proposed, not done.
 
-Totals as they stand: **35 KB CSS**, **21 KB JS**, **56 distinct classes**, 37 sprite
-icons, two variable fonts from Google.
+Totals at the start: **35 KB CSS**, **21 KB JS** (523 lines), **56 distinct classes**,
+37 sprite icons, two variable fonts from Google. `main.js` is now 467 lines.
 
 ---
 
@@ -62,6 +62,75 @@ moving between case studies gets a different visual hierarchy on each. See Stage
   `main.js` says is unreliable. The region now exists on all six pages; the `aria-live`
   attributes are gone.
 - Two empty `<section>` elements in `nikita.html` rendering as blank padded space.
+
+---
+
+## Stage 1b — native HTML in place of JavaScript (committed)
+
+Every one of these was checked against the actual behaviour in a browser, not assumed.
+
+### Back to top: `<button>` + 12 lines of JS → `<a href="#main">`
+
+The old button called `window.scrollTo` with a reduced-motion check, then moved focus to
+`#main` so the next Tab continued from the top of the page. A plain anchor does **all of
+that natively**: the browser scrolls, honours the `scroll-behavior: smooth` already in
+`reset.css` (which is already wrapped in a reduced-motion guard), and moves focus to the
+target because `#main` carries `tabindex="-1"`.
+
+Verified: click → `scrollY: 0`, `document.activeElement` is `main`, next Tab lands on the
+first link inside `main`. Identical behaviour, and it now works with JavaScript disabled.
+
+### Hero details: `<ul>` → `<dl>`
+
+"Client / SINTEF Digital", "Role / UX designer" are name-value pairs, which is precisely
+what a description list is for. Each pair is now `<dt>`/`<dd>` grouped in a `<div>` (the
+sanctioned way to group them inside a `<dl>`). The `role="list"` workaround is no longer
+needed. No CSS changed.
+
+### Clipboard: dropped the `execCommand` fallback (~22 lines)
+
+The fallback built a hidden `<textarea>`, selected it, called the deprecated
+`document.execCommand('copy')`, then restored focus. It only ever mattered on plain
+`http://` or `file://`. The site is on HTTPS, where `navigator.clipboard` always exists,
+and the `mailto:` fallback already catches every failure. Four lines now.
+
+### Nav link handler: removed a 240ms delay and a dead branch (~14 lines → 7)
+
+The handler called `preventDefault()` and then `setTimeout(() => window.location.href =
+href, 240)` — a quarter-second added to every cross-page click, to animate a bar on a page
+that was about to unload. Gone; the browser navigates normally again.
+
+Its `else if` branch was **unreachable**. The only link it matches is either `#projects`
+or `../index.html#projects`, so the `href === currentPage` test could never be true, and
+the `#projects` case was excluded by the branch's own guard. What survives is the one part
+that mattered: hold the bar still for a second so the smooth scroll it triggers does not
+immediately hide the bar you just clicked.
+
+### `sectionLinkMap` / `sectionIds`: 10 lines → 1
+
+Ten lines of DOM walking built a map that was used for exactly one thing:
+`sectionIds.length > 0`. Now `[...navLinks].some(a => a.getAttribute('href').startsWith('#'))`.
+
+### What was tried and rejected: `<details>` for the mobile menu
+
+The obvious candidate — `<details>`/`<summary>` gives you the open/closed state,
+`aria-expanded` and keyboard support for free, deleting ~25 lines. **It does not work
+here**, and I tested rather than guessed.
+
+The menu has to be a plain row on desktop, which means forcing a closed `<details>` to
+show its content with CSS alone. It cannot be done: the browser hides the content via
+`content-visibility` on an internal slot, so even `display: flex !important` on the child
+leaves `checkVisibility()` returning `false`. Making it work needs JavaScript toggling the
+`open` attribute on resize — more code than the current implementation, not less.
+
+`<details>` would be the right call if the menu were mobile-only. It isn't.
+
+### Worth knowing for the lightbox on your TODO
+
+When you build it, use `<dialog>` with `showModal()`. You get the focus trap, Escape to
+close, the backdrop, and the rest of the page made inert — natively, for about five lines
+of JS instead of eighty. That is the single best modern-HTML win still available on this
+site, and it is in work you have not written yet.
 
 ---
 
@@ -168,13 +237,21 @@ DNS lookups, two TLS handshakes and a render-blocking third-party round trip fro
 page. That is a real chunk of your time-to-first-paint, and it is the single most
 effective "make it lightweight" change available.
 
+It also removes a fragility that showed up while auditing: when `fonts.googleapis.com` is
+unreachable, the entire visual identity falls back to `system-ui` and the page renders in
+a generic system sans. The `font-family` declarations are correct — the typography simply
+depends on a third party being reachable. Self-hosting makes that impossible.
+
 ---
 
 ## Stage 3 — JavaScript (proposed)
 
-`main.js` is 523 lines. Roughly 40% is the custom cursor. You have chosen to keep both
-the cursor and the footer cycler and slim them, which is the right instinct for a design
-portfolio — they are the personality, and personality is the product here.
+`main.js` is down to 467 lines after Stage 1b. Roughly half of what remains is the custom
+cursor. You have chosen to keep both the cursor and the footer cycler and slim them, which
+is the right instinct for a design portfolio — they are the personality, and personality is
+the product here.
+
+The navbar items in this stage are already done (see Stage 1b). What is left:
 
 ### Custom cursor (~150 lines JS, ~90 CSS)
 
@@ -201,22 +278,6 @@ portfolio — they are the personality, and personality is the product here.
 - 30 of the 37 sprite icons exist solely to feed this loop. That is fine if you like it
   (I think you do), but it means the 27 KB sprite is essentially a decorative asset. Worth
   knowing what it is buying.
-
-### Navbar (~70 lines)
-
-- `sectionLinkMap` and `sectionIds` are built with 10 lines of DOM walking, and the only
-  thing either is ever used for is `const isHomepage = sectionIds.length > 0`. Replace the
-  whole block with a `data-page="home"` attribute on `<body>`, or a single
-  `document.getElementById('projects')` check.
-- The nav-link handler **delays every navigation by 240ms** via
-  `setTimeout(() => window.location.href = href, 240)` after `preventDefault()`. This adds
-  a quarter-second to every click, and hand-rolling navigation loses the browser's own
-  handling. If the delay exists to let the bar animate, that animation is not worth 240ms
-  on every page change. My recommendation is to remove it.
-- `navLinks.forEach` runs before `suppressHide` and `suppressTimeout` are declared further
-  down the file. It works — `let` hoists into the temporal dead zone but the handler only
-  runs on click, long after declaration — but it reads as a bug and will trip up the next
-  person, including you in six months.
 
 ---
 
