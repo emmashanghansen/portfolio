@@ -1,5 +1,10 @@
 # Frontend audit
 
+> **Dated.** Written while the site was bilingual. It has since gone back to English
+> only: the Norwegian tree is gone, the English pages sit at the root again, and the
+> language switch, the banner and their CSS and JS went with them. Findings about
+> anything else still stand. The bilingual state is tagged `bilingual-snapshot`.
+
 Full read of the site as it stands on `dev`: **10 HTML pages across two language trees**
 (Norwegian at the root, English under `/en/`), seven CSS files and `js/main.js`.
 

@@ -180,8 +180,8 @@ const navToggle = document.querySelector('.navbar__toggle');
 const navPanel = document.querySelector('.navbar__links');
 
 if (navToggle && navPanel) {
-  // Labels come from the markup so each language ships its own, the same way the
-  // video controls carry data-label-play / data-label-pause.
+  // Labels come from the markup rather than this file, the same way the video
+  // controls carry data-label-play / data-label-pause.
   const setMenu = open => {
     navPanel.classList.toggle('navbar__links--open', open);
     navToggle.setAttribute('aria-expanded', String(open));
@@ -286,8 +286,8 @@ if (footerIcon) {
   // touch, where there is no hover to hold. Reduce Motion stops it running at all.
   const footerIconLine = footerIcon.closest('p') || footerIcon;
   // Keep whichever path the markup used and swap only the fragment — the sprite
-  // sits at a different depth per language tree (/index.html vs /en/index.html),
-  // and hardcoding the path here would break the icon on all but one of them.
+  // sits at a different depth from the homepage than from /projects/, and
+  // hardcoding the path here would break the icon on one of the two.
   const spritePath = footerIconUse.getAttribute('href').replace(/#icon-.+$/, '');
   let footerIconIndex = 0;
   let footerIconTimer = null;
@@ -354,7 +354,7 @@ document.querySelectorAll('[data-copy-email]').forEach(button => {
     // The announcement goes through a dedicated status node: a live region on the
     // button itself has to announce a name change on the focused element, which
     // screen readers handle inconsistently. Reading the label out of the button
-    // keeps the announcement in the page's own language.
+    // keeps the announcement and the visible text from drifting apart.
     if (copyStatus) copyStatus.textContent = copiedLabel.textContent;
 
     clearTimeout(resetTimer);
@@ -365,33 +365,6 @@ document.querySelectorAll('[data-copy-email]').forEach(button => {
       if (copyStatus) copyStatus.textContent = '';
     }, COPIED_MS);
   });
-});
-
-// --- Language banner ---
-// Only the after-the-click half lives here: the banner is hidden before first
-// paint by an inline <head> script on each Norwegian page, because by the time
-// this file runs the page has already been laid out.
-const LANGUAGE_BANNER_KEY = 'language-banner-dismissed';
-
-function rememberLanguageChoice() {
-  try {
-    localStorage.setItem(LANGUAGE_BANNER_KEY, '1');
-  } catch {
-    // Private mode, or site data blocked. The offer simply comes back next visit,
-    // which is a smaller failure than a banner that cannot be got rid of.
-  }
-}
-
-document.querySelector('[data-language-banner-dismiss]')?.addEventListener('click', () => {
-  rememberLanguageChoice();
-  document.documentElement.classList.add('language-banner-off');
-});
-
-// Reaching for the switch at all settles the question, whichever way it is
-// pointed — so stop offering after that, and never nag someone whose browser
-// says one language while they read the other.
-document.querySelectorAll('a[hreflang]').forEach(link => {
-  link.addEventListener('click', rememberLanguageChoice);
 });
 
 // --- Project videos ---

@@ -1,41 +1,20 @@
 <!DOCTYPE html>
-<html lang="no">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script>
-    // Hide the English banner before the first paint for anyone who reads
-    // Norwegian or has already dismissed it, so it never flashes and never
-    // shifts the page. Deliberately not a redirect: browser language is often
-    // just the OS language, and being bounced somewhere you did not ask for is
-    // worse than being offered a link.
-    (function () {
-      try {
-        var langs = navigator.languages || [navigator.language || ''];
-        var readsNorwegian = langs.some(function (l) { return /^(nb|nn|no)(-|$)/i.test(l); });
-        var dismissed = false;
-        try { dismissed = !!localStorage.getItem('language-banner-dismissed'); } catch (e) {}
-        if (readsNorwegian || dismissed) {
-          document.documentElement.classList.add('language-banner-off');
-        }
-      } catch (e) {}
-    })();
-  </script>
-  <meta name="description" content="Emma Shang Hansen — portefølje for UX-design, med caser fra tjenestedesign, helse og produktdesign.">
-  <meta property="og:title" content="Emma Shang Hansen — UX-designer">
-  <meta property="og:description" content="Portefølje for UX-design, med caser fra tjenestedesign, helse og produktdesign.">
-  <meta property="og:locale" content="nb_NO">
+  <meta name="description" content="Emma Shang Hansen — UX designer portfolio featuring case studies in service design, healthcare, and product design.">
+  <meta property="og:title" content="Emma Shang Hansen — UX Designer">
+  <meta property="og:description" content="UX designer portfolio featuring case studies in service design, healthcare, and product design.">
+  <meta property="og:locale" content="en_GB">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://emmashanghansen.github.io/portfolio/">
   <meta property="og:image" content="https://emmashanghansen.github.io/portfolio/images/global/social-preview.png">
   <meta property="og:image:width" content="2400">
   <meta property="og:image:height" content="1260">
-  <meta property="og:image:alt" content="Forsiden til porteføljen til Emma Shang Hansen, med overskriften “Emma er UX-designer og tech-entusiast”.">
+  <meta property="og:image:alt" content="The Emma Shang Hansen portfolio homepage, headlined “Emma is a UX designer and tech enthusiast”.">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://emmashanghansen.github.io/portfolio/">
-  <link rel="alternate" hreflang="no" href="https://emmashanghansen.github.io/portfolio/">
-  <link rel="alternate" hreflang="en" href="https://emmashanghansen.github.io/portfolio/en/">
-  <link rel="alternate" hreflang="x-default" href="https://emmashanghansen.github.io/portfolio/">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,90 +26,86 @@
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/home.css">
-  <title>Emma Shang Hansen — UX-designer</title></head>
+  <title>Emma Shang Hansen — UX Designer</title>
+</head>
 <body>
   <div class="custom-cursor" aria-hidden="true"></div>
 
-  <a href="#main" class="skip-link">Hopp til hovedinnhold</a>
+  <a href="#main" class="skip-link">Skip to main content</a>
 
   <header class="navbar">
     <a href="index.html" class="navbar__logo text-subtitle text-stronger">Emma Shang Hansen</a>
-    <button class="navbar__toggle" type="button" aria-expanded="false" aria-controls="navbar-links" aria-label="Åpne meny" data-label-open="Åpne meny" data-label-close="Lukk meny">
+    <button class="navbar__toggle" type="button" aria-expanded="false" aria-controls="navbar-links" aria-label="Open menu" data-label-open="Open menu" data-label-close="Close menu">
       <span class="navbar__toggle-bar" aria-hidden="true"></span>
     </button>
-    <nav id="navbar-links" class="navbar__links" aria-label="Hoved">
-      <a href="#projects" class="button button--tertiary">Prosjekter</a>
+    <nav id="navbar-links" class="navbar__links" aria-label="Main">
+      <a href="#projects" class="button button--tertiary">Projects</a>
       <a href="https://www.linkedin.com/in/emmashanghansen/" class="button button--primary" target="_blank" rel="noopener">LinkedIn <svg class="icon" aria-hidden="true"><use href="images/icons/sprite.svg#icon-arrow-up-right"/></svg></a>
-      <a href="en/index.html" class="button button--secondary" lang="en" hreflang="en">English</a>
     </nav>
   </header>
 
   <main id="main" tabindex="-1">
   <div class="main-content">
 
-    <div class="language-banner" lang="en">
-      <p class="text-body">This portfolio is also available in English.</p>
-      <div class="language-banner__actions">
-        <a href="en/index.html" class="button button--secondary" hreflang="en"><span>Read in English</span><svg class="icon" aria-hidden="true"><use href="images/icons/sprite.svg#icon-arrow-right"/></svg></a>
-        <button type="button" class="button button--tertiary" data-language-banner-dismiss>Not now</button>
-      </div>
-    </div>
-
     <section id="home-hero" class="page-container hero-heading">
-      <h1 class="text-display text-stronger">Emma er en <span class="text-underline">UX-designer</span> som digger optimalisering</h1>
-      <p class="text-subtitle text-subtle">Designer i dag grensesnitt for maritim navigasjon og bygger interne verktøy hos <a href="https://www.jotron.com/" target="_blank" rel="noopener" class="text-link">Jotron</a>.</p>
+      <!-- Written later than the English below, and never translated. Kept here to be
+           read and rendered in English if it still says the right thing:
+           <h1>Emma er en <span class="text-underline">UX-designer</span> som digger optimalisering</h1>
+           <p>Designer i dag grensesnitt for maritim navigasjon og bygger interne verktøy hos Jotron.</p> -->
+      <h1 class="text-display text-stronger">Emma is a <span class="text-underline">UX designer</span> and <span class="text-underline">tech enthusiast</span></h1>
+      <p class="text-subtitle text-subtle">Currently designing maritime navigation displays and internal tools at <a href="https://www.jotron.com/" target="_blank" rel="noopener" class="text-link">Jotron</a>.</p>
     </section>
 
-    <section id="projects" aria-label="Prosjekter">
+    <section id="projects" aria-label="Projects">
       <div class="page-container">
 
         <ul class="projects-grid" role="list">
 
           <li class="project-card">
-            <div class="project-card__image"><img src="images/homepage/card-pocus.webp" alt="AI POCUS AAA, i samarbeid med SINTEF og NTNU, over et bilde av en forsker som veileder en ultralydundersøkelse på en laptop" width="960" height="520"><a class="project-card__link" href="projects/pocus.html" aria-hidden="true" tabindex="-1"></a></div>
+            <div class="project-card__image"><img src="images/homepage/card-pocus.webp" alt="AI POCUS AAA, in collaboration with SINTEF and NTNU, over a photo of a researcher guiding an ultrasound exam on a laptop" width="960" height="520"><a class="project-card__link" href="projects/pocus.html" aria-hidden="true" tabindex="-1"></a></div>
             <div class="project-card__info">
               <div class="project-card__body">
-                <h2 class="text-subtitle text-stronger">Ultralydundersøkelser med KI-veiledning</h2>
-                <p class="text-body">Samarbeidet med SINTEF om å designe et KI-verktøy som veileder leger gjennom ultralydundersøkelser. Verktøyet brukes i de kliniske studiene deres i 2026.</p>
+                <h2 class="text-subtitle text-stronger">Helping doctors perform ultrasound examinations with AI guidance</h2>
+                <p class="text-body">Worked with SINTEF to design an AI tool which guides doctors through ultrasound examinations. The tool is being used in their 2026 clinical trials.</p>
               </div>
               <div class="project-card__footer">
-                <a href="projects/pocus.html" class="button button--secondary"><span>Les hele casen</span><svg class="icon" aria-hidden="true"><use href="images/icons/sprite.svg#icon-arrow-right"/></svg></a>
+                <a href="projects/pocus.html" class="button button--secondary"><span>Read the case study</span><svg class="icon" aria-hidden="true"><use href="images/icons/sprite.svg#icon-arrow-right"/></svg></a>
               </div>
             </div>
           </li>
           <li class="project-card">
-            <div class="project-card__image"><img src="images/homepage/card-medication-administration.webp" alt="En Lego-prototype av en medisintralle merket &quot;PC&quot; og &quot;MEDISIN TRALLE&quot;, med en sykepleierfigur ved siden av" width="960" height="520"><a class="project-card__link" href="projects/medication.html" aria-hidden="true" tabindex="-1"></a></div>
+            <div class="project-card__image"><img src="images/homepage/card-medication-administration.webp" alt="A LEGO prototype of a medicine cart labelled &quot;PC&quot; and &quot;MEDISIN TRALLE&quot;, with a nurse minifigure standing beside it" width="960" height="520"><a class="project-card__link" href="projects/medication.html" aria-hidden="true" tabindex="-1"></a></div>
             <div class="project-card__info">
               <div class="project-card__body">
-                <h2 class="text-subtitle text-stronger">Tryggere legemiddelhåndtering for sykepleiere</h2>
-                <p class="text-body">Tjenestedesignprosjekt som redesignet legemiddelrutinen på et sykehjem, med vekt på verdi og gjennomførbarhet.</p>
+                <h2 class="text-subtitle text-stronger">Safer medication administration for nurses</h2>
+                <p class="text-body">Service design project redesigning a nursing home's medication routine, focusing on value and feasibility.</p>
               </div>
               <div class="project-card__footer">
-                <a href="projects/medication.html" class="button button--secondary"><span>Utforsk prosjektet</span><svg class="icon" aria-hidden="true"><use href="images/icons/sprite.svg#icon-arrow-right"/></svg></a>
+                <a href="projects/medication.html" class="button button--secondary"><span>Explore the project details</span><svg class="icon" aria-hidden="true"><use href="images/icons/sprite.svg#icon-arrow-right"/></svg></a>
               </div>
             </div>
           </li>
           <li class="project-card">
-            <div class="project-card__image"><img src="images/homepage/card-jotron.webp" alt="Jotron-logoen: firmanavnet i marineblå versaler ved siden av en stripete blå klode" width="960" height="520"></div>
+            <div class="project-card__image"><img src="images/homepage/card-jotron.webp" alt="The Jotron logo: the company name in navy capitals beside a striped blue globe" width="960" height="520"></div>
             <div class="project-card__info">
               <div class="project-card__body">
-                <h2 class="text-subtitle text-stronger">Designer produktivitetsverktøy for Jotron</h2>
-                <p class="text-body">Jobber tett med utviklere for å designe og bygge verktøy for å håndtere store datasett og dokumenter. Skal etter planen lanseres i september 2026.</p>
+                <h2 class="text-subtitle text-stronger">Designing productivity tools for Jotron</h2>
+                <p class="text-body">Working closely with developers to design and build tools for handling large data sets and manage documents. Scheduled to go live in September 2026.</p>
               </div>
               <div class="project-card__footer">
-                <button type="button" class="button button--disabled" disabled>Kommer snart</button>
+                <button type="button" class="button button--disabled" disabled>Coming soon</button>
               </div>
             </div>
           </li>
           <li class="project-card">
-            <div class="project-card__image"><img src="images/homepage/card-rat.webp" alt="Spillets tittelkort: &quot;Rat with a Postman Hat&quot; i oransje bokstaver under en blå postmannslue, over et treskilt der det står &quot;Best Narrative&quot;, på en mørk turkis murvegg" width="960" height="520"><a class="project-card__link" href="projects/rat.html" aria-hidden="true" tabindex="-1"></a></div>
+            <div class="project-card__image"><img src="images/homepage/card-rat.webp" alt="The game&#39;s title card: &quot;Rat with a Postman Hat&quot; in orange lettering under a blue postman cap, above a wooden sign reading &quot;Best Narrative&quot;, on a dark teal brick wall" width="960" height="520"><a class="project-card__link" href="projects/rat.html" aria-hidden="true" tabindex="-1"></a></div>
             <div class="project-card__info">
               <div class="project-card__body">
-                <h2 class="text-subtitle text-stronger">Design av et prisbelønt narrativt spill</h2>
-                <p class="text-body">Jeg hadde ansvar for storytelling, leveldesign og mye mer i et spill som vant Best Narrative under Norwegian Game Awards 2024.</p>
+                <h2 class="text-subtitle text-stronger">Designing an award-winning story game</h2>
+                <p class="text-body">I was in charge of storytelling, level design and more, for a game that won Best Narrative at Norwegian Game Awards 2024.</p>
               </div>
               <div class="project-card__footer">
-                <a href="projects/rat.html" class="button button--secondary"><span>Kreativitet 101</span><svg class="icon" aria-hidden="true"><use href="images/icons/sprite.svg#icon-arrow-right"/></svg></a>
+                <a href="projects/rat.html" class="button button--secondary"><span>See my tools for creativity</span><svg class="icon" aria-hidden="true"><use href="images/icons/sprite.svg#icon-arrow-right"/></svg></a>
               </div>
             </div>
           </li>
@@ -146,21 +121,21 @@
     <span class="visually-hidden" role="status" data-copy-status></span>
 
     <div class="footer__text">
-      <p class="text-body">Laget med <span class="visually-hidden">kjærlighet</span> <svg id="footer-cycling-icon" class="icon" aria-hidden="true"><use href="images/icons/sprite.svg#icon-heart"/></svg> <strong>Emma Shang Hansen</strong></p>
+      <p class="text-body">Created with <span class="visually-hidden">love</span> <svg id="footer-cycling-icon" class="icon" aria-hidden="true"><use href="images/icons/sprite.svg#icon-heart"/></svg> <strong>Emma Shang Hansen</strong></p>
       <div class="footer__links">
         <a href="https://www.linkedin.com/in/emmashanghansen/" class="button button--tertiary" target="_blank" rel="noopener">LinkedIn <svg class="icon" aria-hidden="true"><use href="images/icons/sprite.svg#icon-arrow-up-right"/></svg></a>
         <button type="button" class="button button--tertiary" data-copy-email="emmashanghansen@gmail.com">
           <span class="button__labels">
-            <span>Kopier epost</span>
-            <span aria-hidden="true">Epost kopiert</span>
+            <span>Copy email</span>
+            <span aria-hidden="true">Email copied</span>
           </span>
           <svg class="icon" aria-hidden="true"><use href="images/icons/sprite.svg#icon-copy"/></svg>
         </button>
       </div>
     </div>
 
-    <a href="#main" class="button button--primary">Til toppen <svg class="icon" aria-hidden="true"><use href="images/icons/sprite.svg#icon-arrow-up"/></svg></a>
-
+    <a href="#main" class="button button--primary">Back to top <svg class="icon" aria-hidden="true"><use href="images/icons/sprite.svg#icon-arrow-up"/></svg></a>
+  
   </footer>
 
   <script src="js/main.js"></script>

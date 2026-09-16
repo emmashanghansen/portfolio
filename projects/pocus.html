@@ -1,41 +1,20 @@
 <!DOCTYPE html>
-<html lang="no">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script>
-    // Hide the English banner before the first paint for anyone who reads
-    // Norwegian or has already dismissed it, so it never flashes and never
-    // shifts the page. Deliberately not a redirect: browser language is often
-    // just the OS language, and being bounced somewhere you did not ask for is
-    // worse than being offered a link.
-    (function () {
-      try {
-        var langs = navigator.languages || [navigator.language || ''];
-        var readsNorwegian = langs.some(function (l) { return /^(nb|nn|no)(-|$)/i.test(l); });
-        var dismissed = false;
-        try { dismissed = !!localStorage.getItem('language-banner-dismissed'); } catch (e) {}
-        if (readsNorwegian || dismissed) {
-          document.documentElement.classList.add('language-banner-off');
-        }
-      } catch (e) {}
-    })();
-  </script>
-  <meta name="description" content="Design av et KI-veiledet ultralydgrensesnitt med SINTEF Digital, slik at leger i distriktet uten ultralydtrening trygt kan screene for bukaortaaneurisme.">
-  <meta property="og:title" content="Hjelper leger å gjennomføre ultralydundersøkelser med KI-veiledning — Emma Shang Hansen">
-  <meta property="og:description" content="Design av et KI-veiledet ultralydgrensesnitt med SINTEF Digital, slik at leger i distriktet uten ultralydtrening trygt kan screene for bukaortaaneurisme.">
-  <meta property="og:locale" content="nb_NO">
+  <meta name="description" content="Designing an AI-guided ultrasound interface with SINTEF Digital, so rural doctors with no ultrasound training could safely screen for aortic aneurysms.">
+  <meta property="og:title" content="Helping rural doctors learn ultrasound with AI guidance — Emma Shang Hansen">
+  <meta property="og:description" content="Designing an AI-guided ultrasound interface with SINTEF Digital, so rural doctors with no ultrasound training could safely screen for aortic aneurysms.">
+  <meta property="og:locale" content="en_GB">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://emmashanghansen.github.io/portfolio/projects/pocus.html">
   <meta property="og:image" content="https://emmashanghansen.github.io/portfolio/images/global/social-preview.png">
   <meta property="og:image:width" content="2400">
   <meta property="og:image:height" content="1260">
-  <meta property="og:image:alt" content="Forsiden til porteføljen til Emma Shang Hansen, med overskriften “Emma er UX-designer og tech-entusiast”.">
+  <meta property="og:image:alt" content="The Emma Shang Hansen portfolio homepage, headlined “Emma is a UX designer and tech enthusiast”.">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://emmashanghansen.github.io/portfolio/projects/pocus.html">
-  <link rel="alternate" hreflang="no" href="https://emmashanghansen.github.io/portfolio/projects/pocus.html">
-  <link rel="alternate" hreflang="en" href="https://emmashanghansen.github.io/portfolio/en/projects/pocus.html">
-  <link rel="alternate" hreflang="x-default" href="https://emmashanghansen.github.io/portfolio/projects/pocus.html">
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="../apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,61 +26,53 @@
   <link rel="stylesheet" href="../css/layout.css">
   <link rel="stylesheet" href="../css/components.css">
   <link rel="stylesheet" href="../css/project.css">
-  <title>Ultralydundersøkelser med KI-veiledning — Emma Shang Hansen</title></head>
+  <title>Helping doctors perform ultrasound examinations with AI guidance — Emma Shang Hansen</title>
+</head>
 <body>
   <div class="custom-cursor" aria-hidden="true"></div>
 
-  <a href="#main" class="skip-link">Hopp til hovedinnhold</a>
+  <a href="#main" class="skip-link">Skip to main content</a>
 
   <span class="visually-hidden" role="status" data-copy-status></span>
 
   <header class="navbar">
     <a href="../index.html" class="navbar__logo text-subtitle text-stronger">Emma Shang Hansen</a>
-    <button class="navbar__toggle" type="button" aria-expanded="false" aria-controls="navbar-links" aria-label="Åpne meny" data-label-open="Åpne meny" data-label-close="Lukk meny">
+    <button class="navbar__toggle" type="button" aria-expanded="false" aria-controls="navbar-links" aria-label="Open menu" data-label-open="Open menu" data-label-close="Close menu">
       <span class="navbar__toggle-bar" aria-hidden="true"></span>
     </button>
-    <nav id="navbar-links" class="navbar__links" aria-label="Hoved">
-      <a href="../index.html#projects" class="button button--tertiary">Prosjekter</a>
+    <nav id="navbar-links" class="navbar__links" aria-label="Main">
+      <a href="../index.html#projects" class="button button--tertiary">Projects</a>
       <a href="https://www.linkedin.com/in/emmashanghansen/" class="button button--primary" target="_blank" rel="noopener">LinkedIn <svg class="icon" aria-hidden="true"><use href="../images/icons/sprite.svg#icon-arrow-up-right"/></svg></a>
-      <a href="../en/projects/pocus.html" class="button button--secondary" lang="en" hreflang="en">English</a>
     </nav>
   </header>
 
   <main id="main" tabindex="-1">
   <div class="main-content project-body">
 
-    <div class="language-banner" lang="en">
-      <p class="text-body">This case study is also available in English.</p>
-      <div class="language-banner__actions">
-        <a href="../en/projects/pocus.html" class="button button--secondary" hreflang="en"><span>Read in English</span><svg class="icon" aria-hidden="true"><use href="../images/icons/sprite.svg#icon-arrow-right"/></svg></a>
-        <button type="button" class="button button--tertiary" data-language-banner-dismiss>Not now</button>
-      </div>
-    </div>
-
-    <section class="project-hero">
+    <section class="project-hero"> 
       <div class="project-hero__title">
-        <p class="text-subtitle text-subtle">UX-design</p>
-        <h1 class="text-large-title">Ultralydundersøkelser med KI-veiledning</h1>
+        <p class="text-subtitle text-subtle">UX design</p>
+        <h1 class="text-large-title">Helping doctors perform ultrasound examinations with AI guidance</h1>
       </div>
       <div class="project-hero__image">
-        <img src="../images/projects/pocus/hero.webp" width="2130" height="1200" alt="AI POCUS AAA, i samarbeid med SINTEF og NTNU, over et bilde av en forsker som veileder en ultralydundersøkelse på en laptop">
+        <img src="../images/projects/pocus/hero.webp" width="2130" height="1200" alt="AI POCUS AAA, in collaboration with SINTEF and NTNU, over a photo of a researcher guiding an ultrasound exam on a laptop">
       </div>
       <dl class="project-hero__details-grid">
         <div class="project-hero__detail">
-          <dt class="text-body text-subtle">Partner</dt>
+          <dt class="text-body text-subtle">Client</dt>
           <dd class="text-body">SINTEF Digital</dd>
         </div>
         <div class="project-hero__detail">
-          <dt class="text-body text-subtle">Rolle</dt>
-          <dd class="text-body">UX-designer</dd>
+          <dt class="text-body text-subtle">Role</dt>
+          <dd class="text-body">UX designer</dd>
         </div>
         <div class="project-hero__detail">
           <dt class="text-body text-subtle">Team</dt>
-          <dd class="text-body">1 designer<br>2 utviklere<br>2 prosjektledere</dd>
+          <dd class="text-body">1 designer<br>2 developers<br>2 PMs</dd>
         </div>
         <div class="project-hero__detail">
-          <dt class="text-body text-subtle">Mine bidrag</dt>
-          <dd class="text-body">Brukerinnsikt, Interaksjonsdesign, Brukertesting, Prosjektledelse</dd>
+          <dt class="text-body text-subtle">My contributions</dt>
+          <dd class="text-body">User research, Interaction design, Experience design, Project management</dd>
         </div>
 
       </dl>
@@ -109,178 +80,180 @@
 
     <!-- Background -->
     <section class="project-section">
-      <h2 class="text-subtitle text-subtle">Bakgrunn</h2>
-      <h3 class="text-title">Leger kan ikke diagnostisere det de ikke ser</h3>
-      <p class="text-body">En abdominal aortaaneurisme (AAA) som sprekker kan være dødelig, men er enkelt å forebygge hvis det oppdages tidlig. Dette gjøres med en enkel ultralydundersøkelse. Undersøkelsen går ut på å finne aorta og måle diameteren på det tykkeste punktet.</p>
-      <p class="text-body">De fleste leger kan ikke bruke ultralyd, så SINTEF utvikler en KI som skal gjøre det mer tilgjengelig for nybegynnere, i prosjektet AI POCUS AAA. Jeg designet grensesnittet og var med på å styre utviklingen av verktøyet, som del av masteroppgaven min.</p>
+      <h2 class="text-subtitle text-subtle">Background</h2>
+      <h3 class="text-title">Doctors cannot diagnose what they can't see</h3>
+      <p class="text-body">A ruptured abdominal aortic aneurysm (AAA) can be fatal, but is easily prevented if found early, using a simple ultrasound procedure. The procedure involves finding the aorta, and measuring the diameter at the thickest.</p>
+      <p class="text-body">Most doctors don't know how to use ultrasound, so SINTEF is developing an AI to make it more accessible for beginners, in their AI POCUS AAA project. I designed the interface and helped guide the development of this tool for my masters thesis.</p>
     </section>
 
     <!-- Approach -->
     <section class="project-section">
-      <h2 class="text-subtitle text-subtle">Tilnærming</h2>
-      <h3 class="text-title">To prototyper: live testing og idéutvikling</h3>
-      <p class="text-body">Legene ønsket seg et helautomatisk verktøy de kunne bruke i praksisen sin, men å godkjenne KI-en for klinisk bruk lå utenfor SINTEFs scope. For å møte begge siders behov lagde jeg to prototyper:</p>
+      <h2 class="text-subtitle text-subtle">Approach</h2>
+      <h3 class="text-title">Two prototypes: Live testing and ideating</h3>
+      <p class="text-body">Doctors wanted a fully automated tool to use in their practice, but approving the AI for clinical use was beyond Sintef's scope. To bridge this gap, I created two prototypes:</p>
       <ul class="project-section__list" role="list">
-        <li class="text-body">En testbar MVP som utviklerne realistisk kunne bygge og bruke i SINTEFs studier.</li>
-        <li class="text-body">En videoprototype som utforsket det ideelle scenarioet, med funksjonene legene faktisk trengte.</li>
+        <li class="text-body">A testable MVP the dev team could realistically build and use in SINTEF's trials.</li>
+        <li class="text-body">A video prototype, exploring the ideal scenario with features doctors actually needed.</li>
       </ul>
-      <p class="text-body">Dette bidro til å holde teamet fokusert, og ga oss mer fullkomne tilbakemeldinger enn hva én enkelt prototype hadde gitt.</p>
+      <p class="text-body">This decision kept the team focused, and gave us richer feedback than any single prototype would have.</p>
       <figure class="project-section__image">
-        <img src="../images/projects/pocus/01-prototypes-ideal-vs-mvp.webp" width="2400" height="1800" alt="Den ideelle prototypen øverst, med hele veiledningsgrensesnittet, og den forenklede MVP-en nederst, brukt til live testing av KI-en" loading="lazy">
-        <figcaption class="text-caption text-subtle">Øverst: den ideelle prototypen, med komplett UI og flere funksjoner. Nederst: MVP-en som ble brukt til å teste KI-en live.</figcaption>
+        <img src="../images/projects/pocus/01-prototypes-ideal-vs-mvp.webp" width="2400" height="1800" alt="The ideal prototype above, showing the full guidance interface, and the simplified MVP below, used for live AI testing" loading="lazy">
+        <figcaption class="text-caption text-subtle">Top: Ideal prototype, showing complete UI with additional features. Bottom: MVP used for testing the AI live.</figcaption>
       </figure>
     </section>
 
     <!-- Challenge -->
     <section class="project-section">
-      <h2 class="text-subtitle text-subtle">Utfordring</h2>
-      <h3 class="text-title">Manglende trygghet og tillit</h3>
-      <p class="text-body">Jeg startet uten kunnskap om ultralyd, akkurat som brukerne. Jeg observerte eksperter, øvde på kolleger, og lurte en kort stund på hvor utfordringen egentlig lå. Helt til jeg snakket med fastleger. For dem kan en feildiagnose få alvorlige konsekvenser, og noen føler at de ikke har råd til å eksperimentere. En lege fortalte at mentale barrierer var hovedgrunnen til at de nølte. Jeg innså at verktøyet måtte gjøre mer enn å lære bort prosedyren: det skulle få dem til å føle seg trygge på egne vurderinger.</p>
+      <h2 class="text-subtitle text-subtle">Challenge</h2>
+      <h3 class="text-title">Lack of confidence and trust</h3>
+      <p class="text-body">I came in with no ultrasound knowledge, like the target users. I observed experts, practised on colleagues, and briefly wondered where the challenge was. Until I talked with GPs. For them, a misdiagnosis can have severe consequences, and some feel that they can't afford to experiment. One doctor stated that mental barriers was the main reason they were hesitant. Beyond simply teaching the procedure, I realised the purpose of the tool should be help them feel confident in their decisions.</p>
       <figure class="project-section__image">
-        <img src="../images/projects/pocus/02-doctor-quotes.webp" width="1200" height="560" alt="Tre sitater fra leger: &quot;Vi er redde for å feildiagnostisere pasienten.&quot; &quot;Det der ser veldig vanskelig ut …&quot; &quot;Ingen liker kaffe første gangen.&quot;" loading="lazy">
-        <figcaption class="text-caption text-subtle">Sitater fra leger i intervjuer og workshops.</figcaption>
+        <img src="../images/projects/pocus/02-doctor-quotes.webp" width="1200" height="560" alt="Three quotes from doctors: &quot;We're scared to misdiagnose the patient.&quot; &quot;That looks very difficult…&quot; &quot;No one likes drinking coffee the first time.&quot;" loading="lazy">
+        <figcaption class="text-caption text-subtle">Quotes from doctors during interviews and workshops.</figcaption>
       </figure>
     </section>
 
     <!-- Testing early -->
     <section class="project-section">
-      <h2 class="text-subtitle text-subtle">Tidlig testing</h2>
-      <h3 class="text-title">Begynn å bygge før KI-en er klar</h3>
-      <p class="text-body">En KI som fortsatt trenes opp, er uforutsigbar. Tidlig i prosjektet visste vi ikke nøyaktig hva den kunne, eller hvordan den ville oppføre seg. I stedet for å vente, simulerte jeg oppførselen gjennom rollespill, storyboards og tidlige prototyper. Innsikten vi fikk, ble tatt med tilbake i utviklingen av KI-en. Da vi så at den ikke klarte å kjenne igjen mindre og friskere aortaer, prioriterte vi å trene den på mer variert pasientdata.</p>
+      <h2 class="text-subtitle text-subtle">Testing early</h2>
+      <h3 class="text-title">Start building before the AI is ready</h3>
+      <p class="text-body">An AI still in training is unpredictable. Early on, we didn't know its exact capabilities, or how it would behave. Instead of waiting, I simulated its behaviour through role-plays, storyboards and early prototypes. Gathered insight was fed back into the AI's development. After seeing it failing to identify smaller, healthier aortas, we prioritised training it on more varied patient data.</p>
       <figure class="project-section__image">
-        <img src="../images/projects/pocus/03-user-test-setup.webp" width="2400" height="1592" alt="En testsesjon: legen skanner en frivillig mens prototypen kjører på en laptop ved siden av og speiles på en vegg" loading="lazy">
-        <figcaption class="text-caption text-subtle">Bilde fra en av de tidlige brukertestene. Brukeren (1). Til venstre for brukeren står en laptop med prototypen, sammen med en utvikler (3) som simulerer KI-en. Til høyre for brukeren ligger "pasienten" (4).</figcaption>
+        <img src="../images/projects/pocus/03-user-test-setup.webp" width="2400" height="1592" alt="A test session: the doctor scans a volunteer while the prototype runs on a laptop beside them and mirrors onto a wall screen" loading="lazy">
+        <figcaption class="text-caption text-subtle">Picture from one of the early user tests. The user (1). On the user's left side, laptop with prototype, accompanied by a developer (3) simulating the AI. On the user's right side, the "patient" (4).</figcaption>
       </figure>
     </section>
 
     <!-- Final result -->
     <section class="project-section">
-      <h2 class="text-subtitle text-subtle">Sluttresultat</h2>
-      <h3 class="text-title">En KI-veiledet arbeidsflyt for AAA-undersøkelser</h3>
+      <h2 class="text-subtitle text-subtle">Final result</h2>
+      <h3 class="text-title">An AI-guided workflow for AAA examinations</h3>
       <figure class="project-section__image">
-        <img src="../images/projects/pocus/04-laptop-and-probe.webp" width="2400" height="1600" alt="Veiledningsgrensesnittet kjører på en laptop, ved siden av den håndholdte ultralydproben det fungerer sammen med" loading="lazy">
-        <figcaption class="text-caption text-subtle">MVP-en kjører på en laptop, ved siden av den håndholdte proben den kobles til. Beskjeden på skjermen her er "hold aorta midt i bildet, skann nedover".</figcaption>
+        <img src="../images/projects/pocus/04-laptop-and-probe.webp" width="2400" height="1600" alt="The guidance interface running on a laptop, beside the handheld ultrasound probe it works with" loading="lazy">
+        <figcaption class="text-caption text-subtle">The MVP running on a laptop, beside the handheld probe it pairs with. The interface is in Norwegian — the prompt here reads "keep the aorta centred, scan downward".</figcaption>
       </figure>
       <figure class="project-section__image">
-        <img src="../images/projects/pocus/05-centred-and-measurement.webp" width="2400" height="1178" alt="To tilstander i grensesnittet: en bekreftelse på at aorta ligger midt i bildet, og den automatiske målingen som viser 27 mm" loading="lazy">
-        <figcaption class="text-caption text-subtle">Venstre: bekreftelse på at aorta ligger midt i bildet, som vises i to sekunder før neste fase starter. Høyre: den automatiske målingen, som brukeren kan godkjenne, justere manuelt eller regne ut på nytt.</figcaption>
+        <img src="../images/projects/pocus/05-centred-and-measurement.webp" width="2400" height="1178" alt="Two interface states: a confirmation that the aorta is centred, and the automatic diameter measurement reading 27 mm" loading="lazy">
+        <figcaption class="text-caption text-subtle">Left: confirmation that the aorta is centred, held for two seconds before the phase advances. Right: the automatic measurement, which the user can approve, edit by hand, or recalculate.</figcaption>
       </figure>
       <figure class="project-section__image">
-        <img src="../images/projects/pocus/06-interface-icons.webp" width="2400" height="640" alt="Fire ikoner fra grensesnittet: probe, frys, KI og bekreft" loading="lazy">
-        <figcaption class="text-caption text-subtle">Farge viser state gjennom hele grensesnittet: gult for proben, blått for alt KI-en gjør og for fryst bilde, grønt for fullført steg.</figcaption>
+        <img src="../images/projects/pocus/06-interface-icons.webp" width="2400" height="640" alt="Four interface icons: probe, freeze, AI and confirm" loading="lazy">
+        <figcaption class="text-caption text-subtle">Colour carries state throughout: yellow for the probe, blue for anything the AI is doing or a frozen image, green for a completed step.</figcaption>
       </figure>
     </section>
 
     <!-- Step 1 -->
     <section class="project-section">
-      <h4 class="text-subtitle text-stronger">Steg 1: Finne aorta</h4>
-      <p class="text-body">Beveg proben fra side til side. KI-en markerer aorta når den kommer inn i bildet.</p>
+      <h4 class="text-subtitle text-stronger">Step 1: Finding aorta</h4>
+      <p class="text-body">Tilt the probe. Aorta will be highlighted by AI when it enters the image.</p>
       <figure class="project-section__image">
         <div class="project-video">
-          <img src="../images/projects/pocus/07-step-1-find-aorta.webp" width="2400" height="1352" alt="Steg 1 i grensesnittet: KI-en leter mens brukeren blir bedt om å vugge proben sakte" loading="lazy">
+          <img src="../images/projects/pocus/07-step-1-find-aorta.webp" width="2400" height="1352" alt="Step 1 of the interface: the AI searches while prompting the user to rock the probe slowly" loading="lazy">
           <video data-src="../videos/projects/pocus/07-step-1-find-aorta.mp4" preload="none" muted loop playsinline></video>
           <div class="project-video__controls">
-            <button type="button" class="button button--primary button--no-dock" data-video-toggle data-label-play="Spill av videoen for steg 1" data-label-pause="Pause videoen for steg 1" aria-label="Spill av videoen for steg 1">
+            <button type="button" class="button button--primary button--no-dock" data-video-toggle data-label-play="Play the step 1 video" data-label-pause="Pause the step 1 video" aria-label="Play the step 1 video">
               <svg class="icon" aria-hidden="true"><use href="../images/icons/sprite.svg#icon-player-play"/></svg>
             </button>
-            <button type="button" class="button button--primary button--no-dock" data-video-replay aria-label="Spill videoen for steg 1 på nytt">
+            <button type="button" class="button button--primary button--no-dock" data-video-replay aria-label="Replay the step 1 video">
               <svg class="icon" aria-hidden="true"><use href="../images/icons/sprite.svg#icon-rotate"/></svg>
             </button>
           </div>
         </div>
-        <figcaption class="text-caption text-subtle">KI-en leter mens illustrasjonen viser bevegelsen: "vugg sakte". Gule klammer markerer hvor man skal se.</figcaption>
+        <figcaption class="text-caption text-subtle">The AI searches while the illustration demonstrates the motion — "vugg sakte", rock slowly. Yellow brackets mark where to look.</figcaption>
       </figure>
     </section>
 
     <!-- Step 2 -->
     <section class="project-section">
-      <h4 class="text-subtitle text-stronger">Steg 2: Skanne</h4>
-      <p class="text-body">Følg aorta nedover mens KI-en måler diameteren fortløpende.</p>
+      <h4 class="text-subtitle text-stronger">Step 2: Scanning</h4>
+      <p class="text-body">Follow the aorta down, while the AI continuously measures the diameter.</p>
       <figure class="project-section__image">
         <div class="project-video">
-          <img src="../images/projects/pocus/08-step-2-scan-aorta.webp" width="2400" height="1352" alt="Steg 2: KI-en følger aorta og ber brukeren skyve proben for å sentrere den" loading="lazy">
+          <img src="../images/projects/pocus/08-step-2-scan-aorta.webp" width="2400" height="1352" alt="Step 2: the AI tracks the aorta and prompts the user to slide the probe to centre it" loading="lazy">
           <video data-src="../videos/projects/pocus/08-step-2-scan-aorta.mp4" preload="none" muted loop playsinline></video>
           <div class="project-video__controls">
-            <button type="button" class="button button--primary button--no-dock" data-video-toggle data-label-play="Spill av videoen for steg 2" data-label-pause="Pause videoen for steg 2" aria-label="Spill av videoen for steg 2">
+            <button type="button" class="button button--primary button--no-dock" data-video-toggle data-label-play="Play the step 2 video" data-label-pause="Pause the step 2 video" aria-label="Play the step 2 video">
               <svg class="icon" aria-hidden="true"><use href="../images/icons/sprite.svg#icon-player-play"/></svg>
             </button>
-            <button type="button" class="button button--primary button--no-dock" data-video-replay aria-label="Spill videoen for steg 2 på nytt">
+            <button type="button" class="button button--primary button--no-dock" data-video-replay aria-label="Replay the step 2 video">
               <svg class="icon" aria-hidden="true"><use href="../images/icons/sprite.svg#icon-rotate"/></svg>
             </button>
           </div>
         </div>
-        <figcaption class="text-caption text-subtle">KI-en har funnet aorta, markert i rødt nær kanten av bildet, og ber brukeren skyve proben mot indikatoren for å sentrere den.</figcaption>
+        <figcaption class="text-caption text-subtle">The AI has found the aorta, highlighted red near the edge of the image, and asks the user to slide the probe toward the indicator to centre it.</figcaption>
       </figure>
     </section>
 
     <!-- Step 3 -->
     <section class="project-section">
-      <h4 class="text-subtitle text-stronger">Steg 3: Måle</h4>
-      <p class="text-body">Når bildet fryses, måler KI-en diameteren automatisk. Undersøkelsen er ferdig.</p>
+      <h4 class="text-subtitle text-stronger">Step 3: Measuring</h4>
+      <p class="text-body">Upon freezing the image, AI automatically measures the diameter. Procedure complete.</p>
       <figure class="project-section__image">
         <div class="project-video">
-          <img src="../images/projects/pocus/09-step-3-measure.webp" width="2400" height="1352" alt="Steg 3: diameteren viser 27 mm, over grenseverdien på 26 mm, og grensesnittet ber brukeren fryse bildet" loading="lazy">
+          <img src="../images/projects/pocus/09-step-3-measure.webp" width="2400" height="1352" alt="Step 3: the diameter reads 27 mm, above the 26 mm threshold, and the interface prompts the user to freeze" loading="lazy">
           <video data-src="../videos/projects/pocus/09-step-3-measure.mp4" preload="none" muted loop playsinline></video>
           <div class="project-video__controls">
-            <button type="button" class="button button--primary button--no-dock" data-video-toggle data-label-play="Spill av videoen for steg 3" data-label-pause="Pause videoen for steg 3" aria-label="Spill av videoen for steg 3">
+            <button type="button" class="button button--primary button--no-dock" data-video-toggle data-label-play="Play the step 3 video" data-label-pause="Pause the step 3 video" aria-label="Play the step 3 video">
               <svg class="icon" aria-hidden="true"><use href="../images/icons/sprite.svg#icon-player-play"/></svg>
             </button>
-            <button type="button" class="button button--primary button--no-dock" data-video-replay aria-label="Spill videoen for steg 3 på nytt">
+            <button type="button" class="button button--primary button--no-dock" data-video-replay aria-label="Replay the step 3 video">
               <svg class="icon" aria-hidden="true"><use href="../images/icons/sprite.svg#icon-rotate"/></svg>
             </button>
           </div>
         </div>
-        <figcaption class="text-caption text-subtle">Diameteren viser 27 mm, over grenseverdien på 26 mm, og grensesnittet ber derfor brukeren fryse bildet for å ta målingen.</figcaption>
+        <figcaption class="text-caption text-subtle">The diameter reads 27 mm, above the 26 mm threshold, so the interface prompts a freeze to take the measurement.</figcaption>
       </figure>
       <figure class="project-section__image">
-        <img src="../images/projects/pocus/10-goal-reframe.webp" width="2400" height="1782" alt="Målegrensesnittet før og etter omformuleringen: den første versjonen viser hele resonnementet til KI-en, den andre viser bare om man skal fryse bildet" loading="lazy">
-        <figcaption class="text-caption text-subtle">Målet ble omformulert fra "hjelpe brukeren med å finne tilbake til den største diameteren" til "hjelpe brukeren med å vite når bildet skal fryses". Den første versjonen viste alt KI-en vurderte, og testerne syntes det ble "altfor mye som skjer".</figcaption>
+        <img src="../images/projects/pocus/10-goal-reframe.webp" width="2400" height="1782" alt="The measurement UI before and after reframing: the first version shows the AI's full reasoning, the second shows only whether to freeze" loading="lazy">
+        <figcaption class="text-caption text-subtle">Reframing the goal from "help the user relocate the largest diameter" to "help the user know when to freeze". The first version showed everything the AI was considering; testers called it "too much going on".</figcaption>
       </figure>
     </section>
 
     <!-- Final testing -->
     <section class="project-section">
-      <h2 class="text-subtitle text-subtle">Avsluttende testing</h2>
-      <h3 class="text-title">Live testing av prototypen med 12 leger</h3>
-      <p class="text-body">Teamet og jeg reiste rundt i Distrikts-Norge og besøkte åtte ulike legekontorer. Jeg intervjuet og testet med 12 sluttbrukere og tre andre stakeholdere.</p>
-      <p class="text-body">Tilbakemeldingene tydet på at flere steg burde automatiseres, fremfor å be brukeren om input, som mange oppfattet som slitsomt. I tillegg burde bildene i veiledningen oppgraderes til små animasjoner.</p>
-      <p class="text-body">Alle brukerne klarte å gjennomføre undersøkelsen med veiledning, og repetisjon ga dem betydelig mer selvtillit. Til sammenligning var flere usikre på om de hadde lyktes da de prøvde på egen hånd. Mange var begeistret for veiledningen. En av legene sa "Kjempeenkelt med KI".</p>
-
+      <h2 class="text-subtitle text-subtle">Final testing</h2>
+      <h3 class="text-title">Live prototype testing with 12 doctors</h3>
+      <p class="text-body">The team and I travelled rural Norway, visiting 8 different doctor's offices. I interviewed and tested with 12 end users, and 3 other stakeholders.</p>
+      <!-- The Norwegian ran a fuller version of the feedback sentence, never translated:
+           "…fremfor å be brukeren om input, som mange oppfattet som slitsomt. I tillegg
+           burde bildene i veiledningen oppgraderes til små animasjoner." The tiring-input
+           note and the animations point are the two bits missing below. -->
+      <p class="text-body">Feedback indicated that more steps should be automated, instead of asking for user input. All users managed to complete the procedure with guidance, and repetition improved users' confidence drastically. Compared to when they tried on their own, several felt unsure if it was successful. Many expressed enthusiasm for the guidance, saying "Really easy with AI".</p>
       <figure class="project-section__image">
-        <img src="../images/projects/pocus/11-testing-locations.webp" width="2400" height="1416" alt="Et kart over området vi besøkte, med Kristiansund markert fire ganger, Aure to ganger, Rindal én og Surnadal én, ved siden av bilder fra testsesjonene" loading="lazy">
-        <figcaption class="text-caption text-subtle">De åtte kontorene vi besøkte, og bilder fra testene underveis. Ansikter er sladdet av personvernhensyn.</figcaption>
+        <img src="../images/projects/pocus/11-testing-locations.webp" width="2400" height="1416" alt="A map of the region visited, marking Kristiansund four times, Aure twice, Rindal once and Surnadal once, beside photographs from the test sessions" loading="lazy">
+        <figcaption class="text-caption text-subtle">The eight offices visited, and sessions in progress. Faces blurred for privacy.</figcaption>
       </figure>
     </section>
 
     <!-- Reflecting -->
     <section class="project-section">
-      <h2 class="text-subtitle text-subtle">Refleksjon</h2>
-      <h3 class="text-title">Dette prosjektet gjorde meg til en fleksibel samarbeidspartner</h3>
-      <p class="text-body">Å involvere utviklerne i designbeslutninger tidlig gjorde at de fikk eierskap til resultatet. Designet sluttet å være mitt og ble noe vi eide sammen.</p>
-      <p class="text-body">Å teste med helsepersonell endret måten jeg forbereder meg på. Tiden deres er knapp, så hvert møte måtte telle.</p>
-      <p class="text-body">Jeg lærte å tilpasse metodene mine. Det ideelle testoppsettet var ikke alltid tilgjengelig, så jeg fant måter å skape verdi i mindre optimale situasjoner.</p>
-      <p class="text-body">Verktøyet er i aktiv bruk i SINTEFs studier i 2026. Ved overlevering skrev jeg en strukturert oppsummering av den avsluttende testingen. Den inneholdt mange anbefalinger til videre forbedringer, for doktorgradsstipendiaten som fører arbeidet videre.</p>
+      <h2 class="text-subtitle text-subtle">Reflecting</h2>
+      <h3 class="text-title">This project made me a flexible collaborator</h3>
+      <p class="text-body">Involving the developers in design decisions early made them invested in the outcome. The design stopped being mine and became a shared effort.</p>
+      <p class="text-body">Testing with medical professionals changed how I prepare. Their time is limited, so every session had to count.</p>
+      <p class="text-body">I learned to adapt my methods. The ideal testing setup wasn't always available, so I found ways to get value from imperfect conditions instead of waiting for perfect ones.</p>
+      <p class="text-body">The tool is being actively used in SINTEF's 2026 studies. At handover, I wrote a structured summary of the final testing, with recommendations for future improvements, to the doctorate student continuing the work.</p>
     </section>
 
     <!-- Links -->
     <section class="project-section">
-      <h2 class="text-subtitle text-subtle">Lenker</h2>
-      <a href="https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=818bf0c8-7017-4c21-8151-b2eb0160a542" class="button button--secondary" target="_blank" rel="noopener"><span>Se hele videoen</span><svg class="icon" aria-hidden="true"><use href="../images/icons/sprite.svg#icon-arrow-up-right"/></svg></a>
-      <a href="https://nva.sikt.no/registration/0199c37893d6-d5f80aeb-721f-48d6-8fc2-d94e4ed6e0fd" class="button button--secondary" target="_blank" rel="noopener"><span>Les masteroppgaven</span><svg class="icon" aria-hidden="true"><use href="../images/icons/sprite.svg#icon-arrow-up-right"/></svg></a>
+      <h2 class="text-subtitle text-subtle">Links</h2>
+      <a href="https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=818bf0c8-7017-4c21-8151-b2eb0160a542" class="button button--secondary" target="_blank" rel="noopener"><span>Watch full video</span><svg class="icon" aria-hidden="true"><use href="../images/icons/sprite.svg#icon-arrow-up-right"/></svg></a>
+      <a href="https://nva.sikt.no/registration/0199c37893d6-d5f80aeb-721f-48d6-8fc2-d94e4ed6e0fd" class="button button--secondary" target="_blank" rel="noopener"><span>Read master's thesis</span><svg class="icon" aria-hidden="true"><use href="../images/icons/sprite.svg#icon-arrow-up-right"/></svg></a>
     </section>
 
     <div class="scroll-top-slot">
-      <a href="#main" class="button button--primary button--no-dock scroll-top" aria-label="Til toppen">
+      <a href="#main" class="button button--primary button--no-dock scroll-top" aria-label="Back to top">
         <svg class="icon" aria-hidden="true"><use href="../images/icons/sprite.svg#icon-arrow-up"/></svg>
       </a>
     </div>
 
-    <nav class="project-footer" aria-label="Prosjekter">
+    <nav class="project-footer" aria-label="Case studies">
       <div class="project-footer__text">
-        <p class="text-subtitle">Tryggere legemiddelhåndtering</p>
-        <p class="text-caption text-subtle">Research, konseptutvikling og testing</p>
+        <p class="text-subtitle">Safer medication administration</p>
+        <p class="text-caption text-subtle">Research synthesis, concept refinement and testing</p>
       </div>
-      <a href="medication.html" class="button button--primary" aria-label="Neste prosjekt: Tryggere legemiddelhåndtering"><span>Neste prosjekt</span><svg class="icon" aria-hidden="true"><use href="../images/icons/sprite.svg#icon-arrow-right"/></svg></a>
+      <a href="medication.html" class="button button--primary" aria-label="Next project: Safer medication administration"><span>Next project</span><svg class="icon" aria-hidden="true"><use href="../images/icons/sprite.svg#icon-arrow-right"/></svg></a>
     </nav>
 
   </div>

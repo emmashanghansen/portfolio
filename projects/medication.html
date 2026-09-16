@@ -1,41 +1,20 @@
 <!DOCTYPE html>
-<html lang="no">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script>
-    // Hide the English banner before the first paint for anyone who reads
-    // Norwegian or has already dismissed it, so it never flashes and never
-    // shifts the page. Deliberately not a redirect: browser language is often
-    // just the OS language, and being bounced somewhere you did not ask for is
-    // worse than being offered a link.
-    (function () {
-      try {
-        var langs = navigator.languages || [navigator.language || ''];
-        var readsNorwegian = langs.some(function (l) { return /^(nb|nn|no)(-|$)/i.test(l); });
-        var dismissed = false;
-        try { dismissed = !!localStorage.getItem('language-banner-dismissed'); } catch (e) {}
-        if (readsNorwegian || dismissed) {
-          document.documentElement.classList.add('language-banner-off');
-        }
-      } catch (e) {}
-    })();
-  </script>
-  <meta name="description" content="Et tjenestedesignprosjekt med Nasjonalt senter for e-helseforskning, som redesignet legemiddelrutinen på et sykehjem — ikke programvaren — for å gi sykepleierne mer tid til pasientene.">
-  <meta property="og:title" content="Mer tid til pasientene for sykepleierne — Emma Shang Hansen">
-  <meta property="og:description" content="Et tjenestedesignprosjekt med Nasjonalt senter for e-helseforskning, som redesignet legemiddelrutinen på et sykehjem — ikke programvaren — for å gi sykepleierne mer tid til pasientene.">
-  <meta property="og:locale" content="nb_NO">
+  <meta name="description" content="A service design project with the National Centre for E-health Research, redesigning a nursing home's medication routine — not its software — to give nurses more time for patients.">
+  <meta property="og:title" content="Giving nurses more time for patients — Emma Shang Hansen">
+  <meta property="og:description" content="A service design project with the National Centre for E-health Research, redesigning a nursing home's medication routine — not its software — to give nurses more time for patients.">
+  <meta property="og:locale" content="en_GB">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://emmashanghansen.github.io/portfolio/projects/medication.html">
   <meta property="og:image" content="https://emmashanghansen.github.io/portfolio/images/global/social-preview.png">
   <meta property="og:image:width" content="2400">
   <meta property="og:image:height" content="1260">
-  <meta property="og:image:alt" content="Forsiden til porteføljen til Emma Shang Hansen, med overskriften “Emma er UX-designer og tech-entusiast”.">
+  <meta property="og:image:alt" content="The Emma Shang Hansen portfolio homepage, headlined “Emma is a UX designer and tech enthusiast”.">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://emmashanghansen.github.io/portfolio/projects/medication.html">
-  <link rel="alternate" hreflang="no" href="https://emmashanghansen.github.io/portfolio/projects/medication.html">
-  <link rel="alternate" hreflang="en" href="https://emmashanghansen.github.io/portfolio/en/projects/medication.html">
-  <link rel="alternate" hreflang="x-default" href="https://emmashanghansen.github.io/portfolio/projects/medication.html">
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="../apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,152 +26,144 @@
   <link rel="stylesheet" href="../css/layout.css">
   <link rel="stylesheet" href="../css/components.css">
   <link rel="stylesheet" href="../css/project.css">
-  <title>Mer tid til pasientene for sykepleierne — Emma Shang Hansen</title></head>
+  <title>Giving nurses more time for patients — Emma Shang Hansen</title>
+</head>
 <body>
   <div class="custom-cursor" aria-hidden="true"></div>
 
-  <a href="#main" class="skip-link">Hopp til hovedinnhold</a>
+  <a href="#main" class="skip-link">Skip to main content</a>
 
   <span class="visually-hidden" role="status" data-copy-status></span>
 
   <header class="navbar">
     <a href="../index.html" class="navbar__logo text-subtitle text-stronger">Emma Shang Hansen</a>
-    <button class="navbar__toggle" type="button" aria-expanded="false" aria-controls="navbar-links" aria-label="Åpne meny" data-label-open="Åpne meny" data-label-close="Lukk meny">
+    <button class="navbar__toggle" type="button" aria-expanded="false" aria-controls="navbar-links" aria-label="Open menu" data-label-open="Open menu" data-label-close="Close menu">
       <span class="navbar__toggle-bar" aria-hidden="true"></span>
     </button>
-    <nav id="navbar-links" class="navbar__links" aria-label="Hoved">
-      <a href="../index.html#projects" class="button button--tertiary">Prosjekter</a>
+    <nav id="navbar-links" class="navbar__links" aria-label="Main">
+      <a href="../index.html#projects" class="button button--tertiary">Projects</a>
       <a href="https://www.linkedin.com/in/emmashanghansen/" class="button button--primary" target="_blank" rel="noopener">LinkedIn <svg class="icon" aria-hidden="true"><use href="../images/icons/sprite.svg#icon-arrow-up-right"/></svg></a>
-      <a href="../en/projects/medication.html" class="button button--secondary" lang="en" hreflang="en">English</a>
     </nav>
   </header>
 
   <main id="main" tabindex="-1">
   <div class="main-content project-body">
 
-    <div class="language-banner" lang="en">
-      <p class="text-body">This case study is also available in English.</p>
-      <div class="language-banner__actions">
-        <a href="../en/projects/medication.html" class="button button--secondary" hreflang="en"><span>Read in English</span><svg class="icon" aria-hidden="true"><use href="../images/icons/sprite.svg#icon-arrow-right"/></svg></a>
-        <button type="button" class="button button--tertiary" data-language-banner-dismiss>Not now</button>
-      </div>
-    </div>
-
     <section class="project-hero">
       <div class="project-hero__title">
-        <p class="text-subtitle text-subtle">Tjenestedesign</p>
-        <h1 class="text-large-title">Tryggere legemiddelhåndtering for sykepleiere</h1>
+        <p class="text-subtitle text-subtle">Service design</p>
+        <h1 class="text-large-title">Safer medication administration for nurses</h1>
       </div>
       <div class="project-hero__image">
-        <img src="../images/projects/medication/hero.webp" width="2240" height="1260" alt="En Lego-modell av et sykehjemsrom: limegrønne vegger, en brikke merket &quot;PC&quot;, en medisintralle merket &quot;MEDISIN TRALLE&quot;, og en sykepleierfigur ved siden av">
+        <img src="../images/projects/medication/hero.webp" width="2240" height="1260" alt="A LEGO model of a nursing home room: lime-green walls, a tile labelled &quot;PC&quot;, a medicine cart labelled &quot;MEDISIN TRALLE&quot;, and a nurse minifigure standing beside it">
       </div>
       <dl class="project-hero__details-grid">
         <div class="project-hero__detail">
-          <dt class="text-body text-subtle">Rolle</dt>
-          <dd class="text-body">Tjenestedesigner</dd>
+          <dt class="text-body text-subtle">Role</dt>
+          <dd class="text-body">Service designer</dd>
         </div>
         <div class="project-hero__detail">
           <dt class="text-body text-subtle">Team</dt>
-          <dd class="text-body">5 designere</dd>
+          <dd class="text-body">5 designers</dd>
         </div>
         <div class="project-hero__detail">
-          <dt class="text-body text-subtle">Mitt bidrag</dt>
-          <dd class="text-body">Research<br>Konseptdesign<br>Brukertesting</dd>
+          <dt class="text-body text-subtle">My contribution</dt>
+          <dd class="text-body">Research<br>Concept design<br>User testing</dd>
         </div>
         <div class="project-hero__detail">
-          <dt class="text-body text-subtle">Tidsramme</dt>
-          <dd class="text-body">Ett semester</dd>
+          <dt class="text-body text-subtle">Timeline</dt>
+          <dd class="text-body">Semester project</dd>
         </div>
       </dl>
     </section>
 
     <!-- Background -->
     <section class="project-section">
-      <h2 class="text-subtitle text-subtle">Bakgrunn</h2>
-      <p class="text-body">Prosjektet startet som et samarbeid med Nasjonalt senter for e-helseforskning, og handlet opprinnelig om medisinlister og pasientjournaler.</p>
-      <p class="text-body">Da vi begynte å undersøke digitaliseringen av norsk helsevesen, møtte vi raskt vegger: systemer som ikke snakker sammen, infrastruktur bundet opp i lovverk, og plattformer ingen oppdaterer i frykt for å ødelegge noe.</p>
-      <p class="text-body">Så vi zoomet inn: ett sykehjem, én vakt, én workflow.</p>
+      <h2 class="text-subtitle text-subtle">Background</h2>
+      <p class="text-body">The project began as a collaboration with the National Centre for E-health Research, originally focused on medication lists and patient records.</p>
+      <p class="text-body">When we started investigating healthcare digitalisation in Norway, we quickly ran into walls: systems that don't communicate, infrastructure tied up in legislation, platforms nobody updates for fear of breaking them.</p>
+      <p class="text-body">So we zoomed in, to a single nursing home, a single shift, a single workflow.</p>
     </section>
 
     <!-- Research -->
     <section class="project-section">
       <h2 class="text-subtitle text-subtle">Research</h2>
-      <h3 class="text-title">Vi innså at vi løste feil problem</h3>
-      <p class="text-body">De første ukene undersøkte vi problemer med programvaren, og forventet å finne utdaterte medisinske systemer med dårlig UX som vi kunne forbedre.</p>
-      <p class="text-body">Noen sykehjem har tilgang til nye og forbedrede versjoner av programvaren sin, men bruker dem ikke, i frykt for at en oppdatering skal ødelegge noe. Men viktigere: vi fant at systemer som ikke er kompatible, gjør at folk overfører informasjon manuelt mellom helseinstitusjoner. Med epost og håndskrevne lapper.</p>
-      <p class="text-body text-strong">"Dårlig programvare er ikke hovedproblemet, det takler vi. Måten medisinlister sendes rundt på, er rett og slett farlig."</p>
-      <p class="text-caption text-subtle">— Sykepleier, om medisinlister</p>
+      <h3 class="text-title">Realising we were solving the wrong problem</h3>
+      <p class="text-body">The first weeks of our research, we were investigating software problems, expecting to find outdated medical systems with bad UX, that we could improve.</p>
+      <p class="text-body">Some nursing homes have access to new and improved versions of their software, but aren't using them, afraid that an update could break something. But more importantly, we found that system incompatibility makes people manually transfer information between healthcare institutions. Using email and handwritten notes.</p>
+      <p class="text-body text-strong">"Bad software isn't the main problem, we can handle that. The way medication lists get passed around is just dangerous."</p>
+      <p class="text-caption text-subtle">— Nurse, about medication lists</p>
     </section>
 
     <!-- A morning shift at a nursing home -->
     <section class="project-section">
-      <h3 class="text-title">En morgenvakt på et sykehjem</h3>
-      <p class="text-body">Én på teamet hadde en kontakt på et lokalt sykehjem, og fikk dermed være med på en ekte vakt. Hun forventet å se frustrasjon over programvare. I stedet så hun håndskrevne lapper, post-it-påminnelser og manuell telling. Den ene PC-en sto på kontoret, så å sjekke journalen betydde å forlate medisintrallen. Alle hadde sin egen måte å gjøre det på. Workflowen var flaskehalsen.</p>
+      <h3 class="text-title">A morning shift at a nursing home</h3>
+      <p class="text-body">One team member had a contact at a local nursing home, which gave her access to shadow a real shift. She expected to observe frustrations with software. Instead she saw handwritten notes, post-it reminders, manual counting. The single PC was in the office, so checking the journal meant leaving the medicine cart. Everyone had their own way of doing it. The workflow was the bottleneck.</p>
       <figure class="project-section__image">
-        <img src="../images/projects/medication/body-medication.webp" width="2400" height="1552" alt="En brukerreise for de ansatte på sykehjemmet, lagt ut i tre baner med røde markører på pain points" loading="lazy">
+        <img src="../images/projects/medication/body-medication.webp" width="2400" height="1552" alt="A user journey map for nursing home staff, in Norwegian, laid out in three swimlanes with red markers on the pain points" loading="lazy">
         <!-- TODO: caption -->
       </figure>
     </section>
 
     <!-- Ideation -->
     <section class="project-section">
-      <h2 class="text-subtitle text-subtle">Idéutvikling</h2>
-      <h3 class="text-title">Å prioritere realistiske forbedringer</h3>
-      <p class="text-body">Vi hadde en løpende idébank fra dag én, som holdt idéutviklingen åpen og uforpliktende. Jo flere ideer vi hadde, jo større sjanse for å lande på den riktige.</p>
-      <p class="text-body">Noen retninger vi utforsket og gikk bort fra:</p>
+      <h2 class="text-subtitle text-subtle">Ideation</h2>
+      <h3 class="text-title">Prioritising realistic improvements</h3>
+      <p class="text-body">We kept a running idea bank from day one, keeping ideation low-stakes and open. The more ideas we had, the better our chances of landing on the right one.</p>
+      <p class="text-body">Some directions we explored and moved away from:</p>
       <ul class="project-section__list" role="list">
-        <li class="text-body">Forbedrede papirmaler. Det ville forsterke et system de ønsker å fase ut.</li>
-        <li class="text-body">App for legemiddelhåndtering i hjemmesykepleien. Reiser personvernspørsmål og ville krevd flere måneders arbeid.</li>
+        <li class="text-body">Improved paper templates. It reinforced a system they want to phase out.</li>
+        <li class="text-body">Medication administration app for home nurses. Has privacy concerns and would require months of work.</li>
       </ul>
-      <p class="text-body">I stedet for å lage enda en overambisiøs studentapp, spurte vi:</p>
-      <p class="text-body">Hva ville gjort den eksisterende rutinen mindre utsatt for feil og lettere å overlevere mellom ansatte? Én felles rutine, med digitale verktøy plassert der arbeidet faktisk foregår.</p>
+      <p class="text-body">Rather than creating another overambitious student app, we asked:</p>
+      <p class="text-body">What would make the existing routine less error-prone and easier to hand off between staff? One shared routine, with digital tools placed where the work actually happens.</p>
       <figure class="project-section__image">
-        <img src="../images/projects/medication/body-medication-1.webp" width="2400" height="2008" alt="En impact/effort-matrise over idébanken, med lapper og skisser lagt i en trapp fra lav til høy impact" loading="lazy">
+        <img src="../images/projects/medication/body-medication-1.webp" width="2400" height="2008" alt="An impact and effort matrix of the idea bank, in Norwegian, with sticky notes and sketches arranged in a staircase from low to high impact" loading="lazy">
         <!-- TODO: caption -->
       </figure>
     </section>
 
     <!-- Testing the workflow -->
     <section class="project-section">
-      <h3 class="text-title">Å teste workflowen</h3>
-      <p class="text-body">Etter en tidlig feedback-runde med sykepleiere, der vi brukte en Lego-modell av avdelingen, lot vi medstudenter simulere workflowen. De delte ut frukt i stedet for medisiner, slik at manglende kjennskap til medisiner ikke skulle stå i veien. Med papirlapper og den gamle rutinen improviserte deltakerne egne metoder, glemte å signere for medisiner og stresset mellom rommene.</p>
+      <h3 class="text-title">Testing the workflow</h3>
+      <p class="text-body">After an early feedback session with nurses, using a Lego model of the department, we had fellow students simulate the workflow, distributing fruit instead of medicine to remove any familiarity barrier. With paper notes and the old routine, participants improvised their own methods, forgot to sign off medication, and rushed between rooms.</p>
       <figure class="project-section__image">
-        <img src="../images/projects/medication/body-medication-2.webp" width="2400" height="1630" alt="En Lego-modell av avdelingen: rom på grønne byggeplater, med en medisintralle merket &quot;MEDISIN TRALLE&quot;, en brikke merket &quot;PC&quot; og en sykepleierfigur" loading="lazy">
+        <img src="../images/projects/medication/body-medication-2.webp" width="2400" height="1630" alt="A LEGO model of the department: green baseplate rooms with a medicine cart labelled &quot;MEDISIN TRALLE&quot;, a tile labelled &quot;PC&quot;, and a nurse minifigure" loading="lazy">
         <!-- TODO: caption -->
       </figure>
-      <p class="text-body">Med enkle digitale verktøy og en felles rutine fulgte alle den samme strukturen. Ingen glemte å signere, og det ble merkbart færre avbrudd og mindre stress.</p>
-      <p class="text-body">Flere deltakere stoppet til og med opp for å spørre pasienten Kari hvordan hun hadde det. I den første runden gjorde ingen det.</p>
+      <p class="text-body">With simple digital tools and a shared routine, everyone followed the same structure. Nobody forgot to sign off, and there was noticeably less interruption and stress.</p>
+      <p class="text-body">Several participants even paused to ask patient Kari how she was doing. In the first round, nobody did.</p>
       <figure class="project-section__image">
-        <img src="../images/projects/medication/body-medication-3.webp" width="2400" height="1156" alt="To bilder fra simuleringen: en deltaker som gir fra seg en papirlapp, og to deltakere som går gjennom rutinen med navnekort for pasientene liggende på bordet" loading="lazy">
+        <img src="../images/projects/medication/body-medication-3.webp" width="2400" height="1156" alt="Two photographs from the workflow simulation: a participant handing over a paper note, and two participants working through the routine with patient name cards laid out on the table" loading="lazy">
         <!-- TODO: caption -->
       </figure>
     </section>
 
     <!-- What we landed on -->
     <section class="project-section">
-      <h3 class="text-title">Det vi landet på</h3>
-      <p class="text-body">Det endelige konseptet var et sett med krav som passer for de fleste avdelinger: en felles rutine med én ansvarlig for å holde den konsekvent, digital signering for tryggere dokumentasjon, og en PC nær medisintrallen for enkle oppslag, i tillegg til andre krav som skulle redusere usikkerhet og manuell telling.</p>
+      <h3 class="text-title">What we landed on</h3>
+      <p class="text-body">The final concept was a set of requirements applicable for most departments: a shared routine with someone responsible for keeping it consistent, digital sign-off for safer record-keeping, a PC near the medicine cart for easy lookups, among other requirements aimed at reducing uncertainty and manual counting.</p>
       <figure class="project-section__image">
-        <img src="../images/projects/medication/body-medication-4.webp" width="2400" height="1414" alt="Et storyboard i fem ruter over den foreslåtte rutinen, fra oppslag i pasientjournalen ved medisintrallen til digital bekreftelse av utdelte medisiner" loading="lazy">
-        <figcaption class="text-caption text-subtle">Redesignet rutine for legemiddelhåndtering</figcaption>
+        <img src="../images/projects/medication/body-medication-4.webp" width="2400" height="1414" alt="A five-panel storyboard of the proposed routine, from accessing patient records at the medication cart through to confirming the given medications digitally" loading="lazy">
+        <figcaption class="text-caption text-subtle">Redesigned medication administration routine</figcaption>
       </figure>
-      <p class="text-body">Sykepleieren vi hadde fulgt, gikk gjennom konseptet i valideringen og ga feedback på hvor gjennomførbart det var. Vi nådde aldri frem til ledelsen og fikk ingen formell godkjenning, så vi vet ikke om noe ble tatt i bruk. Målet vårt var å designe noe jordnært og gjennomførbart, som ikke krevde ny infrastruktur eller nytt budsjett.</p>
-      <p class="text-body">Ifølge veilederen vår har eksterne aktører en tendens til å konsentrere seg om store prosjekter og ny teknologi. Men å utvikle bedre arbeidsrutiner er et lite, men viktig område, som oftest blir overlatt til travle sykepleiere å forbedre selv. Prosjektet minner meg om at små endringer også kan ha stor impact.</p>
+      <p class="text-body">The nurse we had shadowed reviewed the concept during validation and gave feedback on feasibility. We didn't reach management or secure formal sign-off, so whether anything was implemented remains unknown. Our goal had been to design something grounded and feasible with no new infrastructure or budget required.</p>
+      <p class="text-body">According to our supervisor, outside actors tend to focus on large projects and new technology. But developing better working routines is a small, important area that usually falls to busy nurses to improve themselves. This project reminds me that small changes can have substantial impact too.</p>
     </section>
 
     <div class="scroll-top-slot">
-      <a href="#main" class="button button--primary button--no-dock scroll-top" aria-label="Til toppen">
+      <a href="#main" class="button button--primary button--no-dock scroll-top" aria-label="Back to top">
         <svg class="icon" aria-hidden="true"><use href="../images/icons/sprite.svg#icon-arrow-up"/></svg>
       </a>
     </div>
 
-    <nav class="project-footer" aria-label="Prosjekter">
-      <a href="pocus.html" class="button button--secondary project-footer__previous" aria-label="Forrige prosjekt: Hjelper leger å gjennomføre ultralydundersøkelser med KI-veiledning"><svg class="icon" aria-hidden="true"><use href="../images/icons/sprite.svg#icon-arrow-left"/></svg><span>Forrige prosjekt</span></a>
+    <nav class="project-footer" aria-label="Case studies">
+      <a href="pocus.html" class="button button--secondary project-footer__previous" aria-label="Previous project: Helping doctors perform ultrasound examinations with AI guidance"><svg class="icon" aria-hidden="true"><use href="../images/icons/sprite.svg#icon-arrow-left"/></svg><span>Previous project</span></a>
       <div class="project-footer__text">
         <p class="text-subtitle">Rat with a Postman Hat</p>
-        <p class="text-caption text-subtle">Storytelling, dialog, leveldesign og musikk</p>
+        <p class="text-caption text-subtle">Storytelling, dialogue, level design and music</p>
       </div>
-      <a href="rat.html" class="button button--primary" aria-label="Neste prosjekt: Rat with a Postman Hat"><span>Neste prosjekt</span><svg class="icon" aria-hidden="true"><use href="../images/icons/sprite.svg#icon-arrow-right"/></svg></a>
+      <a href="rat.html" class="button button--primary" aria-label="Next project: Rat with a Postman Hat"><span>Next project</span><svg class="icon" aria-hidden="true"><use href="../images/icons/sprite.svg#icon-arrow-right"/></svg></a>
     </nav>
 
   </div>
