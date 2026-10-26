@@ -3,13 +3,162 @@
   padding-bottom: 0;
 }
 
-.hero-heading {
-  gap: var(--spacing-m);
+/* Each item is placed by --x/--y/--width (percentages of the scene) and tilted by --tilt.
+   The tilt is mostly baked into the exports, so --tilt is there for nudging. */
+.hero-scene {
+  position: relative;
+  width: 100%;
+  max-width: var(--hero-max-width-mobile);
+  aspect-ratio: 1;
+  margin-inline: auto;
 }
-@media (min-width: 48rem) {
-  .hero-heading > * {
-    width: 60%;
+
+.hero-item {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--width);
+  rotate: var(--tilt, 0deg);
+  z-index: var(--layer, 1);
+  pointer-events: none;
+}
+
+/* The hit area. It stays put while __motion moves, and its radius and tilt keep
+   the transparent corners of each image from catching the pointer. */
+.hero-item::before {
+  content: "";
+  position: absolute;
+  inset: var(--hit-inset, 0);
+  rotate: var(--hit-tilt, 0deg);
+  border-radius: var(--hit-radius, var(--radius-small));
+  pointer-events: auto;
+}
+
+.hero-item__motion {
+  position: relative;
+  transition: translate 250ms ease, rotate 250ms ease, scale 250ms ease;
+}
+
+.hero-item__motion img {
+  width: 100%;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .hero-item:hover .hero-item__motion {
+    translate: var(--hover-x, 0) var(--hover-y, 0);
+    rotate: var(--hover-tilt, 0deg);
+    scale: var(--hover-scale, 1);
   }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero-item.is-active .hero-item__motion {
+    translate: var(--hover-x, 0) var(--hover-y, 0);
+    rotate: var(--hover-tilt, 0deg);
+    scale: var(--hover-scale, 1);
+  }
+}
+
+/* The text is sized in cqw of the notebook, so it wraps the same at every width
+   and stays on the ruled lines in the image. */
+.hero-item--note {
+  --x: 1%; --y: 12%; --width: 98%;
+  --hit-inset: 6%; --hit-tilt: -6deg;
+  --hover-y: -2%; --hover-tilt: -1deg;
+  --text-top: 23cqw;
+  --text-left: 7cqw;
+  --text-width: 85cqw;
+  --text-size: 4.8cqw;
+  --text-line: 12cqw;
+  --text-tilt: -6deg;
+  container-type: inline-size;
+}
+
+.hero-note-text {
+  position: absolute;
+  top: var(--text-top);
+  left: var(--text-left);
+  width: var(--text-width);
+  rotate: var(--text-tilt);
+  transform-origin: 0 0;
+  font-size: var(--text-size);
+  line-height: var(--text-line);
+  text-wrap: wrap;
+  pointer-events: auto;
+}
+
+.hero-note-text .text-underline {
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.15em;
+}
+
+.hero-item--polaroid {
+  display: none;
+  --hit-inset: 4%; --hit-tilt: 4deg;
+  --hover-y: -3%; --hover-tilt: 2deg; --hover-scale: 1.02;
+  --layer: 2;
+}
+
+/* The photo comes first in the markup, so the frame (positioned, later) paints
+   over it and shows it through the frame's transparent window. */
+.hero-frame {
+  position: relative;
+}
+
+.hero-item__motion .hero-photo {
+  position: absolute;
+  left: 5.9%;
+  top: 6.5%;
+  width: 88.9%;
+}
+
+/* The decorations keep their desktop size on mobile. --size is their width as a
+   percentage of the desktop scene. */
+.hero-item--sparkle,
+.hero-item--flower,
+.hero-item--leaf {
+  --width: calc(var(--size) * var(--page-max-width-medium) / 100);
+}
+
+.hero-item--sparkle {
+  --hit-inset: 15%; --hit-radius: 50%;
+  --hover-tilt: -5deg; --hover-scale: 1.10;
+}
+.hero-item--sparkle-1 { --x: 8%;  --y: 6%;  --size: 3.8; }
+.hero-item--sparkle-2 { --x: -10%;  --y: 22%; --size: 5.1; }
+.hero-item--sparkle-3 { --x: 93%;  --y: 4%;  --size: 4.3; --layer: 3; --hover-tilt: 10deg;}
+.hero-item--sparkle-4 { --x: 58%;  --y: 90%; --size: 3.8; }
+
+.hero-item--flower {
+  --x: -10%; --y: 88%; --size: 9.6;
+  --hit-inset: 10%; --hit-radius: 50%;
+  --hover-tilt: 5deg; --hover-scale: 1.08;
+}
+
+.hero-item--leaf {
+  --x: 100%; --y: 76%; --size: 6.3;
+  --hit-inset: 10%; --hit-radius: 40%;
+  --hover-tilt: -8deg;
+}
+.hero-item--leaf .hero-item__motion {
+  transform-origin: bottom left;
+}
+
+@media (min-width: 48rem) {
+  .hero-scene {
+    max-width: var(--page-max-width-medium);
+    aspect-ratio: 790 / 425;
+  }
+  .hero-item--note      { --x: 10%;   --y: 7%;    --width: 47%; }
+  .hero-item--polaroid  { --x: 53%;   --y: 33%;   --width: 45%; display: block; }
+  .hero-item--sparkle,
+  .hero-item--flower,
+  .hero-item--leaf      { --width: calc(var(--size) * 1%); }
+  .hero-item--sparkle-1 { --x: 10.3%; --y: 1.6%; }
+  .hero-item--sparkle-2 { --x: 2%;    --y: 18.4%; }
+  .hero-item--sparkle-3 { --x: 92.7%; --y: 32%; }
+  .hero-item--sparkle-4 { --x: 47.3%; --y: 83.3%; }
+  .hero-item--flower    { --x: 0%;    --y: 71.5%; }
+  .hero-item--leaf      { --x: 60.9%; --y: 15.1%; }
 }
 
 

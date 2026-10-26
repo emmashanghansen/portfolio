@@ -91,6 +91,9 @@
   --page-max-width-medium: 48rem;            /* 768px */
   --page-max-width-small: 40rem;             /* 640px */
 
+  /* Hero */
+  --hero-max-width-mobile: 27rem;            /* 432px — a large phone */
+
   /* --------------- */
   /* Shadows */
   --shadow-01: 0 1px 2px 0 var(--colour-shadow-key), 0 0 2px 0 var(--colour-shadow-ambient);

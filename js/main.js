@@ -318,6 +318,15 @@ if (footerIcon) {
   cycleFooterIcon();
 }
 
+// --- Hero items ---
+// Touch has no hover, so a press gives each item the same lift for as long as
+// the finger stays down.
+document.querySelectorAll('.hero-item').forEach(item => {
+  item.addEventListener('pointerdown', () => item.classList.add('is-active'));
+  ['pointerup', 'pointercancel', 'pointerleave'].forEach(type =>
+    item.addEventListener(type, () => item.classList.remove('is-active')));
+});
+
 // --- Copy email ---
 // The address goes to the clipboard rather than handing off to a mail client:
 // most people read mail in a browser tab, so a mailto: tends to open some
